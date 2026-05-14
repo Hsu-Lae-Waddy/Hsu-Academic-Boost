@@ -1,0 +1,326 @@
+<!doctype html>
+<html lang="en" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CS Lessons</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    html, body { height: 100%; margin: 0; }
+    body { font-family: 'Source Sans 3', sans-serif; box-sizing: border-box; }
+    code, .mono { font-family: 'JetBrains Mono', monospace; }
+    .sidebar-item { transition: all 0.15s; }
+    .sidebar-item:hover { background: #2d3748; }
+    .sidebar-item.active { background: #1a73e8; color: #fff; }
+    .code-block { background: #1e1e2e; color: #cdd6f4; border-radius: 8px; padding: 16px; overflow-x: auto; white-space: pre; font-size: 0.85rem; line-height: 1.6; margin: 1rem 0; }
+    .code-block .keyword { color: #cba6f7; }
+    .code-block .string { color: #a6e3a1; }
+    .code-block .comment { color: #6c7086; }
+    .code-block .type { color: #89b4fa; }
+  </style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full bg-gray-900 text-gray-100">
+  <div class="flex h-full w-full">
+   <!-- Sidebar -->
+   <aside id="sidebar" class="w-64 min-w-[256px] bg-gray-800 border-r border-gray-700 overflow-y-auto flex-shrink-0 hidden md:block">
+    <div class="p-5 border-b border-gray-700">
+       <div class="flex items-center gap-3 mb-3">
+          <button onclick="goHome()" class="hover:bg-gray-700 p-1.5 rounded transition" title="Go Home">
+            <i data-lucide="home" class="w-5 h-5"></i>
+          </button>
+          <h1 id="site-title" class="text-lg font-bold text-emerald-400 mono flex-1">Computer Science</h1>
+        </div>
+    </div>
+    <nav class="py-2" id="nav-list"></nav>
+   </aside>
+   <!-- Mobile menu button --> 
+   <button id="mobile-menu-btn" class="md:hidden fixed top-3 left-3 z-50 bg-gray-800 p-2 rounded-lg border border-gray-700"> 
+    <i data-lucide="menu" class="w-5 h-5"></i> 
+   </button> 
+   <!-- Mobile overlay -->
+   <div id="mobile-overlay" class="hidden fixed inset-0 bg-black/60 z-40 md:hidden" onclick="toggleMobile()"></div>
+   <aside id="mobile-sidebar" class="hidden fixed left-0 top-0 h-full w-64 bg-gray-800 z-50 overflow-y-auto md:hidden">
+    <div class="p-5 border-b border-gray-700 flex justify-between items-center">
+     <h1 class="text-lg font-bold text-emerald-400 mono">CS Lessons</h1>
+     <button onclick="toggleMobile()">
+      <i data-lucide="x" class="w-5 h-5"></i>
+     </button>
+    </div>
+    <nav class="py-2" id="mobile-nav-list"></nav>
+   </aside>
+   <!-- Main Content -->
+   <main class="flex-1 overflow-y-auto p-6 md:p-10" id="main-content"></main>
+  </div>
+  <script>
+    const lessons = [
+      {
+        title: "Introduction",
+        content: `
+          <h2>What is Computer Science?</h2>
+          <p>Computer Science is the study of computation, information, and automation. It spans theoretical disciplines such as algorithms and data structures to practical ones like software engineering and artificial intelligence.</p>
+          <h3>Key Areas</h3>
+          <ul>
+            <li><strong>Algorithms</strong> — Step-by-step procedures for solving problems</li>
+            <li><strong>Data Structures</strong> — Ways to organize and store data</li>
+            <li><strong>Programming</strong> — Writing instructions for computers</li>
+            <li><strong>Networking</strong> — Connecting computers to share information</li>
+          </ul>
+        `
+      },
+      {
+        title: "Variables & Data Types",
+        content: `
+          <h2>Variables & Data Types</h2>
+          <p>A <strong>variable</strong> is a named container for storing a value in memory. Each variable has a <strong>data type</strong> that determines what kind of value it can hold.</p>
+          <h3>Common Data Types</h3>
+          <table>
+            <thead><tr><th>Type</th><th>Example</th><th>Description</th></tr></thead>
+            <tbody>
+              <tr><td><code>int</code></td><td>42</td><td>Whole numbers</td></tr>
+              <tr><td><code>float</code></td><td>3.14</td><td>Decimal numbers</td></tr>
+              <tr><td><code>string</code></td><td>"hello"</td><td>Text</td></tr>
+              <tr><td><code>boolean</code></td><td>true</td><td>True or false</td></tr>
+            </tbody>
+          </table>
+          <h3>Example (Python)</h3>
+          <div class="code-block"><span class="comment"># Declaring variables</span>
+name = <span class="string">"Alice"</span>
+age = <span class="type">25</span>
+is_student = <span class="keyword">True</span>
+
+<span class="keyword">print</span>(f<span class="string">"Hello, {name}!"</span>)</div>
+        `
+      },
+      {
+        title: "Control Flow",
+        content: `
+          <h2>Control Flow</h2>
+          <p>Control flow determines the order in which statements are executed. The primary tools are <strong>conditionals</strong> and <strong>loops</strong>.</p>
+          <h3>If / Else</h3>
+          <div class="code-block"><span class="keyword">if</span> temperature > <span class="type">30</span>:
+    <span class="keyword">print</span>(<span class="string">"It's hot!"</span>)
+<span class="keyword">elif</span> temperature > <span class="type">15</span>:
+    <span class="keyword">print</span>(<span class="string">"It's nice."</span>)
+<span class="keyword">else</span>:
+    <span class="keyword">print</span>(<span class="string">"It's cold."</span>)</div>
+          <h3>Loops</h3>
+          <p><strong>For loop</strong> — iterates a fixed number of times:</p>
+          <div class="code-block"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span class="type">5</span>):
+    <span class="keyword">print</span>(i)  <span class="comment"># 0, 1, 2, 3, 4</span></div>
+          <p><strong>While loop</strong> — repeats while condition is true:</p>
+          <div class="code-block">count = <span class="type">0</span>
+<span class="keyword">while</span> count < <span class="type">3</span>:
+    <span class="keyword">print</span>(count)
+    count += <span class="type">1</span></div>
+        `
+      },
+      {
+        title: "Functions",
+        content: `
+          <h2>Functions</h2>
+          <p>A <strong>function</strong> is a reusable block of code that performs a specific task. Functions help organize code, reduce repetition, and improve readability.</p>
+          <h3>Defining a Function</h3>
+          <div class="code-block"><span class="keyword">def</span> <span class="type">greet</span>(name):
+    <span class="keyword">return</span> f<span class="string">"Hello, {name}!"</span>
+
+message = greet(<span class="string">"Bob"</span>)
+<span class="keyword">print</span>(message)  <span class="comment"># Hello, Bob!</span></div>
+          <h3>Parameters vs Arguments</h3>
+          <ul>
+            <li><strong>Parameter</strong> — the variable in the function definition</li>
+            <li><strong>Argument</strong> — the actual value passed when calling the function</li>
+          </ul>
+          <h3>Return Values</h3>
+          <p>Functions can return a value using <code>return</code>. Without it, the function returns <code>None</code> in Python.</p>
+        `
+      },
+      {
+        title: "Arrays & Lists",
+        content: `
+          <h2>Arrays & Lists</h2>
+          <p>An <strong>array</strong> (or list) is an ordered collection of elements. Lists are one of the most fundamental data structures in programming.</p>
+          <h3>Operations</h3>
+          <div class="code-block">fruits = [<span class="string">"apple"</span>, <span class="string">"banana"</span>, <span class="string">"cherry"</span>]
+
+<span class="comment"># Access by index (0-based)</span>
+<span class="keyword">print</span>(fruits[<span class="type">0</span>])  <span class="comment"># apple</span>
+
+<span class="comment"># Add an item</span>
+fruits.append(<span class="string">"date"</span>)
+
+<span class="comment"># Length</span>
+<span class="keyword">print</span>(<span class="keyword">len</span>(fruits))  <span class="comment"># 4</span></div>
+          <h3>Common List Methods</h3>
+          <table>
+            <thead><tr><th>Method</th><th>Action</th></tr></thead>
+            <tbody>
+              <tr><td><code>.append(x)</code></td><td>Add item to end</td></tr>
+              <tr><td><code>.pop()</code></td><td>Remove last item</td></tr>
+              <tr><td><code>.sort()</code></td><td>Sort in place</td></tr>
+              <tr><td><code>.reverse()</code></td><td>Reverse order</td></tr>
+            </tbody>
+          </table>
+        `
+      },
+      {
+        title: "Algorithms",
+        content: `
+          <h2>Algorithms</h2>
+          <p>An <strong>algorithm</strong> is a finite set of well-defined instructions to solve a problem or perform a computation.</p>
+          <h3>Big O Notation</h3>
+          <p>Describes how an algorithm's runtime grows relative to input size:</p>
+          <table>
+            <thead><tr><th>Notation</th><th>Name</th><th>Example</th></tr></thead>
+            <tbody>
+              <tr><td><code>O(1)</code></td><td>Constant</td><td>Array index access</td></tr>
+              <tr><td><code>O(log n)</code></td><td>Logarithmic</td><td>Binary search</td></tr>
+              <tr><td><code>O(n)</code></td><td>Linear</td><td>Simple search</td></tr>
+              <tr><td><code>O(n²)</code></td><td>Quadratic</td><td>Bubble sort</td></tr>
+            </tbody>
+          </table>
+          <h3>Binary Search Example</h3>
+          <div class="code-block"><span class="keyword">def</span> <span class="type">binary_search</span>(arr, target):
+    low, high = <span class="type">0</span>, <span class="keyword">len</span>(arr) - <span class="type">1</span>
+    <span class="keyword">while</span> low <= high:
+        mid = (low + high) // <span class="type">2</span>
+        <span class="keyword">if</span> arr[mid] == target:
+            <span class="keyword">return</span> mid
+        <span class="keyword">elif</span> arr[mid] < target:
+            low = mid + <span class="type">1</span>
+        <span class="keyword">else</span>:
+            high = mid - <span class="type">1</span>
+    <span class="keyword">return</span> -<span class="type">1</span></div>
+        `
+      },
+      {
+        title: "OOP Basics",
+        content: `
+          <h2>Object-Oriented Programming</h2>
+          <p>OOP organizes code around <strong>objects</strong> — bundles of data (attributes) and behavior (methods).</p>
+          <h3>Four Pillars</h3>
+          <ul>
+            <li><strong>Encapsulation</strong> — Bundling data with methods that operate on it</li>
+            <li><strong>Abstraction</strong> — Hiding complex details behind a simple interface</li>
+            <li><strong>Inheritance</strong> — Creating new classes from existing ones</li>
+            <li><strong>Polymorphism</strong> — Using a single interface for different types</li>
+          </ul>
+          <h3>Class Example</h3>
+          <div class="code-block"><span class="keyword">class</span> <span class="type">Dog</span>:
+    <span class="keyword">def</span> <span class="type">__init__</span>(self, name, breed):
+        self.name = name
+        self.breed = breed
+
+    <span class="keyword">def</span> <span class="type">bark</span>(self):
+        <span class="keyword">return</span> f<span class="string">"{self.name} says Woof!"</span>
+
+my_dog = Dog(<span class="string">"Rex"</span>, <span class="string">"Labrador"</span>)
+<span class="keyword">print</span>(my_dog.bark())</div>
+        `
+      }
+    ];
+
+    let currentLesson = 0;
+
+    function buildNav(container) {
+      container.innerHTML = '';
+      lessons.forEach((lesson, i) => {
+        const item = document.createElement('div');
+        item.className = `sidebar-item px-5 py-2.5 cursor-pointer text-sm text-gray-300 ${i === currentLesson ? 'active' : ''}`;
+        item.textContent = lesson.title;
+        item.onclick = () => { currentLesson = i; renderAll(); toggleMobile(false); };
+        container.appendChild(item);
+      });
+    }
+
+    function renderContent() {
+      const main = document.getElementById('main-content');
+      main.innerHTML = `
+        <article class="max-w-3xl mx-auto lesson-content">
+          ${lessons[currentLesson].content}
+          <div class="flex justify-between mt-10 pt-6 border-t border-gray-700">
+            ${currentLesson > 0 ? `<button onclick="nav(-1)" class="flex items-center gap-2 px-4 py-2 bg-gray-700 hover:bg-gray-600 rounded-lg text-sm"><i data-lucide="chevron-left" class="w-4 h-4"></i> Previous</button>` : '<span></span>'}
+            ${currentLesson < lessons.length - 1 ? `<button onclick="nav(1)" class="flex items-center gap-2 px-4 py-2 bg-emerald-600 hover:bg-emerald-500 rounded-lg text-sm">Next <i data-lucide="chevron-right" class="w-4 h-4"></i></button>` : '<span></span>'}
+          </div>
+        </article>
+        <style>
+          .lesson-content h2 { font-size: 1.75rem; font-weight: 700; margin-bottom: 0.75rem; color: #6ee7b7; }
+          .lesson-content h3 { font-size: 1.2rem; font-weight: 600; margin-top: 1.5rem; margin-bottom: 0.5rem; color: #a7f3d0; }
+          .lesson-content p { margin-bottom: 1rem; line-height: 1.7; color: #d1d5db; }
+          .lesson-content ul { list-style: disc; padding-left: 1.5rem; margin-bottom: 1rem; }
+          .lesson-content li { margin-bottom: 0.4rem; color: #d1d5db; line-height: 1.6; }
+          .lesson-content code { background: #374151; padding: 2px 6px; border-radius: 4px; font-size: 0.85em; }
+          .lesson-content table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+          .lesson-content th, .lesson-content td { border: 1px solid #4b5563; padding: 8px 12px; text-align: left; }
+          .lesson-content th { background: #374151; font-weight: 600; }
+        </style>
+      `;
+      lucide.createIcons();
+    }
+
+    function renderAll() {
+      buildNav(document.getElementById('nav-list'));
+      buildNav(document.getElementById('mobile-nav-list'));
+      renderContent();
+    }
+
+    function nav(dir) { 
+      currentLesson += dir; 
+      renderAll(); 
+      document.getElementById('main-content').scrollTop = 0; 
+    }
+
+     window.goHome = function() { window.location.href = 'index.html'; };
+    function toggleMobile(force) {
+      const show = force !== undefined ? force : !document.getElementById('mobile-sidebar').classList.contains('hidden');
+      document.getElementById('mobile-sidebar').classList.toggle('hidden', !show);
+      document.getElementById('mobile-overlay').classList.toggle('hidden', !show);
+    }
+
+    document.getElementById('mobile-menu-btn').onclick = () => toggleMobile();
+
+    // SDK
+    const defaultConfig = { 
+      site_title: 'Computer Science', 
+      primary_color: '#10b981', 
+      surface_color: '#1f2937', 
+      text_color: '#d1d5db', 
+      accent_color: '#6ee7b7', 
+      bg_color: '#111827', 
+      font_family: 'Source Sans 3', 
+      font_size: 16 
+    };
+
+    function applyConfig(config) {
+      const title = config.site_title || defaultConfig.site_title;
+      document.getElementById('site-title').textContent = title;
+    }
+
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange: async (config) => { applyConfig(config); },
+        mapToCapabilities: (config) => ({
+          recolorables: [
+            { get: () => config.bg_color || defaultConfig.bg_color, set: (v) => { config.bg_color = v; window.elementSdk.setConfig({ bg_color: v }); } },
+            { get: () => config.surface_color || defaultConfig.surface_color, set: (v) => { config.surface_color = v; window.elementSdk.setConfig({ surface_color: v }); } },
+            { get: () => config.text_color || defaultConfig.text_color, set: (v) => { config.text_color = v; window.elementSdk.setConfig({ text_color: v }); } },
+            { get: () => config.primary_color || defaultConfig.primary_color, set: (v) => { config.primary_color = v; window.elementSdk.setConfig({ primary_color: v }); } },
+            { get: () => config.accent_color || defaultConfig.accent_color, set: (v) => { config.accent_color = v; window.elementSdk.setConfig({ accent_color: v }); } }
+          ],
+          borderables: [],
+          fontEditable: { get: () => config.font_family || defaultConfig.font_family, set: (v) => { config.font_family = v; window.elementSdk.setConfig({ font_family: v }); } },
+          fontSizeable: { get: () => config.font_size || defaultConfig.font_size, set: (v) => { config.font_size = v; window.elementSdk.setConfig({ font_size: v }); } }
+        }),
+        mapToEditPanelValues: (config) => new Map([["site_title", config.site_title || defaultConfig.site_title]])
+      });
+    }
+
+    renderAll();
+    lucide.createIcons();
+  </script>
+ </body>
+</html>
