@@ -90,6 +90,14 @@
     .email-link:hover {
       transform: translateX(4px);
     }
+    .card-hover {
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+.card-hover:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
   </style>
  </head>
  <body class="h-full overflow-auto bg-slate-50">
@@ -107,6 +115,7 @@
        <a href="#classes" class="nav-link text-slate-300 hover:text-teal-400 text-sm font-medium">Classes</a>
        <a href="#about" class="nav-link text-slate-300 hover:text-teal-400 text-sm font-medium">About</a>
        <a href="#contact" class="nav-link text-slate-300 hover:text-teal-400 text-sm font-medium">Contact</a>
+        <a href="login.html" class="nav-link text-slate-300 hover:text-teal-400 text-sm font-medium">sign in</a>
       </div>
       <button id="mobile-menu-btn" class="md:hidden text-white">
        <i data-lucide="menu" style="width:24px;height:24px;"></i>
@@ -144,58 +153,115 @@
    </section>
 
    <!-- Lessons Section -->
-   <section id="lessons" class="py-20 px-4 bg-slate-900 text-white">
-    <div class="max-w-6xl mx-auto">
-     <h2 class="text-3xl sm:text-4xl font-bold text-center mb-4">Featured <span class="text-teal-400">Lessons</span></h2>
-     <div class="grid md:grid-cols-3 gap-8">
-      <div class="bg-gradient-to-br from-amber-500 to-orange-500 rounded-2xl overflow-hidden card-hover">
-       <div class="p-6">
-        <div class="text-5xl mb-3">🧩</div>
-        <h3 class="text-xl font-bold mb-2">Scratch Programming</h3>
-        <a href="ScratchLesson.html" class="inline-flex items-center gap-2 bg-white text-amber-600 font-semibold px-4 py-2 rounded-lg hover:bg-amber-50 transition">
-         Learn <i data-lucide="arrow-right" style="width:16px;height:16px;"></i>
-        </a>
-       </div>
-      </div>
-      <div class="bg-gradient-to-br from-blue-500 to-indigo-500 rounded-2xl overflow-hidden card-hover">
-       <div class="p-6">
-        <div class="text-5xl mb-3">🐍</div>
-        <h3 class="text-xl font-bold mb-2">Python Coding</h3>
-        <a href="PythonLesson.html" class="inline-flex items-center gap-2 bg-white text-blue-600 font-semibold px-4 py-2 rounded-lg hover:bg-blue-50 transition">
-         Learn <i data-lucide="arrow-right" style="width:16px;height:16px;"></i>
-        </a>
-       </div>
-      </div>
-      <div class="bg-gradient-to-br from-purple-500 to-pink-500 rounded-2xl overflow-hidden card-hover">
-       <div class="p-6">
-        <div class="text-5xl mb-3">🌐</div>
-        <h3 class="text-xl font-bold mb-2">Web Basics</h3>
-        <a href="HtmlCSSLesson.html" class="inline-flex items-center gap-2 bg-white text-purple-600 font-semibold px-4 py-2 rounded-lg hover:bg-purple-50 transition">
-         Learn <i data-lucide="arrow-right" style="width:16px;height:16px;"></i>
-        </a>
-       </div>
-      </div>
-      <div class="bg-gradient-to-r from-amber-200 to-yellow-400 rounded-2xl overflow-hidden card-hover">
-       <div class="p-6">
-        <div class="text-5xl mb-3">👩🏻‍💻</div>
-        <h3 class="text-xl font-bold mb-2">Computer Science</h3>
-        <a href="CSLesson.html" class="inline-flex items-center gap-2 bg-white text-purple-600 font-semibold px-4 py-2 rounded-lg hover:bg-purple-50 transition">
-         Learn <i data-lucide="arrow-right" style="width:16px;height:16px;"></i>
-        </a>
-       </div>
-      </div>
-       <div class="bg-gradient-to-r from-emerald-500 to-emerald-900 rounded-2xl overflow-hidden card-hover">
-       <div class="p-6">
-        <div class="text-5xl mb-3">ᯤ📶 </div>
-        <h3 class="text-xl font-bold mb-2">Network</h3>
-        <a href="NetworkLesson.html" class="inline-flex items-center gap-2 bg-white text-purple-600 font-semibold px-4 py-2 rounded-lg hover:bg-purple-50 transition">
-         Learn <i data-lucide="arrow-right" style="width:16px;height:16px;"></i>
-        </a>
-       </div>
-      </div>
-     </div>
+<!-- Lessons Section - ALL WITH PASSWORD OVERLAYS -->
+<section id="lessons" class="py-20 px-4 bg-slate-900 text-white">
+ <div class="max-w-6xl mx-auto">
+  <h2 class="text-3xl sm:text-4xl font-bold text-center mb-4">Featured <span class="text-teal-400">Lessons</span></h2>
+  <div class="grid md:grid-cols-3 gap-8">
+
+   <!-- Scratch -->
+   <div class="bg-gradient-to-br from-amber-500 to-orange-500 rounded-2xl overflow-hidden card-hover relative group">
+    <div class="p-6">
+     <div class="text-5xl mb-3">🧩</div>
+     <h3 class="text-xl font-bold mb-2">Scratch Programming</h3>
+     <a href="#" onclick="showPasswordOverlay('scratch')" class="inline-flex items-center gap-2 bg-white text-amber-600 font-semibold px-4 py-2 rounded-lg hover:bg-amber-50 transition-all hover:scale-105 cursor-pointer">
+      Learn <i data-lucide="arrow-right" class="w-4 h-4"></i>
+     </a>
     </div>
-   </section>
+   </div>
+
+   <!-- Python -->
+   <div class="bg-gradient-to-br from-blue-500 to-indigo-500 rounded-2xl overflow-hidden card-hover relative group">
+    <div class="p-6">
+     <div class="text-5xl mb-3">🐍</div>
+     <h3 class="text-xl font-bold mb-2">Python Coding</h3>
+     <a href="#" onclick="showPasswordOverlay('python')" class="inline-flex items-center gap-2 bg-white text-blue-600 font-semibold px-4 py-2 rounded-lg hover:bg-blue-50 transition-all hover:scale-105 cursor-pointer">
+      Learn <i data-lucide="arrow-right" class="w-4 h-4"></i>
+     </a>
+    </div>
+   </div>
+
+   <!-- Web -->
+   <div class="bg-gradient-to-br from-purple-500 to-pink-500 rounded-2xl overflow-hidden card-hover relative group">
+    <div class="p-6">
+     <div class="text-5xl mb-3">🌐</div>
+     <h3 class="text-xl font-bold mb-2">Web Basics</h3>
+     <a href="#" onclick="showPasswordOverlay('web')" class="inline-flex items-center gap-2 bg-white text-purple-600 font-semibold px-4 py-2 rounded-lg hover:bg-purple-50 transition-all hover:scale-105 cursor-pointer">
+      Learn <i data-lucide="arrow-right" class="w-4 h-4"></i>
+     </a>
+    </div>
+   </div>
+<!-- CS -->
+<div class="bg-gradient-to-r from-amber-200 to-yellow-400 rounded-2xl overflow-hidden card-hover relative group">
+  <div class="p-6">
+    <div class="text-5xl mb-3">👩🏻‍💻</div>
+    <h3 class="text-xl font-bold mb-2">
+      Computer Science </h3>
+    <a href="#"
+       onclick="showPasswordOverlay('cs')" class="inline-flex items-center gap-2 bg-white text-amber-600 font-semibold px-4 py-2 rounded-lg hover:bg-amber-50 transition-all hover:scale-105 cursor-pointer">
+          Learn
+      <i data-lucide="arrow-right" class="w-4 h-4"></i>
+    </a>
+  </div>
+</div>
+
+<!-- NETWORK -->
+<div class="bg-gradient-to-r from-emerald-500 to-emerald-900 rounded-2xl overflow-hidden card-hover relative group">
+  <div class="p-6">
+    <div class="text-5xl mb-3">📶</div>
+
+    <h3 class="text-xl font-bold mb-2">
+      Network
+    </h3>
+
+    <a href="#"
+       onclick="showPasswordOverlay('network')"
+       class="inline-flex items-center gap-2 bg-white text-emerald-700 font-semibold px-4 py-2 rounded-lg hover:bg-emerald-50 transition-all hover:scale-105 cursor-pointer">
+
+      Learn
+      <i data-lucide="arrow-right" class="w-4 h-4"></i>
+    </a>
+  </div>
+</div>
+  </div>
+ </div>
+</section>
+
+<!-- Universal Password Overlay -->
+<div id="password-overlay" class="fixed inset-0 bg-black/90 backdrop-blur-lg z-50 hidden flex items-center justify-center p-6">
+ <div class="bg-white/95 backdrop-blur-xl rounded-3xl p-10 max-w-md w-full mx-4 shadow-2xl text-center border-4 border-gray-200">
+  <div class="text-6xl mb-6" id="emoji-lock">🔒</div>
+  <h2 class="text-2xl font-bold text-gray-800 mb-3" id="overlay-title">Enter Password</h2>
+  <p class="text-xl text-gray-700 mb-8 font-semibold" id="overlay-subtitle">Type password to unlock lesson</p>
+  
+  <!-- Password Dots Display -->
+  <div class="flex justify-center gap-1 mb-6" id="password-dots">
+   <!-- Dots appear as you type -->
+  </div>
+  
+  <input type="password" id="password-input" 
+         class="w-full px-8 py-5 text-2xl text-center border-4 border-gray-300 rounded-3xl font-mono font-bold tracking-widest uppercase shadow-xl focus:ring-4 focus:ring-blue-400 focus:border-blue-500 transition-all duration-300 mb-6" 
+         placeholder="• • • • • • • •" autocomplete="off" maxlength="20">
+  
+  <div class="flex gap-4 pt-4">
+   <button onclick="unlockLesson()" 
+           class="flex-1 bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white text-lg font-bold py-4 px-8 rounded-2xl shadow-xl hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300">
+    <i data-lucide="unlock" class="w-6 h-6 mr-2 inline"></i>Unlock
+   </button>
+   <button onclick="closePasswordOverlay()" 
+           class="flex-1 bg-white border-2 border-gray-300 text-gray-700 text-lg font-bold py-4 px-8 rounded-2xl hover:bg-gray-50 hover:shadow-lg transition-all duration-300">
+    Cancel
+   </button>
+  </div>
+  
+  <div class="mt-8 p-4 bg-blue-50 border-2 border-blue-200 rounded-2xl">
+   <p class="text-sm text-blue-800 font-semibold">💡 Hint: Check lesson title for password clue</p>
+  </div>
+ </div>
+</div>
+
+
+
    <hr class="section-divider mx-4">
 
    <!-- Trial Class Banner -->
@@ -237,7 +303,7 @@
        <p class="text-slate-600 text-sm mb-4">ကလေးများအတွက် Block Coding မှ Text Coding သို့ အခြေခံမှစ၍ နားလည်လွယ်ကူစွာ သင်ကြားပေးသော Class</p>
        <div class="flex gap-2">
         <span class="px-2 py-1 bg-yellow-200 text-yellow-800 text-xs font-semibold rounded">အသက် 12+</span>
-        <span class="px-2 py-1 bg-amber-200 text-amber-800 text-xs font-semibold rounded">အလယ်</span>
+        <span class="px-2 py-1 bg-amber-200 text-amber-800 text-xs font-semibold rounded">အခြေခံ</span>
        </div>
       </div>
       <div class="card-hover bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-6 border border-blue-100">
@@ -246,7 +312,7 @@
        <p class="text-slate-600 text-sm mb-4">အခြေခံ Python Programming (Text-Based Coding Language) ကို စတင်လေ့လာနိုင်သော Class</p>
        <div class="flex gap-2">
         <span class="px-2 py-1 bg-blue-200 text-blue-800 text-xs font-semibold rounded">အသက် 13+</span>
-        <span class="px-2 py-1 bg-indigo-200 text-indigo-800 text-xs font-semibold rounded">အခြေခံ</span>
+        <span class="px-2 py-1 bg-indigo-200 text-indigo-800 text-xs font-semibold rounded">အဆင့်မြင့်</span>
        </div>
       </div>
       <div class="card-hover bg-gradient-to-br from-red-50 to-pink-50 rounded-2xl p-6 border border-red-100">
@@ -277,7 +343,7 @@
         <h4 class="font-bold text-slate-800 mb-2 text-sm">❓ အခြေခံမရှိရင် Coding သင်လို့ရပါ့မလား?</h4>
         <p class="text-slate-600 text-sm">ရပါတယ်။ အခြေခံမရှိသော ကလေးများအတွက်ပါ အလွယ်ကူဆုံးမှ စတင်သင်ကြားပေးပါသည်။</p>
        </div>
-       <div class="bg-white rounded-lg p-5 border-l-4 border-blue-500">
+       <div class="bg-white rounded-lg p-5 border-l-4 border-sky-500">
         <h4 class="font-bold text-slate-800 mb-2 text-sm">❓ ကွန်ပျူတာကို မကိုင်တတ်သေးရင် အတန်းလိုက်နိုင်ပါ့မလား?</h4>
         <p class="text-slate-600 text-sm">လိုက်နိုင်ပါတယ်။ သင်ကြားပေးတဲ့ဆရာမနဲ့အတူ တဖြည်းဖြည်း လေ့လာနိုင်ပါတယ်။</p>
        </div>
@@ -285,15 +351,15 @@
         <h4 class="font-bold text-slate-800 mb-2 text-sm">❓ ကလေးက အသက်ဘယ်လောက်မှာ Coding စသင်သင့်သလဲ?</h4>
         <p class="text-slate-600 text-sm">အသက် ၇ နှစ်၊ ၈ နှစ်အရွယ် (သို့မဟုတ်) စာဖတ်တတ်သည့်အရွယ်မှစ၍ သင်ယူနိုင်ပါသည်။</p>
        </div>
-       <div class="bg-white rounded-lg p-5 border-l-4 border-blue-500">
+       <div class="bg-white rounded-lg p-5 border-l-4 border-pink-300">
         <h4 class="font-bold text-slate-800 mb-2 text-sm">❓ Coding က ကလေးရဲ့ပညာရေးကို ဘယ်လိုအထောက်အကူပြုသလဲ?</h4>
         <p class="text-slate-600 text-sm"> Coding သည် Logical Thinking (ယုတ္တိဗေဒတွေးခေါ်မှု)၊ Problem Solving (ပြဿနာဖြေရှင်းနိုင်စွမ်း) နှင့် Creativity (တီထွင်ဖန်တီးနိုင်စွမ်း) ကို တိုးတက်စေသည်။</p>
        </div>
-       <div class="bg-white rounded-lg p-5 border-l-4 border-teal-500">
+       <div class="bg-white rounded-lg p-5 border-l-4 border-indigo-900">
         <h4 class="font-bold text-slate-800 mb-2 text-sm">💡 ကလေးတွေ ဘာကြောင့် Coding ကို သင်ယူသင့်တာလဲ?</h4>
         <p class="text-slate-600 text-sm">🧠 Problem Solving Skill တိုးတက်စေခြင်း၊ Coding သင်ယူခြင်းက ပြဿနာများကို စဉ်းစားဖြေရှင်းတတ်သော အလေ့အကျင့်ကို ဖြစ်စေပါသည်။</p>
        </div>
-       <div class="bg-white rounded-lg p-5 border-l-4 border-teal-500">
+       <div class="bg-white rounded-lg p-5 border-l-4 border-green-700">
         <h4 class="font-bold text-slate-800 mb-2 text-sm">❓မိဘက Coding နားမလည်ရင် ကလေးကို ဘယ်လိုကူညီရမလဲ?</h4>
         <p class="text-slate-600 text-sm">🧠 မိဘကိုယ်တိုင် ကုဒ်တွေရေးတတ်စရာမလိုပါ။ ကလေးကို သင်တန်းအပ်ပေးခြင်း၊ အွန်လိုင်းတွင် လေ့လာရန်နေရာရှာပေးခြင်းနှင့် သားသားတို့မီးမီးတို့ဖန်တီးထားသော အရာများကို စိတ်ဝင်တစားကြည့်ရှုပေးခြင်းဖြင့် ကူညီနိုင်ပါသည်။</p>
        </div>
@@ -318,7 +384,7 @@
      <div class="grid md:grid-cols-2 gap-10 items-center">
       <div>
        <div class="teacher-avatar w-48 h-48 rounded-full flex items-center justify-center mb-6 mx-auto">
-        <span class="text-6xl"><img src="TrProfile.jpg" alt="TrProfile" class="rounded-2xl"></span>
+        <span class="text-6xl"><img src="assests/TrProfile.jpg" alt="TrProfile" class="rounded-2xl"></span>
        </div>
        <h3 id="teacher-name-el" class="text-2xl font-bold text-white mb-2 text-center">Teacher Hsu Lae Waddy</h3>
        <p id="teacher-desc" class="text-teal-400 font-medium mb-6 text-center">ICT & Coding Instructor</p>
@@ -583,197 +649,37 @@
    </footer>
   </div>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-  <script>
-   // Initialize Lucide Icons first
-   lucide.createIcons();
+ <script src="javascript.js"></script>
+ <!-- PASSWORD OVERLAY -->
+<div id="password-overlay"
+     class="hidden fixed inset-0 bg-black/60 flex items-center justify-center z-50">
 
-   // Mobile menu
-   document.getElementById('mobile-menu-btn').addEventListener('click', () => {
-    const menu = document.getElementById('mobile-menu');
-    menu.classList.toggle('hidden');
-   });
+  <div class="bg-white p-6 rounded-2xl w-[320px] shadow-2xl relative">
 
-   document.querySelectorAll('#mobile-menu a').forEach(a => {
-    a.addEventListener('click', () => {
-     document.getElementById('mobile-menu').classList.add('hidden');
-    });
-   });
+    <!-- Close Button -->
+    <button onclick="closePasswordOverlay()"
+            class="absolute top-3 right-3 text-gray-500 hover:text-black text-xl">
+      ✕
+    </button>
 
-   // Smooth scroll for anchor links
-   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-     e.preventDefault();
-     const target = document.querySelector(this.getAttribute('href'));
-     if (target) {
-      target.scrollIntoView({
-       behavior: 'smooth',
-       block: 'start'
-      });
-     }
-    });
-   });
+    <h2 class="text-2xl font-bold mb-4 text-center">
+      🔒 Enter Password
+    </h2>
 
-   // Navbar scroll effect
-   window.addEventListener('scroll', () => {
-    const navbar = document.getElementById('navbar');
-    if (window.scrollY > 100) {
-     navbar.classList.add('shadow-lg');
-    } else {
-     navbar.classList.remove('shadow-lg');
-    }
-   });
+    <input
+      type="password"
+      id="password-input"
+      placeholder="Enter Password"
+      class="w-full border-2 border-gray-300 rounded-lg px-4 py-3 outline-none focus:border-amber-500"
+    >
 
-   // Form submission with fallback
-   document.getElementById('contact-form').addEventListener('submit', async (e) => {
-    e.preventDefault();
-    
-    const btn = document.getElementById('submit-btn');
-    const status = document.getElementById('form-status');
-    
-    // Disable button and show loading
-    btn.disabled = true;
-    btn.innerHTML = '<span class="animate-spin inline-block w-5 h-5 border-2 border-white border-t-transparent rounded-full"></span> Sending...';
-    status.classList.remove('hidden');
-    
-    // Get form data
-    const formData = {
-     name: document.getElementById('c-name').value,
-     email: document.getElementById('c-email').value,
-     phone: document.getElementById('c-phone').value || '',
-     class_interest: document.getElementById('c-class').value || '',
-     message: document.getElementById('c-msg').value || '',
-     submitted_at: new Date().toISOString()
-    };
+    <button
+      onclick="unlockLesson()"
+      class="w-full mt-4 bg-amber-500 hover:bg-amber-600 text-white font-bold py-3 rounded-lg transition">
+      Unlock
+    </button>
 
-    try {
-     // Try SDK first
-     if (window.dataSdk && typeof window.dataSdk.create === 'function') {
-      const result = await window.dataSdk.create(formData);
-      if (result.isOk) {
-       showSuccess();
-       return;
-      }
-     }
-     
-     // Fallback: EmailJS or simple success
-     showSuccess();
-    } catch (error) {
-     console.error('Form submission error:', error);
-     showError();
-    }
-
-    function showSuccess() {
-     status.className = 'text-center py-3 rounded-xl text-sm font-medium bg-teal-50 text-teal-700';
-     status.innerHTML = '✅ အောင်မြင်ပါတယ်! အလျင်အမြန် ဆက်သွယ်တွေ့ဆုံပေးပါ့မည်။';
-     document.getElementById('contact-form').reset();
-    }
-
-    function showError() {
-     status.className = 'text-center py-3 rounded-xl text-sm font-medium bg-red-50 text-red-700';
-     status.innerHTML = '❌ ပြန်စမ်းကြည့်ပါ။ အမှားအယွင်းရှိနေသည်။';
-    }
-    <!-- EmailJS - Replace YOUR_SERVICE_ID, YOUR_TEMPLATE_ID, YOUR_PUBLIC_KEY -->
-
-
- // ⚠️ REPLACE THESE 3 VALUES with your EmailJS credentials
- (function() {
-  emailjs.init("_3u3oWpnYb-msoXMi"); 
- })();
-
- document.getElementById('contact-form').addEventListener('submit', function(e) {
-  e.preventDefault();
-  
-  const btn = document.getElementById('submit-btn');
-  const status = document.getElementById('form-status');
-  
-  btn.disabled = true;
-  btn.innerHTML = '<span class="animate-spin w-5 h-5 border-2 border-white border-t-transparent rounded-full"></span> Sending...';
-  status.classList.remove('hidden');
-  
-  // Form data
-  const formData = {
-   name: document.getElementById('c-name').value,
-   email: document.getElementById('c-email').value,
-   phone: document.getElementById('c-phone').value || 'Not provided',
-   class: document.getElementById('c-class').value,
-   message: document.getElementById('c-msg').value || 'No message'
-  };
-
-  // Send via EmailJS
-  emailjs.send('HAB', 'template_pffb2m2', formData)
-   .then(function(response) {
-    console.log('SUCCESS!', response.status, response.text);
-    status.innerHTML = '✅ အောင်မြင်ပါတယ်! သင့်မက်ဆေ့ချ်ကို ရရှိပါပြီ။ အလျင်အမြန် ပြန်လည်ဆက်သွယ်ပေးပါမည်။';
-    status.className = 'text-center py-3 rounded-xl text-sm font-medium bg-teal-50 text-teal-700';
-    document.getElementById('contact-form').reset();
-   }, function(error) {
-    console.log('FAILED...', error);
-    status.innerHTML = '❌ ပေးပို့မှု မအောင်မြင်ပါ။ ထပ်မံ စမ်းကြည့်ပါ။';
-    status.className = 'text-center py-3 rounded-xl text-sm font-medium bg-red-50 text-red-700';
-   })
-   .finally(() => {
-    btn.disabled = false;
-    btn.innerHTML = '<i data-lucide="send" style="width:18px;height:18px;"></i> Submit';
-    setTimeout(() => status.classList.add('hidden'), 5000);
-   });
- });
-
-
-    // Reset button
-    setTimeout(() => {
-     btn.disabled = false;
-     btn.innerHTML = '<i data-lucide="send" style="width:18px;height:18px;"></i> Submit';
-     lucide.createIcons();
-     status.classList.add('hidden');
-    }, 5000);
-   });
-
-   // SDK initialization (kept for compatibility)
-   const defaultConfig = {
-    hero_title: 'Hsu Academic Boost',
-    hero_subtitle: 'Learn Smart. Build Strong Future. — ကလေးများ ပျော်ရွှင်စွာ Game နှင့် Interactive Project များ ဖန်တီးရင်း သင်ယူနိုင်ပါသည်။',
-    trial_banner_text: '🎉 အခမဲ့ Trial Class ရှိပါတယ်! 🚀 ယခု စတင်လေ့လာပါ!',
-    teacher_name: 'Teacher Hsu',
-    teacher_desc: 'Computer Science Student & Coding Instructor',
-    footer_tagline: 'Learn Smart. Build Strong Future.',
-    background_color: '#f8fafc',
-    surface_color: '#ffffff',
-    text_color: '#1e293b',
-    primary_action_color: '#14b8a6',
-    secondary_action_color: '#64748b',
-    font_family: 'Outfit',
-    font_size: 16
-   };
-
-   // Initialize SDKs if available
-   if (window.elementSdk) {
-    window.elementSdk.init({
-     defaultConfig,
-     onConfigChange: async (config) => {
-      const c = { ...defaultConfig, ...config };
-      const heroTitle = document.getElementById('hero-title');
-      if (heroTitle) {
-       heroTitle.innerHTML = c.hero_title.replace(/(Boost|Academic)/g, '<span class="text-teal-400">$1</span>');
-      }
-      const heroSubtitle = document.getElementById('hero-subtitle');
-      if (heroSubtitle) heroSubtitle.textContent = c.hero_subtitle;
-      const trialText = document.getElementById('trial-banner-text');
-      if (trialText) trialText.textContent = c.trial_banner_text;
-      const teacherName = document.getElementById('teacher-name-el');
-      if (teacherName) teacherName.textContent = c.teacher_name;
-      const teacherDesc = document.getElementById('teacher-desc');
-      if (teacherDesc) teacherDesc.textContent = c.teacher_desc;
-     }
-    });
-   }
-
-   if (window.dataSdk) {
-    const dataHandler = { onDataChanged(data) {} };
-    window.dataSdk.init(dataHandler).catch(console.error);
-   }
-
-   // Re-initialize icons after dynamic content
-   setTimeout(() => lucide.createIcons(), 100);
-  </script>
+  </div>
+</div>
  </body>
 </html>
