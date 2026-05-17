@@ -78,7 +78,7 @@
         title: "🟡 What is Computer?",
         content: `
           <h2>What is a Computer?</h2>
-          <p>A <strong>computer</strong> is an electronic machine.</p>
+          <p>A <strong>computer</strong> is an electronic device that manipulates information or data.</p>
           <ul>
             <li>receives information (input) </li>
             <li>processes the information </li>
@@ -86,25 +86,60 @@
             <li>stores information for later use </li>
               </ul>
             <img src="assests/InputOutputProcessStorage.jpg">
-          <h3>How Does a Computer “Think”?</h3>
-          <ul>
-            <li><strong>Speed</strong> — Billions of operations per second</li>
-            <li><strong>Accuracy</strong> — Perfect if programmed correctly</li>
-            <li><strong>Storage</strong> — Persistent memory (HDD/SSD)</li>
-            <li><strong>Versatility</strong> — Can do many different tasks</li>
-            <li><strong>Diligence</strong> — Never gets tired</li>
-          </ul>
-          <h3>Computer Generations</h3>
-          <table>
-            <thead><tr><th>Generation</th><th>Years</th><th>Technology</th></tr></thead>
-            <tbody>
-              <tr><td>1st</td><td>1940s</td><td>Vacuum Tubes</td></tr>
-              <tr><td>2nd</td><td>1950s</td><td>Transistors</td></tr>
-              <tr><td>3rd</td><td>1960s</td><td>Integrated Circuits</td></tr>
-              <tr><td>4th</td><td>1970s</td><td>Microprocessors</td></tr>
-              <tr><td>5th</td><td>1980s-Now</td><td>AI, Quantum</td></tr>
-            </tbody>
-          </table>
+            <h3>Evolution of computers</h3>
+            <img src="assests/EvolutionC1.jpg" />
+            <h3>First Generation of computer</h3>
+            <img src="assests/firstgeneratedcomputer.jpg">
+            <h3>Nowadays computers</h3>
+            <img src="assests/smartphonein poket.jpg">
+
+  
+ <h2>Example: Vending Machine</h2>
+
+    <p>A vending machine is also a type of computer.</p>
+    <img src="assests/vending soda machine.jpg" class="m-3">
+
+    <div style="
+      background:#f3f4f6;
+      padding:20px;
+      border-radius:16px;
+      text-align:center;
+      max-width:300px;
+      margin:auto;
+      color:black;
+    ">
+
+      <div style="
+        background:white;
+        padding:15px;
+        border-radius:12px;
+        margin-bottom:15px;
+        
+      ">
+        🥤 Soda = $1
+      </div>
+
+      <button onclick="runVendingMachine()" style="
+        background:#16a34a;
+        color:black;
+        padding:12px 20px;
+        border:none;
+        border-radius:10px;
+        cursor:pointer;
+        font-size:16px;
+      ">
+        Insert $1
+      </button>
+
+      <div id="vendingSteps" style="
+        margin-top:20px;
+        line-height:2;
+        font-size:18px;
+        color:black;
+      "></div>
+
+    </div>
+            
         `
       },
       {
@@ -113,6 +148,8 @@
           <h2>Hardware vs Software</h2>
           <p><strong>Hardware</strong> = Physical components you can touch.<br>
           <strong>Software</strong> = Programs/instructions that tell hardware what to do.</p>
+
+          <img src="assests/Hardware vs Software.jpg">
           <h3>Hardware Components</h3>
           <table>
             <thead><tr><th>Category</th><th>Examples</th></tr></thead>
@@ -133,6 +170,7 @@
             </tbody>
           </table>
           <p><strong>Analogy:</strong> Hardware = Car body/engine, Software = Driver instructions</p>
+
         `
       },
       {
@@ -141,6 +179,8 @@
           <h2>Input / Output (I/O)</h2>
           <p><strong>Input</strong> = Data going INTO computer.<br>
           <strong>Output</strong> = Data coming OUT OF computer.</p>
+          <img src="assests/input_output 1.png">
+          
           <h3>Input Devices</h3>
           <table>
             <thead><tr><th>Device</th><th>Input Type</th></tr></thead>
@@ -163,6 +203,96 @@
               <tr><td>Haptic</td><td>Vibration/Force</td></tr>
             </tbody>
           </table>
+          <h3>I/O Process</h3>
+          <p>User → Input Device → CPU → Output Device → User</p>
+          <img src="assests/ipo.jpg">
+        `
+      },{
+        title: "🟡 CPU",
+        content: `
+          <h2>What is a CPU</h2>
+          <p>The<strong> CPU </strong>is the  <strong>“brain” </strong>of the computer<br>
+          <img src="assests/cpubrain.jpg">
+    <h2>Example: Opening a Roblox Game</h2>
+
+    <p>The CPU helps your computer run games like Roblox.</p>
+
+    <div style="
+      background:#f3f4f6;
+      padding:20px;
+      border-radius:16px;
+      text-align:center;
+      max-width:350px;
+      margin:auto;
+    ">
+
+      <div style="
+        background:white;
+        padding:15px;
+        border-radius:12px;
+        margin-bottom:15px;
+        font-size:18px;
+        color:black;
+      ">
+       <img src="assests/robloxicon.jpg">
+      </div>
+
+      <button onclick="runRobloxGame()" style="
+        background:#ef4444;
+        color:black;
+        padding:12px 20px;
+        border:none;
+        border-radius:10px;
+        cursor:pointer;
+        font-size:16px;
+      ">
+        Click Game Icon
+      </button>
+
+      <div id="robloxSteps" style="
+        margin-top:20px;
+        line-height:2;
+        font-size:18px;
+        text-align:left;
+         color:black;
+      "></div>
+
+    </div>
+    <h2>Example: Calculator</h2>
+
+    <p>When you type:</p>
+
+    <div style="
+      font-size:40px;
+      font-weight:bold;
+      background:#f3f4f6;
+      padding:20px;
+      border-radius:12px;
+      width:150px;
+      text-align:center;
+      margin:auto;
+      color:black;
+    ">
+      2 + 3
+    </div>
+
+    <br>
+
+    <button onclick="showSteps()" style="
+      background:#2563eb;
+      color:black;
+      padding:12px 20px;
+      border:none;
+      border-radius:10px;
+      cursor:pointer;
+      font-size:16px;
+    ">
+      Run Calculator
+    </button>
+
+    <div id="steps" style="margin-top:20px;color:black;"></div>
+          
+          
           <h3>I/O Process</h3>
           <p>User → Input Device → CPU → Output Device → User</p>
         `
@@ -502,8 +632,64 @@ b = <span class="keyword">False</span>
       accent_color: '#6ee7b7', 
       bg_color: '#111827', 
       font_family: 'Source Sans 3', 
-      font_size: 16 
+      font_size: 16 ,
+      colour:'black',
     };
+  function runVendingMachine() {
+
+  document.getElementById("vendingSteps").innerHTML = `
+
+    💰 Receives your input (money) <br>
+
+    ⚙️ Processes information <br>
+    Checking money amount... <br>
+
+    🥤 Gives output (soda) <br><br>
+
+    <strong>That is how a computer works.</strong>
+
+  `;
+
+}
+function runRobloxGame() {
+
+  document.getElementById("robloxSteps").innerHTML = `
+
+    🖱️ You click the Roblox game icon<br>
+
+    ⚙️ CPU receives instruction: "Open Roblox"<br>
+
+    📂 CPU fetches game data from storage<br>
+
+    🧠 CPU processes game files step-by-step<br>
+
+    🎮 Game loads on the screen<br><br>
+
+    <strong>👉 The CPU is working all the time in the background!</strong>
+
+  `;
+
+}
+function showSteps() {
+  document.getElementById("steps").innerHTML = `
+  
+    <div style="
+      background:#ecfeff;
+      padding:15px;
+      border-radius:12px;
+      line-height:2;
+      font-size:18px;
+      colour:'black',
+    ">
+      ✅ Receives your input <br>
+      ⚙️ Thinks / Processes <br>
+      🖥️ Shows the answer: <strong>5</strong> <br><br>
+
+      <strong>That is how a computer works.</strong>
+    </div>
+
+  `;
+}
 
     function applyConfig(config) {
       document.getElementById('site-title').textContent = config.site_title || defaultConfig.site_title;
