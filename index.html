@@ -681,4 +681,87 @@
   </div>
 </div>
  </body>
+ <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+ <script>
+  // Initialize EmailJS
+  emailjs.init("_3u3oWpnYb-msoXMi");
+
+  const form = document.getElementById('contact-form');
+  const btn = document.getElementById('submit-btn');
+  const status = document.getElementById('form-status');
+
+  form.addEventListener('submit', async function (e) {
+    e.preventDefault();
+
+    // Loading state
+    btn.disabled = true;
+    btn.innerHTML = `
+      <span class="animate-spin w-5 h-5 border-2 border-white border-t-transparent rounded-full"></span>
+      Sending...
+    `;
+
+    status.classList.remove('hidden');
+
+    // Form data
+    const formData = {
+      name: document.getElementById('c-name').value,
+      email: document.getElementById('c-email').value,
+      phone: document.getElementById('c-phone').value || 'Not provided',
+      class_name: document.getElementById('c-class').value,
+      message: document.getElementById('c-msg').value || 'No message'
+    };
+
+    try {
+
+      // Send Email
+      const response = await emailjs.send(
+        'HAB',
+        'template_pffb2m2',
+        formData
+      );
+
+      console.log('SUCCESS!', response);
+
+      // Success UI
+      status.className =
+        'text-center py-3 rounded-xl text-sm font-medium bg-teal-50 text-teal-700';
+
+      status.innerHTML =
+        '✅ အောင်မြင်ပါတယ်! သင့်မက်ဆေ့ချ်ကို ရရှိပါပြီ။ အလျင်အမြန် ပြန်လည်ဆက်သွယ်ပေးပါမည်။';
+
+      form.reset();
+
+    } catch (error) {
+
+      console.error('FAILED...', error);
+
+      // Error UI
+      status.className =
+        'text-center py-3 rounded-xl text-sm font-medium bg-red-50 text-red-700';
+
+      status.innerHTML =
+        '❌ ပေးပို့မှု မအောင်မြင်ပါ။ ထပ်မံ စမ်းကြည့်ပါ။';
+
+    } finally {
+
+      // Reset button
+      btn.disabled = false;
+
+      btn.innerHTML = `
+        <i data-lucide="send" style="width:18px;height:18px;"></i>
+        Submit
+      `;
+
+      // Re-render Lucide icon
+      if (window.lucide) {
+        lucide.createIcons();
+      }
+
+      // Hide status after 5 sec
+      setTimeout(() => {
+        status.classList.add('hidden');
+      }, 5000);
+    }
+  });
+</script>
 </html>
