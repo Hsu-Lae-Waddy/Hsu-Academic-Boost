@@ -98,6 +98,7 @@
 
     <p>A vending machine is also a type of computer.</p>
     <img src="assests/vending soda machine.jpg" class="m-3">
+   
 
     <div style="
       background:#f3f4f6;
@@ -139,6 +140,7 @@
       "></div>
 
     </div>
+     <img src="assests/soda.jpg"  class="m-3">
             
         `
       },
@@ -211,7 +213,27 @@
         title: "🟡 CPU",
         content: `
           <h2>What is a CPU</h2>
-          <p>The<strong> CPU </strong>is the  <strong>“brain” </strong>of the computer<br>
+          <p>The<strong> CPU </strong>is the  <strong>“brain” </strong>of the computer.<br>
+          <p>CPU (Central Processing Unit)</p>
+          <h2>How the CPU “Works”</h2>
+          <p>The CPU is like a super-fast instruction follower.</p>
+          <p>It:</p>
+          <ul>
+            <li>reads instructions from a program</li>
+               <li>does calculations</li>
+                  <li>moves data</li>
+                     <li>makes decisions (yes/no)</li>
+                      <li>repeats billions of times per second</li>
+            </ul>
+            <p>It does NOT understand meaning — it only follows rules.</p>
+
+
+
+
+
+
+
+
           <img src="assests/cpubrain.jpg">
     <h2>Example: Opening a Roblox Game</h2>
 
@@ -302,6 +324,7 @@
         content: `
           <h2>Operating System (OS)</h2>
           <p>OS is <strong>software</strong> that manages hardware and software resources. Acts as intermediary between user and computer.</p>
+          <img src="assests/osexplain.jpg" class="m-3">
           <h3>OS Functions</h3>
           <ul>
             <li><strong>Process Management</strong> — Run multiple programs</li>
@@ -310,6 +333,62 @@
             <li><strong>Device Management</strong> — Control hardware</li>
             <li><strong>User Interface</strong> — GUI/CLI interaction</li>
           </ul>
+           <h2>Mini Operating System</h2>
+
+    <p>The OS manages apps and memory.</p>
+
+    <div style="
+      background:#111827;
+      color:white;
+      padding:20px;
+      border-radius:16px;
+      max-width:400px;
+      margin:auto;
+      font-family:monospace;
+    ">
+
+      <h3>📱 Open an App</h3>
+
+      <button onclick="openApp('Roblox')" style="
+        padding:10px;
+        margin:5px;
+        border:none;
+        border-radius:8px;
+        background:#ef4444;
+        color:white;
+      ">🎮 Roblox</button>
+
+      <button onclick="openApp('YouTube')" style="
+        padding:10px;
+        margin:5px;
+        border:none;
+        border-radius:8px;
+        background:#f97316;
+        color:white;
+      ">▶️ YouTube</button>
+
+      <button onclick="openApp('Chrome')" style="
+        padding:10px;
+        margin:5px;
+        border:none;
+        border-radius:8px;
+        background:#3b82f6;
+        color:white;
+      ">🌐 Chrome</button>
+
+      <hr style="margin:15px 0;">
+
+      <div id="osScreen" style="
+        background:#000;
+        padding:15px;
+        border-radius:10px;
+        min-height:120px;
+        color:#22c55e;
+      ">
+        OS Log will appear here...
+      </div>
+
+    </div>
           <h3>Popular OS</h3>
           <table>
             <thead><tr><th>OS</th><th>Developer</th><th>Market Share</th></tr></thead>
@@ -327,6 +406,15 @@
             <li><strong>Multi-tasking</strong> — Multiple programs running</li>
             <li><strong>Real-time</strong> — Guaranteed response time</li>
           </ul>
+           <table><thead><tr><th colspan="2">CPU vs OS</th></tr></thead>
+           <tbody>
+            <tr><td>OS	Manager</td><td>controls everything</td></tr>
+            <tr><td>CPU	worker</td><td>executes instructions</td></tr>
+            </tbody>
+            </table>
+            <img src="assests/OSCPU.jpg">
+         
+        
         `
       },
 
@@ -336,6 +424,7 @@
         content: `
           <h2>Algorithm</h2>
           <p>An <strong>algorithm</strong> is a step-by-step procedure to solve a problem. Like a cooking recipe for computers.</p>
+          <img src="assests/cookingstepbystep.jpg">
           <h3>Algorithm Requirements</h3>
           <ul>
             <li><strong>Finite</strong> — Must eventually stop</li>
@@ -344,6 +433,7 @@
             <li><strong>Output</strong> — At least one output</li>
             <li><strong>Effective</strong> — Basic operations only</li>
           </ul>
+           <img src="assests/squence.jpg">
           <h3>Example: Find Largest Number</h3>
           <div class="code-block">Input: numbers = [3, 7, 2, 9, 1]
 Algorithm:
@@ -690,7 +780,35 @@ function showSteps() {
 
   `;
 }
+let memory = 0;
+let maxMemory = 100;
 
+function openApp(appName) {
+
+  let appMemory = 20;
+
+  if (memory + appMemory > maxMemory) {
+    document.getElementById("osScreen").innerHTML = `
+      ❌ Not enough memory!<br>
+      OS blocked opening ${appName}<br><br>
+      🧠 Memory used: ${memory}/${maxMemory}
+    `;
+    return;
+  }
+
+  memory += appMemory;
+
+  document.getElementById("osScreen").innerHTML = `
+
+    ✅ OS started ${appName}<br>
+    🧠 Memory used: ${memory}/${maxMemory}<br>
+    ⚙️ OS is managing CPU + RAM<br>
+    📂 App is running smoothly<br><br>
+
+    👉 OS is the "boss" controlling everything!
+
+  `;
+}
     function applyConfig(config) {
       document.getElementById('site-title').textContent = config.site_title || defaultConfig.site_title;
     }
