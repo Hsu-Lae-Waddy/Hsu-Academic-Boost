@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Hardware Vs Software Quiz</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    @keyframes shake {
+      0%,100% { transform: translateX(0); }
+      20%,60% { transform: translateX(-6px); }
+      40%,80% { transform: translateX(6px); }
+    }
+
+    .shake {
+      animation: shake 0.4s;
+    }
+  </style>
+</head>
+
+<body class="bg-gradient-to-r from-teal-200 to-teal-500 min-h-screen flex items-center justify-center">
+<audio id="correct-sound" src="sound/correct.mp3"></audio>
+
+<audio id="wrong-sound" src="sound/wrong.mp3"></audio>
+ <div id="quiz-card" class="bg-white w-[350px] rounded-3xl shadow-2xl p-6 text-center">
+
+    <!-- Score -->
+    <h1 class="text-3xl font-bold mb-2">
+      Hardware Vs Software Quiz
+    </h1>
+
+    <p class="text-lg font-semibold mb-4">
+      Score: <span id="score">0</span>
+    </p>
+
+    <!-- Quiz Image -->
+    <img
+      id="quiz-image"
+      src="images/monitor.png"
+      class="w-52 h-52 object-contain mx-auto mb-6"
+    >
+
+    <!-- Buttons -->
+    <div class="flex gap-4 justify-center">
+
+      <button
+        id="hardware-btn"
+        onclick="checkAnswer('hardware')"
+        class="bg-blue-500 hover:bg-blue-600 text-white font-bold px-6 py-3 rounded-xl transition"
+      >
+        HARDWARE
+      </button>
+
+      <button
+        id="software-btn"
+        onclick="checkAnswer('software')"
+        class="bg-green-500 hover:bg-green-600 text-white font-bold px-6 py-3 rounded-xl transition"
+      >
+        SOFTWARE
+      </button>
+    </div>
+
+    <!-- Quiz Number -->
+    <p class="mt-5 text-gray-600">
+      Question <span id="question-number">1</span> / 10
+    </p>
+
+  </div>
+ <!-- RESULT SCREEN -->
+<div
+  id="result-screen"
+  class="hidden bg-white p-10 rounded-3xl shadow-2xl text-center w-[350px]"
+>
+
+  <div class="text-6xl mb-4">
+    🏆
+  </div>
+
+  <h1 class="text-4xl font-bold mb-4 text-indigo-700">
+    Quiz Finished!
+  </h1>
+
+  <p class="text-2xl mb-2">
+    Your Score
+  </p>
+
+  <p
+    id="final-score"
+    class="text-5xl font-extrabold text-green-600 mb-6"
+  >
+  </p>
+
+  <button
+    onclick="location.reload()"
+    class="bg-indigo-500 hover:bg-indigo-600 text-white px-6 py-3 rounded-xl font-bold transition hover:scale-105"
+  >
+    🔄 Play Again
+  </button>
+
+</div>
+
+  <script>
+
+    // QUIZ DATA
+    const quizzes = [
+
+     
+       {
+        image: "images/monitor.png",
+        answer: "hardware"
+      },
+
+      {
+        image: "images/printer.png",
+        answer: "hardware"
+      },
+
+      {
+        image: "images/android.png",
+        answer: "software"
+      },
+      {
+        image: "images/headset.jpeg",
+        answer: "hardware"
+      },
+
+      {
+        image: "images/word.jpg",
+        answer: "software"
+      },  
+      {
+        image: "images/webcam.png",
+        answer: "hardware"
+      },
+      
+      {
+        image: "images/gmaps.png",
+        answer: "software"
+      },
+      {
+        image: "images/Settings_(iOS).png",
+        answer: "software"
+      },
+      {
+        image: "images/motherboard-small.webp",
+        answer: "hardware"
+      },
+      {
+        image: "images/Gmail.avif",
+        answer: "software"
+      },
+     
+    ];
+let currentQuiz = 0;
+let score = 0;
+function loadQuiz() {
+
+  const quiz = quizzes[currentQuiz];
+
+  document.getElementById('quiz-image').src =
+    quiz.image;
+
+  document.getElementById('question-number').innerText =
+    currentQuiz + 1;
+}
+   function checkAnswer(userAnswer) {
+
+  const correctAnswer = quizzes[currentQuiz].answer;
+
+  const hardwareBtn = document.getElementById('hardware-btn');
+  const softwareBtn = document.getElementById('software-btn');
+
+
+  // RESET BUTTON COLORS
+   hardwareBtn.classList.remove('bg-red-500');
+  softwareBtn.classList.remove('bg-red-500');
+  
+
+  // CORRECT ANSWER
+  if (userAnswer === correctAnswer) {
+
+    // PLAY SOUND
+    const correctSound = document.getElementById('correct-sound');
+
+    correctSound.currentTime = 0;
+    correctSound.play();
+
+    score++;
+
+    document.getElementById('score').innerText = score;
+
+  }
+
+  // WRONG ANSWER
+  else {
+
+    // PLAY WRONG SOUND
+    const wrongSound = document.getElementById('wrong-sound');
+
+    wrongSound.currentTime = 0;
+    wrongSound.play();
+
+    let wrongBtn;
+
+    // WHICH BUTTON TO SHAKE
+    if (userAnswer === 'software') {
+      wrongBtn = softwareBtn;
+    }
+
+    else if (userAnswer === 'hardware') {
+      wrongBtn = hardwareBtn;
+    }
+
+
+    // SHAKE EFFECT
+    wrongBtn.classList.add('bg-red-500');
+    wrongBtn.classList.add('shake');
+
+    setTimeout(() => {
+
+      wrongBtn.classList.remove('bg-red-500');
+      wrongBtn.classList.remove('shake');
+
+    }, 500);
+  }
+
+  // NEXT QUESTION
+  currentQuiz++;
+
+  // FINISH QUIZ
+  if (currentQuiz >= quizzes.length) {
+
+    setTimeout(() => {
+
+      showResult();
+
+    }, 700);
+
+  }
+
+  // LOAD NEXT QUIZ
+  else {
+
+    setTimeout(() => {
+
+      loadQuiz();
+
+    }, 700);
+  }
+}
+
+  function showResult() {
+
+  // HIDE QUIZ CARD
+  document.querySelector('.bg-white').style.display = 'none';
+
+  // SHOW RESULT
+  document
+    .getElementById('result-screen')
+    .classList.remove('hidden');
+
+  // SHOW FINAL SCORE
+  document.getElementById('final-score').innerText =
+    `${score} / ${quizzes.length}`;
+}
+
+  </script>
+
+
+</body>
+</html>
