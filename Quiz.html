@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Input Output Quiz</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    @keyframes shake {
+      0%,100% { transform: translateX(0); }
+      20%,60% { transform: translateX(-6px); }
+      40%,80% { transform: translateX(6px); }
+    }
+
+    .shake {
+      animation: shake 0.4s;
+    }
+  </style>
+</head>
+
+<body class="bg-gradient-to-r from-teal-200 to-teal-500 min-h-screen flex items-center justify-center">
+<audio id="correct-sound" src="sound/correct.mp3"></audio>
+
+<audio id="wrong-sound" src="sound/wrong.mp3"></audio>
+ <div id="quiz-card" class="bg-white w-[350px] rounded-3xl shadow-2xl p-6 text-center">
+
+    <!-- Score -->
+    <h1 class="text-3xl font-bold mb-2">
+      Input / Output Quiz
+    </h1>
+
+    <p class="text-lg font-semibold mb-4">
+      Score: <span id="score">0</span>
+    </p>
+
+    <!-- Quiz Image -->
+    <img
+      id="quiz-image"
+      src="images/keyboard.png"
+      class="w-52 h-52 object-contain mx-auto mb-6"
+    >
+
+    <!-- Buttons -->
+    <div class="flex gap-4 justify-center">
+
+      <button
+        id="input-btn"
+        onclick="checkAnswer('input')"
+        class="bg-blue-500 hover:bg-blue-600 text-white font-bold px-6 py-3 rounded-xl transition"
+      >
+        INPUT
+      </button>
+
+      <button
+        id="output-btn"
+        onclick="checkAnswer('output')"
+        class="bg-green-500 hover:bg-green-600 text-white font-bold px-6 py-3 rounded-xl transition"
+      >
+        OUTPUT
+      </button>
+      <button
+        id="both-btn"
+        onclick="checkAnswer('both')"
+        class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold px-6 py-3 rounded-xl transition"
+      >
+        BOTH
+      </button>
+
+    </div>
+
+    <!-- Quiz Number -->
+    <p class="mt-5 text-gray-600">
+      Question <span id="question-number">1</span> / 21
+    </p>
+
+  </div>
+ <!-- RESULT SCREEN -->
+<div
+  id="result-screen"
+  class="hidden bg-white p-10 rounded-3xl shadow-2xl text-center w-[350px]"
+>
+
+  <div class="text-6xl mb-4">
+    🏆
+  </div>
+
+  <h1 class="text-4xl font-bold mb-4 text-indigo-700">
+    Quiz Finished!
+  </h1>
+
+  <p class="text-2xl mb-2">
+    Your Score
+  </p>
+
+  <p
+    id="final-score"
+    class="text-5xl font-extrabold text-green-600 mb-6"
+  >
+  </p>
+
+  <button
+    onclick="location.reload()"
+    class="bg-indigo-500 hover:bg-indigo-600 text-white px-6 py-3 rounded-xl font-bold transition hover:scale-105"
+  >
+    🔄 Play Again
+  </button>
+
+</div>
+
+  <script>
+
+    // QUIZ DATA
+    const quizzes = [
+
+      {
+        image: "images/keyboard.png",
+        answer: "input"
+      },
+       {
+        image: "images/monitor.png",
+        answer: "output"
+      },
+
+      {
+        image: "images/printer.png",
+        answer: "output"
+      },
+
+      {
+        image: "images/mouse.png",
+        answer: "input"
+      },
+
+      {
+        image: "images/microphone.png",
+        answer: "input"
+      },
+      {
+        image: "images/headset.jpeg",
+        answer: "both"
+      },
+
+      {
+        image: "images/gameconsole.png",
+        answer: "input"
+      },  {
+        image: "images/cameraout.png",
+        answer: "both"
+      },
+      {
+        image: "images/webcam.png",
+        answer: "input"
+      },
+       {
+        image: "images/mobliephone.png",
+        answer: "both"
+      },
+      {
+        image: "images/speaker.png",
+        answer: "output"
+      },
+      {
+        image: "images/barscanner.jpeg",
+        answer: "input"
+      },
+
+      {
+        image: "images/projector.png",
+        answer: "output"
+      },
+       {
+        image: "images/vrcontroller.jpeg",
+        answer: "input"
+      },
+      {
+        image: "images/VR.jpg",
+        answer: "output"
+      },
+       {
+        image: "images/appleVR.jpg",
+        answer: "both"
+      },
+       {
+        image: "images/airpods.png",
+        answer: "both"
+      },
+      {
+        image: "images/headphone.png",
+        answer: "output"
+      },
+      {
+        image: "images/3dprinter.webp",
+        answer: "output"
+      },
+      {
+        image: "images/digitalpen.jpg",
+        answer: "input"
+      },
+      {
+        image: "images/biometer.avif",
+        answer: "input"
+      },
+
+
+    ];
+let currentQuiz = 0;
+let score = 0;
+function loadQuiz() {
+
+  const quiz = quizzes[currentQuiz];
+
+  document.getElementById('quiz-image').src =
+    quiz.image;
+
+  document.getElementById('question-number').innerText =
+    currentQuiz + 1;
+}
+   function checkAnswer(userAnswer) {
+
+  const correctAnswer = quizzes[currentQuiz].answer;
+
+  const inputBtn = document.getElementById('input-btn');
+  const outputBtn = document.getElementById('output-btn');
+  const bothBtn = document.getElementById('both-btn');
+
+  // RESET BUTTON COLORS
+  inputBtn.classList.remove('bg-red-500');
+  outputBtn.classList.remove('bg-red-500');
+  bothBtn.classList.remove('bg-red-500');
+
+  // CORRECT ANSWER
+  if (userAnswer === correctAnswer) {
+
+    // PLAY SOUND
+    const correctSound = document.getElementById('correct-sound');
+
+    correctSound.currentTime = 0;
+    correctSound.play();
+
+    score++;
+
+    document.getElementById('score').innerText = score;
+
+  }
+
+  // WRONG ANSWER
+  else {
+
+    // PLAY WRONG SOUND
+    const wrongSound = document.getElementById('wrong-sound');
+
+    wrongSound.currentTime = 0;
+    wrongSound.play();
+
+    let wrongBtn;
+
+    // WHICH BUTTON TO SHAKE
+    if (userAnswer === 'input') {
+      wrongBtn = inputBtn;
+    }
+
+    else if (userAnswer === 'output') {
+      wrongBtn = outputBtn;
+    }
+
+    else if (userAnswer === 'both') {
+      wrongBtn = bothBtn;
+    }
+
+    // SHAKE EFFECT
+    wrongBtn.classList.add('bg-red-500');
+    wrongBtn.classList.add('shake');
+
+    setTimeout(() => {
+
+      wrongBtn.classList.remove('bg-red-500');
+      wrongBtn.classList.remove('shake');
+
+    }, 500);
+  }
+
+  // NEXT QUESTION
+  currentQuiz++;
+
+  // FINISH QUIZ
+  if (currentQuiz >= quizzes.length) {
+
+    setTimeout(() => {
+
+      showResult();
+
+    }, 700);
+
+  }
+
+  // LOAD NEXT QUIZ
+  else {
+
+    setTimeout(() => {
+
+      loadQuiz();
+
+    }, 700);
+  }
+}
+
+  function showResult() {
+
+  // HIDE QUIZ CARD
+  document.querySelector('.bg-white').style.display = 'none';
+
+  // SHOW RESULT
+  document
+    .getElementById('result-screen')
+    .classList.remove('hidden');
+
+  // SHOW FINAL SCORE
+  document.getElementById('final-score').innerText =
+    `${score} / ${quizzes.length}`;
+}
+
+  </script>
+
+
+</body>
+</html>
