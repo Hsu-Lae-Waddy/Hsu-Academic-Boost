@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>IPO Quiz Game</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<style>
+  .correct{
+    background:#16a34a !important;
+    color:white;
+  }
+
+  .wrong{
+    background:#dc2626 !important;
+    color:white;
+  }
+</style>
+
+</head>
+
+<body class="bg-gray-100 min-h-screen p-5">
+
+<div class="max-w-4xl mx-auto bg-white rounded-2xl shadow-xl p-6">
+
+  <h1 class="text-4xl font-bold text-center mb-2">
+    💻 IPO Quiz Game
+  </h1>
+
+  <p class="text-center text-gray-600 mb-8">
+    Choose Input, Process, or Output
+  </p>
+
+  <div id="quizContainer" class="space-y-6"></div>
+
+  <div class="text-center mt-8">
+    <button onclick="showScore()" 
+      class="bg-blue-600 text-white px-6 py-3 rounded-xl text-lg">
+      Show Score
+    </button>
+  </div>
+
+  <div id="scoreBox" class="text-center text-2xl font-bold mt-6"></div>
+
+</div>
+
+<script>
+
+const questions = [
+ {
+    image:"images/VendingMachine.png",
+    device:"🥤 Vending Machine",
+    text:"Machine checks payment and selected item",
+    answer:"Process",
+    text2:"User inserts money and presses button",
+    answer2:"Input",
+    text3:"Drink or snack comes out",
+    answer3:"Output"
+  },
+   {
+    image:"images/SmartTV.avif",
+    device:"📺 Smart TV",
+    text:"Video and sound play on screen",
+    answer:"Output",
+    text2:"TV processes the command",
+    answer2:"Process",
+    text3:"User presses remote control or voice control",
+    answer3:"Input"
+  },
+  {
+    image:"images/smartLight.jpeg",
+    device:"💡 Smart Light",
+    text:"System receives instruction",
+    answer:"Process",
+    text2:"User presses app/button",
+    answer2:"Input",
+    text3:"Light turns ON/OFF",
+    answer3:"Output"
+  },
+
+  {
+    image:"images/SmartRefrigerator.webp",
+    device:"🧊 Smart Refrigerator",
+    text3:"User changes cooling level",
+    answer3:"Input",
+    text2:"System checks temperature",
+    answer2:"Process",
+    text:"Fridge becomes colder",
+    answer:"Output"
+  },
+  {
+    image:"images/smartstove.webp",
+    device:"🍳 Smart Stove",
+    text3:"User selects cooking temperature",
+    answer3:"Input",
+    text2:"System controls heat level",
+    answer2:"Process",
+    text:"Stove becomes hot and cooks food",
+    answer:"Output"
+  },
+  {
+    image:"images/SmartWatch.webp",
+    device:"⌚ Smart Watch",
+    text:"User touches screen",
+    answer:"Input",
+    text2:"Watch processes health data",
+    answer2:"Process",
+    text3:"Heart rate shown on screen",
+    answer3:"Output"
+  },
+   {
+    image:"images/smartdoorlock.webp",
+    device:"🔐 Smart Door Lock",
+    text:"System verifies security information",
+    answer:"Process",
+    text2:"User enters password or fingerprint",
+    answer2:"Input",
+     text3:"Door unlocks",
+    answer3:"Output"
+  },
+
+];
+
+let score = 0;
+
+const container = document.getElementById("quizContainer");
+
+questions.forEach((q,index)=>{
+
+  container.innerHTML += `
+
+     <div class="bg-gray-100 p-5 rounded-2xl">
+
+      <!-- IMAGE -->
+      <img src="${q.image}"
+        class="w-full h-100 object-cover rounded-xl mb-4">
+
+      <!-- DEVICE NAME -->
+      <h2 class="text-2xl font-bold mb-6">
+        ${q.device}
+      </h2>
+
+      <!-- QUESTION 1 -->
+      <div class="mb-6 bg-white p-4 rounded-xl">
+
+        <p class="text-lg font-semibold mb-3">
+          ${q.text}
+        </p>
+
+        <div class="flex gap-3 flex-wrap">
+
+          <button onclick="checkAnswer(this,'Input','${q.answer}')"
+            class="bg-blue-500 text-white px-4 py-2 rounded-lg">
+            Input
+          </button>
+
+          <button onclick="checkAnswer(this,'Process','${q.answer}')"
+            class="bg-yellow-500 text-white px-4 py-2 rounded-lg">
+            Process
+          </button>
+
+          <button onclick="checkAnswer(this,'Output','${q.answer}')"
+            class="bg-pink-500 text-white px-4 py-2 rounded-lg">
+            Output
+          </button>
+
+        </div>
+
+      </div>
+
+      <!-- QUESTION 2 -->
+      <div class="mb-6 bg-white p-4 rounded-xl">
+
+        <p class="text-lg font-semibold mb-3">
+          ${q.text2}
+        </p>
+
+        <div class="flex gap-3 flex-wrap">
+
+          <button onclick="checkAnswer(this,'Input','${q.answer2}')"
+            class="bg-blue-500 text-white px-4 py-2 rounded-lg">
+            Input
+          </button>
+
+          <button onclick="checkAnswer(this,'Process','${q.answer2}')"
+            class="bg-yellow-500 text-white px-4 py-2 rounded-lg">
+            Process
+          </button>
+
+          <button onclick="checkAnswer(this,'Output','${q.answer2}')"
+            class="bg-pink-500 text-white px-4 py-2 rounded-lg">
+            Output
+          </button>
+
+        </div>
+
+      </div>
+
+      <!-- QUESTION 3 -->
+      <div class="bg-white p-4 rounded-xl">
+
+        <p class="text-lg font-semibold mb-3">
+          ${q.text3}
+        </p>
+
+        <div class="flex gap-3 flex-wrap">
+
+          <button onclick="checkAnswer(this,'Input','${q.answer3}')"
+            class="bg-blue-500 text-white px-4 py-2 rounded-lg">
+            Input
+          </button>
+
+          <button onclick="checkAnswer(this,'Process','${q.answer3}')"
+            class="bg-yellow-500 text-white px-4 py-2 rounded-lg">
+            Process
+          </button>
+
+          <button onclick="checkAnswer(this,'Output','${q.answer3}')"
+            class="bg-pink-500 text-white px-4 py-2 rounded-lg">
+            Output
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+  `;
+
+});
+
+function checkAnswer(button,selected,correct){
+
+  const parent = button.parentElement;
+
+  if(parent.classList.contains("done")){
+    return;
+  }
+
+  parent.classList.add("done");
+
+  if(selected === correct){
+
+    button.classList.add("correct");
+
+    score++;
+
+  }else{
+
+    button.classList.add("wrong");
+
+  }
+
+}
+
+function showScore(){
+
+  document.getElementById("scoreBox").innerHTML =
+  "🎉 Your Score: " + score + " / " + (questions.length * 3);
+
+}
+
+</script>
+
+</body>
+</html>
