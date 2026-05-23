@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Algorithm Order Quiz</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<style>
+
+  .step-card{
+    cursor: grab;
+    transition: 0.2s;
+  }
+
+  .step-card:hover{
+    transform: scale(1.02);
+  }
+
+  .correct{
+    background:#16a34a !important;
+    color:white;
+  }
+
+  .wrong{
+    background:#dc2626 !important;
+    color:white;
+  }
+
+</style>
+
+</head>
+
+<body class="bg-gradient-to-r from-teal-200 to-teal-500 min-h-screen p-5">
+
+<div class="max-w-3xl mx-auto bg-white rounded-3xl shadow-2xl p-6">
+
+  <h1 class="text-4xl font-bold text-center mb-2">
+    🧠 Algorithm Order Quiz
+  </h1>
+
+  <p class="text-center text-gray-600 mb-6">
+    Arrange the steps into the correct order
+  </p>
+
+  <!-- TITLE -->
+  <h2 id="quiz-title"
+      class="text-3xl font-bold text-center mb-6">
+  </h2>
+
+  <!-- STEPS -->
+  <div id="steps-container"
+       class="space-y-3 mb-6">
+  </div>
+
+  <!-- BUTTONS -->
+  <div class="flex justify-center gap-4">
+
+    <button
+      onclick="checkOrder()"
+      class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-xl text-lg font-bold">
+      Check Answer
+    </button>
+
+    <button
+      onclick="nextQuiz()"
+      class="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-xl text-lg font-bold">
+      Next Quiz
+    </button>
+
+  </div>
+
+  <!-- RESULT -->
+  <div id="result"
+       class="text-center text-2xl font-bold mt-6">
+  </div>
+
+  <!-- SCORE -->
+  <div class="text-center mt-4 text-xl font-bold">
+    Score:
+    <span id="score">0</span>
+  </div>
+
+</div>
+
+<script>
+
+const algorithmQuestions = [
+
+  {
+    title: "☕ Making Coffee or Tea",
+
+    steps: [
+      "Boil water",
+      "Put coffee or tea into cup",
+      "Pour hot water",
+      "Add sugar or milk",
+      "Stir",
+      "Drink"
+    ]
+  },
+
+  {
+    title: "🍚 Cooking Rice",
+
+    steps: [
+      "Wash rice",
+      "Add water",
+      "Put rice into rice cooker",
+      "Press cook button",
+      "Wait until cooked",
+      "Serve rice"
+    ]
+  },
+
+  {
+    title: "🚿 Taking a Shower",
+
+    steps: [
+      "Turn on water",
+      "Wet body",
+      "Apply soap and shampoo",
+      "Rinse body",
+      "Turn off water",
+      "Dry body with towel"
+    ]
+  },
+
+  {
+    title: "🍜 Making Instant Noodles",
+
+    steps: [
+      "Boil water",
+      "Open noodle pack",
+      "Put noodles into water",
+      "Add seasoning",
+      "Wait a few minutes",
+      "Eat"
+    ]
+  }
+
+];
+
+let currentQuiz = 0;
+let score = 0;
+
+const stepsContainer =
+  document.getElementById("steps-container");
+
+function shuffle(array){
+
+  return [...array].sort(() => Math.random() - 0.5);
+}
+
+function loadQuiz(){
+
+  document.getElementById("result").innerHTML = "";
+
+  const quiz =
+    algorithmQuestions[currentQuiz];
+
+  document.getElementById("quiz-title").innerHTML =
+    quiz.title;
+
+  stepsContainer.innerHTML = "";
+
+  const shuffledSteps =
+    shuffle(quiz.steps);
+
+  shuffledSteps.forEach(step => {
+
+    stepsContainer.innerHTML += `
+
+      <div
+        class="step-card bg-gray-100 p-4 rounded-xl flex items-center gap-3">
+
+        <input
+          type="number"
+          min="1"
+          max="${quiz.steps.length}"
+          class="w-16 border-2 border-gray-300 rounded-lg p-2 text-center font-bold">
+
+        <span class="text-lg">
+          ${step}
+        </span>
+
+      </div>
+
+    `;
+  });
+}
+
+function checkOrder(){
+
+  const quiz =
+    algorithmQuestions[currentQuiz];
+
+  const cards =
+    document.querySelectorAll(".step-card");
+
+  let correct = true;
+
+  cards.forEach(card => {
+
+    card.classList.remove("correct");
+    card.classList.remove("wrong");
+
+    const number =
+      parseInt(card.querySelector("input").value);
+
+    const stepText =
+      card.querySelector("span").innerText;
+
+    const correctIndex =
+      quiz.steps.indexOf(stepText) + 1;
+
+    if(number === correctIndex){
+
+      card.classList.add("correct");
+
+    } else {
+
+      card.classList.add("wrong");
+
+      correct = false;
+    }
+
+  });
+
+  if(correct){
+
+    document.getElementById("result").innerHTML =
+      "✅ Correct Algorithm!";
+
+    score++;
+
+    document.getElementById("score").innerHTML =
+      score;
+
+  } else {
+
+    document.getElementById("result").innerHTML =
+      "❌ Wrong Order!";
+  }
+}
+
+function nextQuiz(){
+
+  currentQuiz++;
+
+  if(currentQuiz >= algorithmQuestions.length){
+
+    document.body.innerHTML = `
+
+      <div class="min-h-screen flex items-center justify-center bg-gradient-to-r from-teal-200 to-teal-500">
+
+        <div class="bg-white p-10 rounded-3xl shadow-2xl text-center">
+
+          <div class="text-7xl mb-4">
+            🏆
+          </div>
+
+          <h1 class="text-5xl font-bold mb-4">
+            Quiz Finished!
+          </h1>
+
+          <p class="text-3xl mb-6">
+            Your Score:
+            ${score} / ${algorithmQuestions.length}
+          </p>
+
+          <button
+            onclick="location.reload()"
+            class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-xl text-xl font-bold">
+            Play Again
+          </button>
+
+        </div>
+
+      </div>
+
+    `;
+
+    return;
+  }
+
+  loadQuiz();
+}
+
+loadQuiz();
+
+</script>
+
+</body>
+</html>
