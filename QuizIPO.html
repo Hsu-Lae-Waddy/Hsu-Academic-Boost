@@ -23,7 +23,9 @@
 </head>
 
 <body class="bg-gray-100 min-h-screen p-5">
+<audio id="correct-sound" src="sound/correct.mp3"></audio>
 
+<audio id="wrong-sound" src="sound/wrong.mp3"></audio>
 <div class="max-w-4xl mx-auto bg-white rounded-2xl shadow-xl p-6">
 
   <h1 class="text-4xl font-bold text-center mb-2">
@@ -245,12 +247,21 @@ function checkAnswer(button,selected,correct){
   if(selected === correct){
 
     button.classList.add("correct");
+     const  correctSound= document.getElementById('correct-sound');
+
+    correctSound.currentTime = 0;
+    correctSound.play();
 
     score++;
 
   }else{
 
     button.classList.add("wrong");
+    // PLAY WRONG SOUND
+    const wrongSound = document.getElementById('wrong-sound');
+
+    wrongSound.currentTime = 0;
+    wrongSound.play();
 
   }
 
