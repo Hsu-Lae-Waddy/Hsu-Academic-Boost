@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>💾 Storage Units Quiz</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<style>
+
+  .correct{
+    background:#16a34a !important;
+    color:white;
+  }
+
+  .wrong{
+    background:#dc2626 !important;
+    color:white;
+  }
+
+</style>
+
+</head>
+
+<body class="bg-gradient-to-r from-teal-200 to-teal-500 min-h-screen p-5">
+
+<!-- SOUND EFFECTS -->
+<audio id="correct-sound" src="sound/correct.mp3"></audio>
+<audio id="wrong-sound" src="sound/wrong.mp3"></audio>
+
+<div class="max-w-2xl mx-auto bg-white p-6 rounded-2xl shadow-xl">
+
+  <h1 class="text-3xl font-bold text-center mb-6">
+    💾 Storage Units Quiz
+  </h1>
+
+  <!-- QUESTION 1 -->
+  <div class="mb-6 p-4 bg-gray-100 rounded-xl">
+
+    <h2 class="font-bold mb-3">
+      1️⃣ What is a Bit?
+    </h2>
+
+    <button onclick="check(this,true)"
+      class="bg-blue-500 hover:bg-blue-600 transition text-white px-4 py-2 rounded-lg m-1">
+      0 or 1
+    </button>
+
+    <button onclick="check(this,false)"
+      class="bg-blue-500 hover:bg-blue-600 transition text-white px-4 py-2 rounded-lg m-1">
+      8 bits
+    </button>
+
+  </div>
+
+  <!-- QUESTION 2 -->
+  <div class="mb-6 p-4 bg-gray-100 rounded-xl">
+
+    <h2 class="font-bold mb-3">
+      2️⃣ How many bits are in 1 Byte?
+    </h2>
+
+    <button onclick="check(this,false)"
+      class="bg-pink-500 hover:bg-pink-600 transition text-white px-4 py-2 rounded-lg m-1">
+      2
+    </button>
+
+    <button onclick="check(this,true)"
+      class="bg-pink-500 hover:bg-pink-600 transition text-white px-4 py-2 rounded-lg m-1">
+      8
+    </button>
+
+    <button onclick="check(this,false)"
+      class="bg-pink-500 hover:bg-pink-600 transition text-white px-4 py-2 rounded-lg m-1">
+      1024
+    </button>
+
+  </div>
+
+  <!-- QUESTION 3 -->
+  <div class="mb-6 p-4 bg-gray-100 rounded-xl">
+
+    <h2 class="font-bold mb-3">
+      3️⃣ 1 KB equals?
+    </h2>
+
+    <button onclick="check(this,true)"
+      class="bg-yellow-500 hover:bg-yellow-600 transition text-white px-4 py-2 rounded-lg m-1">
+      1024 bytes
+    </button>
+
+    <button onclick="check(this,false)"
+      class="bg-yellow-500 hover:bg-yellow-600 transition text-white px-4 py-2 rounded-lg m-1">
+      8 bytes
+    </button>
+
+  </div>
+
+  <!-- QUESTION 4 -->
+  <div class="mb-6 p-4 bg-gray-100 rounded-xl">
+
+    <h2 class="font-bold mb-3">
+      4️⃣ Which is bigger?
+    </h2>
+
+    <button onclick="check(this,false)"
+      class="bg-purple-500 hover:bg-purple-600 transition text-white px-4 py-2 rounded-lg m-1">
+      KB
+    </button>
+
+    <button onclick="check(this,true)"
+      class="bg-purple-500 hover:bg-purple-600 transition text-white px-4 py-2 rounded-lg m-1">
+      GB
+    </button>
+
+  </div>
+
+  <!-- RESULT -->
+  <div id="result" class="text-2xl text-center font-bold mt-6"></div>
+
+  <!-- PLAY AGAIN BUTTON -->
+  <div class="text-center mt-6">
+
+    <button
+      onclick="location.reload()"
+      class="bg-indigo-500 hover:bg-indigo-600 text-white px-6 py-3 rounded-xl font-bold transition hover:scale-105"
+    >
+      🔄 Play Again
+    </button>
+
+  </div>
+
+</div>
+
+<script>
+
+let score = 0;
+let total = 4;
+let answered = 0;
+
+function check(button,correct){
+
+  // Prevent answering again
+  if(button.parentElement.classList.contains("done")){
+    return;
+  }
+
+  button.parentElement.classList.add("done");
+
+  answered++;
+
+  // Button animation
+  button.style.transform = "scale(1.1)";
+
+  setTimeout(()=>{
+    button.style.transform = "scale(1)";
+  },200);
+
+  // SOUND ELEMENTS
+  const correctSound = document.getElementById('correct-sound');
+  const wrongSound = document.getElementById('wrong-sound');
+
+  if(correct){
+
+    // PLAY CORRECT SOUND
+    correctSound.currentTime = 0;
+    correctSound.play();
+
+    button.classList.add("correct");
+
+    score++;
+
+  }else{
+
+    // PLAY WRONG SOUND
+    wrongSound.currentTime = 0;
+    wrongSound.play();
+
+    button.classList.add("wrong");
+
+  }
+
+  // SHOW FINAL SCORE
+  if(answered === total){
+
+    document.getElementById("result").innerHTML =
+      "🎉 Your Score: " + score + " / " + total;
+
+  }
+
+}
+
+</script>
+
+</body>
+</html>

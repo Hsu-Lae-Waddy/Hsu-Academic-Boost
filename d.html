@@ -30,384 +30,133 @@
 
 <body class="bg-gradient-to-r from-teal-200 to-teal-500 min-h-screen p-5">
 
-<div class="max-w-4xl mx-auto bg-gray-300 rounded-3xl shadow-2xl p-8">
+<div class="max-w-2xl mx-auto bg-white p-6 rounded-2xl shadow-xl">
 
-  <!-- TITLE -->
-  <h1 class="text-4xl font-bold text-center mb-2">
-    🔷 Flowchart Building Quiz
+  <h1 class="text-3xl font-bold text-center mb-6">
+    💾 Storage Units Quiz
   </h1>
 
-  <p class="text-center text-gray-600 mb-8">
-    Write the correct flowchart symbol for each step
-  </p>
+  <!-- Question 1 -->
+  <div class="mb-6 p-4 bg-gray-100 rounded-xl">
 
-  <!-- SCORE -->
-  <div class="text-center text-2xl font-bold mb-8">
-    Score:
-    <span id="score">0</span>
-  </div>
+    <h2 class="font-bold mb-3">
+      1️⃣ What is a Bit?
+    </h2>
 
-  <!-- QUIZ TITLE -->
-  <h2 id="quiz-title"
-      class="text-3xl font-bold text-center mb-8">
-  </h2>
-
-  <!-- FLOWCHART -->
-  <div id="flowchart-container"
-       class="space-y-4">
-  </div>
-
-  <!-- BUTTON -->
-  <div class="text-center mt-8">
-
-    <button
-      onclick="checkAnswers()"
-      class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-xl text-xl font-bold">
-
-      Check Answers
-
+    <button onclick="check(this,true)"
+      class="bg-blue-500 text-white px-4 py-2 rounded-lg m-1">
+      0 or 1
     </button>
 
-    <button
-      onclick="nextQuiz()"
-      class="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-xl text-xl font-bold ml-4">
-
-      Next Quiz
-
+    <button onclick="check(this,false)"
+      class="bg-blue-500 text-white px-4 py-2 rounded-lg m-1">
+      8 bits
     </button>
 
   </div>
 
-  <!-- RESULT -->
-  <div id="result"
-       class="text-center text-3xl font-bold mt-8">
+  <!-- Question 2 -->
+  <div class="mb-6 p-4 bg-gray-100 rounded-xl">
+
+    <h2 class="font-bold mb-3">
+      2️⃣ How many bits are in 1 Byte?
+    </h2>
+
+    <button onclick="check(this,false)"
+      class="bg-green-500 text-white px-4 py-2 rounded-lg m-1">
+      2
+    </button>
+
+    <button onclick="check(this,true)"
+      class="bg-green-500 text-white px-4 py-2 rounded-lg m-1">
+      8
+    </button>
+
+    <button onclick="check(this,false)"
+      class="bg-green-500 text-white px-4 py-2 rounded-lg m-1">
+      1024
+    </button>
+
   </div>
+
+  <!-- Question 3 -->
+  <div class="mb-6 p-4 bg-gray-100 rounded-xl">
+
+    <h2 class="font-bold mb-3">
+      3️⃣ 1 KB equals?
+    </h2>
+
+    <button onclick="check(this,true)"
+      class="bg-yellow-500 text-white px-4 py-2 rounded-lg m-1">
+      1024 bytes
+    </button>
+
+    <button onclick="check(this,false)"
+      class="bg-yellow-500 text-white px-4 py-2 rounded-lg m-1">
+      8 bytes
+    </button>
+
+  </div>
+
+  <!-- Question 4 -->
+  <div class="mb-6 p-4 bg-gray-100 rounded-xl">
+
+    <h2 class="font-bold mb-3">
+      4️⃣ Which is bigger?
+    </h2>
+
+    <button onclick="check(this,false)"
+      class="bg-purple-500 text-white px-4 py-2 rounded-lg m-1">
+      KB
+    </button>
+
+    <button onclick="check(this,true)"
+      class="bg-purple-500 text-white px-4 py-2 rounded-lg m-1">
+      GB
+    </button>
+
+  </div>
+
+  <div id="result" class="text-2xl text-center font-bold mt-6"></div>
 
 </div>
 
 <script>
 
-const quizzes = [
-
-  {
-    title:"🍚 Cooking Rice",
-
-    steps:[
-      {
-        text:"Start",
-        answer:"Terminal"
-      },
-
-      {
-        text:"Wash rice",
-        answer:"Process"
-      },
-
-      {
-        text:"Add water",
-        answer:"Process"
-      },
-
-      {
-        text:"Put rice into rice cooker",
-        answer:"Process"
-      },
-
-      {
-        text:"Press cook button",
-        answer:"Process"
-      },
-
-      {
-        text:"Wait until cooked",
-        answer:"Process"
-      },
-
-      {
-        text:"Serve rice",
-        answer:"Input / Output"
-      },
-
-      {
-        text:"End",
-        answer:"Terminal"
-      }
-    ]
-  }, {
-    title:"🏧 ATM Machine",
-
-    steps:[
-      {
-        text:"Start",
-        answer:"Terminal"
-      },
-
-      {
-        text:"Insert ATM card",
-        answer:"Input / Output"
-      },
-      {
-        text:"Enter PIN",
-        answer:"Input / Output"
-      },
-
-      {
-        text:"Is PIN correct?",
-        answer:"Decision"
-      },
-
-      {
-        text:"Select withdrawal amount",
-        answer:"Input / Output"
-      },
-
-      {
-        text:"ATM checks balance",
-        answer:"Process"
-      },
-
-      {
-        text:"Is balance enough?",
-        answer:"Decision"
-      },
-      {
-        text:"Cash comes out",
-        answer:"Input / Output"
-      },
-
-      {
-        text:"Print receipt",
-        answer:"Process"
-      },
-
-      {
-        text:"End",
-        answer:"Terminal"
-      }
-    ]
-  }
-,
-
-  {
-    title:"🍜 Making Instant Noodles",
-
-    steps:[
-      {
-        text:"Start",
-        answer:"Terminal"
-      },
-
-      {
-        text:"Boil water",
-        answer:"Process"
-      },
-
-      {
-        text:"Open noodle pack",
-        answer:"Process"
-      },
-
-      {
-        text:"Put noodles into water",
-        answer:"Process"
-      },
-
-      {
-        text:"Add seasoning",
-        answer:"Process"
-      },
-
-      {
-        text:"Wait a few minutes",
-        answer:"Process"
-      },
-
-      {
-        text:"Eat",
-        answer:"Input / Output"
-      },
-
-      {
-        text:"End",
-        answer:"Terminal"
-      }
-    ]
-  }
-
-];
-
-let currentQuiz = 0;
 let score = 0;
+let total = 4;
+let answered = 0;
 
-function loadQuiz(){
+function check(button,correct){
 
-  const quiz =
-    quizzes[currentQuiz];
-
-  document.getElementById("quiz-title").innerHTML =
-    quiz.title;
-
-  document.getElementById("result").innerHTML =
-    "";
-
-  const container =
-    document.getElementById("flowchart-container");
-
-  container.innerHTML = "";
-
-  quiz.steps.forEach((step,index)=>{
-
-    container.innerHTML += `
-
-      <div class="bg-gray-100 p-5 rounded-2xl flow-box">
-
-        <div class="flex flex-col md:flex-row md:items-center gap-4">
-
-          <!-- STEP -->
-          <div class="flex-1">
-
-            <div class="text-gray-600 mb-1">
-              Step ${index + 1}
-            </div>
-
-            <div class="text-2xl font-bold">
-              ${step.text}
-            </div>
-
-          </div>
-
-          <!-- SELECT -->
-          <select
-            class="answer-select border-2 border-blue-400 rounded-xl p-3 text-lg font-bold">
-
-            <option value="">
-              Select Symbol
-            </option>
-
-            <option>
-              Terminal
-            </option>
-
-            <option>
-              Process
-            </option>
-
-            <option>
-              Decision
-            </option>
-
-            <option>
-              Input / Output
-            </option>
-
-          </select>
-
-        </div>
-
-      </div>
-
-      <div class="text-center text-3xl">
-        ↓
-      </div>
-
-    `;
-  });
-}
-
-function checkAnswers(){
-
-  const quiz =
-    quizzes[currentQuiz];
-
-  const selects =
-    document.querySelectorAll(".answer-select");
-
-  let allCorrect = true;
-
-  selects.forEach((select,index)=>{
-
-    const correctAnswer =
-      quiz.steps[index].answer;
-
-    select.classList.remove("correct");
-    select.classList.remove("wrong");
-
-    if(select.value === correctAnswer){
-
-      select.classList.add("correct");
-
-    } else {
-
-      select.classList.add("wrong");
-
-      allCorrect = false;
-    }
-
-  });
-
-  if(allCorrect){
-
-    document.getElementById("result").innerHTML =
-      "✅ Perfect Flowchart!";
-
-    score++;
-
-    document.getElementById("score").innerHTML =
-      score;
-
-  } else {
-
-    document.getElementById("result").innerHTML =
-      "❌ Some answers are wrong";
-  }
-}
-
-function nextQuiz(){
-
-  currentQuiz++;
-
-  if(currentQuiz >= quizzes.length){
-
-    document.body.innerHTML = `
-
-      <div class="min-h-screen flex items-center justify-center bg-gradient-to-r from-cyan-200 to-blue-300 p-5">
-
-        <div class="bg-white p-10 rounded-3xl shadow-2xl text-center max-w-xl w-full">
-
-          <div class="text-7xl mb-4">
-            🏆
-          </div>
-
-          <h1 class="text-5xl font-bold mb-6">
-            Quiz Finished!
-          </h1>
-
-          <p class="text-3xl mb-8">
-            Your Score:
-            ${score} / ${quizzes.length}
-          </p>
-
-          <button
-            onclick="location.reload()"
-            class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-xl text-2xl font-bold">
-
-            Play Again
-
-          </button>
-
-        </div>
-
-      </div>
-
-    `;
-
+  if(button.parentElement.classList.contains("done")){
     return;
   }
 
-  loadQuiz();
-}
+  button.parentElement.classList.add("done");
 
-loadQuiz();
+  answered++;
+
+  if(correct){
+
+    button.style.background = "#16a34a";
+
+    score++;
+
+  }else{
+
+    button.style.background = "#dc2626";
+
+  }
+
+  if(answered === total){
+
+    document.getElementById("result").innerHTML =
+      "🎉 Score: " + score + " / " + total;
+
+  }
+
+}
 
 </script>
 
