@@ -55,8 +55,7 @@
    </button> 
    <!-- Mobile overlay -->
    <div id="mobile-overlay" class="hidden fixed inset-0 bg-black/60 z-40 md:hidden" onclick="toggleMobile()"></div>
-   <aside id="mobile-sidebar" class="hidden fixed left-0 top-0 h-full w-64 bg-gray-800 z-50 overflow-y-auto md:hidden shadow-2xl">
-    <div class="p-5 border-b border-gray-700 flex justify-between items-center">
+<aside id="mobile-sidebar" class="fixed left-0 top-0 h-full w-64 bg-gray-800 z-50 overflow-y-auto md:hidden shadow-2xl transform -translate-x-full transition-transform duration-300">    <div class="p-5 border-b border-gray-700 flex justify-between items-center">
      <div class="flex items-center gap-3">
        <button onclick="goHome()" class="hover:bg-gray-700 p-1.5 rounded transition" title="Go Home">
          <i data-lucide="home" class="w-5 h-5"></i>
@@ -182,6 +181,54 @@ quotes for
 multiple lines'''</span></div>
         `
       },
+      { title: "🔵 Operators",
+        content: `
+        <h2> Python Operators </h2>
+       <h3> Arithmetic Operators </h3>
+<p>Arithmetic operators are used with numeric values to perform common mathematical operations: </p>
+        <p>Operators are used to perform operations on variables and values.</p>
+        <table>
+          
+          <tr><td>we use the + operator to add together two values:</td><td> <strong> + </strong> </td></tr>
+          <tr><td>we use the - operator to subtract one value from another:</td><td> <strong> - </strong> </td></tr>
+          <tr><td>we use the * operator to multiply two values together:</td><td><strong> * </strong> </td></tr>
+          <tr><td>we use the / operator to divide one value by another:</td><td><strong> / </strong> </td></tr>
+          </table>
+
+        <h3>Assignment Operators</h3>
+        <p>Assignment operators are used to assign values to variables:</p>
+        <table>
+          <tr><th>Operator</th><th>Example</th></tr>
+          <tr><td>=</td><td>x = 5</td></tr>
+           <tr><td>+=</td><td>x += 3 /(x = x + 3)</td></tr>
+            <tr><td>-=</td><td>x -= 3 /(x = x - 3)</td></tr>
+             <tr><td>*=</td><td>x *= 3 /(x = x * 3)</td></tr>
+        </table>
+
+        <h3>Comparison Operators</h3>
+        <p>Comparison operators are used to compare two values:</p>
+        <table>
+          <tr><th>Operator</th><th>Name</th><th>Example</th></tr>
+          <tr><td>==</td><td>Equal</td><td>x == y</td></tr>
+           <tr><td>!=</td><td>Not equal</td><td>x != y</td></tr>
+            <tr><td>></td><td>Greater than</td><td>x > y</td></tr>
+             <tr><td><</td><td>Less than</td><td>x < y</td></tr>
+             <tr><td>>=</td><td>Greater than or equal to</td><td>x >= y</td></tr>
+             <tr><td><=</td><td>Less than or equal to</td><td>x <= y</td></tr>
+        </table>
+
+        <h3>Logical Operators</h3>
+        <p>Logical operators are used to combine conditional statements:</p>
+         <table>
+          <tr><th>Operator</th><th>How it works</th><th>Example</th></tr>
+          <tr><td> AND </td><td>Returns only if all conditions are true. If even one condition is false, the whole expression is false.</td><td>(x > 0 and x < 10)</td></tr>
+          <tr><td> OR </td><td>Returns if at least one condition is true. It only returns false if all statements are false.</td><td>(x < 5 or x > 10)</td></tr>
+          <tr><td> NOT </td><td>Reverses the boolean value of a condition. It turns True into False and vice versa.</td><td>not(x < 5 and x < 10)</td></tr>
+          </table>
+
+        `
+
+      },
 
       // 🔵 CONTROL FLOW
       {
@@ -223,6 +270,52 @@ multiple lines'''</span></div>
           </table>
         `
       },
+       {
+        title: "🔵 Shorthand if",
+        content: `
+        <h2>Short Hand If</h2>
+<p>If you have only one statement to execute, you can put it on the same line as the if statement.</p>
+<h4>Example</h4>      
+<p>One-line if statement:</p> 
+<div class="code-block">a = 5
+b = 2
+if a > b: print("a is greater than b")
+</div>
+<p class="bg-yellow-800 p-3"><strong>Note: </strong> You still need the colon : after the condition.</p>
+`
+},
+{ title: "🔵 Nested If",
+ content: `
+ <h2>Nested If Statements</h2>
+ <p>You can have if statements inside if statements. This is called nested if statements.</p>
+ <img src="images/Nested-statement.webp">
+ <h3>Example</h3>
+ <div class="code-block">x = 41
+
+if x > 10:
+  print("Above ten,")
+  if x > 20:
+    print("and also above 20!")
+  else:
+    print("but not above 20.")</div>
+<h3>Example</h3>
+    <div class="code-block">age = 30
+member = True
+
+if age > 18:
+    if member:
+        print("Ticket price is $12.")
+    else:
+        print("Ticket price is $20.")
+else:
+    if member:
+        print("Ticket price is $8.")
+    else:
+        print("Ticket price is $10.")</div>
+
+<p class="bg-yellow-800 p-3">In this example, the inner if statement only runs if the outer condition is true. <br> <strong>It means :</strong> If that first door doesn't open, the computer doesn't even bother looking at what’s inside the second one. It just skips the whole block.</p>
+ `
+},
       {
         title: "🔵 Loops (for, while)",
         content: `
@@ -251,6 +344,15 @@ multiple lines'''</span></div>
     <span class="keyword">if</span> i == <span class="type">3</span>:
         <span class="keyword">continue</span>       <span class="comment"># Skip iteration</span>
     <span class="keyword">print</span>(i)</div>
+
+    <table>
+      <tr><th colspan="3">Key Differences </th></tr>
+      <tr><td>Feature</td><td><strong> For </strong></td><td><strong> While</strong></td></tr>
+      <tr><td>Control</td><td>Iterates over a sequence or range.</td><td>Based on a condition (True/False).</td></tr>
+      <tr><td>Usage</td><td>When the number of steps is known.</td><td>When the number of steps is unknown.</td></tr>
+      <tr></tr>
+      </table>
+
         `
       },
 
@@ -484,6 +586,31 @@ computer = random.choice(choices)
         mapToEditPanelValues: (config) => new Map([["site_title", config.site_title || defaultConfig.site_title]])
       });
     }
+    function toggleMobile(){
+
+  const sidebar = document.getElementById("mobile-sidebar");
+  const overlay = document.getElementById("mobile-overlay");
+
+  // OPEN
+  if(sidebar.classList.contains("-translate-x-full")){
+
+    sidebar.classList.remove("-translate-x-full");
+
+    overlay.classList.remove("hidden");
+
+  }
+
+  // CLOSE
+  else{
+
+    sidebar.classList.add("-translate-x-full");
+
+    overlay.classList.add("hidden");
+
+  }
+
+}
+
   </script>
  </body>
 </html>
