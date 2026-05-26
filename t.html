@@ -1,0 +1,645 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>MIT App Inventor Lesson</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<style>
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  font-family:Arial, sans-serif;
+}
+
+.code-box{
+  background:#1e293b;
+  color:#f8fafc;
+  padding:16px;
+  border-radius:16px;
+  overflow-x:auto;
+}
+
+.lesson-card:hover{
+  transform:translateY(-4px);
+}
+
+</style>
+
+</head>
+
+<body class="bg-gray-100 text-gray-800">
+
+<!-- NAVBAR -->
+<nav class="bg-emerald-600 text-white sticky top-0 z-50 shadow-lg">
+
+  <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+
+    <h1 class="text-2xl font-bold">
+      📱 MIT App Inventor
+    </h1>
+
+    <div class="hidden md:flex gap-6 font-semibold">
+      <a href="#intro" class="hover:text-yellow-200">Introduction</a>
+      <a href="#designer" class="hover:text-yellow-200">Designer</a>
+      <a href="#blocks" class="hover:text-yellow-200">Blocks</a>
+      <a href="#components" class="hover:text-yellow-200">Components</a>
+      <a href="#quiz" class="hover:text-yellow-200">Quiz</a>
+    </div>
+
+  </div>
+
+</nav>
+
+<!-- HERO -->
+<section class="bg-gradient-to-r from-emerald-400 to-teal-600 text-white py-16 px-5">
+
+  <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 items-center">
+
+    <div>
+
+      <h1 class="text-5xl font-bold mb-6 leading-tight">
+        Learn MIT App Inventor
+      </h1>
+
+      <p class="text-xl mb-6 leading-relaxed">
+        Build mobile apps using drag-and-drop programming.
+        Beginner friendly for ICT and Computer Science students.
+      </p>
+
+      <a href="#intro"
+         class="bg-white text-emerald-700 px-6 py-3 rounded-xl font-bold hover:bg-gray-100 transition">
+        Start Learning
+      </a>
+
+    </div>
+
+    <div class="flex justify-center">
+
+      <img
+        src="https://appinventor.mit.edu/explore/sites/all/themes/appinventor/images/ai2tutorials/helloPurr/helloPurr.png"
+        class="rounded-3xl shadow-2xl w-full max-w-md">
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- MAIN -->
+<div class="max-w-7xl mx-auto grid md:grid-cols-4 gap-6 p-5">
+
+  <!-- SIDEBAR -->
+  <aside class="md:col-span-1 bg-white rounded-3xl shadow-xl p-5 h-fit sticky top-24">
+
+    <h2 class="text-2xl font-bold mb-4">
+      📚 Lessons
+    </h2>
+
+    <div class="space-y-3 font-semibold">
+
+      <a href="#intro" class="block hover:text-emerald-600">
+        1. Introduction
+      </a>
+
+      <a href="#designer" class="block hover:text-emerald-600">
+        2. Designer Screen
+      </a>
+
+      <a href="#blocks" class="block hover:text-emerald-600">
+        3. Blocks Editor
+      </a>
+
+      <a href="#components" class="block hover:text-emerald-600">
+        4. Components
+      </a>
+
+      <a href="#buttonapp" class="block hover:text-emerald-600">
+        5. Button App
+      </a>
+
+      <a href="#quiz" class="block hover:text-emerald-600">
+        6. Quiz
+      </a>
+
+    </div>
+
+  </aside>
+
+  <!-- CONTENT -->
+  <main class="md:col-span-3 space-y-8">
+
+    <!-- INTRO -->
+    <section id="intro" class="bg-white rounded-3xl shadow-xl p-8 lesson-card transition duration-300">
+
+      <h2 class="text-4xl font-bold mb-4 text-emerald-700">
+        1. Introduction to MIT App Inventor
+      </h2>
+
+      <p class="text-lg leading-relaxed mb-4">
+        MIT App Inventor is a visual programming platform used to create Android applications.
+        Users can drag and drop components without typing complicated code.
+      </p>
+
+      <div class="grid md:grid-cols-3 gap-4 mt-6">
+
+        <div class="bg-emerald-50 p-5 rounded-2xl border border-emerald-200">
+          <div class="text-5xl mb-3">📱</div>
+          <h3 class="text-xl font-bold mb-2">Mobile Apps</h3>
+          <p>Create Android applications easily.</p>
+        </div>
+
+        <div class="bg-blue-50 p-5 rounded-2xl border border-blue-200">
+          <div class="text-5xl mb-3">🧩</div>
+          <h3 class="text-xl font-bold mb-2">Blocks Coding</h3>
+          <p>Use drag-and-drop programming blocks.</p>
+        </div>
+
+        <div class="bg-yellow-50 p-5 rounded-2xl border border-yellow-200">
+          <div class="text-5xl mb-3">🎓</div>
+          <h3 class="text-xl font-bold mb-2">Beginner Friendly</h3>
+          <p>Perfect for students learning programming.</p>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- DESIGNER -->
+    <section id="designer" class="bg-white rounded-3xl shadow-xl p-8 lesson-card transition duration-300">
+
+      <h2 class="text-4xl font-bold mb-4 text-emerald-700">
+        2. Designer Screen
+      </h2>
+
+      <p class="text-lg leading-relaxed mb-6">
+        The Designer Screen is used to build the app interface.
+      </p>
+
+      <img
+        src="https://appinventor.mit.edu/explore/sites/all/files/ai2tutorials/hellopurr/designer.png"
+        class="rounded-2xl shadow-lg mb-6 w-full">
+
+      <div class="overflow-x-auto">
+
+        <table class="w-full border-collapse overflow-hidden rounded-2xl">
+
+          <thead>
+            <tr class="bg-emerald-600 text-white">
+              <th class="p-4 text-left">Part</th>
+              <th class="p-4 text-left">Function</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr class="bg-gray-50">
+              <td class="p-4 border">Palette</td>
+              <td class="p-4 border">Contains components</td>
+            </tr>
+
+            <tr>
+              <td class="p-4 border">Viewer</td>
+              <td class="p-4 border">Shows app screen</td>
+            </tr>
+
+            <tr class="bg-gray-50">
+              <td class="p-4 border">Components</td>
+              <td class="p-4 border">Lists app components</td>
+            </tr>
+
+            <tr>
+              <td class="p-4 border">Properties</td>
+              <td class="p-4 border">Changes component settings</td>
+            </tr>
+          </tbody>
+
+        </table>
+
+      </div>
+
+    </section>
+
+    <!-- BLOCKS -->
+    <section id="blocks" class="bg-white rounded-3xl shadow-xl p-8 lesson-card transition duration-300">
+
+      <h2 class="text-4xl font-bold mb-4 text-emerald-700">
+        3. Blocks Editor
+      </h2>
+
+      <p class="text-lg leading-relaxed mb-6">
+        Blocks are used to program the app behavior.
+      </p>
+
+      <img
+        src="https://appinventor.mit.edu/explore/sites/all/files/ai2tutorials/hellopurr/blocks.png"
+        class="rounded-2xl shadow-lg mb-6 w-full">
+
+      <div class="space-y-4">
+
+        <div class="bg-indigo-50 border border-indigo-200 p-5 rounded-2xl">
+          <h3 class="text-2xl font-bold mb-2">Event Blocks</h3>
+          <p>Used when something happens like clicking a button.</p>
+        </div>
+
+        <div class="bg-pink-50 border border-pink-200 p-5 rounded-2xl">
+          <h3 class="text-2xl font-bold mb-2">Logic Blocks</h3>
+          <p>Used for conditions like IF statements.</p>
+        </div>
+
+        <div class="bg-yellow-50 border border-yellow-200 p-5 rounded-2xl">
+          <h3 class="text-2xl font-bold mb-2">Math Blocks</h3>
+          <p>Used for calculations and numbers.</p>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- COMPONENTS -->
+    <section id="components" class="bg-white rounded-3xl shadow-xl p-8 lesson-card transition duration-300">
+
+      <h2 class="text-4xl font-bold mb-4 text-emerald-700">
+        4. Common Components
+      </h2>
+
+      <div class="grid md:grid-cols-2 gap-5">
+
+        <div class="bg-blue-50 p-5 rounded-2xl border border-blue-200">
+          <div class="text-5xl mb-3">🔘</div>
+          <h3 class="text-2xl font-bold mb-2">Button</h3>
+          <p>Used for clicking actions.</p>
+        </div>
+
+        <div class="bg-green-50 p-5 rounded-2xl border border-green-200">
+          <div class="text-5xl mb-3">📝</div>
+          <h3 class="text-2xl font-bold mb-2">Label</h3>
+          <p>Displays text on screen.</p>
+        </div>
+
+        <div class="bg-yellow-50 p-5 rounded-2xl border border-yellow-200">
+          <div class="text-5xl mb-3">⌨️</div>
+          <h3 class="text-2xl font-bold mb-2">TextBox</h3>
+          <p>User enters text or numbers.</p>
+        </div>
+
+        <div class="bg-purple-50 p-5 rounded-2xl border border-purple-200">
+          <div class="text-5xl mb-3">🖼️</div>
+          <h3 class="text-2xl font-bold mb-2">Image</h3>
+          <p>Displays pictures in apps.</p>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- BUTTON APP -->
+    <section id="buttonapp" class="bg-white rounded-3xl shadow-xl p-8 lesson-card transition duration-300">
+
+      <h2 class="text-4xl font-bold mb-4 text-emerald-700">
+        5. Simple Button App
+      </h2>
+
+      <p class="text-lg leading-relaxed mb-6">
+        Example: When a button is clicked, a message appears.
+      </p>
+
+      <div class="code-box mb-6">
+<pre>
+When Button1.Click
+set Label1.Text to "Hello World"
+</pre>
+      </div>
+
+      <div class="bg-emerald-50 border border-emerald-200 rounded-2xl p-6">
+
+        <h3 class="text-2xl font-bold mb-3">
+          How it works
+        </h3>
+
+        <ol class="list-decimal ml-6 space-y-2 text-lg">
+          <li>User clicks Button1</li>
+          <li>The event block runs</li>
+          <li>Label text changes</li>
+        </ol>
+
+      </div>
+
+    </section>
+
+    <!-- QUIZ -->
+    <section id="quiz" class="bg-white rounded-3xl shadow-xl p-8 lesson-card transition duration-300">
+
+      <h2 class="text-4xl font-bold mb-6 text-emerald-700">
+        6. Quick Quiz
+      </h2>
+
+      <div class="space-y-6">
+
+        <!-- Q1 -->
+        <div class="bg-gray-100 rounded-2xl p-5">
+
+          <h3 class="text-2xl font-bold mb-4">
+            1. Which component is used for clicking?
+          </h3>
+
+          <div class="grid md:grid-cols-2 gap-4">
+
+            <button onclick="checkAnswer(this,true)"
+              class="quiz-btn bg-white border-2 border-emerald-400 p-4 rounded-xl font-bold text-xl hover:bg-emerald-100">
+              Button
+            </button>
+
+            <button onclick="checkAnswer(this,false)"
+              class="quiz-btn bg-white border-2 border-emerald-400 p-4 rounded-xl font-bold text-xl hover:bg-emerald-100">
+              Label
+            </button>
+
+          </div>
+
+        </div>
+
+        <!-- Q2 -->
+        <div class="bg-gray-100 rounded-2xl p-5">
+
+          <h3 class="text-2xl font-bold mb-4">
+            2. Which screen is used to design the app?
+          </h3>
+
+          <div class="grid md:grid-cols-2 gap-4">
+
+            <button onclick="checkAnswer(this,true)"
+              class="quiz-btn bg-white border-2 border-emerald-400 p-4 rounded-xl font-bold text-xl hover:bg-emerald-100">
+              Designer
+            </button>
+
+            <button onclick="checkAnswer(this,false)"
+              class="quiz-btn bg-white border-2 border-emerald-400 p-4 rounded-xl font-bold text-xl hover:bg-emerald-100">
+              Gallery
+            </button>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="text-center mt-8 text-2xl font-bold">
+        Quiz Score:
+        <span id="quiz-score">0</span>
+      </div>
+
+    </section>
+
+  </main>
+
+</div>
+
+<!-- FOOTER -->
+<footer class="bg-emerald-700 text-white text-center py-6 mt-10">
+
+  <p class="text-lg">
+    MIT App Inventor Lesson Website
+  </p>
+
+  <p class="mt-2 text-sm opacity-80">
+    Created for ICT & Computer Science Students
+  </p>
+
+</footer>
+
+<script>
+
+let quizScore = 0;
+
+function checkAnswer(button,isCorrect){
+
+  if(button.disabled){
+    return;
+  }
+
+  const parent = button.parentElement;
+
+  const buttons =
+    parent.querySelectorAll("button");
+
+  buttons.forEach(btn => {
+    btn.disabled = true;
+  });
+
+  if(isCorrect){
+
+    button.classList.add("bg-green-500","text-white");
+
+    quizScore++;
+
+    document.getElementById("quiz-score").innerHTML =
+      quizScore;
+
+  } else {
+
+    button.classList.add("bg-red-500","text-white");
+
+  }
+}
+
+</script>
+
+<!-- STEP BY STEP LESSON -->
+<section class="max-w-7xl mx-auto mt-10 px-5 mb-10">
+
+  <div class="bg-white rounded-3xl shadow-2xl p-8">
+
+    <h2 class="text-5xl font-bold text-emerald-700 mb-8 text-center">
+      🚀 MIT App Inventor Step-by-Step Tutorial
+    </h2>
+
+    <!-- STEP 1 -->
+    <div class="mb-10 bg-emerald-50 border border-emerald-200 rounded-3xl p-6">
+
+      <h3 class="text-3xl font-bold mb-4">
+        Step 1 — Open MIT App Inventor
+      </h3>
+
+      <ol class="list-decimal ml-6 text-lg space-y-2 leading-relaxed">
+        <li>Open your web browser.</li>
+        <li>Go to appinventor.mit.edu.</li>
+        <li>Click <strong>Create Apps!</strong></li>
+        <li>Login using your Google account.</li>
+      </ol>
+
+    </div>
+
+    <!-- STEP 2 -->
+    <div class="mb-10 bg-blue-50 border border-blue-200 rounded-3xl p-6">
+
+      <h3 class="text-3xl font-bold mb-4">
+        Step 2 — Create a New Project
+      </h3>
+
+      <ol class="list-decimal ml-6 text-lg space-y-2 leading-relaxed">
+        <li>Click <strong>Projects</strong>.</li>
+        <li>Click <strong>Start New Project</strong>.</li>
+        <li>Type your project name.</li>
+        <li>Press OK.</li>
+      </ol>
+
+      <div class="code-box mt-5">
+<pre>
+Example Project Name:
+HelloApp
+</pre>
+      </div>
+
+    </div>
+
+    <!-- STEP 3 -->
+    <div class="mb-10 bg-yellow-50 border border-yellow-200 rounded-3xl p-6">
+
+      <h3 class="text-3xl font-bold mb-4">
+        Step 3 — Add Components
+      </h3>
+
+      <p class="text-lg mb-4 leading-relaxed">
+        Drag components from the Palette into the Viewer.
+      </p>
+
+      <div class="grid md:grid-cols-3 gap-4">
+
+        <div class="bg-white rounded-2xl p-5 shadow-md">
+          <div class="text-5xl mb-3">📝</div>
+          <h4 class="text-2xl font-bold mb-2">Label</h4>
+          <p>Displays text on the app screen.</p>
+        </div>
+
+        <div class="bg-white rounded-2xl p-5 shadow-md">
+          <div class="text-5xl mb-3">🔘</div>
+          <h4 class="text-2xl font-bold mb-2">Button</h4>
+          <p>User clicks the button.</p>
+        </div>
+
+        <div class="bg-white rounded-2xl p-5 shadow-md">
+          <div class="text-5xl mb-3">🖼️</div>
+          <h4 class="text-2xl font-bold mb-2">Image</h4>
+          <p>Shows pictures in the app.</p>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- STEP 4 -->
+    <div class="mb-10 bg-pink-50 border border-pink-200 rounded-3xl p-6">
+
+      <h3 class="text-3xl font-bold mb-4">
+        Step 4 — Change Properties
+      </h3>
+
+      <p class="text-lg leading-relaxed mb-4">
+        Click a component and change its properties.
+      </p>
+
+      <ul class="list-disc ml-6 text-lg space-y-2">
+        <li>Button Text</li>
+        <li>Background Color</li>
+        <li>Font Size</li>
+        <li>Width and Height</li>
+      </ul>
+
+    </div>
+
+    <!-- STEP 5 -->
+    <div class="mb-10 bg-indigo-50 border border-indigo-200 rounded-3xl p-6">
+
+      <h3 class="text-3xl font-bold mb-4">
+        Step 5 — Open Blocks Editor
+      </h3>
+
+      <ol class="list-decimal ml-6 text-lg space-y-2 leading-relaxed">
+        <li>Click the <strong>Blocks</strong> button at the top right.</li>
+        <li>The Blocks Editor will open.</li>
+        <li>Use drag-and-drop blocks to create app behavior.</li>
+      </ol>
+
+    </div>
+
+    <!-- STEP 6 -->
+    <div class="mb-10 bg-cyan-50 border border-cyan-200 rounded-3xl p-6">
+
+      <h3 class="text-3xl font-bold mb-4">
+        Step 6 — Create Button Click Event
+      </h3>
+
+      <p class="text-lg mb-4">
+        Make the button change the label text.
+      </p>
+
+      <div class="code-box">
+<pre>
+When Button1.Click
+set Label1.Text to "Hello World"
+</pre>
+      </div>
+
+      <div class="mt-5 bg-white rounded-2xl p-5 shadow-md">
+
+        <h4 class="text-2xl font-bold mb-3">
+          What happens?
+        </h4>
+
+        <ol class="list-decimal ml-6 text-lg space-y-2">
+          <li>User clicks Button1</li>
+          <li>The event block runs</li>
+          <li>Label text changes</li>
+        </ol>
+
+      </div>
+
+    </div>
+
+    <!-- STEP 7 -->
+    <div class="mb-10 bg-orange-50 border border-orange-200 rounded-3xl p-6">
+
+      <h3 class="text-3xl font-bold mb-4">
+        Step 7 — Test Your App
+      </h3>
+
+      <ol class="list-decimal ml-6 text-lg space-y-2 leading-relaxed">
+        <li>Install MIT AI2 Companion on your phone.</li>
+        <li>Click <strong>Connect</strong>.</li>
+        <li>Select <strong>AI Companion</strong>.</li>
+        <li>Scan the QR code.</li>
+        <li>Your app will run on your phone.</li>
+      </ol>
+
+    </div>
+
+    <!-- STEP 8 -->
+    <div class="bg-green-50 border border-green-200 rounded-3xl p-6">
+
+      <h3 class="text-3xl font-bold mb-4">
+        Step 8 — Build APK File
+      </h3>
+
+      <ol class="list-decimal ml-6 text-lg space-y-2 leading-relaxed">
+        <li>Click <strong>Build</strong>.</li>
+        <li>Select <strong>Android App (.apk)</strong>.</li>
+        <li>Wait for APK generation.</li>
+        <li>Download the APK file.</li>
+        <li>Install the app on Android.</li>
+      </ol>
+
+    </div>
+
+  </div>
+
+</section>
+
+</body>
+</html>

@@ -1,0 +1,353 @@
+<!doctype html>
+<html lang="en" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MIT Course</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    html, body { height: 100%; margin: 0; }
+    body { font-family: 'Source Sans 3', sans-serif; box-sizing: border-box; }
+    code, .mono { font-family: 'JetBrains Mono', monospace; }
+    .sidebar-item { transition: all 0.15s; }
+    .sidebar-item:hover { background: #2d3748; }
+    .sidebar-item.active { background: #1a73e8; color: #fff; }
+    .code-block { 
+      background: #1e1e2e; 
+      color: #cdd6f4; 
+      border-radius: 8px; 
+      padding: 16px; 
+      overflow-x: auto; 
+      white-space: pre; 
+      font-size: 0.85rem; 
+      line-height: 1.6; 
+      margin: 1rem 0;
+      tab-size: 2;
+    }
+    .code-block .keyword { color: #cba6f7; }
+    .code-block .string { color: #a6e3a1; }
+    .code-block .comment { color: #6c7086; font-style: italic; }
+    .code-block .type { color: #89b4fa; }
+    .code-block .function { color: #fab387; }
+  </style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full bg-gray-900 text-gray-100">
+  <div class="flex h-full w-full">
+   <!-- Sidebar -->
+   <aside id="sidebar" class="w-64 min-w-[256px] bg-gray-800 border-r border-gray-700 overflow-y-auto flex-shrink-0 hidden md:block">
+    <div class="p-5 border-b border-gray-700">
+       <div class="flex items-center gap-3 mb-3">
+          <button onclick="goHome()" class="hover:bg-gray-700 p-1.5 rounded transition" title="Go Home">
+            <i data-lucide="home" class="w-5 h-5"></i>
+          </button>
+          <h1 id="site-title" class="text-lg font-bold text-emerald-400 mono flex-1"> MIT App Inventor</h1>
+        </div>
+    </div>
+    <nav class="py-2" id="nav-list"></nav>
+   </aside>
+   <!-- Mobile menu button --> 
+   <button id="mobile-menu-btn" class="md:hidden fixed top-3 left-3 z-50 bg-gray-800 p-2 rounded-lg border border-gray-700 hover:bg-gray-700 transition"> 
+    <i data-lucide="menu" class="w-5 h-5"></i> 
+   </button> 
+   <!-- Mobile overlay -->
+   <div id="mobile-overlay" class="hidden fixed inset-0 bg-black/60 z-40 md:hidden" onclick="toggleMobile()"></div>
+<aside id="mobile-sidebar" class="fixed left-0 top-0 h-full w-64 bg-gray-800 z-50 overflow-y-auto md:hidden shadow-2xl transform -translate-x-full transition-transform duration-300">    <div class="p-5 border-b border-gray-700 flex justify-between items-center">
+     <div class="flex items-center gap-3">
+       <button onclick="goHome()" class="hover:bg-gray-700 p-1.5 rounded transition" title="Go Home">
+         <i data-lucide="home" class="w-5 h-5"></i>
+       </button>
+       <h1 class="text-lg font-bold text-emerald-400 mono">MIT App Inventor</h1>
+     </div>
+     <button onclick="toggleMobile()" class="hover:bg-gray-700 p-1.5 rounded transition">
+      <i data-lucide="x" class="w-5 h-5"></i>
+     </button>
+    </div>
+    <nav class="py-2" id="mobile-nav-list"></nav>
+   </aside>
+   <!-- Main Content -->
+   <main class="flex-1 overflow-y-auto p-6 md:p-10" id="main-content"></main>
+  </div>
+  <script>
+    const lessons = [
+      // 🟡 BEGINNER LEVEL
+      {
+        title: "🟡 MIT App Inventor",
+        content: `
+          <h2>What is MIT?</h2>
+          <p><strong>MIT App Inventor</strong> is a visual programming platform used to create Android applications. Users can drag and drop components without typing complicated code. Created by Guido van Rossum in 1991.</p>
+          <h3>Is MIT App Inventor easy to learn?</h3>
+          <p>Instead of typing syntax, you connect visual blocks — like puzzle pieces — that represent programming logic. This makes it one of the most beginner-friendly ways to learn app development. App Inventor runs entirely in your web browser, so there is nothing to install to get started.</p>
+           <div class="grid md:grid-cols-3 gap-4 mt-6">
+
+        <div class="bg-emerald-700 p-5 rounded-2xl border border-emerald-200">
+          <div class="text-5xl mb-3">📱</div>
+          <h3 class="text-xl font-bold mb-2">Mobile Apps</h3>
+          <p>Create Android applications easily.</p>
+        </div>
+
+        <div class="bg-blue-700 p-5 rounded-2xl border border-blue-200">
+          <div class="text-5xl mb-3">🧩</div>
+          <h3 class="text-xl font-bold mb-2">Blocks Coding</h3>
+          <p>Use drag-and-drop programming blocks.</p>
+        </div>
+
+        <div class="bg-yellow-700 p-5 rounded-2xl border border-yellow-200">
+          <div class="text-5xl mb-3">🎓</div>
+          <h3 class="text-xl font-bold mb-2">Beginner Friendly</h3>
+          <p>Perfect for students learning programming.</p>
+        </div>
+
+      </div><h3>Is MIT Inventor free?</h3>
+          <p>MIT App Inventor is a free, user-friendly website that empowers anyone — even beginners — to create mobile apps through simple drag-and-drop programming.</p>
+       <p><strong>Run:</strong> <a href="https://appinventor.mit.edu/"> appinventor.mit.edu</p></a>
+
+ `
+      },
+      { title: "🟡 Example",
+        content: `
+                <h2>🚀 MIT App Inventor Step-by-Step Tutorial</h2>
+         <h3>Step 1 — Open MIT App Inventor</h3>
+         <ul>
+          <li>Open your web browser.</li>
+<li>Go to appinventor.mit.edu.</li>
+<li>Click Create Apps!</li>
+<li>Login using your Google account.</li>
+          </ul>
+          <a href="https://appinventor.mit.edu/"><p>appinventor.mit.edu</p></a>
+          <img src="assests/MIT/S0.jpg">
+  <h3>Step 2 — Create a New Project</h3>
+  <ul>
+<li>Click Projects.</li>
+<li>Click Start New Project.</li>
+<li>Type your project name.</li>
+<li>Press OK.</li> </ul>
+<div class="code-block"><strong>Example Project Name:</strong>
+ HelloApp
+</div>
+<img src="assests/MIT/S1 PM.jpg">
+<h3>Step 3 — Add Components</h3>
+<p>Drag components from the Palette into the Viewer.</p>
+<div class="grid md:grid-cols-2 gap-5">
+
+        <div class="bg-blue-700 p-5 rounded-2xl border border-blue-200">
+          <div class="text-5xl mb-3">🔘</div>
+          <h3 class="text-2xl font-bold mb-2">Button</h3>
+          <p>Used for clicking actions.</p>
+        </div>
+
+        <div class="bg-green-700 p-5 rounded-2xl border border-green-200">
+          <div class="text-5xl mb-3">📝</div>
+          <h3 class="text-2xl font-bold mb-2">Label</h3>
+          <p>Displays text on screen.</p>
+        </div>
+
+        <div class="bg-purple-700 p-5 rounded-2xl border border-purple-200">
+          <div class="text-5xl mb-3">🖼️</div>
+          <h3 class="text-2xl font-bold mb-2">Image</h3>
+          <p>Displays pictures in apps.</p>
+        </div>
+
+      </div>
+      <img src="assests/MIT/S2.jpg" class="mt-2">
+     <h3> Step 4 — Change Properties</h3>
+<p>Click a component and change its properties.<br>
+  (For Design you can skips)</p>
+<ul>
+<li>Button Text</li>
+<li>Background Color</li>
+<li>Font Size</li>
+<li>Width and Height</li>
+</ul>
+<h3>Step 5 — Open Blocks Editor</h3>
+<p>Click the Blocks button at the top right.<br>
+The Blocks Editor will open.<br>
+Use drag-and-drop blocks to create app behavior.</p>
+<img src="assests/MIT/S3.jpg">
+<img src="assests/MIT/S4.jpg" class="mt-2">
+<h3>Step 6 — Create Button Click Event</h3>
+<p>Make the button change the label text.</p>
+<div class="code-block">When Button1.Click
+set Label1.Text to "Hello World"</div>
+<img src="assests/MIT/S5.jpg">
+<img src="assests/MIT/S6.jpg" class="mt-2">
+<img src="assests/MIT/S7.jpg" class="mt-2">
+<img src="assests/MIT/S8.jpg" class="mt-2">
+<img src="assests/MIT/S9.jpg" class="mt-2">
+
+<h3>What happens?</h3>
+<p>
+User clicks Button1 <br>
+The event block runs <br>
+Label text changes</p>
+
+<h3>Step 7 — Test Your App</h3>
+<p>
+Install MIT AI2 Companion on your phone. <br>
+Click Connect. <br>
+Select AI Companion. <br>
+Scan the QR code.<br>
+Your app will run on your phone.</p>
+
+<img src="assests/MIT/S10.jpeg">
+<img src="assests/MIT/S11.jpg" class="mt-2">
+<img src="assests/MIT/S12.jpg" class="mt-2">
+<img src="assests/MIT/S13.webp" class="mt-2">
+
+<h3>Step 8 — Build APK File</h3>
+<p>Click Build. <br>
+Select Android App (.apk).<br>
+Wait for APK generation.<br>
+Download the APK file.<br>
+Install the app on Android.</p>
+<img src="assests/MIT/S14.jpg">
+<img src="assests/MIT/S15.jpg" class="mt-2">
+<img src="assests/MIT/S16.jpg" class="mt-2">
+        `
+        
+      },
+      {
+        
+      },
+      {
+       
+      },
+    
+    ];
+
+    let currentLesson = 0;
+
+    function buildNav(container) {
+      container.innerHTML = '';
+      lessons.forEach((lesson, i) => {
+        const item = document.createElement('div');
+        item.className = `sidebar-item px-5 py-2.5 cursor-pointer text-sm text-gray-300 ${i === currentLesson ? 'active' : ''}`;
+        item.textContent = lesson.title;
+        item.onclick = () => { currentLesson = i; renderAll(); toggleMobile(false); };
+        container.appendChild(item);
+      });
+    }
+
+    function renderContent() {
+      const main = document.getElementById('main-content');
+      main.innerHTML = `
+        <article class="max-w-3xl mx-auto lesson-content">
+          ${lessons[currentLesson].content}
+          <div class="flex justify-between mt-10 pt-6 border-t border-gray-700">
+            ${currentLesson > 0 ? `<button onclick="nav(-1)" class="flex items-center gap-2 px-4 py-2 bg-gray-700 hover:bg-gray-600 rounded-lg text-sm"><i data-lucide="chevron-left" class="w-4 h-4"></i> Previous</button>` : '<span></span>'}
+            ${currentLesson < lessons.length - 1 ? `<button onclick="nav(1)" class="flex items-center gap-2 px-4 py-2 bg-emerald-600 hover:bg-emerald-500 rounded-lg text-sm">Next <i data-lucide="chevron-right" class="w-4 h-4"></i></button>` : '<span></span>'}
+          </div>
+        </article>
+        <style>
+          .lesson-content h2 { font-size: 1.75rem; font-weight: 700; margin-bottom: 0.75rem; color: #6ee7b7; }
+          .lesson-content h3 { font-size: 1.2rem; font-weight: 600; margin-top: 1.5rem; margin-bottom: 0.5rem; color: #a7f3d0; }
+          .lesson-content p { margin-bottom: 1rem; line-height: 1.7; color: #d1d5db; }
+          .lesson-content ul { list-style: disc; padding-left: 1.5rem; margin-bottom: 1rem; }
+          .lesson-content li { margin-bottom: 0.4rem; color: #d1d5db; line-height: 1.6; }
+          .lesson-content ol { padding-left: 1.5rem; margin-bottom: 1rem; }
+          .lesson-content code { background: #374151; padding: 2px 6px; border-radius: 4px; font-size: 0.85em; color: #a5b4fc; }
+          .lesson-content table { width: 100%; border-collapse: collapse; margin: 1rem 0; background: #1f2937; border-radius: 0.5rem; overflow: hidden; }
+          .lesson-content th, .lesson-content td { border: 1px solid #4b5563; padding: 0.75rem 1rem; text-align: left; }
+          .lesson-content th { background: #374151; font-weight: 600; }
+          .lesson-content a { color: #34d399; }
+          .lesson-content a:hover { text-decoration: underline; }
+        </style>
+      `;
+      lucide.createIcons();
+    }
+
+    function renderAll() {
+      buildNav(document.getElementById('nav-list'));
+      buildNav(document.getElementById('mobile-nav-list'));
+      renderContent();
+    }
+
+    // All functions properly exposed
+    window.nav = function(dir) { 
+      currentLesson += dir; 
+      renderAll(); 
+      document.getElementById('main-content').scrollTop = 0; 
+    };
+
+    window.goHome = function() { window.location.href = 'index.html'; };
+
+    window.toggleMobile = function(force) {
+      const sidebar = document.getElementById('mobile-sidebar');
+      const overlay = document.getElementById('mobile-overlay');
+      const show = force !== undefined ? force : !sidebar.classList.contains('hidden');
+      sidebar.classList.toggle('hidden', !show);
+      overlay.classList.toggle('hidden', !show);
+    };
+
+    document.addEventListener('DOMContentLoaded', function() {
+      document.getElementById('mobile-menu-btn').onclick = () => toggleMobile();
+      renderAll();
+      lucide.createIcons();
+    });
+
+    // SDK
+    const defaultConfig = { 
+      site_title: 'Python Course', 
+      primary_color: '#10b981', 
+      surface_color: '#1f2937', 
+      text_color: '#d1d5db', 
+      accent_color: '#6ee7b7', 
+      bg_color: '#111827', 
+      font_family: 'Source Sans 3', 
+      font_size: 16 
+    };
+
+    function applyConfig(config) {
+      document.getElementById('site-title').textContent = config.site_title || defaultConfig.site_title;
+    }
+
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange: async (config) => applyConfig(config),
+        mapToCapabilities: (config) => ({
+          recolorables: [
+            { get: () => config.bg_color || defaultConfig.bg_color, set: (v) => { config.bg_color = v; window.elementSdk.setConfig({ bg_color: v }); } },
+            { get: () => config.surface_color || defaultConfig.surface_color, set: (v) => { config.surface_color = v; window.elementSdk.setConfig({ surface_color: v }); } },
+            { get: () => config.text_color || defaultConfig.text_color, set: (v) => { config.text_color = v; window.elementSdk.setConfig({ text_color: v }); } },
+            { get: () => config.primary_color || defaultConfig.primary_color, set: (v) => { config.primary_color = v; window.elementSdk.setConfig({ primary_color: v }); } },
+            { get: () => config.accent_color || defaultConfig.accent_color, set: (v) => { config.accent_color = v; window.elementSdk.setConfig({ accent_color: v }); } }
+          ],
+          borderables: [],
+          fontEditable: { get: () => config.font_family || defaultConfig.font_family, set: (v) => { config.font_family = v; window.elementSdk.setConfig({ font_family: v }); } },
+          fontSizeable: { get: () => config.font_size || defaultConfig.font_size, set: (v) => { config.font_size = v; window.elementSdk.setConfig({ font_size: v }); } }
+        }),
+        mapToEditPanelValues: (config) => new Map([["site_title", config.site_title || defaultConfig.site_title]])
+      });
+    }
+    function toggleMobile(){
+
+  const sidebar = document.getElementById("mobile-sidebar");
+  const overlay = document.getElementById("mobile-overlay");
+
+  // OPEN
+  if(sidebar.classList.contains("-translate-x-full")){
+
+    sidebar.classList.remove("-translate-x-full");
+
+    overlay.classList.remove("hidden");
+
+  }
+
+  // CLOSE
+  else{
+
+    sidebar.classList.add("-translate-x-full");
+
+    overlay.classList.add("hidden");
+
+  }
+
+}
+
+  </script>
+ </body>
+</html>

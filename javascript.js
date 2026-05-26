@@ -117,6 +117,9 @@ function showPasswordOverlay(subject) {
   if (subject === 'network') {
     targetPage = 'NetworkLesson.html';
   }
+    if (subject === 'mit') {
+    targetPage = 'MITLesson.html';
+  }
 
   document
     .getElementById('password-overlay')
