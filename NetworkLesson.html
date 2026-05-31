@@ -343,12 +343,33 @@ Your Phone
             <li><strong>Protocols:</strong> TCP/IP, HTTP</li>
             <li><strong>Hardware:</strong> Routers, switches, modems</li>
           </ul>
-          <h3>LAN Example (Home Network)</h3>
-          <div class="network-diagram">
-          Phone ←→ Laptop ←→ Smart TV
-                 ↑
-            WiFi Router (connects to Internet)
-          </div>
+          <h3>PAN (Personal Area Network)</h3>
+          <ul>
+<li>Range ~10 m</li>
+<li>Connects devices around one person.</li>
+<li>Bluetooth headphones 🎧</li></ul>
+<img src="assests/networkimage/Pan.jpeg">
+<h3>LAN (Local Area Network)</h3>
+  <ul>
+<li>Range ~100 m</li>
+<li>Connects devices in one home, school, or office.</li>
+<li>Home/School Wi-Fi 🏠</li></ul>
+<img src="assests/networkimage/Lan.jpeg">
+<h3>MAN (Metropolitan Area Network)</h3>
+<ul>
+  <li>Range ~City-wide</li>
+<li>Connects networks across a city.</li>
+<li>City fiber network 🌆</li>
+<img src="assests/networkimage/Man.jpeg">
+</ul>
+<h3>WAN (Wide Area Network)</h3>
+<ul>
+<li>Range ~Kilometers+</li>
+<li>Connects networks over large distances, even worldwide.</li>
+<li>Internet 🌍</li>
+</ul>
+<img src="assests/networkimage/Wan.jpeg">
+      
         `
       },
       {
@@ -356,6 +377,7 @@ Your Phone
         content: `
           <h2>WiFi vs Mobile Data</h2>
           <p>Two ways to connect to Internet. WiFi uses local wireless, Mobile Data uses cellular towers.</p>
+         <img src="assests/networkimage/wifiVsMobliedata.jpeg">
           <h3>Comparison</h3>
           <table>
             <thead><tr><th>Feature</th><th>WiFi</th><th>Mobile Data</th></tr></thead>
@@ -382,6 +404,23 @@ Your Phone
               <tr><td>5G</td><td>~1Gbps+</td><td>2019</td></tr>
             </tbody>
           </table>
+
+          <h3>Mobile Data 📱</h3>
+          <div class="code-block">Phone
+  ↓
+Cell Tower
+  ↓
+Mobile ISP Network
+  ↓
+Internet</div>
+          <h3>Wi-Fi 🏠</h3>
+           <div class="code-block">Phone
+  ↓ Wi-Fi
+Router
+  ↓
+ISP
+  ↓
+Internet</div>
         `
       },
 
@@ -392,6 +431,8 @@ Your Phone
           <h2>IP Address</h2>
           <p><strong>IP Address</strong> = Unique numerical label for every device on a network (like home address).</p>
           <h3>IPv4 vs IPv6</h3>
+          <p>IPv4 = Older version of IP addresses. <br>
+IPv6 = Newer version with many more addresses available.</p>
           <table>
             <thead><tr><th>Version</th><th>Format</th><th>Total Addresses</th><th>Status</th></tr></thead>
             <tbody>
@@ -405,10 +446,18 @@ Your Phone
             <tbody>
               <tr><td><strong>Public</strong></td><td>8.8.8.8</td><td>Internet routable</td></tr>
               <tr><td><strong>Private</strong></td><td>192.168.x.x</td><td>Local networks</td></tr>
-              <tr><td><strong>Static</strong></td><td>-</td><td>Fixed address</td></tr>
-              <tr><td><strong>Dynamic</strong></td><td>-</td><td>DHCP assigned</td></tr>
+              <tr><td><strong>Static</strong></td><td>Fixed address</td><td>Always stays the same</td></tr>
+              <tr><td><strong>Dynamic</strong></td><td>Assigned automatically</td><td>DHCP assigned/Can change over time</td></tr>
             </tbody>
           </table>
+           <table>
+        <tr><th>Network Term</th><th>Real-Life Example</th></tr>
+<tr><td>IP Address</td>	<td>House address</td></tr>
+<tr><td>Public IP	</td>	<td>City address visible to everyone</td></tr>
+<tr><td>Private IP	</td>	<td>Room number inside a building</td></tr>
+<tr><td>Static IP	</td>	<td>Permanent address</td></tr>
+<tr><td>Dynamic IP	</td>	<td>Temporary address </td></tr>
+</table>
           <h3>Check Your IP</h3>
           <ul>
             <li>Windows: <code>ipconfig</code></li>
