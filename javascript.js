@@ -181,22 +181,3 @@ document.addEventListener('DOMContentLoaded', () => {
         unlockLesson();
       }
     });
-
-  // CLICK OUTSIDE
-  document
-    .getElementById('password-overlay')
-    .addEventListener('click', function(e) {
-
-      if (e.target === this) {
-        closePasswordOverlay();
-      }
-    });
-
-  // ESC KEY
-  document.addEventListener('keydown', function(e) {
-
-    if (e.key === 'Escape') {
-      closePasswordOverlay();
-    }
-  });
-});
