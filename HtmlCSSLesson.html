@@ -1,1 +1,1223 @@
-<h1>hi</h1>
+<!doctype html>
+<html lang="en" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Computer Networks</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    html, body { height: 100%; margin: 0; }
+    body { font-family: 'Source Sans 3', sans-serif; box-sizing: border-box; }
+    code, .mono { font-family: 'JetBrains Mono', monospace; }
+    .sidebar-item { transition: all 0.15s; }
+    .sidebar-item:hover { background: #2d3748; }
+    .sidebar-item.active { background: #1a73e8; color: #fff; }
+    .code-block { 
+      background: #1e1e2e; 
+      color: #cdd6f4; 
+      border-radius: 8px; 
+      padding: 16px; 
+      overflow-x: auto; 
+      white-space: pre; 
+      font-size: 0.85rem; 
+      line-height: 1.6; 
+      margin: 1rem 0;
+      tab-size: 2;
+    }/* Try it editor */
+textarea {
+  width: 100%;
+  height: 150px;
+  margin-top: 10px;
+}
+
+iframe {
+  width: 100%;
+  height: 200px;
+  border: 1px solid #ccc;
+  background-color: #eeeef4;
+}
+
+    .run-btn {
+  margin-top: 10px;
+  padding: 8px 12px;
+  background: #04aa6d;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+    .code-block .keyword { color: #cba6f7; }
+    .code-block .string { color: #a6e3a1; }
+    .code-block .comment { color: #6c7086; font-style: italic; }
+    .code-block .type { color: #89b4fa; }
+    .network-diagram { background: #1f2937; border: 1px solid #4b5563; border-radius: 8px; padding: 16px; font-family: monospace; font-size: 12px; }
+  </style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full bg-gray-900 text-gray-100">
+  <div class="flex h-full w-full">
+   <!-- Sidebar -->
+   <aside id="sidebar" class="w-64 min-w-[256px] bg-gray-800 border-r border-gray-700 overflow-y-auto flex-shrink-0 hidden md:block">
+    <div class="p-5 border-b border-gray-700">
+       <div class="flex items-center gap-3 mb-3">
+          <button onclick="goHome()" class="hover:bg-gray-700 p-1.5 rounded transition" title="Go Home">
+            <i data-lucide="home" class="w-5 h-5"></i>
+          </button>
+          <h1 id="site-title" class="text-lg font-bold text-emerald-400 mono flex-1">Computer Networks</h1>
+        </div>
+    </div>
+    <nav class="py-2" id="nav-list"></nav>
+   </aside>
+   <!-- Mobile menu button --> 
+   <button id="mobile-menu-btn" class="md:hidden fixed top-3 left-3 z-50 bg-gray-800 p-2 rounded-lg border border-gray-700 hover:bg-gray-700 transition"> 
+    <i data-lucide="menu" class="w-5 h-5"></i> 
+   </button> 
+   <!-- Mobile overlay -->
+   <div id="mobile-overlay" class="hidden fixed inset-0 bg-black/60 z-40 md:hidden" onclick="toggleMobile()"></div>
+   <aside id="mobile-sidebar" class="hidden fixed left-0 top-0 h-full w-64 bg-gray-800 z-50 overflow-y-auto md:hidden shadow-2xl">
+    <div class="p-5 border-b border-gray-700 flex justify-between items-center">
+     <div class="flex items-center gap-3">
+       <button onclick="goHome()" class="hover:bg-gray-700 p-1.5 rounded transition" title="Go Home">
+         <i data-lucide="home" class="w-5 h-5"></i>
+       </button>
+       <h1 class="text-lg font-bold text-emerald-400 mono">Networks</h1>
+     </div>
+     <button onclick="toggleMobile()" class="hover:bg-gray-700 p-1.5 rounded transition">
+      <i data-lucide="x" class="w-5 h-5"></i>
+     </button>
+    </div>
+    <nav class="py-2" id="mobile-nav-list"></nav>
+   </aside>
+   <!-- Main Content -->
+   <main class="flex-1 overflow-y-auto p-6 md:p-10" id="main-content"></main>
+  </div>
+  <script>
+    const lessons = [
+   {
+  title: "🌐 HTML, CSS & JavaScript",
+  content: `
+    <h2>What are HTML, CSS, and JavaScript?</h2>
+
+    <p>
+      HTML, CSS, and JavaScript are the three core technologies used to build websites and web applications.
+    </p>
+
+    <h3>HTML (HyperText Markup Language)</h3>
+
+    <p>
+      <strong>HTML</strong> creates the structure and content of a webpage.
+    </p>
+
+    <ul>
+      <li>Adds headings and paragraphs</li>
+      <li>Displays images and videos</li>
+      <li>Creates links and lists</li>
+      <li>Builds the structure of a webpage</li>
+    </ul>
+
+
+    <h3>CSS (Cascading Style Sheets)</h3>
+
+    <p>
+      <strong>CSS</strong> controls the appearance and design of a webpage.
+    </p>
+
+    <ul>
+      <li>Changes text colors</li>
+      <li>Adds backgrounds</li>
+      <li>Adjusts font sizes</li>
+      <li>Creates attractive layouts</li>
+    </ul>
+
+    
+
+    <h3>JavaScript</h3>
+
+    <p>
+      <strong>JavaScript</strong> adds interactivity and functionality to a webpage.
+    </p>
+
+    <ul>
+      <li>Responds to button clicks</li>
+      <li>Shows pop-up messages</li>
+      <li>Validates forms</li>
+      <li>Creates games and animations</li>
+    </ul>
+
+ 
+
+    <h3>How They Work Together</h3>
+
+    <table border="1" cellpadding="8">
+      <tr>
+        <th>Technology</th>
+        <th>Purpose</th>
+        <th>House Analogy</th>
+      </tr>
+      <tr>
+        <td>HTML</td>
+        <td>Structure</td>
+        <td>Bricks and Walls</td>
+      </tr>
+      <tr>
+        <td>CSS</td>
+        <td>Design</td>
+        <td>Paint and Decoration</td>
+      </tr>
+      <tr>
+        <td>JavaScript</td>
+        <td>Functionality</td>
+        <td>Electricity and Automation</td>
+      </tr>
+    </table>
+
+    
+
+    <h3>Example</h3>
+
+    <p>
+      Imagine a webpage with a blue button:
+    </p>
+
+    <ul>
+      <li>HTML creates the button.</li>
+      <li>CSS makes the button blue.</li>
+      <li>JavaScript makes the button respond when clicked.</li>
+    </ul>
+
+    <p>
+      Together, HTML, CSS, and JavaScript form the foundation of modern web development.
+    </p>
+  `
+},
+{
+  title: "🟡 HTML Introduction",
+  content: `
+    <h2>What is HTML?</h2>
+
+    <ul>
+      <li>HTML stands for HyperText Markup Language.</li>
+      <li>HTML is the standard markup language for creating web pages.</li>
+      <li>HTML describes the structure of a web page.</li>
+      <li>HTML consists of a series of elements.</li>
+      <li>HTML elements tell the browser how to display content.</li>
+      <li>HTML elements label content such as headings, paragraphs, links, images, and more.</li>
+    </ul>
+
+    <h3>A Simple HTML Document</h3>
+
+    <p>Example:</p>
+
+    <div class="code-block">
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;Page Title&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+    &lt;h1&gt;My First Heading&lt;/h1&gt;
+    &lt;p&gt;My first paragraph.&lt;/p&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+    </div>
+
+    <h3>Explanation</h3>
+
+    <table border="1" cellpadding="8">
+      <tr>
+        <th>Tag</th>
+        <th>Purpose</th>
+      </tr>
+      <tr>
+        <td>&lt;!DOCTYPE html&gt;</td>
+        <td>Declares that the document is HTML5.</td>
+      </tr>
+      <tr>
+        <td>&lt;html&gt;</td>
+        <td>The root element of the web page.</td>
+      </tr>
+      <tr>
+        <td>&lt;head&gt;</td>
+        <td>Contains information about the page.</td>
+      </tr>
+      <tr>
+        <td>&lt;title&gt;</td>
+        <td>Sets the page title shown in the browser tab.</td>
+      </tr>
+      <tr>
+        <td>&lt;body&gt;</td>
+        <td>Contains all visible webpage content.</td>
+      </tr>
+      <tr>
+        <td>&lt;h1&gt;</td>
+        <td>Defines the main heading.</td>
+      </tr>
+      <tr>
+        <td>&lt;p&gt;</td>
+        <td>Defines a paragraph.</td>
+      </tr>
+    </table>
+  `
+},{
+  title: "🟡 HTML Elements",
+  content: `
+    <h2>What is an HTML Element?</h2>
+
+    <p>
+      An HTML element is a piece of content defined by HTML tags.
+      Most HTML elements consist of a start tag, content, and an end tag.
+    </p>
+
+    <div class="code-block">
+&lt;tagname&gt; Content goes here... &lt;/tagname&gt;
+    </div>
+
+    <h3>Normal Elements</h3>
+
+    <p>
+      Normal elements contain a start tag, content, and an end tag.
+    </p>
+
+    <div class="code-block">
+&lt;h1&gt;My First Heading&lt;/h1&gt;
+&lt;p&gt;My first paragraph.&lt;/p&gt;
+    </div>
+
+    <table border="1" cellpadding="8">
+      <tr>
+        <th>Start Tag</th>
+        <th>Content</th>
+        <th>End Tag</th>
+      </tr>
+      <tr>
+        <td>&lt;h1&gt;</td>
+        <td>My First Heading</td>
+        <td>&lt;/h1&gt;</td>
+      </tr>
+      <tr>
+        <td>&lt;p&gt;</td>
+        <td>My first paragraph.</td>
+        <td>&lt;/p&gt;</td>
+      </tr>
+    </table>
+
+    <h3>Empty Elements</h3>
+
+    <p>
+      Some HTML elements are called <strong>empty elements</strong> (or void elements).
+      They do not contain content and do not require an end tag.
+    </p>
+
+    <div class="code-block">
+&lt;img src="photo.jpg"&gt;
+&lt;br&gt;
+&lt;hr&gt;
+&lt;input type="text"&gt;
+    </div>
+
+    <table border="1" cellpadding="8">
+      <tr>
+        <th>Element</th>
+        <th>Purpose</th>
+        <th>End Tag Required?</th>
+      </tr>
+      <tr>
+        <td>&lt;img&gt;</td>
+        <td>Displays an image</td>
+        <td>No</td>
+      </tr>
+      <tr>
+        <td>&lt;br&gt;</td>
+        <td>Creates a line break</td>
+        <td>No</td>
+      </tr>
+      <tr>
+        <td>&lt;hr&gt;</td>
+        <td>Creates a horizontal line</td>
+        <td>No</td>
+      </tr>
+      <tr>
+        <td>&lt;input&gt;</td>
+        <td>Creates an input field</td>
+        <td>No</td>
+      </tr>
+    </table>
+
+    <h3>Summary</h3>
+
+    <p>
+      Most HTML elements have:
+    </p>
+
+    <div class="code-block">
+Start Tag + Content + End Tag
+    </div>
+
+    <p>
+      Examples:
+    </p>
+
+    <div class="code-block">
+&lt;h1&gt;Welcome&lt;/h1&gt;
+&lt;p&gt;Hello World!&lt;/p&gt;
+    </div>
+
+    <p>
+      Some HTML elements are empty elements and do not have content or an end tag.
+    </p>
+
+    <div class="code-block">
+&lt;img src="cat.jpg"&gt;
+&lt;input type="text"&gt;
+    </div>
+  `
+},{
+    title:"🟡 Common Tags",
+    content:`
+    <h2>Common HTML Tags</h2>
+
+<table border="1" cellpadding="8">
+  <tr>
+    <th>Tag</th>
+    <th>Description</th>
+  </tr>
+
+  <tr>
+    <td>&lt;html&gt;</td>
+    <td>Root element of an HTML document.</td>
+  </tr>
+
+  <tr>
+    <td>&lt;head&gt;</td>
+    <td>Contains metadata about the webpage.</td>
+  </tr>
+
+  <tr>
+    <td>&lt;title&gt;</td>
+    <td>Sets the title shown in the browser tab.</td>
+  </tr>
+
+  <tr>
+    <td>&lt;body&gt;</td>
+    <td>Contains all visible webpage content.</td>
+  </tr>
+
+  <tr>
+    <td>&lt;h1&gt; - &lt;h6&gt;</td>
+    <td>Defines headings from largest to smallest.</td>
+  </tr>
+
+  <tr>
+    <td>&lt;p&gt;</td>
+    <td>Defines a paragraph.</td>
+  </tr>
+
+  <tr>
+    <td>&lt;br&gt;</td>
+    <td>Inserts a line break.</td>
+  </tr>
+
+  <tr>
+    <td>&lt;hr&gt;</td>
+    <td>Creates a horizontal line.</td>
+  </tr>
+
+  <tr>
+    <td>&lt;a&gt;</td>
+    <td>Creates a hyperlink.</td>
+  </tr>
+
+  <tr>
+    <td>&lt;img&gt;</td>
+    <td>Displays an image.</td>
+  </tr>
+
+  <tr>
+    <td>&lt;div&gt;</td>
+    <td>Defines a section or container.</td>
+  </tr>
+
+  <tr>
+    <td>&lt;span&gt;</td>
+    <td>Defines an inline container.</td>
+  </tr>
+
+  <tr>
+    <td>&lt;ul&gt;</td>
+    <td>Creates an unordered (bulleted) list.</td>
+  </tr>
+
+  <tr>
+    <td>&lt;ol&gt;</td>
+    <td>Creates an ordered (numbered) list.</td>
+  </tr>
+
+  <tr>
+    <td>&lt;li&gt;</td>
+    <td>Defines a list item.</td>
+  </tr>
+
+  <tr>
+    <td>&lt;table&gt;</td>
+    <td>Creates a table.</td>
+  </tr>
+
+  <tr>
+    <td>&lt;tr&gt;</td>
+    <td>Defines a table row.</td>
+  </tr>
+
+  <tr>
+    <td>&lt;th&gt;</td>
+    <td>Defines a table header cell.</td>
+  </tr>
+
+  <tr>
+    <td>&lt;td&gt;</td>
+    <td>Defines a table data cell.</td>
+  </tr>
+
+  <tr>
+    <td>&lt;form&gt;</td>
+    <td>Creates a form for user input.</td>
+  </tr>
+
+  <tr>
+    <td>&lt;input&gt;</td>
+    <td>Creates an input field.</td>
+  </tr>
+
+  <tr>
+    <td>&lt;button&gt;</td>
+    <td>Creates a clickable button.</td>
+  </tr>
+
+  <tr>
+    <td>&lt;label&gt;</td>
+    <td>Defines a label for an input field.</td>
+  </tr>
+
+  <tr>
+    <td>&lt;textarea&gt;</td>
+    <td>Creates a multi-line text input area.</td>
+  </tr>
+
+  <tr>
+    <td>&lt;select&gt;</td>
+    <td>Creates a drop-down list.</td>
+  </tr>
+
+  <tr>
+    <td>&lt;option&gt;</td>
+    <td>Defines an option in a drop-down list.</td>
+  </tr>
+
+  <tr>
+    <td>&lt;strong&gt;</td>
+    <td>Displays important (bold) text.</td>
+  </tr>
+
+  <tr>
+    <td>&lt;em&gt;</td>
+    <td>Displays emphasized (italic) text.</td>
+  </tr>
+
+  <tr>
+    <td>&lt;audio&gt;</td>
+    <td>Embeds audio content.</td>
+  </tr>
+
+  <tr>
+    <td>&lt;video&gt;</td>
+    <td>Embeds video content.</td>
+  </tr>
+</table>`
+},{
+  title: "🟡 HTML Attributes",
+  content: `
+    <h2>What are HTML Attributes?</h2>
+
+    <p>
+      HTML attributes provide additional information about HTML elements.
+    </p>
+
+    <p>
+      Attributes are always specified in the start tag and usually come in name/value pairs:
+    </p>
+
+    <div class="code-block">
+attribute="value"
+    </div>
+
+    <h3>Example</h3>
+
+    <div class="code-block">
+&lt;a href="https://www.google.com"&gt;Visit Google&lt;/a&gt;
+    </div>
+
+    <p>
+      In this example, <strong>href</strong> is an attribute that specifies the destination of the link.
+    </p>
+
+    <h3>Common HTML Attributes</h3>
+
+    <table border="1" cellpadding="8">
+      <tr>
+        <th>Attribute</th>
+        <th>Description</th>
+        <th>Example</th>
+      </tr>
+
+      <tr>
+        <td>href</td>
+        <td>Specifies the URL of a link.</td>
+        <td>&lt;a href="page.html"&gt;</td>
+      </tr>
+
+      <tr>
+        <td>src</td>
+        <td>Specifies the path to an image.</td>
+        <td>&lt;img src="cat.jpg"&gt;</td>
+      </tr>
+
+      <tr>
+        <td>alt</td>
+        <td>Provides alternative text for an image.</td>
+        <td>&lt;img alt="Cat"&gt;</td>
+      </tr>
+
+      <tr>
+        <td>width</td>
+        <td>Sets the width of an element.</td>
+        <td>&lt;img width="200"&gt;</td>
+      </tr>
+
+      <tr>
+        <td>height</td>
+        <td>Sets the height of an element.</td>
+        <td>&lt;img height="100"&gt;</td>
+      </tr>
+
+      <tr>
+        <td>style</td>
+        <td>Adds inline CSS styling.</td>
+        <td>&lt;p style="color:red;"&gt;</td>
+      </tr>
+
+      <tr>
+        <td>title</td>
+        <td>Displays extra information when hovering.</td>
+        <td>&lt;p title="Hello"&gt;</td>
+      </tr>
+
+      <tr>
+        <td>id</td>
+        <td>Provides a unique identifier.</td>
+        <td>&lt;div id="header"&gt;</td>
+      </tr>
+
+      <tr>
+        <td>class</td>
+        <td>Groups elements for CSS styling.</td>
+        <td>&lt;p class="important"&gt;</td>
+      </tr>
+    </table>
+
+    <h3>Image Example</h3>
+
+    <div class="code-block">
+&lt;img src="cat.jpg" alt="Cute Cat" width="200"&gt;
+    </div>
+
+    <p>
+      Here:
+    </p>
+
+    <ul>
+      <li><strong>src</strong> specifies the image file.</li>
+      <li><strong>alt</strong> provides alternative text.</li>
+      <li><strong>width</strong> sets the image width.</li>
+    </ul>
+
+    <h3>Important Notes</h3>
+
+    <ul>
+      <li>Attributes are placed inside the start tag.</li>
+      <li>Most attributes use the format: name="value".</li>
+      <li>An element can have multiple attributes.</li>
+    </ul>
+
+    <div class="code-block">
+&lt;img src="cat.jpg" alt="Cute Cat" width="200" height="150"&gt;
+    </div>
+  `
+},{
+  title: "🎨 CSS Introduction",
+  content: `
+    <h2>What is CSS?</h2>
+
+    <p>
+      <strong>CSS (Cascading Style Sheets)</strong> is used to style and design HTML webpages.
+    </p>
+
+    <ul>
+      <li>Changes text colors</li>
+      <li>Changes fonts and font sizes</li>
+      <li>Adds backgrounds</li>
+      <li>Controls spacing and layout</li>
+      <li>Makes webpages attractive and responsive</li>
+    </ul>
+
+    <h3>Why Use CSS?</h3>
+
+    <p>
+      HTML creates the structure of a webpage, while CSS controls its appearance.
+    </p>
+
+    <table border="1" cellpadding="8">
+      <tr>
+        <th>Technology</th>
+        <th>Purpose</th>
+      </tr>
+      <tr>
+        <td>HTML</td>
+        <td>Structure of the webpage</td>
+      </tr>
+      <tr>
+        <td>CSS</td>
+        <td>Style and design of the webpage</td>
+      </tr>
+    </table>
+
+    <h3>CSS Syntax</h3>
+
+    <div class="code-block">
+selector {
+    property: value;
+}
+    </div>
+
+    <h3>Example</h3>
+
+    <div class="code-block">
+h1 {
+    color: blue;
+}
+    </div>
+
+    <table border="1" cellpadding="8">
+      <tr>
+        <th>Part</th>
+        <th>Description</th>
+      </tr>
+      <tr>
+        <td>h1</td>
+        <td>Selector</td>
+      </tr>
+      <tr>
+        <td>color</td>
+        <td>Property</td>
+      </tr>
+      <tr>
+        <td>blue</td>
+        <td>Value</td>
+      </tr>
+    </table>
+
+    <h3>Types of CSS</h3>
+
+    <h4>1. Inline CSS</h4>
+
+    <div class="code-block">
+&lt;h1 style="color:blue;"&gt;Hello World&lt;/h1&gt;
+    </div>
+
+    <p>
+      CSS is written directly inside an HTML element.
+    </p>
+
+    <h4>2. Internal CSS</h4>
+
+    <div class="code-block">
+&lt;style&gt;
+h1 {
+    color: blue;
+}
+&lt;/style&gt;
+    </div>
+
+    <p>
+      CSS is written inside the &lt;style&gt; tag in the HTML document.
+    </p>
+
+    <h4>3. External CSS</h4>
+
+    <div class="code-block">
+&lt;link rel="stylesheet" href="style.css"&gt;
+    </div>
+
+    <p>
+      CSS is stored in a separate file and linked to the webpage.
+    </p>
+
+    <h3>Common CSS Properties</h3>
+
+
+    <h3>Complete Example</h3>
+
+    <div class="code-block">
+h1 {
+    color: blue;
+    text-align: center;
+}
+
+p {
+    font-size: 18px;
+}
+    </div>
+
+    <p>
+      Result:
+    </p>
+
+    <ul>
+      <li>The heading appears blue and centered.</li>
+      <li>The paragraph text becomes larger.</li>
+    </ul>
+
+    <h3>Summary</h3>
+
+    <p>
+      CSS is used to control the appearance of HTML elements.
+    </p>
+
+    <div class="code-block">
+CSS = Selector + Property + Value
+    </div>
+
+    <p>
+      Example:
+    </p>
+
+    <div class="code-block">
+h1 {
+    color: blue;
+}
+    </div>
+  `
+},{
+  title: "🎨 CSS Properties",
+  content: `
+    <h2>What are CSS Properties?</h2>
+
+    <p>
+      CSS properties are used to control the appearance and layout of HTML elements.
+    </p>
+
+    <p>
+      A CSS rule consists of a selector, a property, and a value.
+    </p>
+
+    <div class="code-block">
+h1 {
+    color: blue;
+}
+    </div>
+
+    <p>
+      In this example, <strong>color</strong> is the property and <strong>blue</strong> is the value.
+    </p>
+
+    <h3>Text Properties</h3>
+
+    <table border="1" cellpadding="8">
+      <tr>
+        <th>Property</th>
+        <th>Description</th>
+        <th>Example</th>
+      </tr>
+      <tr>
+        <td>color</td>
+        <td>Changes text color.</td>
+        <td>color: red;</td>
+      </tr>
+      <tr>
+        <td>font-size</td>
+        <td>Changes text size.</td>
+        <td>font-size: 24px;</td>
+      </tr>
+      <tr>
+        <td>font-family</td>
+        <td>Changes font style.</td>
+        <td>font-family: Arial;</td>
+      </tr>
+      <tr>
+        <td>font-weight</td>
+        <td>Makes text bold.</td>
+        <td>font-weight: bold;</td>
+      </tr>
+      <tr>
+        <td>font-style</td>
+        <td>Makes text italic.</td>
+        <td>font-style: italic;</td>
+      </tr>
+      <tr>
+        <td>text-align</td>
+        <td>Aligns text.</td>
+        <td>text-align: center;</td>
+      </tr>
+      <tr>
+        <td>text-decoration</td>
+        <td>Adds underline or removes it.</td>
+        <td>text-decoration: underline;</td>
+      </tr>
+    </table>
+
+    <h3>Background Properties</h3>
+
+    <table border="1" cellpadding="8">
+      <tr>
+        <th>Property</th>
+        <th>Description</th>
+        <th>Example</th>
+      </tr>
+      <tr>
+        <td>background-color</td>
+        <td>Sets background color.</td>
+        <td>background-color: yellow;</td>
+      </tr>
+      <tr>
+        <td>background-image</td>
+        <td>Sets a background image.</td>
+        <td>background-image: url("bg.jpg");</td>
+      </tr>
+      <tr>
+        <td>background-repeat</td>
+        <td>Controls image repetition.</td>
+        <td>background-repeat: no-repeat;</td>
+      </tr>
+      <tr>
+        <td>background-size</td>
+        <td>Controls image size.</td>
+        <td>background-size: cover;</td>
+      </tr>
+    </table>
+
+    <h3>Border Properties</h3>
+
+    <table border="1" cellpadding="8">
+      <tr>
+        <th>Property</th>
+        <th>Description</th>
+        <th>Example</th>
+      </tr>
+      <tr>
+        <td>border</td>
+        <td>Adds a border.</td>
+        <td>border: 2px solid black;</td>
+      </tr>
+      <tr>
+        <td>border-width</td>
+        <td>Sets border thickness.</td>
+        <td>border-width: 3px;</td>
+      </tr>
+      <tr>
+        <td>border-color</td>
+        <td>Sets border color.</td>
+        <td>border-color: blue;</td>
+      </tr>
+      <tr>
+        <td>border-radius</td>
+        <td>Creates rounded corners.</td>
+        <td>border-radius: 10px;</td>
+      </tr>
+    </table>
+
+    <h3>Box Model Properties</h3>
+
+    <table border="1" cellpadding="8">
+      <tr>
+        <th>Property</th>
+        <th>Description</th>
+        <th>Example</th>
+      </tr>
+      <tr>
+        <td>width</td>
+        <td>Sets element width.</td>
+        <td>width: 300px;</td>
+      </tr>
+      <tr>
+        <td>height</td>
+        <td>Sets element height.</td>
+        <td>height: 200px;</td>
+      </tr>
+      <tr>
+        <td>padding</td>
+        <td>Space inside the border.</td>
+        <td>padding: 20px;</td>
+      </tr>
+      <tr>
+        <td>margin</td>
+        <td>Space outside the border.</td>
+        <td>margin: 20px;</td>
+      </tr>
+    </table>
+
+    <h3>Layout Properties</h3>
+
+    <table border="1" cellpadding="8">
+      <tr>
+        <th>Property</th>
+        <th>Description</th>
+        <th>Example</th>
+      </tr>
+      <tr>
+        <td>display</td>
+        <td>Controls how elements are displayed.</td>
+        <td>display: flex;</td>
+      </tr>
+      <tr>
+        <td>position</td>
+        <td>Controls element positioning.</td>
+        <td>position: absolute;</td>
+      </tr>
+      <tr>
+        <td>top</td>
+        <td>Moves element from top.</td>
+        <td>top: 20px;</td>
+      </tr>
+      <tr>
+        <td>left</td>
+        <td>Moves element from left.</td>
+        <td>left: 10px;</td>
+      </tr>
+    </table>
+
+    <h3>Flexbox Properties</h3>
+
+    <table border="1" cellpadding="8">
+      <tr>
+        <th>Property</th>
+        <th>Description</th>
+      </tr>
+      <tr>
+        <td>display: flex</td>
+        <td>Creates a flex container.</td>
+      </tr>
+      <tr>
+        <td>justify-content</td>
+        <td>Aligns items horizontally.</td>
+      </tr>
+      <tr>
+        <td>align-items</td>
+        <td>Aligns items vertically.</td>
+      </tr>
+      <tr>
+        <td>gap</td>
+        <td>Adds space between items.</td>
+      </tr>
+    </table>
+
+    <h3>Example</h3>
+
+    <div class="code-block">
+.card {
+    width: 300px;
+    padding: 20px;
+    margin: 10px;
+    background-color: lightblue;
+    border: 2px solid blue;
+    border-radius: 10px;
+}
+    </div>
+
+    <p>
+      This creates a card with:
+    </p>
+
+    <ul>
+      <li>300px width</li>
+      <li>20px inner spacing (padding)</li>
+      <li>10px outer spacing (margin)</li>
+      <li>Light blue background</li>
+      <li>Blue border</li>
+      <li>Rounded corners</li>
+    </ul>
+      <h3>Summary</h3>
+
+    <p>
+      CSS properties allow developers to control:
+    </p>
+
+    <ul>
+      <li>Text appearance</li>
+      <li>Colors and backgrounds</li>
+      <li>Element sizes</li>
+      <li>Spacing and borders</li>
+      <li>Layout and positioning</li>
+      <li>Effects and animations</li>
+    </ul>
+  `
+},
+{
+    title:"🚀 Try it yourself",
+    content:`<h1>Try It Yourself</h1>
+
+      <p>Write HTML code below:</p>
+
+      <textarea id="code" style="color:black;">
+<h1>Hello World</h1>
+<p>This is my page</p>
+      </textarea>
+<div></div>
+      <button class="run-btn" onclick="runCode()">Run</button>
+
+      <h3>Output:</h3>
+      <iframe id="output"></iframe>`
+
+},
+{
+    title:"🚀  Assignment",
+    content:`<h2>Assignments</h2>
+
+      <h3>1. My Portfolio</h3>
+      <ul>
+        <li>Create homepage</li>
+        <li>About section</li>
+        <li>Image</li>
+        <li>Skills</li>
+      </ul>
+
+      <h3>2. Online Shop</h3>
+      <ul>
+        <li>Products list</li>
+        <li>Images</li>
+        <li>Price</li>
+      </ul>
+
+      <h3>3. Idol Page</h3>
+      <ul>
+        <li>Biography</li>
+        <li>Image</li>
+        <li>Achievements</li>
+      </ul>`
+},
+    ];
+    function runCode(){
+  let code = document.getElementById("code").value;
+  let output = document.getElementById("output").contentWindow.document;
+  output.open();
+  output.write(code);
+  output.close();
+}
+
+
+    let currentLesson = 0;
+
+    function buildNav(container) {
+      container.innerHTML = '';
+      lessons.forEach((lesson, i) => {
+        const item = document.createElement('div');
+        item.className = `sidebar-item px-5 py-2.5 cursor-pointer text-sm text-gray-300 ${i === currentLesson ? 'active' : ''}`;
+        item.textContent = lesson.title;
+        item.onclick = () => { currentLesson = i; renderAll(); toggleMobile(false); };
+        container.appendChild(item);
+      });
+    }
+
+    function renderContent() {
+      const main = document.getElementById('main-content');
+      main.innerHTML = `
+        <article class="max-w-3xl mx-auto lesson-content">
+          ${lessons[currentLesson].content}
+          <div class="flex justify-between mt-10 pt-6 border-t border-gray-700">
+            ${currentLesson > 0 ? `<button onclick="nav(-1)" class="flex items-center gap-2 px-4 py-2 bg-gray-700 hover:bg-gray-600 rounded-lg text-sm"><i data-lucide="chevron-left" class="w-4 h-4"></i> Previous</button>` : '<span></span>'}
+            ${currentLesson < lessons.length - 1 ? `<button onclick="nav(1)" class="flex items-center gap-2 px-4 py-2 bg-emerald-600 hover:bg-emerald-500 rounded-lg text-sm">Next <i data-lucide="chevron-right" class="w-4 h-4"></i></button>` : '<span></span>'}
+          </div>
+        </article>
+        <style>
+          .lesson-content h2 { font-size: 1.75rem; font-weight: 700; margin-bottom: 0.75rem; color: #6ee7b7; }
+          .lesson-content h3 { font-size: 1.2rem; font-weight: 600; margin-top: 1.5rem; margin-bottom: 0.5rem; color: #a7f3d0; }
+          .lesson-content p { margin-bottom: 1rem; line-height: 1.7; color: #d1d5db; }
+          .lesson-content ul { list-style: disc; padding-left: 1.5rem; margin-bottom: 1rem; }
+          .lesson-content li { margin-bottom: 0.4rem; color: #d1d5db; line-height: 1.6; }
+          .lesson-content ol { padding-left: 1.5rem; margin-bottom: 1rem; }
+          .lesson-content code { background: #374151; padding: 2px 6px; border-radius: 4px; font-size: 0.85em; color: #a5b4fc; }
+          .lesson-content table { width: 100%; border-collapse: collapse; margin: 1rem 0; background: #1f2937; border-radius: 0.5rem; overflow: hidden; }
+          .lesson-content th, .lesson-content td { border: 1px solid #4b5563; padding: 0.75rem 1rem; text-align: left; }
+          .lesson-content th { background: #374151; font-weight: 600; }
+          .network-diagram { background: linear-gradient(135deg, #1e293b 0%, #334155 100%); border: 1px solid #475569; border-radius: 8px; padding: 1.25rem; font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #cbd5e1; margin: 1rem 0; }
+        </style>
+      `;
+      lucide.createIcons();
+    }
+
+    function renderAll() {
+      buildNav(document.getElementById('nav-list'));
+      buildNav(document.getElementById('mobile-nav-list'));
+      renderContent();
+    }
+
+    window.nav = function(dir) { 
+      currentLesson += dir; 
+      renderAll(); 
+      document.getElementById('main-content').scrollTop = 0; 
+    };
+
+    window.goHome = function() { window.location.href = 'index.html'; };
+
+    window.toggleMobile = function(force) {
+      const sidebar = document.getElementById('mobile-sidebar');
+      const overlay = document.getElementById('mobile-overlay');
+      const show = force !== undefined ? force : !sidebar.classList.contains('hidden');
+      sidebar.classList.toggle('hidden', !show);
+      overlay.classList.toggle('hidden', !show);
+    };
+
+    document.addEventListener('DOMContentLoaded', function() {
+      document.getElementById('mobile-menu-btn').onclick = () => toggleMobile();
+      renderAll();
+      lucide.createIcons();
+    });
+
+    const defaultConfig = { 
+      site_title: 'Computer Networks', 
+      primary_color: '#10b981', 
+      surface_color: '#1f2937', 
+      text_color: '#d1d5db', 
+      accent_color: '#6ee7b7', 
+      bg_color: '#111827', 
+      font_family: 'Source Sans 3', 
+      font_size: 16 
+    };
+
+    function applyConfig(config) {
+      document.getElementById('site-title').textContent = config.site_title || defaultConfig.site_title;
+    }
+
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange: async (config) => applyConfig(config),
+        mapToCapabilities: (config) => ({
+          recolorables: [
+            { get: () => config.bg_color || defaultConfig.bg_color, set: (v) => { config.bg_color = v; window.elementSdk.setConfig({ bg_color: v }); } },
+            { get: () => config.surface_color || defaultConfig.surface_color, set: (v) => { config.surface_color = v; window.elementSdk.setConfig({ surface_color: v }); } },
+            { get: () => config.text_color || defaultConfig.text_color, set: (v) => { config.text_color = v; window.elementSdk.setConfig({ text_color: v }); } },
+            { get: () => config.primary_color || defaultConfig.primary_color, set: (v) => { config.primary_color = v; window.elementSdk.setConfig({ primary_color: v }); } },
+            { get: () => config.accent_color || defaultConfig.accent_color, set: (v) => { config.accent_color = v; window.elementSdk.setConfig({ accent_color: v }); } }
+          ],
+          borderables: [],
+          fontEditable: { get: () => config.font_family || defaultConfig.font_family, set: (v) => { config.font_family = v; window.elementSdk.setConfig({ font_family: v }); } },
+          fontSizeable: { get: () => config.font_size || defaultConfig.font_size, set: (v) => { config.font_size = v; window.elementSdk.setConfig({ font_size: v }); } }
+        }),
+        mapToEditPanelValues: (config) => new Map([["site_title", config.site_title || defaultConfig.site_title]])
+      });
+    }
+  </script>
+ </body>
+</html>
