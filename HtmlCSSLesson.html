@@ -3,7 +3,7 @@
  <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Computer Networks</title>
+  <title>WebBasic Course</title>
   <script src="https://cdn.tailwindcss.com/3.4.17"></script>
   <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
   <script src="/_sdk/element_sdk.js"></script>
@@ -65,7 +65,7 @@ iframe {
           <button onclick="goHome()" class="hover:bg-gray-700 p-1.5 rounded transition" title="Go Home">
             <i data-lucide="home" class="w-5 h-5"></i>
           </button>
-          <h1 id="site-title" class="text-lg font-bold text-emerald-400 mono flex-1">Computer Networks</h1>
+          <h1 id="site-title" class="text-lg font-bold text-emerald-400 mono flex-1">Web Basics</h1>
         </div>
     </div>
     <nav class="py-2" id="nav-list"></nav>
@@ -82,7 +82,7 @@ iframe {
        <button onclick="goHome()" class="hover:bg-gray-700 p-1.5 rounded transition" title="Go Home">
          <i data-lucide="home" class="w-5 h-5"></i>
        </button>
-       <h1 class="text-lg font-bold text-emerald-400 mono">Networks</h1>
+       <h1 class="text-lg font-bold text-emerald-400 mono">Web Basics</h1>
      </div>
      <button onclick="toggleMobile()" class="hover:bg-gray-700 p-1.5 rounded transition">
       <i data-lucide="x" class="w-5 h-5"></i>
@@ -173,7 +173,7 @@ iframe {
       </tr>
     </table>
 
-    
+    <img src="assests/html/htmlcssja.jpeg">
 
     <h3>Example</h3>
 
@@ -1065,7 +1065,7 @@ h1 {
 },
 {
     title:"🚀 Try it yourself",
-    content:`<h1>Try It Yourself</h1>
+    content:`<h2>Try It Yourself</h2>
 
       <p>Write HTML code below:</p>
 
@@ -1105,7 +1105,916 @@ h1 {
         <li>Image</li>
         <li>Achievements</li>
       </ul>`
-},
+},{
+  title: "🔴 JavaScript Introduction",
+  content: `
+    <h2>What is JavaScript?</h2>
+
+    <p>
+      <strong>JavaScript (JS)</strong> is a programming language used to make web pages interactive and dynamic.
+    </p>
+
+    <ul>
+      <li>Adds interactivity to webpages</li>
+      <li>Responds to user actions such as clicks and typing</li>
+      <li>Can change HTML and CSS content</li>
+      <li>Can validate forms</li>
+      <li>Can create games, animations, and web applications</li>
+    </ul>
+
+    <h3>Web Development Technologies</h3>
+
+    <table border="1" cellpadding="8">
+      <tr>
+        <th>Technology</th>
+        <th>Purpose</th>
+      </tr>
+      <tr>
+        <td>HTML</td>
+        <td>Structure of the webpage</td>
+      </tr>
+      <tr>
+        <td>CSS</td>
+        <td>Style and design of the webpage</td>
+      </tr>
+      <tr>
+        <td>JavaScript</td>
+        <td>Behavior and interactivity</td>
+      </tr>
+    </table>
+
+    <h3>JavaScript Example</h3>
+
+    <div class="code-block">
+&lt;script&gt;
+alert("Hello World!");
+&lt;/script&gt;
+    </div>
+
+    <p>
+      This code displays a popup message when the webpage loads.
+    </p>
+    <img src="assests/html/Jswindowal.jpg">
+
+    <h3>Where to Write JavaScript?</h3>
+
+    <h4>1. Internal JavaScript</h4>
+
+    <div class="code-block">
+&lt;script&gt;
+console.log("Hello");
+&lt;/script&gt;
+    </div>
+
+    <h4>2. External JavaScript</h4>
+
+    <div class="code-block">
+&lt;script src="script.js"&gt;&lt;/script&gt;
+    </div>
+
+    <p>
+      JavaScript code is stored in a separate file.
+    </p>
+
+    <h3>JavaScript Can...</h3>
+
+    <ul>
+      <li>Change HTML content</li>
+      <li>Change CSS styles</li>
+      <li>Show popup messages</li>
+      <li>Handle button clicks</li>
+      <li>Perform calculations</li>
+    </ul>
+
+    <h3>Example: Change HTML Content</h3>
+
+    <div class="code-block">
+&lt;h1 id="demo"&gt;Hello&lt;/h1&gt;
+
+&lt;script&gt;
+document.getElementById("demo").innerHTML = "Welcome!";
+&lt;/script&gt;
+    </div>
+
+    <p>
+      JavaScript changes the text from "Hello" to "Welcome!".
+    </p>
+
+    <h3>Example: Button Click</h3>
+
+    <div class="code-block">
+&lt;button onclick="showMessage()"&gt;
+Click Me
+&lt;/button&gt;
+
+&lt;script&gt;
+function showMessage() {
+  alert("Button clicked!");
+}
+&lt;/script&gt;
+    </div>
+
+    <h3>Summary</h3>
+
+    <p>
+      JavaScript adds behavior and interactivity to webpages.
+    </p>
+
+    <div class="code-block">
+HTML + CSS + JavaScript
+
+HTML = Structure
+CSS = Style
+JavaScript = Behavior
+    </div>
+  `
+},{
+  title: "🔴 JavaScript Syntax",
+  content: `
+    <h2>JavaScript Syntax</h2>
+
+    <p>
+      JavaScript syntax is the set of rules that define how JavaScript programs are written.
+    </p>
+
+    <h3>JavaScript Statement</h3>
+
+    <p>
+      A JavaScript program is made up of statements.
+    </p>
+
+    <div class="code-block">
+let message = "Hello World";
+console.log(message);
+    </div>
+
+    <p>
+      Each statement tells the computer what to do.
+    </p>
+
+    <h3>Semicolon (;)</h3>
+
+    <p>
+      Semicolons are used to separate JavaScript statements.
+    </p>
+
+    <div class="code-block">
+let x = 5;
+let y = 10;
+let z = x + y;
+    </div>
+
+    <p>
+      Although JavaScript can often insert semicolons automatically, it is recommended to write them.
+    </p>
+
+    
+
+    <h3>JavaScript Values</h3>
+
+    <div class="code-block">
+let name = "Alice";    // String
+let age = 18;          // Number
+let isStudent = true;  // Boolean
+    </div>
+
+   
+    <h3>JavaScript Comments</h3>
+
+    <p>
+      Comments are ignored by JavaScript and are used to explain code.
+    </p>
+
+    <h4>Single-line Comment</h4>
+
+    <div class="code-block">
+// This is a comment
+let name = "John";
+    </div>
+
+    <h4>Multi-line Comment</h4>
+
+    <div class="code-block">
+/*
+This is a
+multi-line comment
+*/
+    </div>
+
+    <h3>Case Sensitive</h3>
+
+    <p>
+      JavaScript is case-sensitive.
+    </p>
+
+    <div class="code-block">
+let name = "John";
+
+console.log(name); // Correct
+console.log(Name); // Error
+    </div>
+
+    <h3>Code Block</h3>
+
+    <p>
+      Code blocks are written inside curly braces {}.
+    </p>
+
+    <div class="code-block">
+if (true) {
+  console.log("Hello");
+}
+    </div>
+
+    <h3>Example Program</h3>
+
+    <div class="code-block">
+let firstName = "Alice";
+let age = 18;
+
+console.log("Name: " + firstName);
+console.log("Age: " + age);
+    </div>
+
+    <h3>Summary</h3>
+
+    <ul>
+      <li>JavaScript programs consist of statements.</li>
+      <li>Variables store data values.</li>
+      <li>Operators perform calculations.</li>
+      <li>Comments explain code.</li>
+      <li>JavaScript is case-sensitive.</li>
+      <li>Code blocks use curly braces {}.</li>
+    </ul>
+
+    <div class="code-block">
+let message = "Hello";
+console.log(message);
+    </div>
+  `
+},{
+  title: "🔴 JS Variables",
+  content: `
+    <h2>JavaScript Variables</h2>
+
+    <p>
+      Variables are containers used to store data values.
+    </p>
+
+    <p>
+      In JavaScript, variables can store different types of data such as text, numbers, and true/false values.
+    </p>
+
+    <h3>Creating Variables</h3>
+
+    <p>
+      JavaScript uses <strong>let</strong>, <strong>const</strong>, and <strong>var</strong> to declare variables.
+    </p>
+
+    <div class="code-block">
+let name = "John";
+const country = "Myanmar";
+var age = 20;
+    </div>
+
+    <h3>Variable Declaration</h3>
+
+    <table border="1" cellpadding="8">
+      <tr>
+        <th>Keyword</th>
+        <th>Description</th>
+      </tr>
+      <tr>
+        <td>let</td>
+        <td>Declares a variable that can be changed later.</td>
+      </tr>
+      <tr>
+        <td>const</td>
+        <td>Declares a variable that cannot be changed.</td>
+      </tr>
+      <tr>
+        <td>var</td>
+        <td>Older method of declaring variables.</td>
+      </tr>
+    </table>
+
+    <h3>Using let</h3>
+
+    <div class="code-block">
+let age = 20;
+
+age = 21;
+
+console.log(age);
+    </div>
+
+    <p>
+      The value can be updated.
+    </p>
+
+    <h3>Using const</h3>
+
+    <div class="code-block">
+const pi = 3.14;
+
+console.log(pi);
+    </div>
+
+    <p>
+      A const variable cannot be reassigned.
+    </p>
+
+    <div class="code-block">
+const pi = 3.14;
+
+pi = 3.14159; // Error
+    </div>
+
+    <h3>Variable Names</h3>
+
+    <p>
+      Variable names are called identifiers.
+    </p>
+
+    <h4>Valid Names</h4>
+
+    <div class="code-block">
+let firstName;
+let age;
+let studentID;
+let totalMarks;
+    </div>
+
+    <h4>Invalid Names</h4>
+
+    <div class="code-block">
+let 123name;      // Cannot start with a number
+let first-name;   // Hyphen not allowed
+let let;          // Reserved keyword
+    </div>
+
+    <h3>JavaScript Data Types</h3>
+
+    <table border="1" cellpadding="8">
+      <tr>
+        <th>Type</th>
+        <th>Example</th>
+      </tr>
+      <tr>
+        <td>String</td>
+        <td>"Hello"</td>
+      </tr>
+      <tr>
+        <td>Number</td>
+        <td>100</td>
+      </tr>
+      <tr>
+        <td>Boolean</td>
+        <td>true, false</td>
+      </tr>
+    </table>
+
+    <h3>String Variables</h3>
+
+    <div class="code-block">
+let name = "Alice";
+
+console.log(name);
+    </div>
+
+    <h3>Number Variables</h3>
+
+    <div class="code-block">
+let score = 95;
+
+console.log(score);
+    </div>
+
+    <h3>Boolean Variables</h3>
+
+    <div class="code-block">
+let isStudent = true;
+
+console.log(isStudent);
+    </div>
+
+    <h3>Multiple Variables</h3>
+
+    <div class="code-block">
+let name = "Alice";
+let age = 18;
+let country = "Myanmar";
+
+console.log(name);
+console.log(age);
+console.log(country);
+    </div>
+
+    <h3>Displaying Variables</h3>
+
+    <div class="code-block">
+let name = "Alice";
+
+document.write(name);
+    </div>
+
+    <div class="code-block">
+let name = "Alice";
+
+console.log(name);
+    </div>
+
+    <h3>Real-Life Example</h3>
+
+    <div class="code-block">
+let studentName = "Hsu";
+let grade = "Year 8";
+let score = 95;
+
+console.log(studentName);
+console.log(grade);
+console.log(score);
+    </div>
+
+    <h3>Summary</h3>
+
+    <ul>
+      <li>Variables store data values.</li>
+      <li>Use <strong>let</strong> for values that may change.</li>
+      <li>Use <strong>const</strong> for values that should not change.</li>
+      <li>Variable names cannot start with numbers.</li>
+      <li>Variables can store strings, numbers, and booleans.</li>
+    </ul>
+
+    <div class="code-block">
+let name = "John";
+const country = "Myanmar";
+let age = 20;
+    </div>
+  `
+},{
+  title: "🔴 JS if Statement",
+  content: `
+    <h2>The JavaScript if Statement</h2>
+
+    <p>
+      The <strong>if</strong> statement is used to execute a block of code only if a specified condition is true.
+    </p>
+
+    <h3>Syntax</h3>
+
+    <div class="code-block">
+if (condition) {
+    // code to be executed
+}
+    </div>
+
+    <h3>How It Works</h3>
+
+    <p>
+      JavaScript checks the condition inside the parentheses ().
+    </p>
+
+    <ul>
+      <li>If the condition is <strong>true</strong>, the code inside the braces {} runs.</li>
+      <li>If the condition is <strong>false</strong>, the code is skipped.</li>
+    </ul>
+
+    <h3>Example 1</h3>
+
+    <div class="code-block">
+let age = 18;
+
+if (age >= 18) {
+    console.log("You can vote.");
+}
+    </div>
+
+    <p>
+      Result:
+    </p>
+
+    <div class="code-block">
+You can vote.
+    </div>
+
+    <h3>Example 2</h3>
+
+    <div class="code-block">
+let age = 15;
+
+if (age >= 18) {
+    console.log("You can vote.");
+}
+    </div>
+
+    <p>
+      Result:
+    </p>
+
+    <div class="code-block">
+No output because the condition is false.
+    </div>
+
+    <h3>Comparison Operators</h3>
+
+    <table border="1" cellpadding="8">
+      <tr>
+        <th>Operator</th>
+        <th>Description</th>
+        <th>Example</th>
+      </tr>
+      <tr>
+        <td>==</td>
+        <td>Equal to</td>
+        <td>x == 5</td>
+      </tr>
+      <tr>
+        <td>===</td>
+        <td>Strictly equal to</td>
+        <td>x === 5</td>
+      </tr>
+      <tr>
+        <td>!=</td>
+        <td>Not equal to</td>
+        <td>x != 5</td>
+      </tr>
+      <tr>
+        <td>&gt;</td>
+        <td>Greater than</td>
+        <td>x &gt; 5</td>
+      </tr>
+      <tr>
+        <td>&lt;</td>
+        <td>Less than</td>
+        <td>x &lt; 5</td>
+      </tr>
+      <tr>
+        <td>&gt;=</td>
+        <td>Greater than or equal to</td>
+        <td>x &gt;= 5</td>
+      </tr>
+      <tr>
+        <td>&lt;=</td>
+        <td>Less than or equal to</td>
+        <td>x &lt;= 5</td>
+      </tr>
+    </table>
+
+    <h3>Example 3: Check Score</h3>
+
+    <div class="code-block">
+let score = 85;
+
+if (score >= 50) {
+    console.log("Pass");
+}
+    </div>
+
+    <p>
+      Result:
+    </p>
+
+    <div class="code-block">
+Pass
+    </div>
+
+    <h3>Example 4: Button Click</h3>
+
+    <div class="code-block">
+function checkAge() {
+    let age = 20;
+
+    if (age >= 18) {
+        alert("Adult");
+    }
+}
+    </div>
+
+    <h3>Flow of an if Statement</h3>
+
+    <div class="code-block">
+Condition
+
+   ↓
+
+True ? ---- Yes ----> Execute Code
+
+   ↓ No
+
+ Skip Code
+    </div>
+
+    <h3>Real-Life Example</h3>
+
+    <div class="code-block">
+let isLoggedIn = true;
+
+if (isLoggedIn) {
+    console.log("Welcome back!");
+}
+    </div>
+
+    <p>
+      Since isLoggedIn is true, the message will be displayed.
+    </p>
+
+    <h3>Summary</h3>
+
+    <ul>
+      <li>The <strong>if</strong> statement checks a condition.</li>
+      <li>If the condition is true, the code runs.</li>
+      <li>If the condition is false, the code is skipped.</li>
+      <li>Conditions often use comparison operators.</li>
+    </ul>
+
+    <div class="code-block">
+if (condition) {
+    // code runs if condition is true
+}
+    </div>
+  `
+},{
+  title: "🔴 JS switch Statement",
+  content: `
+    <h2>The JavaScript switch Statement</h2>
+
+    <p>
+      The <strong>switch</strong> statement is used to perform different actions based on different conditions.
+    </p>
+
+    <p>
+      It is often used as an alternative to multiple <strong>if...else if</strong> statements.
+    </p>
+
+    <h3>Syntax</h3>
+
+    <div class="code-block">
+switch(expression) {
+
+    case value1:
+        // code block
+        break;
+
+    case value2:
+        // code block
+        break;
+
+    default:
+        // default code block
+}
+    </div>
+
+    <h3>How It Works</h3>
+
+    <ol>
+      <li>JavaScript evaluates the expression.</li>
+      <li>It compares the result with each case value.</li>
+      <li>If a match is found, the corresponding code runs.</li>
+      <li>The <strong>break</strong> statement stops the switch.</li>
+      <li>If no match is found, the <strong>default</strong> block runs.</li>
+    </ol>
+
+    <h3>Example 1: Day of the Week</h3>
+
+    <div class="code-block">
+let day = 3;
+
+switch(day) {
+
+    case 1:
+        console.log("Monday");
+        break;
+
+    case 2:
+        console.log("Tuesday");
+        break;
+
+    case 3:
+        console.log("Wednesday");
+        break;
+
+    case 4:
+        console.log("Thursday");
+        break;
+
+    case 5:
+        console.log("Friday");
+        break;
+
+    default:
+        console.log("Weekend");
+}
+    </div>
+
+    <p><strong>Result:</strong></p>
+
+    <div class="code-block">
+Wednesday
+    </div>
+
+    <h3>Example 2: Grade Checker</h3>
+
+    <div class="code-block">
+let grade = "A";
+
+switch(grade) {
+
+    case "A":
+        console.log("Excellent");
+        break;
+
+    case "B":
+        console.log("Good");
+        break;
+
+    case "C":
+        console.log("Average");
+        break;
+
+    default:
+        console.log("Try Again");
+}
+    </div>
+
+    <p><strong>Result:</strong></p>
+
+    <div class="code-block">
+Excellent
+    </div>
+
+    <h3>The break Statement</h3>
+
+    <p>
+      The <strong>break</strong> statement exits the switch block.
+    </p>
+
+    <div class="code-block">
+let fruit = "apple";
+
+switch(fruit) {
+
+    case "apple":
+        console.log("Apple");
+        break;
+
+    case "banana":
+        console.log("Banana");
+        break;
+}
+    </div>
+
+    <p>
+      Without break, JavaScript continues executing the next case.
+    </p>
+
+    <h3>Example Without break</h3>
+
+    <div class="code-block">
+let fruit = "apple";
+
+switch(fruit) {
+
+    case "apple":
+        console.log("Apple");
+
+    case "banana":
+        console.log("Banana");
+}
+    </div>
+
+    <p><strong>Result:</strong></p>
+
+    <div class="code-block">
+Apple
+Banana
+    </div>
+
+    <h3>The default Case</h3>
+
+    <p>
+      The <strong>default</strong> case runs when no match is found.
+    </p>
+
+    <div class="code-block">
+let color = "pink";
+
+switch(color) {
+
+    case "red":
+        console.log("Red");
+        break;
+
+    case "blue":
+        console.log("Blue");
+        break;
+
+    default:
+        console.log("Unknown Color");
+}
+    </div>
+
+    <p><strong>Result:</strong></p>
+
+    <div class="code-block">
+Unknown Color
+    </div>
+
+    <h3>Grouping Cases</h3>
+
+    <p>
+      Multiple cases can share the same code block.
+    </p>
+
+    <div class="code-block">
+let day = 6;
+
+switch(day) {
+
+    case 6:
+    case 7:
+        console.log("Weekend");
+        break;
+
+    default:
+        console.log("Weekday");
+}
+    </div>
+
+    <p><strong>Result:</strong></p>
+
+    <div class="code-block">
+Weekend
+    </div>
+
+    <h3>switch vs if...else</h3>
+
+    <table border="1" cellpadding="8">
+      <tr>
+        <th>switch</th>
+        <th>if...else</th>
+      </tr>
+      <tr>
+        <td>Good for many fixed values</td>
+        <td>Good for complex conditions</td>
+      </tr>
+      <tr>
+        <td>Cleaner code for menus and options</td>
+        <td>More flexible for comparisons</td>
+      </tr>
+      <tr>
+        <td>Uses case values</td>
+        <td>Uses logical expressions</td>
+      </tr>
+    </table>
+
+    <h3>Real-Life Example</h3>
+
+    <div class="code-block">
+let menu = "Pizza";
+
+switch(menu) {
+
+    case "Pizza":
+        console.log("$10");
+        break;
+
+    case "Burger":
+        console.log("$5");
+        break;
+
+    case "Pasta":
+        console.log("$8");
+        break;
+
+    default:
+        console.log("Item not available");
+}
+    </div>
+
+    <h3>Summary</h3>
+
+    <ul>
+      <li>The <strong>switch</strong> statement selects one of many code blocks to execute.</li>
+      <li><strong>case</strong> defines possible values.</li>
+      <li><strong>break</strong> stops execution of the switch block.</li>
+      <li><strong>default</strong> runs when no case matches.</li>
+      <li>switch is useful when checking many fixed values.</li>
+    </ul>
+
+    <div class="code-block">
+switch(expression) {
+
+    case value:
+        // code
+        break;
+
+    default:
+        // code
+}
+    </div>
+  `
+}
     ];
     function runCode(){
   let code = document.getElementById("code").value;
