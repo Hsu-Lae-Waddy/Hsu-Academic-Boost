@@ -2014,6 +2014,581 @@ switch(expression) {
 }
     </div>
   `
+},{
+  title: "🔴 JavaScript Operators",
+  content: `
+    <h2>JavaScript Operators</h2>
+
+    <p>
+      Operators are symbols used to perform operations on variables and values.
+    </p>
+
+    <h3>Example</h3>
+
+    <div class="code-block">
+let x = 10;
+let y = 5;
+
+let result = x + y;
+
+console.log(result);
+    </div>
+
+    <p>
+      Result:
+    </p>
+
+    <div class="code-block">
+15
+    </div>
+
+    <h3>Types of JavaScript Operators</h3>
+
+    <table border="1" cellpadding="8">
+      <tr>
+        <th>Operator Type</th>
+        <th>Description</th>
+      </tr>
+      <tr>
+        <td>Arithmetic Operators</td>
+        <td>Perform mathematical calculations</td>
+      </tr>
+      <tr>
+        <td>Assignment Operators</td>
+        <td>Assign values to variables</td>
+      </tr>
+      <tr>
+        <td>Comparison Operators</td>
+        <td>Compare values</td>
+      </tr>
+      <tr>
+        <td>Logical Operators</td>
+        <td>Combine conditions</td>
+      </tr>
+      <tr>
+        <td>String Operators</td>
+        <td>Combine text strings</td>
+      </tr>
+    </table>
+
+    <h3>1. Arithmetic Operators</h3>
+
+    <table border="1" cellpadding="8">
+      <tr>
+        <th>Operator</th>
+        <th>Name</th>
+        <th>Example</th>
+        <th>Result</th>
+      </tr>
+      <tr>
+        <td>+</td>
+        <td>Addition</td>
+        <td>5 + 2</td>
+        <td>7</td>
+      </tr>
+      <tr>
+        <td>-</td>
+        <td>Subtraction</td>
+        <td>5 - 2</td>
+        <td>3</td>
+      </tr>
+      <tr>
+        <td>*</td>
+        <td>Multiplication</td>
+        <td>5 * 2</td>
+        <td>10</td>
+      </tr>
+      <tr>
+        <td>/</td>
+        <td>Division</td>
+        <td>10 / 2</td>
+        <td>5</td>
+      </tr>
+      <tr>
+        <td>%</td>
+        <td>Modulus (Remainder)</td>
+        <td>10 % 3</td>
+        <td>1</td>
+      </tr>
+      <tr>
+        <td>**</td>
+        <td>Exponentiation</td>
+        <td>2 ** 3</td>
+        <td>8</td>
+      </tr>
+    </table>
+
+    <h3>2. Assignment Operators</h3>
+
+    <table border="1" cellpadding="8">
+      <tr>
+        <th>Operator</th>
+        <th>Example</th>
+        <th>Meaning</th>
+      </tr>
+      <tr>
+        <td>=</td>
+        <td>x = 5</td>
+        <td>Assign value</td>
+      </tr>
+      <tr>
+        <td>+=</td>
+        <td>x += 2</td>
+        <td>x = x + 2</td>
+      </tr>
+      <tr>
+        <td>-=</td>
+        <td>x -= 2</td>
+        <td>x = x - 2</td>
+      </tr>
+      <tr>
+        <td>*=</td>
+        <td>x *= 2</td>
+        <td>x = x * 2</td>
+      </tr>
+      <tr>
+        <td>/=</td>
+        <td>x /= 2</td>
+        <td>x = x / 2</td>
+      </tr>
+    </table>
+
+    <h3>Example</h3>
+
+    <div class="code-block">
+let x = 10;
+
+x += 5;
+
+console.log(x);
+    </div>
+
+    <p>Result:</p>
+
+    <div class="code-block">
+15
+    </div>
+
+    <h3>3. Comparison Operators</h3>
+
+    <table border="1" cellpadding="8">
+      <tr>
+        <th>Operator</th>
+        <th>Description</th>
+        <th>Example</th>
+      </tr>
+      <tr>
+        <td>==</td>
+        <td>Equal to</td>
+        <td>x == y</td>
+      </tr>
+      <tr>
+        <td>===</td>
+        <td>Strictly equal to</td>
+        <td>x === y</td>
+      </tr>
+      <tr>
+        <td>!=</td>
+        <td>Not equal to</td>
+        <td>x != y</td>
+      </tr>
+      <tr>
+        <td>&gt;</td>
+        <td>Greater than</td>
+        <td>x &gt; y</td>
+      </tr>
+      <tr>
+        <td>&lt;</td>
+        <td>Less than</td>
+        <td>x &lt; y</td>
+      </tr>
+      <tr>
+        <td>&gt;=</td>
+        <td>Greater than or equal to</td>
+        <td>x &gt;= y</td>
+      </tr>
+      <tr>
+        <td>&lt;=</td>
+        <td>Less than or equal to</td>
+        <td>x &lt;= y</td>
+      </tr>
+    </table>
+
+    <div class="code-block">
+let age = 18;
+
+console.log(age >= 18);
+    </div>
+
+    <p>Result:</p>
+
+    <div class="code-block">
+true
+    </div>
+
+    <h3>4. Logical Operators</h3>
+
+    <table border="1" cellpadding="8">
+      <tr>
+        <th>Operator</th>
+        <th>Name</th>
+        <th>Example</th>
+      </tr>
+      <tr>
+        <td>&&</td>
+        <td>AND</td>
+        <td>x > 5 && y > 5</td>
+      </tr>
+      <tr>
+        <td>||</td>
+        <td>OR</td>
+        <td>x > 5 || y > 5</td>
+      </tr>
+      <tr>
+        <td>!</td>
+        <td>NOT</td>
+        <td>!isLoggedIn</td>
+      </tr>
+    </table>
+
+    <div class="code-block">
+let age = 20;
+let hasID = true;
+
+console.log(age >= 18 && hasID);
+    </div>
+
+    <p>Result:</p>
+
+    <div class="code-block">
+true
+    </div>
+
+    <h3>5. String Operator</h3>
+
+    <p>
+      The + operator can combine strings.
+    </p>
+
+    <div class="code-block">
+let firstName = "John";
+let lastName = "Doe";
+
+let fullName = firstName + " " + lastName;
+
+console.log(fullName);
+    </div>
+
+    <p>Result:</p>
+
+    <div class="code-block">
+John Doe
+    </div>
+
+    <h3>Operator Precedence</h3>
+
+    <p>
+      JavaScript follows mathematical order of operations.
+    </p>
+
+    <div class="code-block">
+let result = 5 + 2 * 3;
+
+console.log(result);
+    </div>
+
+    <p>Result:</p>
+
+    <div class="code-block">
+11
+    </div>
+
+    <p>
+      Multiplication is performed before addition.
+    </p>
+
+    <h3>Summary</h3>
+
+    <ul>
+      <li>Arithmetic operators perform calculations.</li>
+      <li>Assignment operators assign values.</li>
+      <li>Comparison operators compare values.</li>
+      <li>Logical operators combine conditions.</li>
+      <li>String operators combine text.</li>
+    </ul>
+
+    <div class="code-block">
+let x = 10;
+let y = 5;
+
+console.log(x + y);
+console.log(x > y);
+    </div>
+  `
+},{
+  title: "🔴 JavaScript Scope",
+  content: `
+    <h2>JavaScript Scope</h2>
+
+    <p>
+      Scope determines the accessibility (visibility) of variables in JavaScript.
+    </p>
+
+    <p>
+      Variables can have different scopes depending on where they are declared.
+    </p>
+
+    <h3>What is Scope?</h3>
+
+    <p>
+      Scope controls where a variable can be used in your program.
+    </p>
+
+    <div class="code-block">
+let name = "Alice";
+
+console.log(name);
+    </div>
+
+    <p>
+      In this example, the variable <strong>name</strong> can be accessed because it is within scope.
+    </p>
+
+    <h3>Types of Scope</h3>
+
+    <table border="1" cellpadding="8">
+      <tr>
+        <th>Scope Type</th>
+        <th>Description</th>
+      </tr>
+      <tr>
+        <td>Global Scope</td>
+        <td>Accessible anywhere in the program.</td>
+      </tr>
+      <tr>
+        <td>Function Scope</td>
+        <td>Accessible only inside a function.</td>
+      </tr>
+      <tr>
+        <td>Block Scope</td>
+        <td>Accessible only inside a block {}.</td>
+      </tr>
+    </table>
+
+    <h3>1. Global Scope</h3>
+
+    <p>
+      A variable declared outside any function or block has global scope.
+    </p>
+
+    <div class="code-block">
+let school = "ABC School";
+
+function showSchool() {
+    console.log(school);
+}
+
+showSchool();
+
+console.log(school);
+    </div>
+
+    <p>
+      Result:
+    </p>
+
+    <div class="code-block">
+ABC School
+ABC School
+    </div>
+
+    <p>
+      The variable <strong>school</strong> can be used anywhere.
+    </p>
+
+    <h3>2. Function Scope</h3>
+
+    <p>
+      Variables declared inside a function are only accessible within that function.
+    </p>
+
+    <div class="code-block">
+function myFunction() {
+
+    let message = "Hello";
+
+    console.log(message);
+}
+
+myFunction();
+
+console.log(message);
+    </div>
+
+    <p>
+      Result:
+    </p>
+
+    <div class="code-block">
+Hello
+ReferenceError: message is not defined
+    </div>
+
+    <p>
+      The variable <strong>message</strong> exists only inside the function.
+    </p>
+
+    <h3>3. Block Scope</h3>
+
+    <p>
+      Variables declared with <strong>let</strong> and <strong>const</strong> inside a block {} are only available within that block.
+    </p>
+
+    <div class="code-block">
+if (true) {
+
+    let age = 18;
+
+    console.log(age);
+}
+
+console.log(age);
+    </div>
+
+    <p>
+      Result:
+    </p>
+
+    <div class="code-block">
+18
+ReferenceError: age is not defined
+    </div>
+
+    <h3>Block Scope with const</h3>
+
+    <div class="code-block">
+{
+    const PI = 3.14;
+
+    console.log(PI);
+}
+
+console.log(PI);
+    </div>
+
+    <p>
+      Result:
+    </p>
+
+    <div class="code-block">
+3.14
+ReferenceError: PI is not defined
+    </div>
+
+    <h3>var and Scope</h3>
+
+    <p>
+      Variables declared with <strong>var</strong> are not block-scoped. They are function-scoped.
+    </p>
+
+    <div class="code-block">
+if (true) {
+
+    var score = 100;
+}
+
+console.log(score);
+    </div>
+
+    <p>
+      Result:
+    </p>
+
+    <div class="code-block">
+100
+    </div>
+
+    <p>
+      This is one reason why modern JavaScript prefers <strong>let</strong> and <strong>const</strong>.
+    </p>
+
+    <h3>Scope Example</h3>
+
+    <div class="code-block">
+let country = "Myanmar"; // Global Scope
+
+function showCountry() {
+
+    let city = "Yangon"; // Function Scope
+
+    console.log(country);
+    console.log(city);
+}
+
+showCountry();
+
+console.log(country);
+console.log(city);
+    </div>
+
+    <p>
+      Result:
+    </p>
+
+    <div class="code-block">
+Myanmar
+Yangon
+Myanmar
+ReferenceError: city is not defined
+    </div>
+
+    <h3>Why is Scope Important?</h3>
+
+    <ul>
+      <li>Prevents variable conflicts.</li>
+      <li>Makes code easier to understand.</li>
+      <li>Improves code security and organization.</li>
+      <li>Reduces bugs caused by accidentally changing variables.</li>
+    </ul>
+
+    <h3>Best Practices</h3>
+
+    <ul>
+      <li>Use <strong>const</strong> whenever possible.</li>
+      <li>Use <strong>let</strong> when the value needs to change.</li>
+      <li>Avoid using <strong>var</strong> in modern JavaScript.</li>
+      <li>Keep variables inside the smallest scope needed.</li>
+    </ul>
+
+    <h3>Summary</h3>
+
+    <table border="1" cellpadding="8">
+      <tr>
+        <th>Keyword</th>
+        <th>Scope</th>
+      </tr>
+      <tr>
+        <td>var</td>
+        <td>Function Scope</td>
+      </tr>
+      <tr>
+        <td>let</td>
+        <td>Block Scope</td>
+      </tr>
+      <tr>
+        <td>const</td>
+        <td>Block Scope</td>
+      </tr>
+    </table>
+
+    <div class="code-block">
+Global Scope → Available everywhere
+
+Function Scope → Available inside a function
+
+Block Scope → Available inside {}
+    </div>
+  `
 }
     ];
     function runCode(){
