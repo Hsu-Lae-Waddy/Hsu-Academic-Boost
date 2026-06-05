@@ -1062,6 +1062,249 @@ h1 {
       <li>Effects and animations</li>
     </ul>
   `
+},{
+  title: "🎨 CSS Selectors",
+  content: `
+    <h2>CSS Selectors</h2>
+
+    <p>
+      CSS selectors are used to target HTML elements and apply styles to them.
+      They help control the appearance of web pages by selecting specific elements.
+    </p>
+
+    <h3>1. Element Selector</h3>
+    <p>The element selector targets all elements of a specific HTML tag.</p>
+
+     <div class="code-block">p {
+    color: blue;
+}
+    </div>
+
+    <p>This will make all paragraph text blue.</p>
+
+    <h3>2. Class Selector</h3>
+    <p>The class selector targets elements with a specific class attribute.</p>
+
+     <div class="code-block">.highlight {
+    background-color: yellow;
+}
+    </div>
+
+     <div class="code-block">&lt;p class="highlight"&gt;Important text&lt;/p&gt;
+    </div>
+
+    <h3>3. ID Selector</h3>
+    <p>The ID selector targets a single element with a unique ID.</p>
+
+     <div class="code-block">#header {
+    color: green;
+}
+    </div>
+
+     <div class="code-block">&lt;h1 id="header"&gt;Welcome&lt;/h1&gt;
+    </div>
+
+    <h3>4. Universal Selector</h3>
+    <p>The universal selector targets all elements on the page.</p>
+
+     <div class="code-block">* {
+    margin: 0;
+    padding: 0;
+}
+    </div>
+
+    <h3>5. Group Selector</h3>
+    <p>The group selector applies the same styles to multiple elements.</p>
+
+     <div class="code-block">h1, h2, p {
+    font-family: Arial, sans-serif;
+}
+    </div>
+
+    <h3>6. Descendant Selector</h3>
+    <p>Selects elements inside another element.</p>
+ <div class="code-block">div p {
+    color: red;
+}
+    </div>
+
+    <p>This selects all paragraphs inside div elements.</p>
+
+    <h3>7. Child Selector</h3>
+    <p>Selects only direct child elements.</p>
+
+    <div class="code-block">div > p {
+    color: purple;
+}
+    </div>
+
+    <h3>8. Hover Selector</h3>
+    <p>Applies styles when the user moves the mouse over an element.</p>
+
+   <div class="code-block">button:hover {
+    background-color: orange;
+}
+    </div>
+
+    <h3>Why CSS Selectors Are Important</h3>
+    <ul>
+      <li>Control the appearance of HTML elements.</li>
+      <li>Apply styles efficiently.</li>
+      <li>Create consistent website designs.</li>
+      <li>Improve code organization and readability.</li>
+    </ul>
+
+    <h3>Practice Exercises</h3>
+    <ol>
+      <li>Change the color of all paragraphs using an element selector.</li>
+      <li>Create a class named "important" and apply it to a paragraph.</li>
+      <li>Create an ID selector for a heading.</li>
+      <li>Add a hover effect to a button.</li>
+    </ol>
+
+    <h3>Summary</h3>
+    <ul>
+      <li>Element Selector → <code>p</code></li>
+      <li>Class Selector → <code>.classname</code></li>
+      <li>ID Selector → <code>#idname</code></li>
+      <li>Universal Selector → <code>*</code></li>
+      <li>Group Selector → <code>h1, h2, p</code></li>
+      <li>Descendant Selector → <code>div p</code></li>
+      <li>Child Selector → <code>div > p</code></li>
+      <li>Hover Selector → <code>:hover</code></li>
+    </ul>
+  `
+},{
+  title: "🎨 CSS Position Property",
+  content: `
+    <h2>CSS Position Property</h2>
+
+    <p>
+      The <code>position</code> property in CSS is used to control how an element
+      is positioned on a webpage. It determines where an element appears
+      relative to its normal position, parent element, or browser window.
+    </p>
+
+    <h3>Types of Position Values</h3>
+
+    <h3>1. Static (Default)</h3>
+    <p>
+      The default position for all HTML elements. Elements appear in the normal
+      document flow and cannot be moved using top, right, bottom, or left.
+    </p>
+
+     <div class="code-block">div {
+    position: static;
+}  </div>
+
+    <h3>2. Relative</h3>
+    <p>
+      The element remains in the normal document flow, but can be moved relative
+      to its original position.
+    </p>
+
+     <div class="code-block">div {
+    position: relative;
+    top: 20px;
+    left: 30px;
+} </div>
+
+    <p>
+      The element moves 20px down and 30px to the right from its original position.
+    </p>
+
+    <h3>3. Absolute</h3>
+    <p>
+      The element is removed from the normal document flow and positioned
+      relative to its nearest positioned ancestor.
+    </p>
+
+     <div class="code-block">.parent {
+    position: relative;
+}
+
+.child {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+} </div>
+
+    <p>
+      The child element is placed 10px from the top and right of its parent.
+    </p>
+
+    <h3>4. Fixed</h3>
+    <p>
+      The element is positioned relative to the browser window and stays in the
+      same place even when the page is scrolled.
+    </p>
+
+     <div class="code-block">button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+}</div>
+
+    <p>
+      Commonly used for chat buttons, back-to-top buttons, and navigation bars.
+    </p>
+
+    <h3>5. Sticky</h3>
+    <p>
+      The element behaves like relative until a scroll position is reached,
+      then it becomes fixed.
+    </p>
+
+     <div class="code-block">header {
+    position: sticky;
+    top: 0;
+}</div>
+
+    <p>
+      Commonly used for sticky navigation menus.
+    </p>
+
+    <h3>Position Properties</h3>
+    <p>
+      These properties work with relative, absolute, fixed, and sticky positions:
+    </p>
+
+    <ul>
+      <li><code>top</code> - Moves the element downward from the top.</li>
+      <li><code>right</code> - Moves the element from the right side.</li>
+      <li><code>bottom</code> - Moves the element upward from the bottom.</li>
+      <li><code>left</code> - Moves the element from the left side.</li>
+    </ul>
+
+    <h3>Real-Life Example</h3>
+
+    <ul>
+      <li><strong>Static:</strong> Books arranged normally on a shelf.</li>
+      <li><strong>Relative:</strong> Moving a book slightly from its original position.</li>
+      <li><strong>Absolute:</strong> Placing a note at an exact spot on a desk.</li>
+      <li><strong>Fixed:</strong> A clock attached to a wall that stays visible.</li>
+      <li><strong>Sticky:</strong> A bookmark that stays at the top while reading.</li>
+    </ul>
+
+    <h3>Practice Exercises</h3>
+
+    <ol>
+      <li>Create a box and move it using <code>position: relative</code>.</li>
+      <li>Place a small badge in the corner of an image using <code>position: absolute</code>.</li>
+      <li>Create a fixed "Back to Top" button.</li>
+      <li>Create a sticky navigation bar.</li>
+    </ol>
+
+    <h3>Summary</h3>
+
+    <ul>
+      <li><code>static</code> → Default positioning.</li>
+      <li><code>relative</code> → Moves relative to original position.</li>
+      <li><code>absolute</code> → Positions relative to nearest positioned parent.</li>
+      <li><code>fixed</code> → Stays fixed on the screen.</li>
+      <li><code>sticky</code> → Switches between relative and fixed when scrolling.</li>
+    </ul>
+  `
 },
 {
     title:"🚀 Try it yourself",
@@ -1077,34 +1320,78 @@ h1 {
       <button class="run-btn" onclick="runCode()">Run</button>
 
       <h3>Output:</h3>
-      <iframe id="output"></iframe>`
+      <iframe id="output"></iframe>
+      <h2>A Webpage for online food delivery system using HTML and CSS</h2>
+      <p>Creating your own online food delivery website is a great way to present a user-friendly platform for customers to browse and order food online.
+
+In this project, we’ll design a simple yet effective food delivery website using HTML and CSS.</p>
+      
+      `
 
 },
+
 {
-    title:"🚀  Assignment",
-    content:`<h2>Assignments</h2>
+  title: "🚀 Assignment",
+  content: `
+    <h2>Beginner-Friendly HTML & CSS Project Ideas</h2>
 
-      <h3>1. My Portfolio</h3>
-      <ul>
-        <li>Create homepage</li>
-        <li>About section</li>
-        <li>Image</li>
-        <li>Skills</li>
+    <h3>1. A Tribute Page</h3>
+    <p>
+      A tribute page is a simple beginner project where you create a webpage
+      about a person you admire using basic HTML for structure and CSS for
+      styling and layout.
+    </p>
+
+    <ul>
+      <li>Use headings, paragraphs, lists, links, and images to structure content clearly.</li>
+      <li>Place the image and name at the top, followed by details such as life, achievements, or qualities.</li>
+      <li>Apply CSS for background colors, fonts, spacing, and alignment.</li>
+      <li>Keep the design simple, clean, and readable.</li>
+    </ul>
+
+    <h3>Setting Up the Project</h3>
+    <p>To start the project, create a folder and add the following files:</p>
+
+    <ul>
+      <li><strong>index.html</strong> – Contains the structure of the webpage.</li>
+      <li><strong>style.css</strong> – Contains all styling for the webpage.</li>
+      <li>Use semantic elements such as <code>&lt;header&gt;</code>, <code>&lt;section&gt;</code>, and <code>&lt;footer&gt;</code>.</li>
+      <li>Organize biography, achievements, and additional information using headings, paragraphs, and lists.</li>
+      <li>Style the body and header with suitable colors and typography.</li>
+      <li>Apply padding and box-shadow to create a card-like layout.</li>
+      <li>Use a fixed footer for consistent visibility while scrolling.</li>
+    </ul>
+
+    <h3>Example of a Tribute Page</h3>
+    <img src="assests/html/example.jpg" alt="Tribute Page Example">
+
+    <hr class="py-2 my-3">
+ <h2>Beginner-Friendly HTML , CSS & JavaScript Project Ideas</h2>
+    <h3>2. A Contact Us Page</h3>
+    <p>
+      A Contact Us page allows visitors to communicate with the website owner
+      for queries, feedback, or support.
+    </p>
+
+    <ul>
+      <li>Designed using HTML for structure and CSS for styling.</li>
+      <li>CSS helps create an attractive and user-friendly interface.</li>
+      <li>Focus on a responsive layout that works on different screen sizes.</li>
+      <li>Include form fields such as Name, Email, Subject, and Message.</li>
+    </ul>
+    <p>Approach</p>
+    <ul>
+     <li> Create a structured HTML document with sections for header, banner, contact form, company info, and footer.</li> 
+<li> Design a responsive header with a hamburger menu for navigation and a prominent "Call us" button.</li> 
+<li> Enhance visual appeal with a banner section featuring an image and a welcoming message.</li> 
+<li> Implement a user-friendly contact form with labeled input fields for name, email, phone, and message.</li> 
+<li> Display company contact information in a dedicated section for easy reference, including address, phone, and email.</li> 
+<li> For smaller size device we will use the hamburger menu to toggle the navbar using javascript function.</li> 
       </ul>
 
-      <h3>2. Online Shop</h3>
-      <ul>
-        <li>Products list</li>
-        <li>Images</li>
-        <li>Price</li>
-      </ul>
-
-      <h3>3. Idol Page</h3>
-      <ul>
-        <li>Biography</li>
-        <li>Image</li>
-        <li>Achievements</li>
-      </ul>`
+     <h3>Example of a Contact Us Page</h3>
+    <img src="assests/html/example2.jpg" alt="Contact Us Page Example">
+  `
 },{
   title: "🔴 JavaScript Introduction",
   content: `
@@ -2588,6 +2875,78 @@ Function Scope → Available inside a function
 
 Block Scope → Available inside {}
     </div>
+  `
+},{
+  title: "🔴 JavaScript Functions",
+  content: `
+    <h2>JavaScript Functions</h2>
+
+    <p>
+      A function is a reusable block of code that performs a specific task.
+      Functions help make programs organized and reduce repeated code.
+    </p>
+
+    <h3>Why Use Functions?</h3>
+    <ul>
+      <li>Reuse code multiple times.</li>
+      <li>Make programs easier to read and maintain.</li>
+      <li>Break large problems into smaller tasks.</li>
+    </ul>
+
+    <h3>Function Syntax</h3>
+    <div class="code-block">function greet() {
+    console.log("Hello, World!");
+}
+
+greet();
+    </div>
+
+    <h3>Function with Parameters</h3>
+    <p>Parameters allow data to be passed into a function.</p>
+
+    <div class="code-block">function greet(name) {
+    console.log("Hello, " + name + "!");
+}
+
+greet("Hsu");
+    </div>
+
+    <h3>Function with Return Value</h3>
+    <div class="code-block">function add(a, b) {
+    return a + b;
+}
+
+let result = add(5, 3);
+console.log(result);
+    </div>
+
+    <h3>Arrow Function</h3>
+    <div class="code-block">const square = num => num * num;
+
+console.log(square(6));
+    </div>
+
+    <h3>Example: Calculate Rectangle Area</h3>
+    <div class="code-block">function calculateArea(length, width) {
+    return length * width;
+}
+
+console.log(calculateArea(10, 5)); </div>
+
+    <h3>Practice Exercises</h3>
+    <ol>
+      <li>Create a function that displays your name.</li>
+      <li>Create a function that adds two numbers.</li>
+      <li>Create a function that checks whether a number is even.</li>
+    </ol>
+
+    <h3>Summary</h3>
+    <ul>
+      <li>A function is a reusable block of code.</li>
+      <li>Functions can accept parameters.</li>
+      <li>Functions can return values using the return keyword.</li>
+      <li>Arrow functions provide a shorter syntax.</li>
+    </ul>
   `
 }
     ];
