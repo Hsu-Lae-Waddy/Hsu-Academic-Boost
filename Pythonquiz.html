@@ -1,0 +1,229 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Python Quiz</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    background:#849387;
+    padding:20px;
+}
+
+.container{
+    max-width:800px;
+    margin:auto;
+    background:rgb(178, 201, 134);
+    padding:30px;
+    border-radius:10px;
+    box-shadow:0 0 10px rgba(0,0,0,0.1);
+}
+
+h1{
+    text-align:center;
+    margin-bottom:20px;
+}
+
+.question{
+    margin-bottom:20px;
+}
+
+.question h3{
+    margin-bottom:10px;
+}
+
+label{
+    display:block;
+    margin:5px 0;
+    cursor:pointer;
+}
+
+button{
+    background:#007bff;
+    color:white;
+    border:none;
+    padding:12px 20px;
+    border-radius:5px;
+    cursor:pointer;
+    font-size:16px;
+}
+
+button:hover{
+    background:#0056b3;
+}
+
+#result{
+    margin-top:20px;
+    font-size:20px;
+    font-weight:bold;
+    text-align:center;
+}
+</style>
+</head>
+<body>
+
+<div class="container ">
+    <h1>🐍 Python Quiz</h1>
+
+    <form id="quizForm">
+
+        <div class="question">
+            <h3>1. What is Python?</h3>
+            <label><input type="radio" name="q1" value="a"> A programming language</label>
+            <label><input type="radio" name="q1" value="b"> A web browser</label>
+            <label><input type="radio" name="q1" value="c"> A database</label>
+        </div>
+
+        <div class="question">
+            <h3>2. Which function displays output?</h3>
+            <label><input type="radio" name="q2" value="a"> input()</label>
+            <label><input type="radio" name="q2" value="b"> print()</label>
+            <label><input type="radio" name="q2" value="c"> output()</label>
+        </div>
+
+        <div class="question">
+            <h3>3. Which is a variable?</h3>
+            <label><input type="radio" name="q3" value="a"> 25</label>
+            <label><input type="radio" name="q3" value="b"> name = "John"</label>
+            <label><input type="radio" name="q3" value="c"> +</label>
+        </div>
+
+        <div class="question">
+            <h3>4. Which is a String data type?</h3>
+            <label><input type="radio" name="q4" value="a"> "Hello"</label>
+            <label><input type="radio" name="q4" value="b"> 100</label>
+            <label><input type="radio" name="q4" value="c"> True</label>
+        </div>
+
+        <div class="question">
+            <h3>5. Which operator is used for addition?</h3>
+            <label><input type="radio" name="q5" value="a"> *</label>
+            <label><input type="radio" name="q5" value="b"> +</label>
+            <label><input type="radio" name="q5" value="c"> /</label>
+        </div>
+
+        <div class="question">
+            <h3>6. Which statement is used for decision making?</h3>
+            <label><input type="radio" name="q6" value="a"> if</label>
+            <label><input type="radio" name="q6" value="b"> print</label>
+            <label><input type="radio" name="q6" value="c"> input</label>
+        </div>
+
+        <div class="question">
+            <h3>7. What is shorthand if?</h3>
+            <label><input type="radio" name="q7" value="a"> if x > 5: print("Hi")</label>
+            <label><input type="radio" name="q7" value="b"> while x > 5</label>
+            <label><input type="radio" name="q7" value="c"> for x in range(5)</label>
+        </div>
+
+        <div class="question">
+            <h3>8. What is a nested if?</h3>
+            <label><input type="radio" name="q8" value="a"> An if inside another if</label>
+            <label><input type="radio" name="q8" value="b"> A loop</label>
+            <label><input type="radio" name="q8" value="c"> A variable</label>
+        </div>
+
+        <div class="question">
+            <h3>9. Which loop repeats a specific number of times?</h3>
+            <label><input type="radio" name="q9" value="a"> for loop</label>
+            <label><input type="radio" name="q9" value="b"> if statement</label>
+            <label><input type="radio" name="q9" value="c"> Boolean</label>
+        </div>
+
+        <div class="question">
+            <h3>10. Which Boolean value is correct?</h3>
+            <label><input type="radio" name="q10" value="a"> Yes</label>
+            <label><input type="radio" name="q10" value="b"> Maybe</label>
+            <label><input type="radio" name="q10" value="c"> True</label>
+        </div>
+
+        <div class="question">
+            <h3>11. What is a function?</h3>
+            <label><input type="radio" name="q11" value="a"> Reusable block of code</label>
+            <label><input type="radio" name="q11" value="b"> Variable</label>
+            <label><input type="radio" name="q11" value="c"> Data type</label>
+        </div>
+ <div class="question">
+         <h3>12. Which keyword is used to create a function?</h3>
+          <label><input type="radio" name="q12" value="a"> function</label>
+          <label><input type="radio" name="q12" value="b">create</label>
+          <label><input type="radio" name="q12" value="c">def</label>
+</div>
+<div class="question">
+<h3>13. Which loop continues while a condition is true?</h3>
+<label><input type="radio" name="q13" value="a"> for</label>
+<label><input type="radio" name="q13" value="b"> if</label>
+<label><input type="radio" name="q13" value="c"> while </label>
+</div>
+<div class="question"><h3>14. Which keyword is used with if when the condition is false?</h3>
+
+<label><input type="radio" name="q14" value="a"> loop</label>
+<label><input type="radio" name="q14" value="b"> else </label>
+<label><input type="radio" name="q14" value="c"> for</label>
+
+</div>
+<div class="question"><h3>15. Which is a valid variable name?</h3>
+
+<label><input type="radio" name="q15" value="a">  2name</label>
+<label><input type="radio" name="q15" value="b"> my-name</label>
+<label><input type="radio" name="q15" value="c"> my_name </label>
+
+</div>
+        <button type="button" onclick="checkQuiz()">Submit Quiz</button>
+
+    </form>
+
+    <div id="result"></div>
+
+</div>
+
+<script>
+
+function checkQuiz(){
+
+    let answers = {
+        q1:"a",
+        q2:"b",
+        q3:"b",
+        q4:"a",
+        q5:"b",
+        q6:"a",
+        q7:"a",
+        q8:"a",
+        q9:"a",
+        q10:"c",
+        q11:"a",
+        q12:"c",
+        q13:"c",
+        q14:"b",
+        q15:"c",
+    };
+
+    let score = 0;
+
+    for(let key in answers){
+        let selected = document.querySelector(`input[name="${key}"]:checked`);
+
+        if(selected && selected.value === answers[key]){
+            score++;
+        }
+    }
+
+    document.getElementById("result").innerHTML =
+    `🎉 You scored ${score} / 15`;
+}
+
+</script>
+
+</body>
+</html>
+
