@@ -5,6 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Python Quiz</title>
+<link rel="icon" type="image/png" href="LogoHAB-removebg-preview.png">
 
 <style>
 *{
@@ -16,7 +17,6 @@
 
 body{
     background:#849387;
-    padding:20px;
 }
 
 .container{
@@ -67,10 +67,54 @@ button:hover{
     font-weight:bold;
     text-align:center;
 }
+.navbar{
+    background:#020617;
+    border-bottom:1px solid #1e293b;
+    width:100%;
+}
+
+.navbar-container{
+    width:100%;
+    padding:16px 24px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logo{
+    color:#14b8a6;
+    font-size:24px;
+    font-weight:bold;
+    margin:0;
+}
+
+.home-btn{
+    background:#14b8a6;
+    color:white;
+    text-decoration:none;
+    padding:10px 20px;
+    border-radius:8px;
+    transition:0.3s;
+}
+
+.home-btn:hover{
+    background:#0d9488;
+}
 </style>
 </head>
 <body>
+<!-- Navbar -->
+<nav class="navbar">
+    <div class="navbar-container">
+        <h1 class="logo">
+            🎓 Hsu Academic Boost
+        </h1>
 
+        <a href="index.html" class="home-btn">
+            Back Home
+        </a>
+    </div>
+</nav>
 <div class="container ">
     <h1>🐍 Python Quiz</h1>
 

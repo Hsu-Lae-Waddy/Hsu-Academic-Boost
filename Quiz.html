@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Input Output Quiz</title>
-
+ <link rel="icon" type="image/png" href="LogoHAB-removebg-preview.png">
   <script src="https://cdn.tailwindcss.com"></script>
 
   <style>
@@ -20,7 +20,21 @@
   </style>
 </head>
 
-<body class="bg-gradient-to-r from-teal-200 to-teal-500 min-h-screen flex items-center justify-center">
+<body >
+   <!-- Navbar -->
+    <nav class="bg-slate-950 border-b border-slate-800">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <h1 class="text-2xl font-bold text-teal-500">
+                🎓 Hsu Academic Boost
+            </h1>
+
+           <button  onclick="history.back()"
+               class="bg-teal-500 hover:bg-teal-600 px-5 py-2 rounded-lg transition">
+                Back Home
+            </button >
+        </div>
+    </nav>
+  <div  class="bg-gradient-to-r from-teal-200 to-teal-500 min-h-screen flex items-center justify-center">
 <audio id="correct-sound" src="sound/correct.mp3"></audio>
 
 <audio id="wrong-sound" src="sound/wrong.mp3"></audio>
@@ -324,5 +338,5 @@ function loadQuiz() {
   </script>
 
 
-</body>
+</div></body>
 </html>
