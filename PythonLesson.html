@@ -115,14 +115,59 @@ age = <span class="type">25</span>
           <div class="code-block"><span class="keyword">print</span>(<span class="string">"Score:"</span>, <span class="type">95</span>, <span class="string">"% - Great job!"</span>)
 <span class="comment"># Output: Score: 95 % - Great job!</span></div>
           <h3>Formatting Options</h3>
-          <table>
-            <thead><tr><th>Type</th><th>Example</th></tr></thead>
-            <tbody>
-              <tr><td>Decimal</td><td><code>{value:.2f}</code></td></tr>
-              <tr><td>Percentage</td><td><code>{value:.1%}</code></td></tr>
-              <tr><td>Padding</td><td><code>{value:>10}</code></td></tr>
-            </tbody>
-          </table>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Example</th>
+      <th>Output</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Decimal Places</td>
+      <td><code>{value:.2f}</code></td>
+      <td>3.14</td>
+    </tr>
+    <tr>
+      <td>Percentage</td>
+      <td><code>{value:.1%}</code></td>
+      <td>85.0%</td>
+    </tr>
+    <tr>
+      <td>Padding / Alignment</td>
+      <td><code>{value:>10}</code></td>
+      <td>Right-aligned</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>String Formatting (Decimal Places)</h3>
+<div class="code-block">pi = <span class="type">3.141592653589793</span>
+
+formatted_pi = "{:.2f}".format(pi)
+
+<span class="keyword">print</span>(formatted_pi)
+<span class="comment"># Output: 3.14</span>
+</div>
+
+<h3>String Formatting (Percentage)</h3>
+<div class="code-block">score = <span class="type">0.85</span>
+
+formatted_score = "{:.1%}".format(score)
+
+<span class="keyword">print</span>(formatted_score)
+<span class="comment"># Output: 85.0%</span>
+</div>
+
+<h3>String Formatting (Padding / Alignment)</h3>
+<div class="code-block">name = <span class="string">"Python"</span>
+
+formatted_name = "{:>10}".format(name)
+
+<span class="keyword">print</span>(formatted_name)
+<span class="comment"># Output:     Python</span>
+</div>
         `
       },
       {
@@ -530,13 +575,17 @@ computer = random.choice(choices)
 <span class="keyword">else</span>:
     <span class="keyword">print</span>(<span class="string">"Computer wins! 😢"</span>)</div>
        
-    <a href="Pythonquiz.html"> <button style="display:block; margin:auto;" class="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 my-3 border-b-4 border-blue-700 hover:border-blue-500 rounded">
- Quiz Time!
-</button></a>
+   
     `
       },{
-    title: "🔴 Assignment",
+    title: "🔴 Quiz & Assignment",
     content: `
+
+     <a href="Pythonquiz.html"> <button style="display:block; margin:auto;" class="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 my-3 border-b-4 border-blue-700 hover:border-blue-500 rounded">
+ Quiz Time!
+</button></a>
+<hr class="mt-3 p-3">
+
     <h2> 🤔❓Python Mini Project: Quiz Game</h2>
 
     <p>Create a simple Python Quiz Game that asks the user multiple-choice questions and keeps track of their score.</p>
