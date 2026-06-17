@@ -353,44 +353,240 @@ else:
  `
 },
       {
-        title: "🔵 Loops (for, while)",
-        content: `
-          <h2>Loops</h2>
-          <p>Loops repeat code execution. Two main types: <code>for</code> and <code>while</code>.</p>
-          <h3>For Loop (Known Iterations)</h3>
-          <div class="code-block"><span class="comment"># Count 0 to 4</span>
-<span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span class="type">5</span>):
-    <span class="keyword">print</span>(i)
-<span class="comment"># 0, 1, 2, 3, 4</span>
+  title: "🔵 Loops (for, while)",
+  content: `
+    <h2>Loops</h2>
 
-<span class="comment"># range(start, stop, step)</span>
-<span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span class="type">1</span>, <span class="type">11</span>, <span class="type">2</span>):
-    <span class="keyword">print</span>(i)
-<span class="comment"># 1, 3, 5, 7, 9</span></div>
-          <h3>While Loop (Condition-Based)</h3>
-          <div class="code-block">count = <span class="type">0</span>
-<span class="keyword">while</span> count < <span class="type">5</span>:
-    <span class="keyword">print</span>(count)
-    count += <span class="type">1</span>
-<span class="comment"># 0, 1, 2, 3, 4</span></div>
-          <h3>Loop Controls</h3>
-          <div class="code-block"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span class="type">10</span>):
-    <span class="keyword">if</span> i == <span class="type">5</span>:
-        <span class="keyword">break</span>           <span class="comment"># Exit loop</span>
-    <span class="keyword">if</span> i == <span class="type">3</span>:
-        <span class="keyword">continue</span>       <span class="comment"># Skip iteration</span>
-    <span class="keyword">print</span>(i)</div>
+    <p>
+      A <strong>loop</strong> is used to repeat a block of code multiple times.
+      Instead of writing the same code again and again, we use loops.
+    </p>
+
+    <h3>Why Use Loops?</h3>
+
+    <div class="code-block">print("Hello")
+print("Hello")
+print("Hello")
+print("Hello")
+print("Hello")</div>
+
+    <p>Using a loop:</p>
+
+    <div class="code-block">for i in range(5):
+    print("Hello")</div>
+
+    <p>
+      Both produce the same output, but the loop requires much less code.
+    </p>
+
+    <hr>
+
+    <h3>1. For Loop</h3>
+
+    <p>
+      A <strong>for loop</strong> is used when we know how many times we want to repeat something.
+    </p>
+
+    <div class="code-block">for i in range(5):
+    print(i)</div>
+
+    <strong>Output:</strong>
+
+    <div class="code-block">0
+1
+2
+3
+4</div>
+
+    <p>
+      <code>range(5)</code> means numbers from 0 to 4.
+    </p>
+
+    <h4>range(start, stop, step)</h4>
+
+    <div class="code-block">for i in range(1, 11, 2):
+    print(i)</div>
+
+    <strong>Output:</strong>
+
+    <div class="code-block">1
+3
+5
+7
+9</div>
 
     <table>
-      <tr><th colspan="3">Key Differences </th></tr>
-      <tr><td>Feature</td><td><strong> For </strong></td><td><strong> While</strong></td></tr>
-      <tr><td>Control</td><td>Iterates over a sequence or range.</td><td>Based on a condition (True/False).</td></tr>
-      <tr><td>Usage</td><td>When the number of steps is known.</td><td>When the number of steps is unknown.</td></tr>
-      <tr></tr>
-      </table>
+      <tr>
+        <th>Parameter</th>
+        <th>Meaning</th>
+      </tr>
+      <tr>
+        <td>start</td>
+        <td>Starting number</td>
+      </tr>
+      <tr>
+        <td>stop</td>
+        <td>Ending number (not included)</td>
+      </tr>
+      <tr>
+        <td>step</td>
+        <td>How much to increase each time</td>
+      </tr>
+    </table>
 
-        `
-      },
+    <hr>
+
+    <h3>2. While Loop</h3>
+
+    <p>
+      A <strong>while loop</strong> repeats as long as a condition is True.
+    </p>
+
+    <div class="code-block">count = 0
+
+while count < 5:
+    print(count)
+    count += 1</div>
+
+    <strong>Output:</strong>
+
+    <div class="code-block">0
+1
+2
+3
+4 </div>
+
+    <p>
+      The loop stops when <code>count</code> becomes 5.
+    </p>
+
+    <p>
+      Be careful! If the condition never becomes False, the loop will run forever.
+    </p>
+
+    <div class="code-block">while True:
+    print("Infinite Loop")</div>
+
+    <hr>
+    <h3>Summary</h3>
+
+    <ul>
+      <li><strong>for</strong> → Repeat a known number of times.</li>
+      <li><strong>while</strong> → Repeat while a condition is True.</li>
+     </ul>
+    `}, {
+        title: "🔵 Loop (Break,Continue)",
+        content: `
+
+    <h3>Break Statement</h3>
+
+    <p>
+      <code>break</code> immediately stops the loop.
+    </p>
+
+    <div class="code-block">for i in range(10):
+    if i == 5:
+        break
+
+    print(i) </div>
+
+    <strong>Output:</strong>
+
+    <div class="code-block">0
+1
+2
+3
+4</div>
+
+    <p>
+      When <code>i</code> becomes 5, the loop ends completely.
+    </p>
+
+    <hr>
+
+    <h3> Continue Statement</h3>
+
+    <p>
+      <code>continue</code> skips the current iteration and moves to the next one.
+    </p>
+
+    <div class="code-block">for i in range(6):
+
+    if i == 3:
+        continue
+
+    print(i)</div>
+
+    <strong>Output:</strong>
+
+    <div class="code-block">0
+1
+2
+4
+5</div>
+
+    <p>
+      The number 3 is skipped because of <code>continue</code>.
+    </p>
+
+    <hr>
+
+    <h3>Real-Life Examples</h3>
+
+    <h4>For Loop Example</h4>
+
+    <p>
+      Taking attendance for 30 students.
+    </p>
+
+    <div class="code-block">for student in range(30):
+    print("Present")</div>
+
+    <h4>While Loop Example</h4>
+
+    <p>
+      Keep asking for a password until it is correct.
+    </p>
+
+    <div class="code-block">password = ""
+
+while password != "python":
+    password = input("Enter password: ")</div>
+
+    <hr>
+
+    <table>
+      <tr>
+        <th>Feature</th>
+        <th>For Loop</th>
+        <th>While Loop</th>
+      </tr>
+
+      <tr>
+        <td>Control</td>
+        <td>Uses a sequence or range</td>
+        <td>Uses a condition</td>
+      </tr>
+
+      <tr>
+        <td>Best Used When</td>
+        <td>Number of repetitions is known</td>
+        <td>Number of repetitions is unknown</td>
+      </tr>
+
+      <tr>
+        <td>Example</td>
+        <td>Count from 1 to 10</td>
+        <td>Repeat until user enters correct password</td>
+      </tr>
+    </table>
+
+    <h3>Summary</h3>
+      <li><strong>break</strong> → Stop the loop immediately.</li>
+      <li><strong>continue</strong> → Skip one iteration and continue.</li>
+    </ul>
+  `
+},
       {
         title: "🔵 Boolean",
         content: `
