@@ -306,19 +306,84 @@ multiple lines'''</span></div>
 <span class="keyword">print</span>(f<span class="string">"Grade: {grade}"</span>)</div>
         `
       },
-       {
-        title: "🔵 Shorthand if",
-        content: `
-        <h2>Short Hand If</h2>
-<p>If you have only one statement to execute, you can put it on the same line as the if statement.</p>
-<h4>Example</h4>      
-<p>One-line if statement:</p> 
-<div class="code-block">a = 5
+{
+  title: "🔵 Shorthand If",
+  content: `
+    <h2>Shorthand If</h2>
+
+    <p>
+      If you only have <strong>one statement</strong> to execute, you can write the
+      <code>if</code> statement on a single line.
+    </p>
+
+    <h4>Example</h4>
+
+    <p>One-line if statement:</p>
+
+    <div class="code-block">a = 5
 b = 2
-if a > b: print("a is greater than b")
-</div>
-<p class="bg-yellow-800 p-3"><strong>Note: </strong> You still need the colon : after the condition.</p>
-`
+
+if a > b: print("a is greater than b") </div>
+
+    <p>
+      Since <code>a</code> is greater than <code>b</code>, the message is printed.
+    </p>
+
+    <p class="bg-yellow-800 p-3">
+      <strong>Note:</strong> You still need the colon <code>:</code> after the condition.
+    </p>
+
+    <hr>
+
+    <h2>Shorthand If ... Else</h2>
+
+    <p>
+      Python allows a short form of <code>if...else</code> called a
+      <strong>conditional expression</strong> (or ternary operator).
+    </p>
+
+    <h4>Example</h4>
+
+    <div class="code-block">a = 5
+b = 2
+
+print("a is greater than b" if a > b else "a is less than b")</div>
+
+    <strong>Output:</strong>
+
+    <div class="code-block">a is greater than b</div>
+
+    <p>
+      If the condition is True, the first value is used.
+      Otherwise, the value after <code>else</code> is used.
+    </p>
+
+    <hr>
+
+    <h3>Normal vs Shorthand</h3>
+
+    <div class="code-block"># Normal If...Else
+
+if a > b:
+    print("a is greater than b")
+else:
+    print("a is less than b")</div>
+
+    <div class="code-block"># Shorthand If...Else
+
+print("a is greater than b" if a > b else "a is less than b")</div>
+
+    <hr>
+
+    <h3>Summary</h3>
+
+    <ul>
+      <li><strong>Shorthand If</strong> → Write a simple if statement on one line.</li>
+      <li><strong>Shorthand If...Else</strong> → Use a conditional expression.</li>
+      <li>Useful for short and simple conditions.</li>
+      <li>Avoid using it when the logic becomes too complex.</li>
+    </ul>
+  `
 },
 { title: "🔵 Nested If",
  content: `
@@ -668,7 +733,6 @@ add(2, 3)
 <div class="code-block">def add(a, b):
     return a + b
 result = add(2, 3)
-
 print(result)
     #This sends "Hello" back as a value.</div>
 <h2>Lambda Functions</h2>
@@ -686,6 +750,171 @@ print(square(4))</div>
 print(square(4))</div>
         `
       },
+{
+  title: "🔴 Python Scope",
+  content: `
+    <h2>Python Scope</h2>
+
+    <p>
+      <strong>Scope</strong> determines where a variable can be accessed in a program.
+    </p>
+
+    <p>
+      Python has two main types of scope:
+    </p>
+
+    <ul>
+      <li><strong>Local Scope</strong></li>
+      <li><strong>Global Scope</strong></li>
+    </ul>
+
+    <hr>
+
+    <h2>Local Scope</h2>
+
+    <p>
+      A variable created inside a function belongs to that function only.
+      It is called a <strong>local variable</strong>.
+    </p>
+
+    <h4>Example</h4>
+
+    <div class="code-block">def greet():
+    message = "Hello Python"
+    print(message)
+
+greet()</div>
+
+    <strong>Output:</strong>
+
+    <div class="code-block">Hello Python</div>
+
+    <p>
+      The variable <code>message</code> exists only inside the
+      <code>greet()</code> function.
+    </p>
+
+    <div class="code-block">def greet():
+    message = "Hello Python"
+
+print(message)</div>
+
+    <strong>Output:</strong>
+
+    <div class="code-block">NameError: name 'message' is not defined </div>
+
+    <p>
+      This happens because <code>message</code> is local to the function.
+    </p>
+
+
+
+    <h2>Global Scope</h2>
+
+    <p>
+      A variable created outside all functions is called a
+      <strong>global variable</strong>.
+    </p>
+
+    <h4>Example</h4>
+
+    <div class="code-block">name = "Alice"
+
+def greet():
+    print(name)
+
+greet()
+print(name)</div>
+
+    <strong>Output:</strong>
+
+    <div class="code-block">Alice
+Alice</div>
+
+    <p>
+      Since <code>name</code> is global, it can be accessed both inside and outside the function.
+    </p>
+
+    
+
+    <h2>Local vs Global</h2>
+
+    <div class="code-block">name = "Global"
+
+def my_function():
+    name = "Local"
+    print(name)
+
+my_function()
+print(name)</div>
+
+    <strong>Output:</strong>
+
+    <div class="code-block">Local
+Global </div>
+
+    <p>
+      Python uses the local variable first inside the function.
+      Outside the function, the global variable remains unchanged.
+    </p>
+
+  
+
+    <h2>The global Keyword</h2>
+
+    <p>
+      Use the <code>global</code> keyword if you want to modify a global variable inside a function.
+    </p>
+
+    <h4>Example</h4>
+
+    <div class="code-block">count = 0
+
+def increase():
+    global count
+    count += 1
+
+increase()
+
+print(count) </div>
+
+    <strong>Output:</strong>
+
+    <div class="code-block">1</div>
+
+  
+
+    <h2>Real-Life Example</h2>
+
+    <table>
+      <tr>
+        <th>Scope</th>
+        <th>Real-Life Example</th>
+      </tr>
+      <tr>
+        <td>Local Scope</td>
+        <td>Your classroom notebook (only you use it)</td>
+      </tr>
+      <tr>
+        <td>Global Scope</td>
+        <td>The school notice board (everyone can see it)</td>
+      </tr>
+    </table>
+
+  
+
+    <h2>Summary</h2>
+
+    <ul>
+      <li><strong>Local Scope</strong> → Variable created inside a function.</li>
+      <li><strong>Global Scope</strong> → Variable created outside a function.</li>
+      <li>Local variables can only be used inside their function.</li>
+      <li>Global variables can be used throughout the program.</li>
+      <li>Use <code>global</code> to modify a global variable inside a function.</li>
+    </ul>
+  `
+}
+,
       {
         title: "🔴 Mini Calculator",
         content: `
@@ -772,8 +1001,7 @@ computer = random.choice(choices)
     <span class="keyword">print</span>(<span class="string">"Computer wins! 😢"</span>)</div>
        
    
-    `
-      },{
+    `},{
     title: "🔴 Quiz & Assignment",
     content: `
 
