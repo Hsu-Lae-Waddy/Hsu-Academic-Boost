@@ -33,6 +33,7 @@
     .code-block .comment { color: #6c7086; font-style: italic; }
     .code-block .type { color: #89b4fa; }
     .code-block .function { color: #fab387; }
+    .code-block .error {color: rgb(149, 19, 19)}
   </style>
   <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
  </head>
@@ -320,10 +321,10 @@ multiple lines'''</span></div>
 
     <p>One-line if statement:</p>
 
-    <div class="code-block">a = 5
-b = 2
+    <div class="code-block">a = <span class="type">5</span>
+b = <span class="type">2</span>
 
-if a > b: print("a is greater than b") </div>
+<span class="keyword">if</span> a > b: <span class="keyword">print</span>("a is greater than b") </div>
 
     <p>
       Since <code>a</code> is greater than <code>b</code>, the message is printed.
@@ -344,10 +345,10 @@ if a > b: print("a is greater than b") </div>
 
     <h4>Example</h4>
 
-    <div class="code-block">a = 5
-b = 2
+    <div class="code-block">a = <span class="type">5</span>
+b = <span class="type">2</span>
 
-print("a is greater than b" if a > b else "a is less than b")</div>
+<span class="keyword">print</span>("a is greater than b" <span class="keyword">if</span> a > b <span class="keyword"> else</span> "a is less than b")</div>
 
     <strong>Output:</strong>
 
@@ -364,14 +365,14 @@ print("a is greater than b" if a > b else "a is less than b")</div>
 
     <div class="code-block"># Normal If...Else
 
-if a > b:
-    print("a is greater than b")
-else:
-    print("a is less than b")</div>
+<span class="keyword">if</span> a > b:
+    <span class="keyword">print</span>("a is greater than b")
+<span class="keyword">else</span>:
+    <span class="keyword">print</span>("a is less than b")</div>
 
     <div class="code-block"># Shorthand If...Else
 
-print("a is greater than b" if a > b else "a is less than b")</div>
+<span class="keyword">print</span>("a is greater than b" <span class="keyword">if</span> a > b <span class="keyword">else</span> "a is less than b")</div>
 
     <hr>
 
@@ -391,28 +392,28 @@ print("a is greater than b" if a > b else "a is less than b")</div>
  <p>You can have if statements inside if statements. This is called nested if statements.</p>
  <img src="images/Nested-statement.webp">
  <h3>Example</h3>
- <div class="code-block">x = 41
+ <div class="code-block">x = <span class="type">41</span>
 
-if x > 10:
-  print("Above ten,")
-  if x > 20:
-    print("and also above 20!")
-  else:
-    print("but not above 20.")</div>
+<span class="keyword">if</span> x >  <span class="type">10</span>:
+  <span class="keyword">print</span>("Above ten,")
+  <span class="keyword">if</span> x >  <span class="type">20</span>:
+    <span class="keyword">print</span>("and also above 20!")
+  <span class="keyword">else</span>:
+    <span class="keyword">print</span>("but not above 20.")</div>
 <h3>Example</h3>
-    <div class="code-block">age = 30
+    <div class="code-block">age = <span class="type">30</span>
 member = True
 
-if age > 18:
-    if member:
-        print("Ticket price is $12.")
-    else:
-        print("Ticket price is $20.")
-else:
-    if member:
-        print("Ticket price is $8.")
-    else:
-        print("Ticket price is $10.")</div>
+<span class="keyword">if</span> age >  <span class="type">18</span>:
+    <span class="keyword">if</span> member:
+       <span class="keyword">print</span>("Ticket price is $12.")
+    <span class="keyword">else</span>:
+        <span class="keyword">print</span>("Ticket price is $20.")
+<span class="keyword">else</span>:
+   <span class="keyword"> if</span> member:
+       <span class="keyword">print</span>("Ticket price is $8.")
+    <span class="keyword">else</span>:
+       <span class="keyword">print</span>("Ticket price is $10.")</div>
 
 <p class="bg-yellow-800 p-3">In this example, the inner if statement only runs if the outer condition is true. <br> <strong>It means :</strong> If that first door doesn't open, the computer doesn't even bother looking at what’s inside the second one. It just skips the whole block.</p>
  `
@@ -429,16 +430,16 @@ else:
 
     <h3>Why Use Loops?</h3>
 
-    <div class="code-block">print("Hello")
-print("Hello")
-print("Hello")
-print("Hello")
-print("Hello")</div>
+    <div class="code-block"><span class="keyword">print</span>(<span class="string">"Hello"</span>)
+<span class="keyword">print</span>(<span class="string">"Hello"</span>)
+<span class="keyword">print</span>(<span class="string">"Hello"</span>)
+<span class="keyword">print</span>(<span class="string">"Hello"</span>)
+<span class="keyword">print</span>(<span class="string">"Hello"</span>)</div>
 
     <p>Using a loop:</p>
 
-    <div class="code-block">for i in range(5):
-    print("Hello")</div>
+    <div class="code-block"><span class="keyword">for</span> i in range(5):
+  <span class="keyword">print</span>(<span class="string">"Hello"</span>)</div>
 
     <p>
       Both produce the same output, but the loop requires much less code.
@@ -452,8 +453,8 @@ print("Hello")</div>
       A <strong>for loop</strong> is used when we know how many times we want to repeat something.
     </p>
 
-    <div class="code-block">for i in range(5):
-    print(i)</div>
+    <div class="code-block"><span class="keyword">for</span> i in range(5):
+   <span class="keyword">print</span>(i)</div>
 
     <strong>Output:</strong>
 
@@ -469,8 +470,8 @@ print("Hello")</div>
 
     <h4>range(start, stop, step)</h4>
 
-    <div class="code-block">for i in range(1, 11, 2):
-    print(i)</div>
+    <div class="code-block"><span class="keyword">for</span> i in range(1, 11, 2):
+<span class="keyword">print</span>(i)</div>
 
     <strong>Output:</strong>
 
@@ -507,10 +508,10 @@ print("Hello")</div>
       A <strong>while loop</strong> repeats as long as a condition is True.
     </p>
 
-    <div class="code-block">count = 0
+    <div class="code-block">count = <span class="type">0</span>
 
-while count < 5:
-    print(count)
+<span class="keyword">while</span> count < <span class="type">5</span>:
+    <span class="keyword">print</span>(count)
     count += 1</div>
 
     <strong>Output:</strong>
@@ -529,8 +530,8 @@ while count < 5:
       Be careful! If the condition never becomes False, the loop will run forever.
     </p>
 
-    <div class="code-block">while True:
-    print("Infinite Loop")</div>
+    <div class="code-block"><span class="keyword">while</span> <span class="type">True</span>:
+<span class="keyword">print</span>(<span class="string">"Infinite Loop"</span>)</div>
 
     <hr>
     <h3>Summary</h3>
@@ -549,11 +550,11 @@ while count < 5:
       <code>break</code> immediately stops the loop.
     </p>
 
-    <div class="code-block">for i in range(10):
-    if i == 5:
-        break
+    <div class="code-block"><span class="keyword">for</span> i in range(10):
+    <span class="keyword">if</span> i ==<span class="type"> 5</span>:
+        <span class="keyword">break</span>
 
-    print(i) </div>
+  <span class="keyword">print</span>(i) </div>
 
     <strong>Output:</strong>
 
@@ -575,12 +576,12 @@ while count < 5:
       <code>continue</code> skips the current iteration and moves to the next one.
     </p>
 
-    <div class="code-block">for i in range(6):
+    <div class="code-block"><span class="keyword">for</span> i in range(6):
 
-    if i == 3:
-        continue
+    <span class="keyword">if</span> i == <span class="type">3</span>:
+        <span class="keyword">continue</span>
 
-    print(i)</div>
+  <span class="keyword">print</span>(i)</div>
 
     <strong>Output:</strong>
 
@@ -604,8 +605,8 @@ while count < 5:
       Taking attendance for 30 students.
     </p>
 
-    <div class="code-block">for student in range(30):
-    print("Present")</div>
+    <div class="code-block"> <span class="keyword">for</span> student in range(30):
+    <span class="keyword">print</span>("Present")</div>
 
     <h4>While Loop Example</h4>
 
@@ -613,10 +614,10 @@ while count < 5:
       Keep asking for a password until it is correct.
     </p>
 
-    <div class="code-block">password = ""
+    <div class="code-block">password = <span class="string">""</span>
 
-while password != "python":
-    password = input("Enter password: ")</div>
+<span class="keyword">while</span> password != <span class="string">"python"</span>:
+    password = <span class="keyword">input</span>(<span class="string">"Enter password: "</span>)</div>
 
     <hr>
 
@@ -660,20 +661,20 @@ while password != "python":
         In programming you often need to know if an expression is True or False.<br>
 When you compare two values, the expression is evaluated and Python returns the Boolean answer: </p>
 <h3>Example</h3>
-<div class="code-block">print(10 > 9) <span class="comment"> #True</span>
-print(10 == 9)  <span class="comment"> #False </span>
-print(10 < 9)  <span class="comment"> #False </span>
+<div class="code-block"><span class="keyword">print</span>(<span class="type">10</span> > <span class="type">9</span>) <span class="comment"> #True</span>
+<span class="keyword">print</span>( <span class="type">10</span> ==  <span class="type">9</span>)  <span class="comment"> #False </span>
+<span class="keyword">print</span>( <span class="type">10</span> <  <span class="type">9</span>)  <span class="comment"> #False </span>
 </div>
 
 <p>When you run a condition in an if statement, Python returns True or False:<br>
   Print a message based on whether the condition is True or False:</p>
-  <div class="code-block">a = 200
-b = 33
+  <div class="code-block">a = <span class="type">200</span>
+b = <span class="type">33</span>
 
-if b > a:
-  print("b is greater than a")
-else:
-  print("b is not greater than a")</div>
+<span class="keyword">if</span> b > a:
+  <span class="keyword">print</span>("b is greater than a")
+<span class="keyword">else</span>:
+  <span class="keyword">print</span>("b is not greater than a")</div>
         `
 
       },
@@ -703,51 +704,51 @@ result = greet(<span class="string">"Alice"</span>)
             </tbody>
           </table>
           <h3>1. Positional Arguments</h3>
-          <div class="code-block">def add(a, b):
-    return a + b
+          <div class="code-block"><span class="keyword">def</span> add(a, b):
+    <span class="keyword">return</span> a + b
 
-print(add(2, 3)) </div>
+<span class="keyword">print</span>(add(<span class="type">2</span>, <span class="type">3</span>)) </div>
             <h3>2. Keyword Arguments</h3>
-             <div class="code-block">def introduce(name, age):
-    print(name, age)
+             <div class="code-block"><span class="keyword">def</span> introduce(name, age):
+    <span class="keyword">print</span>(name, age)
 
-introduce(age=20, name="Alice")</div>
+introduce(age=<span class="type">20</span>, name=<span class="string">"Alice"</span>)</div>
               <h3>3. Default Parameters</h3>
-              <div class="code-block">def greet(name="Guest"):
-    print("Hello", name)
+              <div class="code-block"><span class="keyword">def</span> greet(name=<span class="string">"Guest"</span>):
+   <span class="keyword">print</span>(<span class="string">"Hello"</span>, name)
 
 greet()
-greet("Alice")</div> 
+greet(<span class="string">"Alice"</span>)</div> 
                 <h3>4. Return Statement</h3>
-                <div class="code-block">def square(x):
-    return x * x
+                <div class="code-block"><span class="keyword">def</span> square(x):
+    <span class="keyword">return</span> x * x
 
-result = square(4)
-print(result)</div>
+result = square(<span class="type">4</span>)
+<span class="keyword">print</span>(result)</div>
 
 <h3>Difference Between print() and return</h3>
+<div class="code-block"><span class="keyword">def</span> add(a, b):
+   <span class="keyword">print</span>(a + b)
+add(<span class="type">2</span>,<span class="type"> 3</span>)
+  <span class="comment">  #This only displays text.</span> </div>
 <div class="code-block">def add(a, b):
-    print(a + b)
-add(2, 3)
-    #This only displays text. </div>
-<div class="code-block">def add(a, b):
-    return a + b
-result = add(2, 3)
-print(result)
-    #This sends "Hello" back as a value.</div>
+    <span class="keyword">return</span> a + b
+result = add(<span class="type">2</span>, <span class="type">3</span>)
+<span class="keyword">print</span>(result)
+   <span class="comment"> #This sends "Hello" back as a value.</span></div>
 <h2>Lambda Functions</h2>
 
 <p>A lambda function is a small anonymous function.</p>
 <p>Anonymous means: the function has no name.</p>
           <h3>Normal Function</h3>
-          <div class="code-block">def square(x):
-    return x * x
+          <div class="code-block"><span class="keyword">def</span> square(x):
+    <span class="keyword">return</span> x * x
 
-print(square(4))</div>
+<span class="keyword">print</span>(square(<span class="type">4</span>))</div>
           <h3>Lambda Functions</h3>
-          <div class="code-block">square = lambda x: x * x
+          <div class="code-block">square = <span class="keyword">lambda</span> x: x * x
 
-print(square(4))</div>
+<span class="keyword">print</span>(square(<span class="type">4</span>))</div>
         `
       },
 {
@@ -779,9 +780,9 @@ print(square(4))</div>
 
     <h4>Example</h4>
 
-    <div class="code-block">def greet():
-    message = "Hello Python"
-    print(message)
+    <div class="code-block"><span class="keyword">def</span> greet():
+    message = <span class="string">"Hello Python"</span>
+<span class="keyword">print</span>(message)
 
 greet()</div>
 
@@ -794,14 +795,14 @@ greet()</div>
       <code>greet()</code> function.
     </p>
 
-    <div class="code-block">def greet():
-    message = "Hello Python"
+    <div class="code-block"><span class="keyword">def</span> greet():
+    message = <span class="string">"Hello Python"</span>
 
-print(message)</div>
+<span class="keyword">print</span>(message)</div>
 
     <strong>Output:</strong>
 
-    <div class="code-block">NameError: name 'message' is not defined </div>
+    <div class="code-block"><span class="error">NameError</span>: name 'message' is not defined </div>
 
     <p>
       This happens because <code>message</code> is local to the function.
@@ -818,13 +819,13 @@ print(message)</div>
 
     <h4>Example</h4>
 
-    <div class="code-block">name = "Alice"
+    <div class="code-block">name = <span class="string">"Alice"</span>
 
-def greet():
-    print(name)
+<span class="keyword">def</span> greet():
+  <span class="keyword">print</span>(name)
 
 greet()
-print(name)</div>
+<span class="keyword">print</span>(name)</div>
 
     <strong>Output:</strong>
 
@@ -839,14 +840,14 @@ Alice</div>
 
     <h2>Local vs Global</h2>
 
-    <div class="code-block">name = "Global"
+    <div class="code-block">name = <span class="string">"Global"</span>
 
-def my_function():
-    name = "Local"
-    print(name)
+<span class="keyword">def</span> my_function():
+    name = <span class="string">"Local"</span>
+  <span class="keyword">print</span>(name)
 
 my_function()
-print(name)</div>
+<span class="keyword">print</span>(name)</div>
 
     <strong>Output:</strong>
 
@@ -868,15 +869,15 @@ Global </div>
 
     <h4>Example</h4>
 
-    <div class="code-block">count = 0
+    <div class="code-block">count = <span class="type">0</span>
 
-def increase():
-    global count
-    count += 1
+<span class="keyword">def</span> increase():
+   <span class="keyword">global</span>count
+    count += <span class="type">1</span>
 
 increase()
 
-print(count) </div>
+<span class="keyword">print</span>(count) </div>
 
     <strong>Output:</strong>
 
@@ -1119,7 +1120,892 @@ A7#kP2@m
     <li>Copy the password to the clipboard.</li>
 </ul>
     `
+},
+{
+  title: "🟢 Lists",
+  content: `
+    <h2>Lists</h2>
+
+    <p>
+      A <strong>List</strong> is used to store multiple items in a single variable.
+    </p>
+
+    <p>
+      Lists are one of Python's built-in collection data types.
+      The other collection types are:
+    </p>
+
+    <ul>
+      <li>Tuple</li>
+      <li>Set</li>
+      <li>Dictionary</li>
+    </ul>
+
+    <hr>
+
+    <h3>Creating a List</h3>
+
+    <p>
+      Lists are created using square brackets <code>[]</code>.
+    </p>
+
+    <div class="code-block">fruits = [<span class="string">"apple", "banana", "cherry"</span>]
+
+<span class="keyword">print</span>(fruits)</div>
+
+    <strong>Output:</strong>
+
+    <div class="code-block">['apple', 'banana', 'cherry'] </div>
+
+    <hr>
+
+    <h3>List Features</h3>
+
+    <ul>
+      <li><strong>Ordered</strong> → Items keep their position.</li>
+      <li><strong>Changeable</strong> → Items can be modified.</li>
+      <li><strong>Allow Duplicates</strong> → Same value can appear multiple times.</li>
+    </ul>
+
+    <hr>
+
+    <h3>Ordered</h3>
+
+    <p>
+      List items have a fixed order.
+    </p>
+
+    <div class="code-block">fruits = [<span class="string">"apple", "banana", "cherry"</span>]
+
+<span class="keyword">print</span>(fruits)</div>
+
+    <strong>Output:</strong>
+
+    <div class="code-block">apple, banana, cherry </div>
+
+    <p>
+      If you add a new item, it is added to the end of the list.
+    </p>
+
+    <div class="code-block">fruits.<span class="keyword">append</span>(<span class="string">"orange"</span>)
+
+<span class="keyword">print</span>(fruits)</div>
+
+    <strong>Output:</strong>
+
+    <div class="code-block">['apple', 'banana', 'cherry', 'orange' ] </div>
+
+    <hr>
+
+    <h3>Allow Duplicates</h3>
+
+    <div class="code-block">fruits = [<span class="string">"apple", "banana", "apple" </span>]
+
+<span class="keyword">print</span>(fruits)</div>
+
+    <strong>Output:</strong>
+
+    <div class="code-block">['apple', 'banana', 'apple']</div>
+
+    <p>
+      Lists allow the same value to appear more than once.
+    </p>
+
+    <hr>
+
+    <h3>List Index</h3>
+
+    <p>
+      List items are indexed.
+      The first item has index <code>0</code>.
+    </p>
+
+    <table>
+      <tr>
+        <th>Index</th>
+        <th>Value</th>
+      </tr>
+      <tr>
+        <td>0</td>
+        <td>apple</td>
+      </tr>
+      <tr>
+        <td>1</td>
+        <td>banana</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>cherry</td>
+      </tr>
+    </table>
+
+    <div class="code-block">fruits = [<span class="string">"apple", "banana", "cherry"</span>]
+
+<span class="keyword">print</span>(fruits[0]) </div>
+
+    <strong>Output:</strong>
+
+    <div class="code-block">apple</div>
+
+    <hr>
+
+    <h3>Change Items</h3>
+
+    <div class="code-block">fruits = [<span class="string">"apple", "banana", "cherry"</span>]
+
+fruits[1] =<span class="string"> "orange"</span>
+
+<span class="keyword">print</span>(fruits)</div>
+
+    <strong>Output:</strong>
+
+    <div class="code-block">['apple', 'orange', 'cherry']</div>
+
+    <hr>
+
+    <h3>Add Items</h3>
+
+    <div class="code-block">fruits = [<span class="string">"apple", "banana"</span>]
+
+fruits.<span class="keyword">append</span>(<span class="string">"cherry"</span>)
+
+<span class="keyword">print</span>(fruits)</div>
+
+    <strong>Output:</strong>
+
+    <div class="code-block">['apple', 'banana', 'cherry']</div>
+
+    <hr>
+
+    <h3>Remove Items</h3>
+
+    <div class="code-block">fruits = [<span class="string">"apple", "banana", "cherry"</span>]
+
+fruits.<span class="keyword">remove</span>("banana")
+
+<span class="keyword">print</span>(fruits)</div>
+
+    <strong>Output:</strong>
+
+    <div class="code-block">['apple', 'cherry']</div>
+
+    <hr>
+
+    <h3>List Length</h3>
+
+    <p>
+      Use <code>len()</code> to find the number of items in a list.
+    </p>
+
+    <div class="code-block">fruits = [<span class="string">"apple", "banana", "cherry" </span>]
+
+<span class="keyword">print</span>(<span class="keyword">len</span>(fruits)) </div>
+
+    <strong>Output:</strong>
+
+    <div class="code-block">3</div>
+
+    <hr>
+
+    <h3>Summary</h3>
+
+    <ul>
+      <li>Lists store multiple items.</li>
+      <li>Lists use square brackets <code>[]</code>.</li>
+      <li>Lists are ordered.</li>
+      <li>Lists are changeable.</li>
+      <li>Lists allow duplicates.</li>
+      <li>Index starts from <code>0</code>.</li>
+      <li>Use <code>append()</code> to add items.</li>
+      <li>Use <code>remove()</code> to remove items.</li>
+      <li>Use <code>len()</code> to count items.</li>
+    </ul>
+  `
+},
+{
+  title: "🟢 Tuples",
+  content: `
+    <h2>Tuples</h2>
+
+    <p>
+      A <strong>Tuple</strong> is used to store multiple items in a single variable.
+    </p>
+
+    <p>
+      Tuples are similar to Lists, but they <strong>cannot be changed</strong> after they are created.
+    </p>
+
+    <hr>
+
+    <h3>Creating a Tuple</h3>
+
+    <p>
+      Tuples are created using parentheses <code>()</code>.
+    </p>
+
+    <div class="code-block">fruits = (<span class="string">"apple", "banana", "cherry"</span>)
+
+<span class="keyword">print</span>(fruits)</div>
+
+    <strong>Output:</strong>
+
+    <div class="code-block">('apple', 'banana', 'cherry')</div>
+
+    <hr>
+
+    <h3>Tuple Features</h3>
+
+    <ul>
+      <li><strong>Ordered</strong> → Items keep their position.</li>
+      <li><strong>Unchangeable (Immutable)</strong> → Items cannot be modified.</li>
+      <li><strong>Allow Duplicates</strong> → Same value can appear multiple times.</li>
+    </ul>
+
+    <hr>
+
+    <h3>Ordered</h3>
+
+    <p>
+      Tuple items have a fixed order.
+    </p>
+
+    <div class="code-block">fruits = (<span class="string">"apple", "banana", "cherry"</span>)
+
+<span class="keyword">print</span>(fruits) </div>
+
+    <hr>
+
+    <h3>Allow Duplicates</h3>
+
+    <div class="code-block">fruits = (<span class="string">"apple", "banana", "apple"</span>)
+
+<span class="keyword">print</span>(fruits)</div>
+
+    <strong>Output:</strong>
+
+    <div class="code-block">('apple', 'banana', 'apple')</div>
+
+    <hr>
+
+    <h3>Access Tuple Items</h3>
+
+    <p>
+      Tuple items are indexed. The first item has index <code>0</code>.
+    </p>
+
+    <div class="code-block">fruits = (<span class="string">"apple", "banana", "cherry"</span>)
+
+<span class="keyword">print</span>(fruits[0])</div>
+
+    <strong>Output:</strong>
+
+    <div class="code-block">apple</div>
+
+    <hr>
+
+    <h3>Tuple Index</h3>
+
+    <table>
+      <tr>
+        <th>Index</th>
+        <th>Value</th>
+      </tr>
+      <tr>
+        <td>0</td>
+        <td>apple</td>
+      </tr>
+      <tr>
+        <td>1</td>
+        <td>banana</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>cherry</td>
+      </tr>
+    </table>
+
+    <hr>
+
+    <h3>Tuple Length</h3>
+
+    <p>
+      Use <code>len()</code> to count the number of items in a tuple.
+    </p>
+
+    <div class="code-block">fruits = ("apple", "banana", "cherry")
+
+<span class="keyword">print</span>(<span class="keyword">len</span>(fruits)) </div>
+
+    <strong>Output:</strong>
+
+    <div class="code-block">3</div>
+
+    <hr>
+
+    <h3>Cannot Change Tuple Items</h3>
+
+    <div class="code-block">fruits = (<span class="string">"apple", "banana", "cherry"</span>)
+
+fruits[1] = <span class="string">"orange"</span></div>
+
+    <strong>Output:</strong>
+
+    <div class="code-block"> <span class="error">TypeError:</span> 'tuple' object does not support item assignment</div>
+
+    <p>
+      Tuples are immutable, meaning their values cannot be changed.
+    </p>
+
+    <hr>
+
+    <h3>Why Use Tuples?</h3>
+
+    <p>
+      Use tuples when you want data that should not change.
+    </p>
+
+    <h4>Example</h4>
+
+    <div class="code-block">days = (<span class="string">"Monday", "Tuesday", "Wednesday",
+        "Thursday", "Friday", "Saturday", "Sunday"</span>)</div>
+
+    <p>
+      The days of the week usually do not change, so a tuple is a good choice.
+    </p>
+
+    <hr>
+
+    <h3>List vs Tuple</h3>
+
+    <table>
+      <tr>
+        <th>Feature</th>
+        <th>List</th>
+        <th>Tuple</th>
+      </tr>
+      <tr>
+        <td>Syntax</td>
+        <td>[]</td>
+        <td>()</td>
+      </tr>
+      <tr>
+        <td>Ordered</td>
+        <td>✅ Yes</td>
+        <td>✅ Yes</td>
+      </tr>
+      <tr>
+        <td>Changeable</td>
+        <td>✅ Yes</td>
+        <td>❌ No</td>
+      </tr>
+      <tr>
+        <td>Allow Duplicates</td>
+        <td>✅ Yes</td>
+        <td>✅ Yes</td>
+      </tr>
+    </table>
+
+    <hr>
+
+    <h3>Summary</h3>
+
+    <ul>
+      <li>Tuples store multiple items.</li>
+      <li>Tuples use parentheses <code>()</code>.</li>
+      <li>Tuples are ordered.</li>
+      <li>Tuples allow duplicates.</li>
+      <li>Tuples are immutable (cannot be changed).</li>
+      <li>Index starts from <code>0</code>.</li>
+      <li>Use <code>len()</code> to count items.</li>
+    </ul>
+  `
+},
+{
+  title: "🟢 Sets",
+  content: `
+    <h2>Sets</h2>
+
+    <p>
+      A <strong>Set</strong> is used to store multiple items in a single variable.
+    </p>
+
+    <p>
+      Sets are one of Python's built-in collection data types.
+    </p>
+
+    <hr>
+
+    <h3>Creating a Set</h3>
+
+    <p>
+      Sets are created using curly braces <code>{}</code>.
+    </p>
+
+    <div class="code-block">fruits = {<span class="string">"apple", "banana", "cherry</span>"}
+
+<span class="keyword">print</span>(fruits)</div>
+
+    <hr>
+
+    <h3>Set Features</h3>
+
+    <ul>
+      <li><strong>Unordered</strong> → Items do not have a fixed position.</li>
+      <li><strong>Unique</strong> → Duplicate values are not allowed.</li>
+      <li><strong>Changeable</strong> → You can add or remove items.</li>
+      <li><strong>Unindexed</strong> → Cannot access items using an index.</li>
+    </ul>
+
+    <hr>
+
+    <h3>Unordered</h3>
+
+    <p>
+      Set items do not have a fixed order.
+      The order may be different each time you run the program.
+    </p>
+
+    <div class="code-block">fruits = {<span class="string">"apple", "banana", "cherry"</span>}
+
+<span class="keyword">print</span>(fruits)</div>
+
+    <p>
+      The output order may vary.
+    </p>
+
+    <hr>
+
+    <h3>Unique Values</h3>
+
+    <p>
+      Sets automatically remove duplicate values.
+    </p>
+
+    <div class="code-block">fruits = {<span class="string">"apple", "banana", "apple", "cherry"</span>}
+
+<span class="keyword">print</span>(fruits)</div>
+
+    <strong>Output:</strong>
+
+    <div class="code-block">{'apple', 'banana', 'cherry'}</div>
+
+    <p>
+      The duplicate "apple" is removed automatically.
+    </p>
+
+    <hr>
+
+    <h3>Add Items</h3>
+
+    <p>
+      Use <code>add()</code> to add a new item.
+    </p>
+
+    <div class="code-block">fruits = {<span class="string">"apple", "banana"</span>}
+
+fruits.<span class="keyword">add</span>("cherry")
+
+<span class="keyword">print</span>(fruits)</div>
+
+    <hr>
+
+    <h3>Remove Items</h3>
+
+    <p>
+      Use <code>remove()</code> to remove an item.
+    </p>
+
+    <div class="code-block">fruits = {<span class="string">"apple", "banana", "cherry"</span>}
+
+fruits.<span class="keyword">remove</span>("banana")
+
+print(fruits)</div>
+
+    <hr>
+
+    <h3>Set Length</h3>
+
+    <p>
+      Use <code>len()</code> to count the number of items.
+    </p>
+
+    <div class="code-block">fruits = {<span class="string">"apple", "banana", "cherry"</span>}
+
+<span class="keyword">print</span>(<span class="keyword">len</span>(fruits))</div>
+
+    <strong>Output:</strong>
+
+    <div class="code-block">3</div>
+
+    <hr>
+
+    <h3>Cannot Use Indexes</h3>
+
+    <p>
+      Sets do not support indexing because they are unordered.
+    </p>
+
+    <div class="code-block">fruits = {<span class="string">"apple", "banana", "cherry"</span>}
+
+<span class="keyword">print</span>(fruits[0])</div>
+
+    <strong>Output:</strong>
+
+    <div class="code-block"><span class="error">TypeError:</span> 'set' object is not subscriptable </div>
+
+    <hr>
+
+    <h3>Real-Life Example</h3>
+
+    <p>
+      Imagine a classroom attendance list.
+    </p>
+
+    <div class="code-block">students = {<span class="string">"Alice", "Bob", "Alice", "Charlie" </span>}
+
+<span class="keyword">print</span>(students)</div>
+
+    <strong>Output:</strong>
+
+    <div class="code-block">{'Alice', 'Bob', 'Charlie'}</div>
+
+    <p>
+      Even though Alice appears twice, a Set keeps only one copy.
+    </p>
+
+    <hr>
+
+    <h3>List vs Tuple vs Set</h3>
+
+    <table>
+      <tr>
+        <th>Feature</th>
+        <th>List</th>
+        <th>Tuple</th>
+        <th>Set</th>
+      </tr>
+      <tr>
+        <td>Syntax</td>
+        <td>[]</td>
+        <td>()</td>
+        <td>{}</td>
+      </tr>
+      <tr>
+        <td>Ordered</td>
+        <td>✅ Yes</td>
+        <td>✅ Yes</td>
+        <td>❌ No</td>
+      </tr>
+      <tr>
+        <td>Changeable</td>
+        <td>✅ Yes</td>
+        <td>❌ No</td>
+        <td>✅ Yes</td>
+      </tr>
+      <tr>
+        <td>Duplicates Allowed</td>
+        <td>✅ Yes</td>
+        <td>✅ Yes</td>
+        <td>❌ No</td>
+      </tr>
+      <tr>
+        <td>Indexing</td>
+        <td>✅ Yes</td>
+        <td>✅ Yes</td>
+        <td>❌ No</td>
+      </tr>
+    </table>
+
+    <hr>
+
+    <h3>Summary</h3>
+
+    <ul>
+      <li>Sets store multiple items.</li>
+      <li>Sets use curly braces <code>{}</code>.</li>
+      <li>Sets are unordered.</li>
+      <li>Sets do not allow duplicates.</li>
+      <li>Sets are changeable.</li>
+      <li>Sets do not use indexes.</li>
+      <li>Use <code>add()</code> to add items.</li>
+      <li>Use <code>remove()</code> to remove items.</li>
+    </ul>
+  `
+},
+{
+  title: "🟢 Dictionaries",
+  content: `
+    <h2>Dictionaries</h2>
+
+    <p>
+      A <strong>Dictionary</strong> is used to store data in 
+      <strong>key : value</strong> pairs.
+    </p>
+
+    <p>
+      Dictionaries are one of Python's built-in collection data types.
+    </p>
+
+    <hr>
+
+    <h3>Creating a Dictionary</h3>
+
+    <p>
+      Dictionaries are created using curly braces <code>{}</code>.
+    </p>
+
+    <div class="code-block">student = {
+   <span class="string"> "name"</span>:<span class="string"> "Alice"</span>,
+   <span class="string"> "age"</span>:<span class="type"> 20</span>,
+    <span class="string">"grade"</span>:<span class="string"> "A"</span>
 }
+
+<span class="keyword">print</span>(student)</div>
+
+    <hr>
+
+    <h3>Dictionary Features</h3>
+
+    <ul>
+      <li><strong>Ordered</strong> → Items keep their insertion order.</li>
+      <li><strong>Changeable</strong> → Values can be modified.</li>
+      <li><strong>No Duplicate Keys</strong> → Each key must be unique.</li>
+      <li><strong>Key : Value Pairs</strong> → Data is stored as pairs.</li>
+    </ul>
+
+    <hr>
+
+    <h3>Key : Value Pairs</h3>
+
+    <table>
+      <tr>
+        <th>Key</th>
+        <th>Value</th>
+      </tr>
+      <tr>
+        <td>name</td>
+        <td>Alice</td>
+      </tr>
+      <tr>
+        <td>age</td>
+        <td>20</td>
+      </tr>
+      <tr>
+        <td>grade</td>
+        <td>A</td>
+      </tr>
+    </table>
+
+    <p>
+      Think of a dictionary like a student information card.
+    </p>
+
+    <hr>
+
+    <h3>Access Values</h3>
+
+    <p>
+      Use the key to get its value.
+    </p>
+
+    <div class="code-block">student = {
+   <span class="string"> "name"</span>: <span class="string">"Alice"</span>,
+   <span class="string"> "age"</span>: <span class="type">20</span>
+}
+
+<span class="keyword">print</span>(student["name"])</div>
+
+    <strong>Output:</strong>
+
+    <div class="code-block">Alice</div>
+
+    <hr>
+
+    <h3>Change Values</h3>
+
+    <div class="code-block">student = {
+   <span class="string"> "name"</span>:<span class="string"> "Alice"</span>,
+    <span class="string">"age"</span>:<span class="type"> 20</span>
+}
+
+student[<span class="string">"age"</span>] = <span class="type">21</span>
+
+<span class="keyword">print</span>(student) </div>
+
+    <strong>Output:</strong>
+
+    <div class="code-block">{'name': 'Alice', 'age': 21}</div>
+
+    <hr>
+
+    <h3>Add New Items</h3>
+
+    <div class="code-block">student = {
+    <span class="string">"name"</span>: <span class="string">"Alice"</span>
+}
+
+student[<span class="string">"grade"</span>] = <span class="string">"A"</span>
+
+<span class="keyword">print</span>(student)</div>
+
+    <strong>Output:</strong>
+
+    <div class="code-block">{'name': 'Alice', 'grade': 'A'} </div>
+
+    <hr>
+
+    <h3>Remove Items</h3>
+
+    <p>
+      Use <code>pop()</code> to remove an item.
+    </p>
+
+    <div class="code-block">student = {
+   <span class="string"> "name"</span>: <span class="string">"Alice"</span>,
+    <span class="string">"age"</span>:<span class="type"> 20</span>
+}
+
+student.<span class="keyword">pop</span>("age")
+
+<span class="keyword">print</span>(student) </div>
+
+    <strong>Output:</strong>
+
+    <div class="code-block">{'name': 'Alice'} </div>
+
+    <hr>
+
+    <h3>Dictionary Length</h3>
+
+    <p>
+      Use <code>len()</code> to count the number of key-value pairs.
+    </p>
+
+    <div class="code-block">student = {
+    <span class="string">"name"</span>:<span class="string"> "Alice"</span>,
+    <span class="string">"age"</span>: <span class="type">20</span>,
+    <span class="string">"grade"</span>: <span class="string">"A"</span>
+}
+
+<span class="keyword">print</span>(<span class="keyword">len</span>(student))</div>
+
+    <strong>Output:</strong>
+
+    <div class="code-block">3</div>
+
+    <hr>
+
+    <h3>No Duplicate Keys</h3>
+
+    <div class="code-block">student = {
+   <span class="string"> "name"</span>: <span class="string">"Alice"</span>,
+    <span class="string">"name"</span>: <span class="string">"Bob"<span>
+}
+
+<span class="keyword">print</span>(student)</div>
+
+    <strong>Output:</strong>
+
+    <div class="code-block">{'name': 'Bob'}</div>
+
+    <p>
+      The second value replaces the first because keys must be unique.
+    </p>
+
+    <hr>
+
+    <h3>Real-Life Example</h3>
+
+    <p>
+      A dictionary is like a student profile.
+    </p>
+
+    <div class="code-block">student = {
+    <span class="string">"name"</span>: <span class="string">"John"</span>,
+   <span class="string"> "age"</span>: <span class="type">18</span>,
+    <span class="string">"city"</span>: <span class="string">"Yangon"</span>
+}
+
+<span class="keyword">print</span>(student[<span class="string">"city"</span>])</div>
+
+    <strong>Output:</strong>
+
+    <div class="code-block">Yangon</div>
+
+    <hr>
+
+    <h3>List vs Tuple vs Set vs Dictionary</h3>
+
+    <table>
+      <tr>
+        <th>Feature</th>
+        <th>List</th>
+        <th>Tuple</th>
+        <th>Set</th>
+        <th>Dictionary</th>
+      </tr>
+
+      <tr>
+        <td>Syntax</td>
+        <td>[]</td>
+        <td>()</td>
+        <td>{}</td>
+        <td>{key:value}</td>
+      </tr>
+
+      <tr>
+        <td>Ordered</td>
+        <td>✅</td>
+        <td>✅</td>
+        <td>❌</td>
+        <td>✅</td>
+      </tr>
+
+      <tr>
+        <td>Changeable</td>
+        <td>✅</td>
+        <td>❌</td>
+        <td>✅</td>
+        <td>✅</td>
+      </tr>
+
+      <tr>
+        <td>Duplicates</td>
+        <td>✅</td>
+        <td>✅</td>
+        <td>❌</td>
+        <td>❌ Keys</td>
+      </tr>
+
+      <tr>
+        <td>Indexing</td>
+        <td>✅</td>
+        <td>✅</td>
+        <td>❌</td>
+        <td>Uses Keys</td>
+      </tr>
+    </table>
+
+    <hr>
+
+    <h3>Summary</h3>
+
+    <ul>
+      <li>Dictionaries store data as key-value pairs.</li>
+      <li>Dictionaries use curly braces <code>{}</code>.</li>
+      <li>Values are accessed using keys.</li>
+      <li>Dictionaries are ordered and changeable.</li>
+      <li>Keys must be unique.</li>
+      <li>Use <code>pop()</code> to remove items.</li>
+      <li>Use <code>len()</code> to count items.</li>
+    </ul>
+  `
+}
+
+
+
+
+
     ];
 
     let currentLesson = 0;
