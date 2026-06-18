@@ -197,37 +197,806 @@ name = <span class="string">"Bobby"</span>
           <div class="code-block">x, y, z = <span class="type">1</span>, <span class="type">2</span>, <span class="type">3</span>
 a = b = c = <span class="type">0</span></div>
         `
-      },
-      {
-        title: "🟡 Data Types",
-        content: `
-          <h2>Data Types</h2>
-          <p>Python has several built-in data types. Use <code>type()</code> to check.</p>
-          <h3>Primitive Types</h3>
-          <table>
-            <thead><tr><th>Type</th><th>Example</th><th>Check</th></tr></thead>
-            <tbody>
-              <tr><td><code>int</code></td><td><code>42</code></td><td><code>type(42) == int</code></td></tr>
-              <tr><td><code>float</code></td><td><code>3.14</code></td><td><code>type(3.14) == float</code></td></tr>
-              <tr><td><code>str</code></td><td><code>"hello"</code></td><td><code>type("hi") == str</code></td></tr>
-              <tr><td><code>bool</code></td><td><code>True</code></td><td><code>type(True) == bool</code></td></tr>
-            </tbody>
-          </table>
-          <h3>Type Conversion</h3>
-          <div class="code-block">num_str = <span class="string">"123"</span>
-number = <span class="keyword">int</span>(num_str)      <span class="comment"># str → int</span>
-decimal = <span class="keyword">float</span>(<span class="string">"3.14"</span>)   <span class="comment"># str → float</span>
-text = <span class="keyword">str</span>(<span class="type">42</span>)          <span class="comment"># int → str</span>
+      },{
+  title: "🟡 Data Types",
+  content: `
+    <h2>Python Data Types</h2>
 
-<span class="keyword">print</span>(<span class="keyword">type</span>(number))     <span class="comment"># &lt;class 'int'&gt;</span></div>
-          <h3>Strings</h3>
-          <div class="code-block">greeting = <span class="string">'Hi'</span>          <span class="comment"># Single quotes</span>
-message = <span class="string">"Hello"</span>        <span class="comment"># Double quotes</span>
-multiline = <span class="string">'''Triple
-quotes for
-multiple lines'''</span></div>
-        `
-      },
+    <p>
+      Variables can store different types of data.
+    </p>
+
+    <p>
+      A <strong>Data Type</strong> tells Python what kind of value a variable contains.
+    </p>
+
+    <hr>
+
+    <h3>Common Data Types</h3>
+
+    <table>
+      <tr>
+        <th>Data Type</th>
+        <th>Description</th>
+        <th>Example</th>
+      </tr>
+
+      <tr>
+        <td>str</td>
+        <td>Text/String</td>
+        <td>"Hello"</td>
+      </tr>
+
+      <tr>
+        <td>int</td>
+        <td>Whole Number</td>
+        <td>25</td>
+      </tr>
+
+      <tr>
+        <td>float</td>
+        <td>Decimal Number</td>
+        <td>3.14</td>
+      </tr>
+
+      <tr>
+        <td>bool</td>
+        <td>True or False</td>
+        <td>True</td>
+      </tr>
+
+      <tr>
+        <td>list</td>
+        <td>Ordered Collection</td>
+        <td>["apple", "banana"]</td>
+      </tr>
+
+      <tr>
+        <td>tuple</td>
+        <td>Unchangeable Collection</td>
+        <td>("apple", "banana")</td>
+      </tr>
+
+      <tr>
+        <td>set</td>
+        <td>Unique Collection</td>
+        <td>{"apple", "banana"}</td>
+      </tr>
+
+      <tr>
+        <td>dict</td>
+        <td>Key-Value Collection</td>
+        <td>{"name":"John"}</td>
+      </tr>
+    </table>
+
+    <hr>
+
+    <h3>String (str)</h3>
+
+    <p>Used to store text.</p>
+
+    <div class="code-block">name = <span class="string">"Alice"</span>
+
+<span class="keyword">print</span>(name)</div>
+
+    <hr>
+
+    <h3>Integer (int)</h3>
+
+    <p>Used to store whole numbers.</p>
+
+    <div class="code-block">age = <span class="type">20</span>
+
+<span class="keyword">print</span>(age)</div>
+
+    <hr>
+
+    <h3>Float (float)</h3>
+
+    <p>Used to store decimal numbers.</p>
+
+    <div class="code-block">price = <span class="type">9.99</span>
+
+<span class="keyword">print</span>(price)</div>
+
+    <hr>
+
+    <h3>Boolean (bool)</h3>
+
+    <p>Used to store True or False values.</p>
+
+    <div class="code-block">is_student = <span class="keyword">True</span>
+
+<span class="keyword">print</span>(is_student)</span></div>
+
+    <hr>
+
+    <h3>Check Data Type</h3>
+
+    <p>
+      Use <code>type()</code> to find the data type of a variable.
+    </p>
+
+    <div class="code-block">name = <span class="string">"Alice"</span>
+age = <span class="type">20</span>
+price = <span class="type">9.99</span>
+
+<span class="keyword">print</span>(<span class="keyword">type</span>(name))
+<span class="keyword">print</span>(<span class="keyword">type</span>(age))
+<span class="keyword">print</span>(<span class="keyword">type</span>(price))</div>
+
+    <strong>Output:</strong>
+
+    <div class="code-block">&lt;class 'str'&gt;
+&lt;class 'int'&gt;
+&lt;class 'float'&gt; </div>
+
+    <hr>
+
+    <h3>Type Conversion</h3>
+
+    <p>
+      Python allows you to convert one data type into another.
+    </p>
+
+    <div class="code-block">age = <span class="string">"20"</span>
+
+<span class="keyword">print</span>(int(age))</div>
+
+    <strong>Output:</strong>
+
+    <div class="code-block">20 </div>
+
+    <table>
+      <tr>
+        <th>Function</th>
+        <th>Purpose</th>
+      </tr>
+      <tr>
+        <td>str()</td>
+        <td>Convert to String</td>
+      </tr>
+      <tr>
+        <td>int()</td>
+        <td>Convert to Integer</td>
+      </tr>
+      <tr>
+        <td>float()</td>
+        <td>Convert to Float</td>
+      </tr>
+      <tr>
+        <td>bool()</td>
+        <td>Convert to Boolean</td>
+      </tr>
+    </table>
+
+    <hr>
+
+    <h3>Real-Life Examples</h3>
+
+    <table>
+      <tr>
+        <th>Variable</th>
+        <th>Value</th>
+        <th>Data Type</th>
+      </tr>
+
+      <tr>
+        <td>name</td>
+        <td>"John"</td>
+        <td>str</td>
+      </tr>
+
+      <tr>
+        <td>age</td>
+        <td>20</td>
+        <td>int</td>
+      </tr>
+
+      <tr>
+        <td>height</td>
+        <td>5.8</td>
+        <td>float</td>
+      </tr>
+
+      <tr>
+        <td>is_student</td>
+        <td>True</td>
+        <td>bool</td>
+      </tr>
+    </table>
+
+    <hr>
+
+    <h3>Summary</h3>
+
+    <ul>
+      <li><strong>str</strong> → Text</li>
+      <li><strong>int</strong> → Whole Numbers</li>
+      <li><strong>float</strong> → Decimal Numbers</li>
+      <li><strong>bool</strong> → True or False</li>
+      <li><strong>list</strong> → Ordered Collection</li>
+      <li><strong>tuple</strong> → Fixed Collection</li>
+      <li><strong>set</strong> → Unique Collection</li>
+      <li><strong>dict</strong> → Key-Value Collection</li>
+      <li>Use <code>type()</code> to check a data type.</li>
+      <li>Use type conversion functions to change data types.</li>
+    </ul>
+  `
+},{
+  title: "🟡 Strings",
+  content: `
+    <h2>Strings</h2>
+
+    <p>
+      A <strong>String</strong> is a sequence of characters used to represent text.
+    </p>
+
+    <p>
+      Strings can contain letters, numbers, symbols, and spaces.
+    </p>
+
+    <hr>
+
+    <h3>Creating Strings</h3>
+
+    <p>
+      Strings are enclosed in either single quotes <code>' '</code> or double quotes <code>" "</code>.
+    </p>
+
+    <div class="code-block">name = <span class="string">"Alice"</span>
+message = <span class="string">'Hello World'</span>
+
+<span class="keyword">print</span>(name)
+<span class="keyword">print</span>(message) </div>
+
+    <strong>Output:</strong>
+
+    <div class="code-block">Alice
+Hello World </div>
+
+    <hr>
+
+    <h3>String Examples</h3>
+
+    <div class="code-block">text = <span class="string">"Python"</span>
+number = <span class="string">"123"</span>
+sentence = <span class="string">"I love Python"</span></div>
+
+    <p>
+      Even though "123" contains numbers, it is still a string because it is inside quotes.
+    </p>
+
+    <hr>
+
+    <h3>Access Characters (Indexing)</h3>
+
+    <p>
+      Each character in a string has an index number.
+    </p>
+
+    <table>
+      <tr>
+        <th>Index</th>
+        <td>0</td>
+        <td>1</td>
+        <td>2</td>
+        <td>3</td>
+        <td>4</td>
+        <td>5</td>
+      </tr>
+      <tr>
+        <th>Value</th>
+        <td>P</td>
+        <td>y</td>
+        <td>t</td>
+        <td>h</td>
+        <td>o</td>
+        <td>n</td>
+      </tr>
+    </table>
+
+    <div class="code-block">text = <span class="string">"Python"</span>
+
+<span class="keyword">print</span>(text[<span class="type">0</span>])
+<span class="keyword">print</span>(text[<span class="type">1</span>])
+<span class="keyword">print</span>(text[<span class="type">5</span>])</div>
+
+    <strong>Output:</strong>
+
+    <div class="code-block">P
+y
+n</div>
+
+    <hr>
+
+    <h3>Negative Indexing</h3>
+
+    <p>
+      Python also allows negative indexes.
+    </p>
+
+    <table>
+      <tr>
+        <th>Index</th>
+        <td>-6</td>
+        <td>-5</td>
+        <td>-4</td>
+        <td>-3</td>
+        <td>-2</td>
+        <td>-1</td>
+      </tr>
+      <tr>
+        <th>Value</th>
+        <td>P</td>
+        <td>y</td>
+        <td>t</td>
+        <td>h</td>
+        <td>o</td>
+        <td>n</td>
+      </tr>
+    </table>
+
+    <div class="code-block">text = <span class="string">"Python"</span>
+
+<span class="keyword">print</span>(text[<span class="type">-1</span>])
+<span class="keyword">print</span>(text[<span class="type">-2</span>]) </div>
+
+    <strong>Output:</strong>
+
+    <div class="code-block">n
+o</div>
+
+    <hr>
+
+    <h3>String Length</h3>
+
+    <p>
+      Use <code>len()</code> to find the number of characters in a string.
+    </p>
+
+    <div class="code-block">text = <span class="string">"Python"</span>
+<span class="keyword">print</span>(<span class="keyword">len</span>(text))</div>
+
+    <strong>Output:</strong>
+
+    <div class="code-block">6</div>
+
+    <hr>
+
+    <h3>Loop Through a String</h3>
+
+    <div class="code-block"><span class="keyword">for</span> letter in "Python":
+    <span class="keyword">print</span>(letter)</div>
+
+    <strong>Output:</strong>
+
+    <div class="code-block">P
+y
+t
+h
+o
+n</div>
+
+    <hr>
+
+    <h3>Check String</h3>
+
+    <p>
+      Use <code>in</code> and <code>not in</code> to check if text exists in a string.
+    </p>
+
+    <div class="code-block">text = <span class="string">"Python"</span>
+
+<span class="keyword">print</span>(<span class="string">"Py"</span> in text)
+<span class="keyword">print</span>(<span class="string">"Java"</span> in text)</div>
+
+    <strong>Output:</strong>
+
+    <div class="code-block">True
+False</div>
+
+    <hr>
+
+    <h3>Summary</h3>
+
+    <ul>
+      <li>A String is used to store text.</li>
+      <li>Strings are enclosed in quotes.</li>
+      <li>Each character has an index.</li>
+      <li>Index starts at <code>0</code>.</li>
+      <li>Negative indexes start at <code>-1</code>.</li>
+      <li>Use <code>len()</code> to get string length.</li>
+      <li>Use a loop to access each character.</li>
+      <li>Use <code>in</code> to check if text exists.</li>
+    </ul>
+  `
+},{
+  title: "🟡 String Methods",
+  content: `
+    <h2>String Methods</h2>
+
+    <p>
+      Python provides many built-in methods that can be used to manipulate strings.
+    </p>
+
+    <p>
+      String methods help you change, search, split, and format text.
+    </p>
+
+    <hr>
+
+    <h3>Common String Methods</h3>
+
+    <table>
+      <tr>
+        <th>Method</th>
+        <th>Description</th>
+        <th>Example</th>
+        <th>Output</th>
+      </tr>
+
+      <tr>
+        <td><code>upper()</code></td>
+        <td>Convert to uppercase</td>
+        <td>"hello".upper()</td>
+        <td>HELLO</td>
+      </tr>
+
+      <tr>
+        <td><code>lower()</code></td>
+        <td>Convert to lowercase</td>
+        <td>"HELLO".lower()</td>
+        <td>hello</td>
+      </tr>
+
+      <tr>
+        <td><code>title()</code></td>
+        <td>Capitalize each word</td>
+        <td>"hello world".title()</td>
+        <td>Hello World</td>
+      </tr>
+
+      <tr>
+        <td><code>capitalize()</code></td>
+        <td>Capitalize first letter</td>
+        <td>"python".capitalize()</td>
+        <td>Python</td>
+      </tr>
+
+      <tr>
+        <td><code>strip()</code></td>
+        <td>Remove spaces at both ends</td>
+        <td>" hello ".strip()</td>
+        <td>hello</td>
+      </tr>
+
+      <tr>
+        <td><code>replace()</code></td>
+        <td>Replace text</td>
+        <td>"I like Java".replace("Java","Python")</td>
+        <td>I like Python</td>
+      </tr>
+
+      <tr>
+        <td><code>find()</code></td>
+        <td>Find position of text</td>
+        <td>"Python".find("t")</td>
+        <td>2</td>
+      </tr>
+
+      <tr>
+        <td><code>count()</code></td>
+        <td>Count occurrences</td>
+        <td>"banana".count("a")</td>
+        <td>3</td>
+      </tr>
+
+      <tr>
+        <td><code>startswith()</code></td>
+        <td>Check beginning text</td>
+        <td>"Python".startswith("Py")</td>
+        <td>True</td>
+      </tr>
+
+      <tr>
+        <td><code>endswith()</code></td>
+        <td>Check ending text</td>
+        <td>"Python".endswith("on")</td>
+        <td>True</td>
+      </tr>
+
+      <tr>
+        <td><code>split()</code></td>
+        <td>Split string into a list</td>
+        <td>"apple,banana".split(",")</td>
+        <td>['apple', 'banana']</td>
+      </tr>
+
+      <tr>
+        <td><code>join()</code></td>
+        <td>Join list items into a string</td>
+        <td>"-".join(["a","b","c"])</td>
+        <td>a-b-c</td>
+      </tr>
+    </table>
+
+    <hr>
+
+    <h3>Examples</h3>
+
+    <div class="code-block">name = <span class="string">"python programming"</span>
+
+<span class="keyword">print</span>(name.<span class="keyword">upper</span>())
+<span class="keyword">print</span>(name.<span class="keyword">title</span>())
+<span class="keyword">print</span>(name.<span class="keyword">replace</span>(<span class="string">"python"</span>, <span class="string">"Java"</span>))</div>
+
+    <strong>Output:</strong>
+
+    <div class="code-block">PYTHON PROGRAMMING
+Python Programming
+Java programming </div>
+
+    <hr>
+
+    <h3>Summary</h3>
+
+    <ul>
+      <li><code>upper()</code> → UPPERCASE</li>
+      <li><code>lower()</code> → lowercase</li>
+      <li><code>title()</code> → Title Case</li>
+      <li><code>strip()</code> → Remove spaces</li>
+      <li><code>replace()</code> → Replace text</li>
+      <li><code>find()</code> → Find position</li>
+      <li><code>count()</code> → Count text</li>
+      <li><code>split()</code> → String → List</li>
+      <li><code>join()</code> → List → String</li>
+    </ul>
+  `
+},{
+  title: "🟡 Slicing & Concat",
+  content: `
+    <h2>Slicing Strings</h2>
+
+    <p>
+      <strong>Slicing</strong> allows you to extract a portion of a string.
+    </p>
+
+    <p>
+      The syntax is:
+    </p>
+
+    <div class="code-block">string[start:end]</div>
+
+    <p>
+      The <strong>start index is included</strong>, but the <strong>end index is excluded</strong>.
+    </p>
+
+    <hr>
+
+    <h3>Example</h3>
+
+    <div class="code-block">text = <span class="string">"Python"</span>
+
+<span class="keyword">print</span>(text[0:3])</div>
+
+    <strong>Output:</strong>
+
+    <div class="code-block">Pyt</div>
+
+    <table>
+      <tr>
+        <th>Index</th>
+        <td>0</td>
+        <td>1</td>
+        <td>2</td>
+        <td>3</td>
+        <td>4</td>
+        <td>5</td>
+      </tr>
+      <tr>
+        <th>Value</th>
+        <td>P</td>
+        <td>y</td>
+        <td>t</td>
+        <td>h</td>
+        <td>o</td>
+        <td>n</td>
+      </tr>
+    </table>
+
+    <p>
+      <code>text[0:3]</code> means start at index 0 and stop before index 3.
+    </p>
+
+    <hr>
+
+    <h3>Slice From Beginning</h3>
+
+    <div class="code-block">text = <span class="string">"Python"</span>
+
+<span class="keyword">print</span>(text[:3])</div>
+
+    <strong>Output:</strong>
+
+    <div class="code-block">Pyt</div>
+
+    <hr>
+
+    <h3>Slice To The End</h3>
+
+    <div class="code-block">text = <span class="string">"Python"</span>
+
+<span class="keyword">print</span>(text[2:])</div>
+
+    <strong>Output:</strong>
+
+    <div class="code-block">thon </div>
+
+    <hr>
+
+    <h3>Negative Slicing</h3>
+
+    <div class="code-block">text =<span class="string"> "Python"</span>
+
+<span class="keyword">print</span>(text[-3:])</div>
+
+    <strong>Output:</strong>
+
+    <div class="code-block">hon</div>
+
+    <hr>
+
+    <h3>Slicing With Step</h3>
+
+    <p>
+      You can specify a step value:
+    </p>
+
+    <div class="code-block">text = <span class="string">"Python"</span>
+
+<span class="keyword">print</span>(text[0:6:2])</div>
+
+    <strong>Output:</strong>
+
+    <div class="code-block">Pto</div>
+
+    <p>
+      Every 2nd character is selected.
+    </p>
+
+    <hr>
+
+    <h2>String Concatenation</h2>
+
+    <p>
+      <strong>Concatenation</strong> means joining two or more strings together.
+    </p>
+
+    <p>
+      Use the <code>+</code> operator to combine strings.
+    </p>
+
+    <div class="code-block">first_name = <span class="string">"John"</span>
+last_name = <span class="string">"Doe"</span>
+
+full_name = first_name + last_name
+
+<span class="keyword">print</span>(full_name) </div>
+
+    <strong>Output:</strong>
+
+    <div class="code-block">JohnDoe</div>
+
+    <hr>
+
+    <h3>Adding Spaces</h3>
+
+    <div class="code-block">first_name = <span class="string">"John"</span>
+last_name =  <span class="string">"Doe"</span>
+
+full_name = first_name +  <span class="string">" "</span> + last_name
+
+<span class="keyword">print</span>(full_name)
+    </div>
+
+    <strong>Output:</strong>
+
+    <div class="code-block">John Doe </div>
+
+    <hr>
+
+    <h3>Concatenate Multiple Strings</h3>
+
+    <div class="code-block">greeting =  <span class="string">"Hello"</span>
+name =  <span class="string">"Alice"</span>
+
+message = greeting +  <span class="string">", " </span>+ name + <span class="string">"!"</span>
+
+ <span class="keyword">print</span>(message)</div>
+
+    <strong>Output:</strong>
+
+    <div class="code-block">Hello, Alice!</div>
+
+    <hr>
+
+    <h3>String + Number Error</h3>
+
+    <div class="code-block">age = <span class="type">20</span>
+
+<span class="keyword">print</span>(<span class="string">"Age: "</span> + age) </div>
+
+    <strong>Output:</strong>
+
+    <div class="code-block"><span class="error">TypeError</span></div>
+
+    <p>
+      Python cannot directly combine a string and an integer.
+    </p>
+
+    <hr>
+
+    <h3>Convert Number to String</h3>
+
+    <div class="code-block">age = <span class="type">20</span>
+
+<span class="keyword">print</span>(<span class="string">"Age: "</span> + <span class="keyword">str</span>(age))</div>
+
+    <strong>Output:</strong>
+
+    <div class="code-block">Age: 20 </div>
+
+    <hr>
+
+    <h3>Summary</h3>
+
+    <table>
+      <tr>
+        <th>Concept</th>
+        <th>Example</th>
+        <th>Result</th>
+      </tr>
+
+      <tr>
+        <td>Slicing</td>
+        <td>text[0:3]</td>
+        <td>Pyt</td>
+      </tr>
+
+      <tr>
+        <td>Slice From Start</td>
+        <td>text[:3]</td>
+        <td>Pyt</td>
+      </tr>
+
+      <tr>
+        <td>Slice To End</td>
+        <td>text[2:]</td>
+        <td>thon</td>
+      </tr>
+
+      <tr>
+        <td>Negative Slice</td>
+        <td>text[-3:]</td>
+        <td>hon</td>
+      </tr>
+
+      <tr>
+        <td>Concatenation</td>
+        <td>"Hello" + "World"</td>
+        <td>HelloWorld</td>
+      </tr>
+
+      <tr>
+        <td>Space Between Strings</td>
+        <td>"Hello" + " " + "World"</td>
+        <td>Hello World</td>
+      </tr>
+    </table>
+  `
+},
       { title: "🔵 Operators",
         content: `
         <h2> Python Operators </h2>
@@ -1282,148 +2051,6 @@ A7#kP2@m
     <li>Copy the password to the clipboard.</li>
 </ul>
     `
-},{
-  title: "🟢 String Methods",
-  content: `
-    <h2>String Methods</h2>
-
-    <p>
-      Python provides many built-in methods that can be used to manipulate strings.
-    </p>
-
-    <p>
-      String methods help you change, search, split, and format text.
-    </p>
-
-    <hr>
-
-    <h3>Common String Methods</h3>
-
-    <table>
-      <tr>
-        <th>Method</th>
-        <th>Description</th>
-        <th>Example</th>
-        <th>Output</th>
-      </tr>
-
-      <tr>
-        <td><code>upper()</code></td>
-        <td>Convert to uppercase</td>
-        <td>"hello".upper()</td>
-        <td>HELLO</td>
-      </tr>
-
-      <tr>
-        <td><code>lower()</code></td>
-        <td>Convert to lowercase</td>
-        <td>"HELLO".lower()</td>
-        <td>hello</td>
-      </tr>
-
-      <tr>
-        <td><code>title()</code></td>
-        <td>Capitalize each word</td>
-        <td>"hello world".title()</td>
-        <td>Hello World</td>
-      </tr>
-
-      <tr>
-        <td><code>capitalize()</code></td>
-        <td>Capitalize first letter</td>
-        <td>"python".capitalize()</td>
-        <td>Python</td>
-      </tr>
-
-      <tr>
-        <td><code>strip()</code></td>
-        <td>Remove spaces at both ends</td>
-        <td>" hello ".strip()</td>
-        <td>hello</td>
-      </tr>
-
-      <tr>
-        <td><code>replace()</code></td>
-        <td>Replace text</td>
-        <td>"I like Java".replace("Java","Python")</td>
-        <td>I like Python</td>
-      </tr>
-
-      <tr>
-        <td><code>find()</code></td>
-        <td>Find position of text</td>
-        <td>"Python".find("t")</td>
-        <td>2</td>
-      </tr>
-
-      <tr>
-        <td><code>count()</code></td>
-        <td>Count occurrences</td>
-        <td>"banana".count("a")</td>
-        <td>3</td>
-      </tr>
-
-      <tr>
-        <td><code>startswith()</code></td>
-        <td>Check beginning text</td>
-        <td>"Python".startswith("Py")</td>
-        <td>True</td>
-      </tr>
-
-      <tr>
-        <td><code>endswith()</code></td>
-        <td>Check ending text</td>
-        <td>"Python".endswith("on")</td>
-        <td>True</td>
-      </tr>
-
-      <tr>
-        <td><code>split()</code></td>
-        <td>Split string into a list</td>
-        <td>"apple,banana".split(",")</td>
-        <td>['apple', 'banana']</td>
-      </tr>
-
-      <tr>
-        <td><code>join()</code></td>
-        <td>Join list items into a string</td>
-        <td>"-".join(["a","b","c"])</td>
-        <td>a-b-c</td>
-      </tr>
-    </table>
-
-    <hr>
-
-    <h3>Examples</h3>
-
-    <div class="code-block">name = <span class="string">"python programming"</span>
-
-<span class="keyword">print</span>(name.<span class="keyword">upper</span>())
-<span class="keyword">print</span>(name.<span class="keyword">title</span>())
-<span class="keyword">print</span>(name.<span class="keyword">replace</span>(<span class="string">"python"</span>, <span class="string">"Java"</span>))</div>
-
-    <strong>Output:</strong>
-
-    <div class="code-block">PYTHON PROGRAMMING
-Python Programming
-Java programming </div>
-
-    <hr>
-
-    <h3>Summary</h3>
-
-    <ul>
-      <li><code>upper()</code> → UPPERCASE</li>
-      <li><code>lower()</code> → lowercase</li>
-      <li><code>title()</code> → Title Case</li>
-      <li><code>strip()</code> → Remove spaces</li>
-      <li><code>replace()</code> → Replace text</li>
-      <li><code>find()</code> → Find position</li>
-      <li><code>count()</code> → Count text</li>
-      <li><code>split()</code> → String → List</li>
-      <li><code>join()</code> → List → String</li>
-    </ul>
-  `
 },
 {
   title: "🟢 Lists",
