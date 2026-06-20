@@ -120,6 +120,9 @@ function showPasswordOverlay(subject) {
     if (subject === 'mit') {
     targetPage = 'MITLesson.html';
   }
+  if (subject === 'pythonOOP') {
+    targetPage = 'POOP.html';
+  }
 
   document
     .getElementById('password-overlay')
