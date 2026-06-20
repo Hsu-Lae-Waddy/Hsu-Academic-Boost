@@ -108,8 +108,18 @@ const memeCollections = {
         "memes/B2.jpg",
         "memes/B3.jpg",
         "memes/B4.jpg",
+        "memes/B7.jpg",
         "memes/B5.jpg",
         "memes/B6.jpg"
+    ],
+    FB:[
+        "memes/fb0.jpg",
+        "memes/fb1.jpg",
+        "memes/fb2.jpg",
+        "memes/fb3.jpg",
+        "memes/fb4.jpg",
+        "memes/fb5.jpg",
+        "memes/fbe.jpg",
     ]
 };
 const gallery = document.getElementById("gallery");
@@ -219,11 +229,16 @@ createCarousel(
 createCarousel(
     "🐞 Bug and Programmer Are Always Together",
     memeCollections.bugs
-)
+);
 createCarousel(
     "🐞 Bug to Feature",
     memeCollections.bugsfeature
 );
+createCarousel(
+    "🤝 Frontend Developer vs Backend Developer",
+    memeCollections.FB
+);
+
 </script>
 
 </body>
