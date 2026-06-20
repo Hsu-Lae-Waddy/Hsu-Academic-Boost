@@ -2992,7 +2992,7 @@ student.<span class="keyword">pop</span>("age")
 </table>
   `
 },{
-  title: "🟢 Project ",
+  title: "🟢 Project:Management System",
   content: `
     <h2>🎓 Student Management System</h2>
 
@@ -3101,17 +3101,13 @@ age =<span class="keyword">input</span>(<span class="string">"Enter Age: "</span
     </p>
 
     <div class="code-block"><span class=keyword>while</span> <span class="keyword">True</span>:
-    pass
-    </div>
+    pass</div>
 
     <hr>
-  `
-},{
-  title:"🟢 project full code",
-  content:`
-  <h2>🎓 Student Management System Full code</h2>
-  <div style="margin-top:20px;">
-
+     <details>
+      <summary class="p-2"><strong>👨‍💻 Show Full Code</strong></summary>
+       <h2>🎓 Student Management System Full code</h2>
+  <div style="margin-top:5px;">
 <div class="code-block">students = []
 
 <span class="keyword">def</span> add_student():
@@ -3193,7 +3189,10 @@ age =<span class="keyword">input</span>(<span class="string">"Enter Age: "</span
 </div>
 
     </div>
-`
+
+        </details>
+
+  `
 },{
   title: "🟠 File Handling",
   content: `
@@ -3398,7 +3397,408 @@ Bob </div>
     </ul>
   `
 }
+,{
+  title: "🟠 CSV Files",
+  content: `
+    <h2>📄 What is a CSV File?</h2>
 
+    <p>
+      <strong>CSV</strong> stands for <strong>Comma-Separated Values</strong>.
+    </p>
+
+    <p>
+      A CSV file is a simple text file used to store data in a table format.
+    </p>
+
+    <p>
+      Each line represents a row, and commas separate the columns.
+    </p>
+
+    <hr>
+
+    <h3>Example CSV File</h3>
+
+    <p><strong>students.csv</strong></p>
+
+    <div class="code-block">Name,Age,Grade
+Alice,20,A
+Bob,19,B
+Charlie,21,A </div>
+
+    <p>
+      This CSV file contains 3 columns and 3 student records.
+    </p>
+
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Grade</th>
+      </tr>
+      <tr>
+        <td>Alice</td>
+        <td>20</td>
+        <td>A</td>
+      </tr>
+      <tr>
+        <td>Bob</td>
+        <td>19</td>
+        <td>B</td>
+      </tr>
+      <tr>
+        <td>Charlie</td>
+        <td>21</td>
+        <td>A</td>
+      </tr>
+    </table>
+
+    <hr>
+
+    <h3>Why Use CSV Files?</h3>
+
+    <ul>
+      <li>📊 Store tabular data</li>
+      <li>📈 Compatible with Excel</li>
+      <li>💾 Easy to read and write</li>
+      <li>🤖 Commonly used in Data Science and Machine Learning</li>
+    </ul>
+
+    <hr>
+
+    <h3>Import the CSV Module</h3>
+
+    <div class="code-block"><span class="keyword">import</span> csv</div>
+
+    <hr>
+
+    <h3>Read a CSV File</h3>
+
+    <div class="code-block"><span class="keyword">import</span> csv
+
+with open("students.csv", "r") as file:
+    reader = csv.reader(file)
+
+    <span class="keyword">for</span> row in reader:
+        <span class="keyword">print</span>(row) </div>
+
+    <strong>Output:</strong>
+
+    <div class="code-block">['Name', 'Age', 'Grade']
+['Alice', '20', 'A']
+['Bob', '19', 'B']
+['Charlie', '21', 'A'] </div>
+
+    <hr>
+
+    <h3>Write to a CSV File</h3>
+
+    <div class="code-block"><span class="keyword">import</span> csv
+
+<span class="keyword">with open</span>("students.csv", "w", newline="") as file:
+    writer = csv.writer(file)
+
+    writer.writerow(["Name", "Age", "Grade"])
+    writer.writerow(["Alice", 20, "A"])
+    writer.writerow(["Bob", 19, "B"])</div>
+
+    <hr>
+
+    <h3>CSV with Dictionaries</h3>
+
+    <div class="code-block"><span class="keyword">import</span> csv
+
+<span class="keyword">with open</span>("students.csv", "r") as file:
+    reader = csv.DictReader(file)
+
+    <span class="keyword">for</span> row in reader:
+        <span class="keyword">print</span>(row["Name"]) </div>
+
+    <strong>Output:</strong>
+
+    <div class="code-block">Alice
+Bob
+Charlie</div>
+
+    <hr>
+
+    <h3>Real-Life Uses of CSV</h3>
+
+    <table>
+      <tr>
+        <th>Field</th>
+        <th>Example</th>
+      </tr>
+      <tr>
+        <td>School</td>
+        <td>Student Records</td>
+      </tr>
+      <tr>
+        <td>Business</td>
+        <td>Customer Lists</td>
+      </tr>
+      <tr>
+        <td>Finance</td>
+        <td>Sales Reports</td>
+      </tr>
+      <tr>
+        <td>Data Science</td>
+        <td>Datasets for Analysis</td>
+      </tr>
+    </table>
+
+    <hr>
+
+    <h3>CSV vs TXT Files</h3>
+
+    <table>
+      <tr>
+        <th>Feature</th>
+        <th>TXT File</th>
+        <th>CSV File</th>
+      </tr>
+      <tr>
+        <td>Stores Text</td>
+        <td>✅</td>
+        <td>✅</td>
+      </tr>
+      <tr>
+        <td>Table Structure</td>
+        <td>❌</td>
+        <td>✅</td>
+      </tr>
+      <tr>
+        <td>Works with Excel</td>
+        <td>❌</td>
+        <td>✅</td>
+      </tr>
+      <tr>
+        <td>Rows & Columns</td>
+        <td>❌</td>
+        <td>✅</td>
+      </tr>
+    </table>
+
+    <hr>
+
+    <h3>Summary</h3>
+
+    <ul>
+      <li>CSV = Comma-Separated Values.</li>
+      <li>Used to store table-like data.</li>
+      <li>Each row represents a record.</li>
+      <li>Columns are separated by commas.</li>
+      <li>Use Python's <code>csv</code> module to read and write CSV files.</li>
+      <li>Commonly used with Excel, databases, and data analysis.</li>
+    </ul>
+  `
+},{
+  title: "🟠 Project: Attendance System",
+  content: `
+    <h2>📋 Attendance System</h2>
+
+    <p>
+      In this project, you will build a simple Attendance System using:
+    </p>
+
+    <ul>
+      <li>Variables</li>
+      <li>Lists</li>
+      <li>Dictionaries</li>
+      <li>Functions</li>
+      <li>Loops</li>
+      <li>If / Else</li>
+      <li>File Handling (Optional)</li>
+    </ul>
+
+    <hr>
+
+    <h3>🎯 Project Goal</h3>
+
+    <p>The program should be able to:</p>
+
+    <ul>
+      <li>➕ Mark Attendance</li>
+      <li>📋 View Attendance Records</li>
+      <li>🔍 Search Student Attendance</li>
+      <li>❌ Remove Attendance Record</li>
+      <li>🚪 Exit Program</li>
+    </ul>
+
+    <hr>
+
+    <h3>Step 1: Create a List</h3>
+
+    <p>Create an empty list to store attendance records.</p>
+
+    <div class="code-block">attendance = []</div>
+
+    <hr>
+
+    <h3>Step 2: Get Student Information</h3>
+
+    <div class="code-block">name = <span class="keyword">input</span>("Enter Student Name: ")
+status = <span class="keyword">input</span>("Present or Absent: ")</div>
+
+    <hr>
+
+    <h3>Step 3: Create a Dictionary</h3>
+
+    <div class="code-block">record = {
+    "name": name,
+    "status": status
+}</div>
+
+    <hr>
+
+    <h3>Step 4: Save Record</h3>
+
+    <div class="code-block">attendance.<span class="keyword">append</span>(record)</div>
+
+    <hr>
+
+    <h3>Step 5: View All Attendance</h3>
+
+    <div class="code-block"><span class="keyword">for</span> record in attendance:
+   <span class="keyword">print</span>(record) </div>
+
+    <hr>
+
+    <h3>Step 6: Search Attendance</h3>
+
+    <div class="code-block">search_name =  <span class="keyword">input</span>("Enter Student Name: ")</div>
+
+    <p>
+      Loop through the attendance list and find the student.
+    </p>
+
+    <hr>
+
+    <h3>Step 7: Delete Attendance Record</h3>
+
+    <p>
+      Find the student and remove the record.
+    </p>
+
+    <hr>
+
+    <h3>Step 8: Create Menu</h3>
+
+    <div class="code-block">1. Mark Attendance
+2. View Attendance
+3. Search Attendance
+4. Delete Attendance
+5. Exit </div>
+
+    <hr>
+
+    <h3>Step 9: Use a While Loop</h3>
+
+    <div class="code-block"> <span class="keyword">while True</span>:
+    pass</div>
+
+    <hr>
+
+    <h3>💡 Challenge</h3>
+
+    <p>
+      Try adding:
+    </p>
+
+    <ul>
+      <li>📅 Attendance Date</li>
+      <li>💾 Save Records to a File</li>
+      <li>📊 Count Present and Absent Students</li>
+    </ul>
+
+    <hr>
+
+    <details>
+      <summary class="p-2"><strong>👨‍💻 Show Full Code</strong></summary>
+<h2>📋 Student Attendance System Full code</h2>
+<div class="code-block">
+attendance = []
+
+<span class="keyword">def</span> mark_attendance():
+    name = <span class="keyword">input</span>(<span class="string">"Enter Student Name: "</span>)
+    status = <span class="keyword">input</span>(<span class="string">"Present or Absent: "</span>)
+
+    record = {
+        <span class="string">"name"</span>: name,
+        <span class="string">"status"</span>: status
+    }
+
+    attendance.<span class="keyword">append</span>(record)
+    <span class="keyword">print</span>(<span class="string">"Attendance Recorded Successfully!"</span>)
+
+<span class="keyword">def</span> view_attendance():
+    <span class="keyword">if len</span>(attendance) == <span class="type">0</span>:
+        <span class="keyword">print</span>(<span class="string">"No Attendance Records Found"</span>)
+        <span class="keyword">return</span>
+
+    <span class="keyword">print</span>(<span class="string">"\\nAttendance Records")</span>
+
+    <span class="keyword">for</span> record in attendance:
+        <span class="keyword">print</span>(<span class="string">"---------------------"</span>)
+        <span class="keyword">print</span>(<span class="string">"Name:"</span>, record[<span class="string">"name"</span>])
+        <span class="keyword">print</span>(<span class="string">"Status:"</span>, record[<span class="string">"status"</span>])
+
+<span class="keyword">def</span> search_attendance():
+    name = <span class="keyword">input</span>(<span class="string">"Enter Student Name: "</span>)
+
+    <span class="keyword">for</span> record in attendance:
+        <span class="keyword">if</span> record[<span class="string">"name"</span>].<span class="keyword">lower</span>() == name.<span class="keyword">lower</span>():
+            <span class="keyword">print</span>(<span class="string">"\\nStudent Found"</span>)
+            <span class="keyword">print</span>(<span class="string">"Name:"</span>, record[<span class="string">"name"</span>])
+            <span class="keyword">print</span>(<span class="string">"Status:"</span>, record[<span class="string">"status"</span>])
+            <span class="keyword">return</span>
+
+    <span class="keyword">print</span>(<span class="string">"Student Not Found"</span>)
+
+<span class="keyword">def</span> delete_attendance():
+    name = <span class="keyword">input</span>(<span class="string">"Enter Student Name: "</span>)
+
+     <span class="keyword">for</span> record in attendance:
+         <span class="keyword">if</span> record[<span class="string">"name"</span>]. <span class="keyword">lower</span>() == name. <span class="keyword">lower</span>():
+            attendance.<span class="keyword">remove</span>(record)
+             <span class="keyword">print</span>(<span class="string">"Attendance Record Deleted"</span>)
+             <span class="keyword">return</span>
+
+     <span class="keyword">print</span>("<span class="string">Student Not Found"</span>)
+
+<span class="keyword">while</span> <span class="type">True</span>:
+
+    <span class="keyword">print</span>(<span class="string">"\\n===== ATTENDANCE SYSTEM ====="</span>)
+    <span class="keyword">print</span>(<span class="string">"1. Mark Attendance"</span>)
+    <span class="keyword">print</span>(<span class="string">"2. View Attendance"</span>)
+    <span class="keyword">print</span>(<span class="string">"3. Search Attendance"</span>)
+    <span class="keyword">print</span>(<span class="string">"4. Delete Attendance"</span>)
+    <span class="keyword">print</span>(<span class="string">"5. Exit"</span>)
+
+    choice = <span class="keyword">input</span>(<span class="string">"Choose Option: "</span>)
+
+    <span class="keyword">if</span> choice == <span class="string">"1"</span>:
+        mark_attendance()
+
+    <span class="keyword">elif</span> choice == <span class="string">"2"</span>:
+        view_attendance()
+
+    <span class="keyword">elif</span> choice == <span class="string">"3"</span>:
+        search_attendance()
+
+    <span class="keyword">elif</span> choice == <span class="string">"4"</span>:
+        delete_attendance()
+
+    <span class="keyword">elif</span> choice == <span class="string">"5"</span>:
+        <span class="keyword">print</span>(<span class="string">"Goodbye!"</span>)
+        <span class="keyword">break</span>
+
+   <span class="keyword"> else:</span>
+        <span class="keyword">print</span>(<span class="string">"Invalid Choice"</span>)
+</div>
+
+    </details>
+  `
+}
 
 
 
