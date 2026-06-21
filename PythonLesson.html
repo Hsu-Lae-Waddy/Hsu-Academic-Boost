@@ -3647,7 +3647,6 @@ Charlie</div>
 
     <div class="code-block">name = <span class="keyword">input</span>("Enter Student Name: ")
 status = <span class="keyword">input</span>("Present or Absent: ")</div>
-
     <hr>
 
     <h3>Step 3: Create a Dictionary</h3>
@@ -3807,8 +3806,206 @@ attendance = []
 
     </details>
   `
-}
+},{
+  title: "📋 AS-Step by Step Explanation",
+  content: `
+    <h2>📋 Attendance System (Step-by-Step)</h2>
 
+    <p>
+      This project is a <strong>Student Attendance Management System</strong> that stores student attendance data permanently using a JSON file.
+    </p>
+
+    <hr>
+
+    <h3>🎯 What This Project Can Do</h3>
+
+    <ul>
+      <li>➕ Add attendance records</li>
+      <li>📋 View all records</li>
+      <li>🔍 Search student attendance</li>
+      <li>❌ Delete records</li>
+      <li>📊 Count present and absent students</li>
+      <li>💾 Save data in JSON file</li>
+    </ul>
+
+    <hr>
+
+    <h3>📌 Step 1: Import Libraries</h3>
+
+    <div class="code-block"><span class="type">from</span> <span class="keyword">datetime</span> <span class="type">import</span> <span class="keyword">date</span>
+<span class="type">import</span> <span class="keyword">json</span></div>
+
+    <p><strong>Why we need this:</strong></p>
+
+    <ul>
+      <li><code>date</code> → Get today's date automatically</li>
+      <li><code>json</code> → Store and load data from file</li>
+    </ul>
+
+    <div class="code-block"><span class="keyword">date</span>.today()
+<span class="comment"># Example output: 2026-06-22</span></div>
+
+    <hr>
+
+    <h3>📌 Step 2: Load Existing Data</h3>
+
+    <div class="code-block"><span class="keyword">try</span>:
+    <span class="keyword">with open</span>(<span class="string">"attendance.json"</span>, <span class="string">"r"</span>) as file:
+        attendance = <span class="keyword">json</span>.load(file)
+<span class="keyword">except</span>:
+    attendance = []</div>
+
+    <p><strong>What happens here:</strong></p>
+
+    <ul>
+      <li>Program tries to open <code>attendance.json</code></li>
+      <li>If file exists → load data into list</li>
+      <li>If file does not exist → create empty list</li>
+    </ul>
+
+    <hr>
+
+    <h3>📌 Step 3: Save Data Function</h3>
+
+    <div class="code-block"> <span class="keyword">def</span> save_file():
+    <span class="keyword">with open</span>(<span class="string">"attendance.json"</span>, <span class="string">"w"</span>) as file:
+        <span class="keyword">json.dump</span>(attendance, file, indent=<span class="type">4</span>)</div>
+
+    <p><strong>Purpose:</strong> Save attendance data permanently into a file.</p>
+
+    <p><code>indent=4</code> makes the JSON file readable.</p>
+
+    <hr>
+
+    <h3>📌 Step 4: Mark Attendance</h3>
+
+    <div class="code-block">name =  <span class="keyword">input</span>(<span class="string">"Enter Student Name: "</span>)
+status =  <span class="keyword">input</span>( <span class="string">"Present or Absent: "</span>) </div>
+
+    <p>Create a record:</p>
+
+    <div class="code-block">record = {
+    <span class="string">"name"</span>: name,
+   <span class="string">"status"</span>: status,
+   <span class="string">"date"</span>:  <span class="keyword">str</span>( <span class="keyword">date</span>.today())
+}</div>
+
+    <p>Add to list:</p>
+
+    <div class="code-block">attendance.<span class="keyword">append</span>(record)
+save_file()</div>
+
+    <hr>
+
+    <h3>📌 Step 5: View Attendance</h3>
+
+    <div class="code-block"><span class="keyword">for</span> record in attendance:
+    <span class="keyword">print</span>(record)</div>
+
+    <p><strong>Logic:</strong></p>
+
+    <ul>
+      <li>If list is empty → show message</li>
+      <li>Otherwise → loop and display each record</li>
+    </ul>
+
+    <hr>
+
+    <h3>📌 Step 6: Search Attendance</h3>
+
+    <div class="code-block">record[<span class="string">"name"</span>].<span class="keyword">lower</span>() == name.<span class="keyword">lower</span>()</div>
+
+    <p><strong>Why .lower()?</strong></p>
+
+    <p>It ignores uppercase/lowercase differences.</p>
+
+    <p>Example:</p>
+
+    <div class="code-block">John == john  → True</div>
+
+    <hr>
+
+    <h3>📌 Step 7: Delete Attendance</h3>
+
+    <div class="code-block">attendance.<span class="keyword">remove</span>(record)
+save_file()</div>
+
+    <p><strong>What happens:</strong></p>
+
+    <ul>
+      <li>Find matching student</li>
+      <li>Remove from list</li>
+      <li>Update JSON file</li>
+    </ul>
+
+    <hr>
+
+    <h3>📌 Step 8: Attendance Summary</h3>
+
+    <div class="code-block">present =<span class="type"> 0</span>
+absent = <span class="type">0</span> </div>
+
+    <p>Loop through records:</p>
+
+    <div class="code-block"><span class="keyword">if</span> record[<span class="string">"status"].<span class="keyword">lower</span>() == <span class="string">"present"</span>:
+    present += <span class="type">1</span>
+<span class="keyword">elif</span> record[<span class="string">"status"].<span class="keyword">lower</span>() == <span class="string">"absent"</span>:
+    absent += <span class="type">1</span> </div>
+
+    <p><strong>Final Output:</strong></p>
+
+    <div class="code-block">Present Students: <span class="type">5</span>
+Absent Students: <span class="type">2</span>
+Total Students: <span class="type">7</span></div>
+
+    <hr>
+
+    <h3>📌 Step 9: Main Menu System</h3>
+
+    <div class="code-block"><span class="keyword">while True</span>:
+   <span class="keyword">print</span>(<span class="string">"1. Mark Attendance"</span>)
+   <span class="keyword">print</span>(<span class="string">"2. View Attendance"</span>)
+    <span class="keyword">print</span>(<span class="string">"3. Search Attendance"</span>)
+    <span class="keyword">print</span>(<span class="string">"4. Delete Attendance"</span>)
+   <span class="keyword">print</span>(<span class="string">"5. Summary"</span>)
+   <span class="keyword">print</span>(<span class="string">"6. Exit"</span>)</div>
+
+    <p><strong>How it works:</strong></p>
+
+    <ul>
+      <li>Program runs forever</li>
+      <li>User selects option</li>
+      <li>Function runs</li>
+      <li>Returns to menu</li>
+      <li>Exit breaks loop</li>
+    </ul>
+
+    <hr>
+
+    <h3>📚 Concepts Learned</h3>
+
+    <ul>
+      <li>Variables</li>
+      <li>Lists</li>
+      <li>Dictionaries</li>
+      <li>Functions</li>
+      <li>Loops</li>
+      <li>If / Else</li>
+      <li>File Handling</li>
+      <li>JSON</li>
+      <li>CRUD System</li>
+      <li>Date Handling</li>
+    </ul>
+
+    <hr>
+
+    <h3>🚀 Final Note</h3>
+
+    <p>
+      This is a <strong>real-world beginner project</strong> that teaches how software systems store and manage data.
+    </p>
+  `
+}
 
 
     ];
@@ -3944,5 +4141,6 @@ attendance = []
 }
 
   </script>
- </body>
+ 
+</body>
 </html>
