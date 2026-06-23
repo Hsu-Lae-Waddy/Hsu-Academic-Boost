@@ -3976,7 +3976,7 @@ save_file()</div>
 
     <div class="code-block">record[<span class="string">"name"</span>].<span class="keyword">lower</span>() == name.<span class="keyword">lower</span>()</div>
 
-    <p><strong>Why .lower()?</strong></p>
+    <p><strong>Why .<code>lower()</code>?</strong></p>
 
     <p>It ignores uppercase/lowercase differences.</p>
 
@@ -4098,7 +4098,7 @@ Total Students: <span class="type">7</span></div>
     record = {
         <span class="string">"name"</span>: name,
         <span class="string">"status"</span>: status,
-        <span class="string">"date"</span>: str(date.today())
+        <span class="string">"date"</span>: <span class="keyword">str</span>(date.today())
     }
 
     attendance.<span class="keyword">append</span>(record)
@@ -4112,7 +4112,7 @@ Total Students: <span class="type">7</span></div>
 </span>
 <span class="keyword">def</span> view_attendance():
 
-    <span class="keyword">if</span> <<span class="keyword">len</span>(attendance) == <span class="type">0</span>:
+    <span class="keyword">if</span> <span class="keyword">len</span>(attendance) == <span class="type">0</span>:
         <span class="keyword">print</span>(<span class="string">"No Attendance Records Found"</span>)
         <span class="keyword">return</span>
 
@@ -4121,8 +4121,8 @@ Total Students: <span class="type">7</span></div>
     <span class="keyword">for</span> record in attendance:
         <span class="keyword">print</span>(<span class="string">"-------------------------"</span>)
         <span class="keyword">print</span>(<span class="string">"Name:"</span>, record[<span class="string">"name"</span>])
-        <span class="keyword">print</span>(<span class="string">"Status:"</span>, record[<span class="string">"status"])
-        <span class="keyword">print</span>(<span class="string">"Date:"</span>, record[<span class="string">"date"</span></span>])
+        <span class="keyword">print</span>(<span class="string">"Status:"</span>, record[<span class="string">"status"</span>])
+        <span class="keyword">print</span>(<span class="string">"Date:"</span>, record[<span class="string">"date"</span>])
 <span class="comment">
 # -----------------------------
 # Search Attendance
@@ -4130,16 +4130,16 @@ Total Students: <span class="type">7</span></div>
 </span>
  <span class="keyword">def</span> search_attendance():
 
-    name =  <span class="keyword">input</span>(<span class="string">"Enter Student Name: </span>")
+    name =  <span class="keyword">input</span>(<span class="string">"Enter Student Name: "</span>)
 
      <span class="keyword">for</span> record in attendance:
 
          <span class="keyword">if</span> record[<span class="string">"name"</span>]. <span class="keyword">lower</span>() == name. <span class="keyword">lower</span>():
 
              <span class="keyword">print</span>(<span class="string">"Student Found"</span>)
-             <span class="keyword">print</span>(<span class="string">"Name:", record[<span class="string">"name"</span>])
-             <span class="keyword">print</span>(<span class="string">"Status:", record[<span class="string">"status"</span>])
-             <span class="keyword">print</span>(<span class="string">"Date:", record[<span class="string">"date"</span>])
+             <span class="keyword">print</span>(<span class="string">"Name:"</span>, record[<span class="string">"name"</span>])
+             <span class="keyword">print</span>(<span class="string">"Status:"</span>, record[<span class="string">"status"</span>])
+             <span class="keyword">print</span>(<span class="string">"Date:"</span>, record[<span class="string">"date"</span>])
              <span class="keyword">return</span>
 
      <span class="keyword">print</span>(<span class="string">"Student Not Found"</span>)
@@ -4162,7 +4162,7 @@ Total Students: <span class="type">7</span></div>
              <span class="keyword">print</span>(<span class="string">"Attendance Record Deleted"</span>)
              <span class="keyword">return</span>
 
-    <span class="keyword">print</span>(<span class="string">"Student Not Found")</span>
+    <span class="keyword">print</span>(<span class="string">"Student Not Found"</span>)
 <span class="comment">
 # -----------------------------
 # Attendance Summary
@@ -4175,7 +4175,7 @@ Total Students: <span class="type">7</span></div>
 
     <span class="keyword">for</span> record in attendance:
 
-        <span class="keyword">if</span> record["status"</span>].<span class="keyword">lower</span>() == <span class="string">"present"</span>:
+        <span class="keyword">if</span> record[<span class="string">"status"</span>].<span class="keyword">lower</span>() == <span class="string">"present"</span>:
             present += <span class="type">1</span>
 
         <span class="keyword">elif</span> record[<span class="string">"status"</span>]..<span class="keyword">lower</span>() == .<span class="string">"absent"</span>:
@@ -4198,7 +4198,7 @@ Total Students: <span class="type">7</span></div>
      <span class="keyword">print</span>(<span class="string">"3. Search Attendance"</span>)
     <span class="keyword"> print</span>(<span class="string">"4. Delete Attendance"</span>)
      <span class="keyword">print</span>(<span class="string">"5. Attendance Summary"</span>)
-     <span class="keyword">print</span>(<span class="string">"6. Exit")
+     <span class="keyword">print</span>(<span class="string">"6. Exit"</span>)
 
     choice = <span class="keyword">input</span>(<span class="string">"Choose Option: "</span>)
 
