@@ -3601,6 +3601,67 @@ Charlie</div>
     </ul>
   `
 },{
+    title: "🟠 JSON in Python",
+    content: `
+    <h2>📦 What is JSON?</h2>
+
+    <p>JSON (JavaScript Object Notation) is a format for storing and exchanging data.</p>
+
+    <h3>🌟 Why Use JSON?</h3>
+    <ul>
+        <li>Store structured data</li>
+        <li>Exchange data between applications</li>
+        <li>Used in APIs and web applications</li>
+    </ul>
+
+    <h3>📄 JSON Example</h3>
+
+    <div class="code-block">{
+    <span class="string">"name"</span>:  <span class="string">"Alice"</span>,
+     <span class="string">"age"</span>:  <span class="type">20</span>,
+     <span class="string">"city"</span>:  <span class="string">"Yangon</span>"
+} </div>
+
+    <h3>🐍 JSON in Python</h3>
+
+    <p>Python has a built-in <b>json</b> module to work with JSON data.</p>
+
+<div class="code-block"><span class="string">import </span> json</div> 
+<h3>Convert from Python to JSON</h3>
+<p>If you have a Python object, you can convert it into a JSON string by using the <code>json.dumps()</code> method.</p>
+   <div class="code-block"><span class="keyword">import json</span>
+
+<span class="comment"># a Python object (dict):</span>
+x = {
+  <span class="string">"name"</span>: <span class="string">"John"</span>,
+  <span class="string">"age"</span>: <span class="type">30</span>,
+  <span class="string">"city"</span>: <span class="string">"New York"</span>
+}
+
+<span class="comment"># convert into JSON:</span>
+y = json.<span class="keyword">dumps</span>(x)
+
+<span class="comment"># the result is a JSON string:
+<span class="keyword">print(y)</div> 
+  <strong>Output:</strong>
+  <div class="code-block">{"name": "John", "age": 30, "city": "New York"}</div>
+<h3># convert into JSON with indent=4</h3>
+<div class="code-block"><span class="comment"># convert into JSON:</span>
+y = json.<span class="keyword">dumps</span>(x,indent=4)</div>
+<strong>Output:</strong>
+  <div class="code-block">{
+  "name": "John",
+  "age": 30,
+  "city": "New York"
+}</div>
+  <h3>📝 Summary</h3>
+    <ul>
+        <li>📦 JSON = Structured data format</li>
+        <li>🐍 Python uses the json module</li>
+        <li>🌐 Commonly used in APIs and web apps</li>
+    </ul>
+    `
+},{
   title: "🟠 Project: Attendance System",
   content: `
     <h2>📋 Attendance System</h2>
@@ -4004,6 +4065,166 @@ Total Students: <span class="type">7</span></div>
     <p>
       This is a <strong>real-world beginner project</strong> that teaches how software systems store and manage data.
     </p>
+    <details>
+      <summary class="p-2"><strong>👨‍💻 Show Full Code</strong></summary>
+<h2>📋 Student Attendance System Full code with JSON file</h2>
+<div class="code-block"><span class="keyword">from</span> <span class="type">datetime</span> <span class="keyword">import</span> <span class="type">date</span>
+<span class="keyword">import</span> <span class="type">json</span>
+<span class="comment">
+# -----------------------------
+# Load Attendance Records
+# -----------------------------
+</span>
+<span class="keyword">try</span>:
+    with <span class="keyword">open</span>(<span class="string">"attendance.json"</span>, <span class="string">"r"</span>) as file:
+        attendance = json.<span class="string">load</span>(file)
+<span class="keyword">except</span>:
+    attendance = []
+<span class="comment">
+# -----------------------------
+# Save Records
+# -----------------------------</span>
+<span class="keyword">def</span> save_file():
+    with <span class="keyword">open</span>(<span class="string">"attendance.json"</span>, "<span class="string">w"</span>) as file:
+        json.<span class="keyword">dump</span>(attendance, file, indent=4)
+<span class="comment">
+# -----------------------------
+# Mark Attendance
+# -----------------------------</span>
+<span class="keyword">def</span> mark_attendance():
+    name = <span class="keyword">input</span>(<span class="string">"Enter Student Name: "</span>)
+    status = <span class="keyword">input</span>(<span class="string">"Present or Absent: "</span>)
+
+    record = {
+        <span class="string">"name"</span>: name,
+        <span class="string">"status"</span>: status,
+        <span class="string">"date"</span>: str(date.today())
+    }
+
+    attendance.<span class="keyword">append</span>(record)
+    save_file()
+
+    <span class="keyword">print</span>(<span class="string">"Attendance Recorded Successfully!"</span>)
+<span class="comment">
+# -----------------------------
+# View Attendance
+# -----------------------------
+</span>
+<span class="keyword">def</span> view_attendance():
+
+    <span class="keyword">if</span> <<span class="keyword">len</span>(attendance) == <span class="type">0</span>:
+        <span class="keyword">print</span>(<span class="string">"No Attendance Records Found"</span>)
+        <span class="keyword">return</span>
+
+    <span class="keyword">print</span>(<span class="string">"===== ATTENDANCE RECORDS ====="</span>)
+
+    <span class="keyword">for</span> record in attendance:
+        <span class="keyword">print</span>(<span class="string">"-------------------------"</span>)
+        <span class="keyword">print</span>(<span class="string">"Name:"</span>, record[<span class="string">"name"</span>])
+        <span class="keyword">print</span>(<span class="string">"Status:"</span>, record[<span class="string">"status"])
+        <span class="keyword">print</span>(<span class="string">"Date:"</span>, record[<span class="string">"date"</span></span>])
+<span class="comment">
+# -----------------------------
+# Search Attendance
+# -----------------------------
+</span>
+ <span class="keyword">def</span> search_attendance():
+
+    name =  <span class="keyword">input</span>(<span class="string">"Enter Student Name: </span>")
+
+     <span class="keyword">for</span> record in attendance:
+
+         <span class="keyword">if</span> record[<span class="string">"name"</span>]. <span class="keyword">lower</span>() == name. <span class="keyword">lower</span>():
+
+             <span class="keyword">print</span>(<span class="string">"Student Found"</span>)
+             <span class="keyword">print</span>(<span class="string">"Name:", record[<span class="string">"name"</span>])
+             <span class="keyword">print</span>(<span class="string">"Status:", record[<span class="string">"status"</span>])
+             <span class="keyword">print</span>(<span class="string">"Date:", record[<span class="string">"date"</span>])
+             <span class="keyword">return</span>
+
+     <span class="keyword">print</span>(<span class="string">"Student Not Found"</span>)
+<span class="comment">
+# -----------------------------
+# Delete Attendance
+# -----------------------------
+</span>
+ <span class="keyword">def</span> delete_attendance():
+
+    name =  <span class="keyword">input</span>(<span class="string">"Enter Student Name: "</span>)
+
+     <span class="keyword">for</span> record in attendance:
+
+         <span class="keyword">if</span> record[<span class="string">"name"</span>]. <span class="keyword">lower</span>() == name. <span class="keyword">lower</span>():
+
+            attendance. <span class="keyword">remove</span>(record)
+            save_file()
+
+             <span class="keyword">print</span>(<span class="string">"Attendance Record Deleted"</span>)
+             <span class="keyword">return</span>
+
+    <span class="keyword">print</span>(<span class="string">"Student Not Found")</span>
+<span class="comment">
+# -----------------------------
+# Attendance Summary
+# -----------------------------
+</span>
+<span class="keyword">def</span> attendance_summary():
+
+    present = <span class="type">0</span>
+    absent = <span class="type">0</span>
+
+    <span class="keyword">for</span> record in attendance:
+
+        <span class="keyword">if</span> record["status"</span>].<span class="keyword">lower</span>() == <span class="string">"present"</span>:
+            present += <span class="type">1</span>
+
+        <span class="keyword">elif</span> record[<span class="string">"status"</span>]..<span class="keyword">lower</span>() == .<span class="string">"absent"</span>:
+            absent += <span class="type">1</span>
+
+    <span class="keyword">print</span>(<span class="string">"===== ATTENDANCE SUMMARY ====="</span>)
+    <span class="keyword">print</span>(<span class="string">"Present Students:"</span>, present)
+    <span class="keyword">print</span>(<span class="string">"Absent Students:"</span>, absent)
+    <span class="keyword">print</span>(<span class="string">"Total Students:"</span>, <span class="keyword">len</span>(attendance))
+<span class="comment">
+# -----------------------------
+# Main Program
+# -----------------------------
+</span>
+ <span class="keyword">while True</span>:
+
+     <span class="keyword">print</span>(<span class="string">"===== STUDENT ATTENDANCE SYSTEM ====="</span>)
+     <span class="keyword">print</span>(<span class="string">"1. Mark Attendance"</span>)
+     <span class="keyword">print</span>(<span class="string">"2. View Attendance"</span>)
+     <span class="keyword">print</span>(<span class="string">"3. Search Attendance"</span>)
+    <span class="keyword"> print</span>(<span class="string">"4. Delete Attendance"</span>)
+     <span class="keyword">print</span>(<span class="string">"5. Attendance Summary"</span>)
+     <span class="keyword">print</span>(<span class="string">"6. Exit")
+
+    choice = <span class="keyword">input</span>(<span class="string">"Choose Option: "</span>)
+
+    <span class="keyword">if</span> choice == <span class="string">"1"</span>:
+        mark_attendance()
+
+    <span class="keyword">elif</span> choice == <span class="string">"2"</span>:
+        view_attendance()
+
+    <span class="keyword">elif</span> choice == <span class="string">"3"</span>:
+        search_attendance()
+
+    <span class="keyword">elif</span> choice == <span class="string">"4"</span>:
+        delete_attendance()
+
+    <span class="keyword">elif</span> choice == <span class="string">"5"</span>:
+        attendance_summary()
+
+    <span class="keyword">elif</span> choice == <span class="string">"6"</span>:
+        <span class="keyword">print</span>(<span class="string">"Goodbye!"</span>)
+        <span class="keyword">break</span>
+
+    <span class="keyword">else</span>:
+        <span class="keyword">print</span>(<span class="string">"Invalid Choice"</span>)
+
+</details>
   `
 }
 
