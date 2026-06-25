@@ -133,7 +133,7 @@
       {
         title: "🟡 Motion Blocks",
         content: `
-          <h2>Motion Blocks (🟦 Blue)</h2>
+          <h2>Motion Blocks (🔵 Blue)</h2>
           <p>Motion blocks control sprite movement. Found in the <strong>blue</strong> Motion category.</p>
           <h3>Key Motion Blocks</h3>
           <table>
@@ -204,7 +204,80 @@ forever
   move <span class="type">5</span> steps
   <span class="keyword">if</span> on edge, bounce</div>
         `
-      },
+      },{
+  title: "🟡 Sound Blocks",
+  content: `
+    <h2>Sound Blocks</h2>
+
+    <p>
+      Sound blocks allow sprites to play sounds, music, and sound effects.
+    </p>
+
+    <p>
+      Sounds make games more fun and interactive.
+    </p>
+
+    <hr>
+
+    <h3>🎵 Common Sound Blocks</h3>
+
+    <table>
+      <tr>
+        <th>Block</th>
+        <th>Purpose</th>
+      </tr>
+      <tr>
+        <td>start sound</td>
+        <td>Play a sound</td>
+      </tr>
+      <tr>
+        <td>play sound until done</td>
+        <td>Play and wait until finished</td>
+      </tr>
+      <tr>
+        <td>stop all sounds</td>
+        <td>Stop all sounds</td>
+      </tr>
+      <tr>
+        <td>change volume by</td>
+        <td>Increase or decrease volume</td>
+      </tr>
+      <tr>
+        <td>set volume to</td>
+        <td>Set volume percentage</td>
+      </tr>
+    </table>
+
+    <hr>
+
+    <h3>Example</h3>
+
+    <div class="code-block">when green flag clicked
+
+play sound "Meow" until done</div>
+
+    <hr>
+
+    <h3>Game Example</h3>
+
+    <div class="code-block">if touching Star then
+    play sound "Pop"
+    change Score by 1
+end</div>
+
+    <p>
+      A sound effect plays whenever the player catches a star.
+    </p>
+
+    <hr>
+
+    <h3>📚 Summary</h3>
+
+    <p>
+      Sound blocks add music and sound effects to games and animations.
+    </p>
+  `
+},
 
       // 🔵 INTERMEDIATE LEVEL
       {
@@ -232,6 +305,225 @@ repeat <span class="type">4</span>
 forever
   move <span class="type">3</span> steps
   <span class="keyword">if</span> on edge, bounce</div>
+        `
+      },{
+  title: "🔵 Operators",
+  content: `
+    <h2>Operators</h2>
+
+    <p>
+      Operators are blocks used to perform calculations, comparisons, and logical operations.
+    </p>
+
+    <p>
+      They help sprites make decisions and work with numbers and text.
+    </p>
+
+    <hr>
+
+    <h3>🧮 Arithmetic Operators (Math)</h3>
+
+    <table>
+      <tr>
+        <th>Operator</th>
+        <th>Example</th>
+        <th>Result</th>
+      </tr>
+      <tr>
+        <td>Add (+)</td>
+        <td>5 + 3</td>
+        <td>8</td>
+      </tr>
+      <tr>
+        <td>Subtract (-)</td>
+        <td>10 - 4</td>
+        <td>6</td>
+      </tr>
+      <tr>
+        <td>Multiply (*)</td>
+        <td>5 × 2</td>
+        <td>10</td>
+      </tr>
+      <tr>
+        <td>Divide (/)</td>
+        <td>8 ÷ 2</td>
+        <td>4</td>
+      </tr>
+    </table>
+
+    <p><strong>Example:</strong></p>
+
+    <div class="code-block">set Score to 0
+
+change Score by 5
+
+Score = 5</div>
+
+    <hr>
+
+    <h3>⚖️ Comparison Operators</h3>
+
+    <p>
+      Comparison operators compare two values and return True or False.
+    </p>
+
+    <table>
+      <tr>
+        <th>Operator</th>
+        <th>Example</th>
+        <th>Result</th>
+      </tr>
+      <tr>
+        <td>&gt;</td>
+        <td>10 &gt; 5</td>
+        <td>True</td>
+      </tr>
+      <tr>
+        <td>&lt;</td>
+        <td>3 &lt; 2</td>
+        <td>False</td>
+      </tr>
+      <tr>
+        <td>=</td>
+        <td>5 = 5</td>
+        <td>True</td>
+      </tr>
+    </table>
+
+    <p><strong>Example:</strong></p>
+
+    <div class="code-block">if Score > 10
+    say "You Win!"</div>
+
+    <hr>
+
+    <h3>🧠 Logical Operators</h3>
+
+    <p>
+      Logical operators combine multiple conditions.
+    </p>
+
+    <table>
+      <tr>
+        <th>Operator</th>
+        <th>Meaning</th>
+      </tr>
+      <tr>
+        <td>and</td>
+        <td>Both conditions must be True</td>
+      </tr>
+      <tr>
+        <td>or</td>
+        <td>At least one condition must be True</td>
+      </tr>
+      <tr>
+        <td>not</td>
+        <td>Reverse True/False</td>
+      </tr>
+    </table>
+
+    <p><strong>Example:</strong></p>
+
+    <div class="code-block">if Score > 10 and Lives > 0
+    say "Level Complete!"</div>
+
+    <hr>
+
+    <h3>🔤 Join Operator</h3>
+
+    <p>
+      The Join block combines text together.
+    </p>
+
+    <div class="code-block">join "Hello" "World"</div>
+
+    <strong>Result:</strong>
+
+    <div class="code-block">HelloWorld </div>
+
+    <p><strong>Example:</strong></p>
+
+    <div class="code-block">ask "What is your name?" and wait
+
+say (join "Hello " answer)</div>
+
+    <hr>
+
+    <h3>🎯 Real Game Example</h3>
+
+    <div class="code-block">when green flag clicked
+
+set Score to 0
+
+forever
+    if touching Star then
+        change Score by 1
+    end
+
+    if Score = 10 then
+        say "You Win!"
+        stop all
+    end
+end</div>
+
+    <hr>
+
+    <h3>📚 Summary</h3>
+
+    <table>
+      <tr>
+        <th>Type</th>
+        <th>Purpose</th>
+      </tr>
+      <tr>
+        <td>Math Operators</td>
+        <td>Perform calculations</td>
+      </tr>
+      <tr>
+        <td>Comparison Operators</td>
+        <td>Compare values</td>
+      </tr>
+      <tr>
+        <td>Logical Operators</td>
+        <td>Combine conditions</td>
+      </tr>
+      <tr>
+        <td>Join Operator</td>
+        <td>Combine text</td>
+      </tr>
+    </table>
+
+    <p>
+      Operators help Scratch projects calculate scores, compare values, make decisions, and create interactive games.
+    </p>
+  `
+},{
+        title: "🔵 Variables",
+        content: `
+          <h2>Variables (🔴 Red)</h2>
+          <p>Variables store data like scores, lives, or timers. Create in Variables category.</p>
+          <h3>Creating Variables</h3>
+          <ol>
+            <li>Variables blocks → "Make a Variable"</li>
+            <li>Name it (score, lives, speed, etc.)</li>
+            <li>For all sprites or this sprite only</li>
+          </ol>
+          <h3>Variable Blocks</h3>
+          <table>
+            <thead><tr><th>Block</th><th>Action</th></tr></thead>
+            <tbody>
+              <tr><td><code>set [score] to 0</code></td><td>Set exact value</td></tr>
+              <tr><td><code>change [score] by 1</code></td><td>Add/subtract</td></tr>
+              <tr><td><code>show variable [score]</code></td><td>Display on stage</td></tr>
+            </tbody>
+          </table>
+          <h3>Example: Clicker Game</h3>
+          <div class="code-block"><span class="keyword">when green flag clicked</span>
+set [score] to <span class="type">0</span>
+show variable [score]
+
+<span class="keyword">when this sprite clicked</span>
+change [score] by <span class="type">1</span></div>
         `
       },
       {
@@ -265,34 +557,249 @@ forever
         `
       },
       {
-        title: "🔵 Variables",
-        content: `
-          <h2>Variables (🔴 Red)</h2>
-          <p>Variables store data like scores, lives, or timers. Create in Variables category.</p>
-          <h3>Creating Variables</h3>
-          <ol>
-            <li>Variables blocks → "Make a Variable"</li>
-            <li>Name it (score, lives, speed, etc.)</li>
-            <li>For all sprites or this sprite only</li>
-          </ol>
-          <h3>Variable Blocks</h3>
-          <table>
-            <thead><tr><th>Block</th><th>Action</th></tr></thead>
-            <tbody>
-              <tr><td><code>set [score] to 0</code></td><td>Set exact value</td></tr>
-              <tr><td><code>change [score] by 1</code></td><td>Add/subtract</td></tr>
-              <tr><td><code>show variable [score]</code></td><td>Display on stage</td></tr>
-            </tbody>
-          </table>
-          <h3>Example: Clicker Game</h3>
-          <div class="code-block"><span class="keyword">when green flag clicked</span>
-set [score] to <span class="type">0</span>
-show variable [score]
+  title: "🔵 Sensing Blocks",
+  content: `
+    <h2>Sensing Blocks</h2>
 
-<span class="keyword">when this sprite clicked</span>
-change [score] by <span class="type">1</span></div>
-        `
-      },
+    <p>
+      Sensing blocks allow a sprite to detect and interact with the world around it.
+    </p>
+
+    <p>
+      They help sprites respond to keyboard input, mouse actions, collisions, timers, and user answers.
+    </p>
+
+    <hr>
+
+    <h3>🎯 Common Sensing Blocks</h3>
+
+    <table>
+      <tr>
+        <th>Block</th>
+        <th>Purpose</th>
+      </tr>
+      <tr>
+        <td>touching [sprite]?</td>
+        <td>Check collision with another sprite</td>
+      </tr>
+      <tr>
+        <td>touching color?</td>
+        <td>Detect a specific color</td>
+      </tr>
+      <tr>
+        <td>key [space] pressed?</td>
+        <td>Detect keyboard input</td>
+      </tr>
+      <tr>
+        <td>mouse down?</td>
+        <td>Check if mouse is clicked</td>
+      </tr>
+      <tr>
+        <td>ask [ ] and wait</td>
+        <td>Ask the user a question</td>
+      </tr>
+      <tr>
+        <td>answer</td>
+        <td>Get user's answer</td>
+      </tr>
+    </table>
+
+    <hr>
+
+    <h3>⌨️ Example: Keyboard Control</h3>
+
+    <div class="code-block">when green flag clicked
+
+forever
+    if key right arrow pressed?
+        change x by 10
+    end
+end</div>
+
+    <p>
+      The sprite moves right when the right arrow key is pressed.
+    </p>
+
+    <hr>
+
+    <h3>⭐ Example: Collision Detection</h3>
+
+    <div class="code-block">forever
+    if touching Star then
+        say "Caught!"
+    end
+end  </div>
+
+    <p>
+      The sprite reacts when touching the Star sprite.
+    </p>
+
+    <hr>
+
+    <h3>❓ Example: Ask and Answer</h3>
+
+    <div class="code-block">ask "What is your name?" and wait
+
+say (join "Hello " answer) </div>
+
+    <p>
+      The sprite asks a question and uses the user's answer.
+    </p>
+
+    <hr>
+
+    <h3>🎮 Real-Life Uses</h3>
+
+    <ul>
+      <li>🎯 Detect touching enemies</li>
+      <li>🚪 Detect reaching a goal</li>
+      <li>⌨️ Control a character with keys</li>
+      <li>🧠 Create quiz games</li>
+      <li>🖱️ Respond to mouse clicks</li>
+    </ul>
+
+    <hr>
+
+    <h3>📚 Summary</h3>
+
+    <p>
+      Sensing blocks help sprites detect input, collisions, and user actions.
+    </p>
+  `
+},{
+  title: "🔵 Broadcast Messages",
+  content: `
+    <h2>Broadcast Messages</h2>
+
+    <p>
+      Broadcast messages allow sprites to communicate with each other.
+    </p>
+
+    <p>
+      One sprite sends a message, and other sprites can react when they receive it.
+    </p>
+
+    <hr>
+
+    <h3>📡 How Broadcast Works</h3>
+
+    <div class="code-block">Sprite A
+     ↓
+Broadcast "Game Over"
+     ↓
+Sprite B receives message
+     ↓
+Runs its code </div>
+
+    <hr>
+
+    <h3>🏫 Real-Life Example</h3>
+
+    <p>
+      Think of a school bell.
+    </p>
+
+    <ul>
+      <li>🔔 Bell rings</li>
+      <li>All students hear it</li>
+      <li>Everyone reacts</li>
+    </ul>
+
+    <p>
+      Broadcast works the same way.
+    </p>
+
+    <hr>
+
+    <h3>📢 Sending a Message</h3>
+
+    <div class="code-block">broadcast "Game Start"</div>
+
+    <p>
+      This sends a message named "Game Start".
+    </p>
+
+    <hr>
+
+    <h3>📥 Receiving a Message</h3>
+
+    <div class="code-block">when I receive "Game Start"
+
+show </div>
+
+    <p>
+      The sprite reacts when the message arrives.
+    </p>
+
+    <hr>
+
+    <h3>🎮 Example: Start Screen</h3>
+
+    <p><strong>Start Button Sprite</strong></p>
+
+    <div class="code-block">when this sprite clicked
+
+broadcast "Start Game"
+
+hide</div>
+
+    <p><strong>Player Sprite</strong></p>
+
+    <div class="code-block">when I receive "Start Game"
+
+show</div>
+
+    <hr>
+
+    <h3>💀 Example: Game Over</h3>
+
+    <div class="code-block">if Lives = 0 then
+    broadcast "Game Over"
+end </div>
+
+    <p><strong>Game Over Sprite</strong></p>
+
+    <div class="code-block">when I receive "Game Over"
+
+show
+say "Game Over"</div>
+
+    <hr>
+
+    <h3>🎯 Real-Life Uses</h3>
+
+    <ul>
+      <li>▶️ Start a game</li>
+      <li>⏭️ Change levels</li>
+      <li>💀 Game over screen</li>
+      <li>🏆 Show victory message</li>
+      <li>🎵 Start sounds and animations</li>
+    </ul>
+
+    <hr>
+
+    <h3>📚 Summary</h3>
+
+    <table>
+      <tr>
+        <th>Block</th>
+        <th>Purpose</th>
+      </tr>
+      <tr>
+        <td>broadcast</td>
+        <td>Send a message</td>
+      </tr>
+      <tr>
+        <td>when I receive</td>
+        <td>React to a message</td>
+      </tr>
+    </table>
+
+    <p>
+      Broadcast messages help different sprites work together and make larger games easier to manage.
+    </p>
+  `
+},
       {
         title: "🔵 Simple Games",
         content: `
@@ -331,7 +838,99 @@ forever
     change [score] by <span class="type">1</span>
     start sound [pop]</div>
         `
-      },
+      },{
+  title: "🟣 Maze Game",
+  content: `
+    <h2>🎮 Project: Maze Game</h2>
+
+    <p>
+      Create a game where the player moves through a maze and reaches the finish line.
+    </p>
+
+    <hr>
+
+    <h3>🎯 Objective</h3>
+
+    <ul>
+      <li>Move the player using arrow keys.</li>
+      <li>Avoid touching the maze walls.</li>
+      <li>Reach the goal to win.</li>
+    </ul>
+
+    <hr>
+
+    <h3>📌 Step 1: Create Sprites</h3>
+
+    <ul>
+      <li>🐱 Player Sprite</li>
+      <li>🏁 Goal Sprite</li>
+    </ul>
+
+    <hr>
+
+    <h3>📌 Step 2: Draw the Maze</h3>
+
+    <p>
+      Use the backdrop editor and draw maze walls using a color (example: blue).
+    </p>
+
+    <hr>
+
+    <h3>📌 Step 3: Move the Player</h3>
+
+    <div class="code-block">forever
+    if key right arrow pressed?
+        change x by 5
+    end
+
+    if key left arrow pressed?
+        change x by -5
+    end
+
+    if key up arrow pressed?
+        change y by 5
+    end
+
+    if key down arrow pressed?
+        change y by -5
+    end
+end </div>
+
+    <hr>
+
+    <h3>📌 Step 4: Detect Maze Walls</h3>
+
+    <div class="code-block">if touching color blue then
+    go to x:0 y:0
+end    </div>
+
+    <p>
+      If the player touches a wall, they return to the start.
+    </p>
+
+    <hr>
+
+    <h3>📌 Step 5: Detect Goal</h3>
+
+    <div class="code-block">if touching Goal then
+    say "You Win!"
+    stop all
+end </div>
+
+    <hr>
+
+    <h3>🧠 Concepts Used</h3>
+
+    <ul>
+      <li>Sprites</li>
+      <li>Motion</li>
+      <li>Sensing</li>
+      <li>Conditions</li>
+      <li>Loops</li>
+      <li>Events</li>
+    </ul>
+  `
+},
 
       // 🔴 ADVANCED LEVEL
       {
@@ -445,7 +1044,226 @@ forever
           <h3>Turn-Based</h3>
           <p>Use variable <code>current_player</code> (1 or 2) to alternate turns.</p>
         `
-      }
+      },{
+  title: "🔴 Catch the Star Game",
+  content: `
+    <h2>🎮 Project: Catch the Star Game</h2>
+
+    <p>
+      Create a simple game where the player moves a sprite to catch a star and earn points.
+    </p>
+
+    <hr>
+
+    <h3>🎯 Objective</h3>
+
+    <ul>
+      <li>Move the player using arrow keys.</li>
+      <li>Touch the star to gain points.</li>
+      <li>The star moves to a random position after being caught.</li>
+      <li>Display the score using a variable.</li>
+    </ul>
+
+    <hr>
+
+    <h3>📌 Step 1: Choose Sprites</h3>
+
+    <ul>
+      <li>🐱 Cat Sprite (Player)</li>
+      <li>⭐ Star Sprite (Target)</li>
+    </ul>
+
+    <hr>
+
+    <h3>📌 Step 2: Create Score Variable</h3>
+
+    <ul>
+      <li>Go to Variables</li>
+      <li>Create a variable called <strong>Score</strong></li>
+    </ul>
+
+    <hr>
+
+    <h3>📌 Step 3: Green Flag Setup</h3>
+
+    <p>When Green Flag Clicked:</p>
+
+    <ul>
+      <li>Set Score to 0</li>
+      <li>Move Star to a random position</li>
+    </ul>
+
+    <hr>
+
+    <h3>📌 Step 4: Move the Player</h3>
+
+    <p>Use arrow keys:</p>
+
+    <ul>
+      <li>Right Arrow → Move Right</li>
+      <li>Left Arrow → Move Left</li>
+      <li>Up Arrow → Move Up</li>
+      <li>Down Arrow → Move Down</li>
+    </ul>
+
+    <hr>
+
+    <h3>📌 Step 5: Check Collision</h3>
+
+    <p>Forever:</p>
+
+    <ul>
+      <li>If touching Star:</li>
+      <li>Change Score by 1</li>
+      <li>Move Star to random position</li>
+      <li>Play a sound (optional)</li>
+    </ul>
+
+    <hr>
+
+    <h3>📌 Step 6: Winning Condition</h3>
+
+    <ul>
+      <li>If Score = 10</li>
+      <li>Say "You Win!"</li>
+      <li>Stop All</li>
+    </ul>
+
+    <hr>
+
+    <h3>🧠 Concepts Used</h3>
+
+    <table>
+      <tr><th>Concept</th><th>Used?</th></tr>
+      <tr><td>Sprite</td><td>✅</td></tr>
+      <tr><td>Motion</td><td>✅</td></tr>
+      <tr><td>Looks</td><td>✅</td></tr>
+      <tr><td>Events</td><td>✅</td></tr>
+      <tr><td>Loops</td><td>✅</td></tr>
+      <tr><td>Conditions</td><td>✅</td></tr>
+      <tr><td>Variables</td><td>✅</td></tr>
+    </table>
+
+    <hr>
+
+    <h3>🌟 Challenge</h3>
+
+    <ul>
+      <li>Add a timer ⏰</li>
+      <li>Add enemy sprites 👾</li>
+      <li>Lose points when touching enemies</li>
+      <li>Create multiple levels 🎮</li>
+    </ul>
+  `
+},{
+  title: "🔴 Cloning",
+  content: `
+    <h2>Cloning</h2>
+
+    <p>
+      Cloning allows Scratch to create copies of a sprite while the program is running.
+    </p>
+
+    <p>
+      Instead of manually creating many sprites, Scratch can generate them automatically.
+    </p>
+
+    <hr>
+
+    <h3>🏫 Real-Life Example</h3>
+
+    <p>
+      Imagine a photocopy machine.
+    </p>
+
+    <ul>
+      <li>📄 Original paper</li>
+      <li>📄📄📄 Multiple copies</li>
+    </ul>
+
+    <p>
+      Cloning works the same way for sprites.
+    </p>
+
+    <hr>
+
+    <h3>📌 Create a Clone</h3>
+
+    <div class="code-block">create clone of myself</div>
+
+    <hr>
+
+    <h3>📌 When a Clone Starts</h3>
+
+    <div class="code-block">when I start as a clone
+
+show </div>
+
+    <hr>
+
+    <h3>⭐ Example: Falling Stars</h3>
+
+    <div class="code-block">when green flag clicked
+
+forever
+    create clone of myself
+    wait 1 second
+end </div>
+
+    <div class="code-block">when I start as a clone
+
+go to random position
+
+repeat 50
+    change y by -5
+end
+
+delete this clone </div>
+
+    <p>
+      New stars continuously appear and fall from the sky.
+    </p>
+
+    <hr>
+
+    <h3>🎮 Why Use Cloning?</h3>
+
+    <ul>
+      <li>👾 Enemy spawning</li>
+      <li>⭐ Falling stars</li>
+      <li>💣 Bullets</li>
+      <li>🪙 Coins</li>
+      <li>☁️ Clouds</li>
+    </ul>
+
+    <hr>
+
+    <h3>📚 Summary</h3>
+
+    <table>
+      <tr>
+        <th>Block</th>
+        <th>Purpose</th>
+      </tr>
+      <tr>
+        <td>create clone of myself</td>
+        <td>Create a copy</td>
+      </tr>
+      <tr>
+        <td>when I start as a clone</td>
+        <td>Run clone code</td>
+      </tr>
+      <tr>
+        <td>delete this clone</td>
+        <td>Remove clone</td>
+      </tr>
+    </table>
+
+    <p>
+      Cloning is one of the most powerful Scratch features and is used in advanced games.
+    </p>
+  `
+}
     ];
 
     let currentLesson = 0;
