@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="en" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hsu Academic Boost</title>
+  <link rel="icon" type="image/png" href="LogoHAB-removebg-preview.png">
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <script src="/_sdk/data_sdk.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    html, body { height: 100%; margin: 0; }
+    * { font-family: 'Outfit', sans-serif; box-sizing: border-box; }
+    .mono { font-family: 'Space Mono', monospace; }
+     </style>
+ </head>
+ <body class="h-full overflow-auto bg-slate-50">
+    <div id="app" class="w-full">
+   <!-- Navigation -->
+   <nav id="navbar" class="fixed top-0 w-full z-50 bg-slate-900/95 backdrop-blur-sm border-b border-slate-700/50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+     <div class="flex items-center justify-between h-16">
+      <div class="flex items-center gap-2">
+       <span class="text-2xl">🎓</span> <span class="text-white font-bold text-lg mono">HAB</span>
+      </div>
+      <div class="hidden md:flex items-center gap-6">
+       <a href="index.html" class="nav-link text-slate-300 hover:text-teal-400 text-sm font-medium">Home</a>
+       </div>
+      <button id="mobile-menu-btn" class="md:hidden text-white">
+       <i data-lucide="menu" style="width:24px;height:24px;"></i>
+      </button>
+     </div>
+    </div>
+     <div id="mobile-menu" class="hidden md:hidden bg-slate-800 border-t border-slate-700">
+     <div class="px-4 py-3 space-y-2">
+      <a href="index.html" class="block text-slate-300 hover:text-teal-400 py-2">Home</a>
+      </div>
+    </div>
+   </nav>
+<!-- Latest Articles -->
+<section class="max-w-7xl mx-auto px-6 py-16">
+
+    <!-- Section Title -->
+    <div class="text-center mb-12">
+        <h2 class="text-4xl font-bold text-gray-800">
+            📚 Articles
+        </h2>
+
+        <p class="text-gray-600 mt-3">
+            Discover programming, technology, and computer science tutorials.
+        </p>
+    </div>
+
+    <!-- Blog Cards -->
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+        <!-- Card 1 -->
+        <article class="bg-white rounded-2xl shadow-lg overflow-hidden hover:-translate-y-2 hover:shadow-xl transition duration-300">
+
+            <img src="images/Blogsimage/howNetworkworking.jpg"
+                 alt="Blog Image"
+                 class="w-full h-56 object-cover">
+
+            <div class="p-6">
+
+                <h3 class="text-black-700 font-bold mb-3">
+                   အင်တာနက်ကို နေ့တိုင်းသုံးနေပေမယ့် သူ့ရဲ့ အလုပ်လုပ်ပုံတွေကိုရော သိပြီးပြီလား?
+                </h3>
+
+                <a href="blogs/networkWorking.html"
+                   class="text-teal-600 font-semibold hover:underline">
+                    Read →
+                </a>
+
+            </div>
+
+        </article>
+
+        <!-- Card 2 -->
+        <article class="bg-white rounded-2xl shadow-lg overflow-hidden hover:-translate-y-2 hover:shadow-xl transition duration-300">
+
+            <img src="images/Blogsimage/Luddite.jpg"
+                 alt="Blog Image"
+                 class="w-full h-56 object-cover">
+
+            <div class="p-6">
+                 <h3 class="text-black-700 font-bold mb-3">
+                Did you know that word "Luddite"
+            "AI ကို ကြောက်တဲ့သူတွေဟာ Luddite တွေလား?"</h3>
+                <a href="blogs/Luddite.html"
+                   class="text-teal-600 font-semibold hover:underline">
+                    Read →
+                </a>
+
+            </div>
+
+        </article>
+
+        <!-- Card 3 -->
+        <article class="bg-white rounded-2xl shadow-lg overflow-hidden hover:-translate-y-2 hover:shadow-xl transition duration-300">
+
+            <img src="images/Blogsimage/virushuman.jpg"
+                 alt="Blog Image"
+                 class="w-full h-56 object-cover">
+
+            <div class="p-6">
+
+                <h3 class="text-black-700 font-bold mb-3">
+                   ⚠️ "အန္တရာယ်အများဆုံး Virus က Computer ထဲမှာ မရှိဘူး။"
+                </h3>
+
+
+                <a href="#"
+                   class="text-teal-600 font-semibold hover:underline">
+                    Read →
+                </a>
+
+            </div>
+
+        </article>
+
+         <!-- Card 4 -->
+        <article class="bg-white rounded-2xl shadow-lg overflow-hidden hover:-translate-y-2 hover:shadow-xl transition duration-300">
+
+            <img src="images/Blogsimage/post1.png"
+                 alt="Blog Image"
+                 class="w-full h-56 object-cover">
+
+            <div class="p-6">
+
+                <h3 class="text-black-700 font-bold mb-3">
+                  💻 "Programming ဆိုတာ Code ရေးတတ်ရုံနဲ့ ပြီးသွားတယ် ထင်လား?"
+                </h3>
+
+
+                <a href="#"
+                   class="text-teal-600 font-semibold hover:underline">
+                    Read →
+                </a>
+
+            </div>
+
+        </article>
+
+    </div>
+
+</section>
+ </body>
+ <!-- Footer -->
+<footer class="bg-slate-950 border-t border-slate-800 text-slate-300">
+
+    <div class="max-w-7xl mx-auto px-6 py-14">
+
+        <div class="grid md:grid-cols-2 gap-10">
+
+            <!-- About -->
+            <div>
+
+                <div class="flex items-center gap-3 mb-4">
+                    <span class="text-3xl">🎓</span>
+                    <div>
+                        <h2 class="text-xl font-bold text-white">
+                            Hsu Academic Boost
+                        </h2>
+                        <p class="text-sm text-teal-400">
+                            Coding • Creativity • Technology
+                        </p>
+                    </div>
+                </div>
+
+                <p class="text-slate-400 leading-7">
+                <p>အနာဂတ်မှာ နည်းပညာကို နားလည်ပြီး ဖန်တီးတတ်သော ကလေးများဖြစ်လာစေရန် ရည်ရွယ်ပါသည်။</p> 
+     <p class="text-teal-400 font-semibold mt-4">Learn Smart. Build Strong Future.</p>
+      </p>
+
+            </div>
+
+        
+
+            <!-- Contact -->
+            <div>
+
+                <h3 class="text-lg font-semibold text-white mb-5">
+                    📬 Connect With Us
+                </h3>
+
+                <ul class="space-y-4">
+
+                    <li class="flex items-center gap-3">
+                        <i data-lucide="facebook" class="text-teal-400 w-5 h-5"></i>
+                        <a href="https://www.facebook.com/profile.php?id=61588821399820"
+                           target="_blank"
+                           class="hover:text-teal-400 transition">
+                            Facebook
+                        </a>
+                    </li>
+
+                    <li class="flex items-center gap-3">
+                        <i data-lucide="send" class="text-teal-400 w-5 h-5"></i>
+                        <a href="https://t.me/Hsuclass"
+                           target="_blank"
+                           class="hover:text-teal-400 transition">
+                            Telegram
+                        </a>
+                    </li>
+
+                    <li class="flex items-center gap-3">
+                        <i data-lucide="mail" class="text-teal-400 w-5 h-5"></i>
+                        <a href="mailto:suwaddy9@gmail.com"
+                           class="hover:text-teal-400 transition">
+                            suwaddy9@gmail.com
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+        <!-- Bottom -->
+
+        <div class="border-t border-slate-800 mt-12 pt-8 text-center">
+
+            <p class="text-slate-500">
+                © 2026 <span class="text-white font-semibold">Hsu Academic Boost</span>.
+                All Rights Reserved.
+            </p>
+
+            <p class="mt-3 text-teal-400 font-semibold">
+                🚀 Learn Today. Build Tomorrow.
+            </p>
+
+            <p class="mt-2 text-sm text-slate-500">
+                Empowering the next generation through Coding, Creativity, and Technology.
+            </p>
+
+        </div>
+
+    </div>
+
+</footer>
+</html>
