@@ -491,7 +491,192 @@ IPv6 = Newer version with many more addresses available.</p>
               <tr><td><strong>Static</strong></td><td>Fixed address</td><td>Always stays the same</td></tr>
               <tr><td><strong>Dynamic</strong></td><td>Assigned automatically</td><td>DHCP assigned/Can change over time</td></tr>
             </tbody>
-          </table>
+          </table> <div class="bg-gray-800 m-10 p-10">
+            <h2>Imagine You Live in an Apartment Building 🏢</h2>
+            <p>There are 100 apartments in one building.</p>
+            <div class="code-block">🏢 Sunshine Apartment
+
+Room 101
+Room 102
+Room 103
+Room 104
+...</div>
+<p>The building also has one street address:</p>
+<div class="code-block">25 Cherry Street
+Yangon</div>
+<p>Notice there are two kinds of addresses:</p>
+<ul>
+<li>The building address (25 Cherry Street)</li>
+<li>The room numbers (101, 102, 103...)</li></ul>
+
+<h2>Your Home Internet</h2>
+<div class="code-block"> Suppose your house has:
+
+💻 Laptop
+📱 Phone
+📺 Smart TV
+🖨️ Printer</div>
+<p>All of them connect to your Wi-Fi router.</p>
+<div class="code-block">             Internet
+                 │
+                 │
+         🌍 Public IP
+          203.81.65.40
+                 │
+             Wi-Fi Router
+        ┌────────┼────────┐
+        │        │        │
+     Laptop   Phone      TV
+192.168.1.2     .3           .4    </div>
+<p>The router is like the apartment.</p>
+
+<div class="code-block">🏢 Big Building = Router
+🚪 Small Rooms = Devices (Laptop, iPhone, TV, Printer)</div>
+
+          <h2>1. Does every laptop have an IP?</h2>
+          <h4>✅ YES.</h4>
+
+<p>Your laptop always has an IP.</p>
+
+<div class=code-block>IP Address
+│
+├── Public IP
+│
+└── Private IP</div> 
+
+<p>Every device gets its own number.</p>
+
+<h2>2. Then what is Public IP?</h2>
+Look at this
+<div class="code-block">Google
+Facebook
+YouTube
+       │
+       │
+Internet
+       │
+203.81.65.40
+       │
+     Router
+       │
+Laptop
+Phone
+TV</div>
+<p>Google doesn't know:</p>
+<div class="code-block">Laptop
+192.168.1.2</div>
+<p>Google only sees</p>
+<div class="code-block">Router
+  203.81.65.40</div>
+  <p>That is your Public IP.<br>
+
+It belongs to your whole home, not just your laptop.<br>
+
+Think of it like this:</p>
+<div class="code-block">Your Home
+
+25 Cherry Street</div>
+<p>Everyone knows where your house is.</p>
+<h2>3. Then what is Private IP?</h2>
+<p>Inside your house,</p>
+<div class="code-block">Laptop
+→ 192.168.1.2
+
+Phone
+→ 192.168.1.3
+
+TV
+→ 192.168.1.4</div>
+  <p>These numbers are only used inside your house.<br>
+
+Like apartment room numbers.</p>
+<h2>4. Why don't all devices use Public IP?</h2>
+<p>Imagine your family has</p>
+<div class="code-block">Dad's phone
+Mom's phone
+Your laptop
+Brother's laptop
+TV
+Printer</div>
+
+<p>That's 6 devices.<br>
+
+If every device needed a public IP,<br>
+
+your ISP would have to give you 6 public addresses.<br>
+
+Instead,<br>
+
+they give you one public IP.<br>
+
+The router shares it with all your devices.<br>
+
+This saves IP addresses.</p>
+<h2>5. What is Static IP</h2>
+<p>Suppose your house address is</p>
+<div class="code-block">25 Cherry Street
+
+Ten years later,
+
+it's still
+
+25 Cherry Street</div>
+<p>It never changes.<br>
+  📌 Permanent address<br>
+
+That's a <strong>Static IP.</strong></p>
+<p>Today</p>
+<div class="code-block">203.81.65.40</div>
+<p>Tomorrow</p>
+<div class="code-block">203.81.65.40</div>
+<p>Next month</p>
+<div class="code-block">203.81.65.40</div>
+<p>Next Year</p>
+<div class="code-block">203.81.65.40</div>
+
+Same number.
+<h2>6.What is  Dynamic IP 🔄</h2>
+<p>Moving house</p>
+<p>On June</p>
+<div class="code-block">10 Cherry Street</div>
+<p>On September</p>
+<div class="code-block">45 Apple Road</div>
+<p>On April</p>
+<div class="code-block">9 Orange Street</div>
+<h4>Then you disconnect the Internet 🔌</h4>
+
+<p>Maybe:</p>
+<p>
+You turn off your router <br>
+Power goes out <br>
+Your Internet connection drops</p>
+<div class="code-block">Router OFF</div>
+<h4>Later you reconnect 🔄</h4>
+
+<p>You turn the router back on.<br>
+<p>Your ISP checks:</p>
+
+<strong>"Which IP address should I give this customer?"</strong>
+
+<p>It may give:</p>
+
+<p>New Public IP:</p>
+
+<div class="code-block">203.81.72.15</div>
+
+<p>Now your address changed.</p>
+
+<p>Before:</p>
+
+<div class="code-block">203.81.65.40</div>
+
+<p>After reconnecting:</p>
+
+<div class="code-block">203.81.72.15</div>
+
+<p>That is a <strong>Dynamic IP.</strong></p>
+</div>
+         
            <table>
         <tr><th>Network Term</th><th>Real-Life Example</th></tr>
 <tr><td>IP Address</td>	<td>House address</td></tr>
