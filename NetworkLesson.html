@@ -699,12 +699,106 @@ Your Internet connection drops</p>
           (All share same network)
           </div>
         `
-      },
+      }, // 🔵 INTERMEDIATE
+      {
+        title: "🔵 IP Address2",
+        content: `<h2>Think of the Internet as a giant city 🌍</h2>
+        <p>Every building has an address.</p>
+        <div class="code-block">🏠 Your House
+203.81.65.40
+
+🏢 Google Data Center
+142.250.190.78
+
+🏢 Facebook Data Center
+157.240.xxx.xxx
+
+🏢 Amazon Server
+54.xxx.xxx.xxx</div>
+
+<h2>Can one website have many IP addresses?</h2>
+<p>✅ Yes!</p>
+
+<p>Google has thousands of servers around the world.</p>
+<div class="code-block">Google
+
+Server A (USA)
+142.250.190.78
+
+Server B (Singapore)
+142.250.200.15
+
+Server C (Japan)
+172.217.xx.xx</div>
+        `},
       {
         title: "🔵 DNS (Domain Name System)",
         content: `
           <h2>DNS - Domain Name System</h2>
           <p>DNS translates human-readable names (<code>google.com</code>) to IP addresses (<code>142.250.190.78</code>). Like a phonebook for the Internet.</p>
+          <h2>1What is DNS?</h2>
+<strong>DNS = Domain Name System</strong>
+
+<p>Think of DNS as the Internet's phone book.</p>
+
+<p>In real life <br>
+
+Suppose you want to call your friend.<br>
+
+You know:</p>
+<div class="code-block">Alice</div>
+<p>But the telephone network needs:</p>
+
+<div class="code-block">+95 9 123 456 789</div>
+
+<p>So your phone looks up Alice's phone number.</p>
+
+<p>DNS does the same thing.<br>
+
+Instead of:</p>
+<div class="code-block">google.com</div>
+
+<p>it finds:</p>
+
+<div class="code-block">142.250.190.78</div>
+<h2>Why do we need DNS?</h2>
+<p>Humans like names:</p>
+
+<div class="code-block">google.com
+youtube.com
+facebook.com</div>
+
+<p>Computers like numbers:</p>
+
+<div class="code-block">142.250.190.78
+142.250.xxx.xxx
+157.240.xxx.xxx</div>
+
+<p>DNS translates the human-friendly name into an IP address.</p>
+<h3>The Whole Process</h3>
+
+<div class="code-block">You type
+
+google.com
+      │
+      ▼
+Laptop
+      │
+      ▼
+DNS Server
+"What is google.com's IP?"
+      │
+      ▼
+142.250.190.78
+      │
+      ▼
+Laptop
+      │
+      ▼
+Google Server
+      │
+      ▼
+Google Website appears</div>
           <h3>How DNS Works</h3>
           <ol>
             <li>You type <code>google.com</code></li>
