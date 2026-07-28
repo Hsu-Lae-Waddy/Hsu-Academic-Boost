@@ -804,10 +804,88 @@ Google Website appears</div>
       {
         title: "🔵 Browser & Server",
         content: `
+       <h2> Imagine You Go to a Restaurant 🍕</h2>
+
+<p>There are only two people:</p>
+<ul><li>🙋 You (Customer)</li>
+<li>👨‍🍳 Restaurant (Kitchen)</li>
+</ul>
+<p>You don't cook your own pizza.</p>
+
+<p>You request it.</p>
+
+<p>The kitchen makes it.</p>
+
+<p>This is the <strong>Client-Server Model.</strong></p>
+<div class="code-block">🙋 Customer (Client)
+        │
+ "1 Pizza, please!"
+        │
+        ▼
+👨‍🍳 Restaurant (Server)
+        │
+   Makes Pizza
+        │
+        ▼
+🙋 Customer receives Pizza
+</div>
+<h2>On the Internet</h2>
+<p>Replace the customer with your browser.</p>
+<div class="code-block">🙋 You
+
+↓
+
+🌐 Chrome Browser (Client)
+
+↓
+
+🖥️ Google Server (Server)
+
+↓
+
+Google Homepage</div>
+<p>Your browser asks:</p>
+
+<p>"Please give me the Google homepage."</p>
+
+<p>Google's server replies:</p>
+
+<p>"Here you go."</p>
+
+<h2>What is a Client?</h2>
+<p>A client is the device or program that requests something.</p>
+<ul>Examples:
+<br>
+<li>Chrome</li>
+<li>Safari</li>
+<li>Firefox</li>
+<li>Mobile app</li>
+<li>Laptop</li>
+</ul>
+<div class="code-block">Chrome
+
+↓
+
+Request:
+www.google.com</div>
+<p>The client asks.</p>
+<h2>What is a Server?</h2>
+
+<p>A server is a computer that provides resources or services.</p>
+
+<p>Example:</p>
+<div class="code-block">Google Server
+
+Stores:
+
+HTML
+CSS
+Images
+Videos</div>
           <h2>Browser ↔ Server Communication</h2>
           <p>Your browser sends <strong>requests</strong> to servers, which send back <strong>responses</strong> (web pages).</p>
           <h3>Request Flow</h3>
-          <div class="network-diagram">
+          <div class="code-block">
           1. Browser: GET /index.html HTTP/1.1
              Host: example.com
              
