@@ -799,39 +799,6 @@ Google Server
       │
       ▼
 Google Website appears</div>
-          <h3>How DNS Works</h3>
-          <ol>
-            <li>You type <code>google.com</code></li>
-            <li>Browser checks local cache</li>
-            <li>Asks DNS resolver (ISP)</li>
-            <li>Resolver asks root DNS servers</li>
-            <li>Root → TLD (.com) → Authoritative → IP address</li>
-            <li>Cache result, connect to server</li>
-          </ol>
-          <h3>DNS Hierarchy</h3>
-          <div class="network-diagram">
-          . (root)
-           ├── .com
-           │    └── google.com
-           │         └── www.google.com → 142.250.190.78
-           └── .org
-                └── wikipedia.org
-          </div>
-          <h3>Common DNS Records</h3>
-          <table>
-            <thead><tr><th>Type</th><th>Purpose</th><th>Example</th></tr></thead>
-            <tbody>
-              <tr><td>A</td><td>IPv4 address</td><td>google.com → 142.250.190.78</td></tr>
-              <tr><td>AAAA</td><td>IPv6 address</td><td>-</td></tr>
-              <tr><td>CNAME</td><td>Alias</td><td>www → google.com</td></tr>
-              <tr><td>MX</td><td>Email server</td><td>gmail.com mail servers</td></tr>
-            </tbody>
-          </table>
-          <h3>Public DNS Servers</h3>
-          <ul>
-            <li>Google: <code>8.8.8.8</code>, <code>8.8.4.4</code></li>
-            <li>Cloudflare: <code>1.1.1.1</code></li>
-          </ul>
         `
       },
       {
