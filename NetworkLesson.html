@@ -882,6 +882,36 @@ HTML
 CSS
 Images
 Videos</div>
+<h3>Example</h3>
+<p>You type:</p>
+<div class="code-block">www.youtube.com</div>
+
+<p>Your browser sends:</p>
+
+<div class="code-block">GET /</div>
+
+<p>to YouTube.</p>
+<p>The server replies:</p>
+
+<div class="code-block">HTML
+
+CSS
+
+JavaScript
+
+Images</div>
+
+<p>Your browser displays YouTube.</p>
+ <h2>What does "Stateless" mean?</h2>
+
+<p>Stateless means:</p>
+
+<p>The server does not automatically remember previous requests.</p>
+
+<p>Every new request is treated as if it's the first time.</p>
+<p>Each conversation is independent.</p>
+
+<p>This is stateless.</p>
           <h2>Browser ↔ Server Communication</h2>
           <p>Your browser sends <strong>requests</strong> to servers, which send back <strong>responses</strong> (web pages).</p>
           <h3>Request Flow</h3>
@@ -910,10 +940,241 @@ Videos</div>
             <li><strong>Server</strong>: Stores/serves web content</li>
             <li><strong>Stateless</strong>: Each request independent</li>
           </ul>
+          <h2>🧠 Memory Tip</h2>
+          <ul>
+         <li>2xx → ✅ Success (e.g., 200 OK)</li>
+<li>3xx → 🔄 Redirection (e.g., 301 Moved Permanently)</li>
+<li>4xx → ❌ Client error (the request is wrong, e.g., 404 Not Found)</li>
+<li>5xx → 💥 Server error (the server failed, e.g., 500 Internal Server Error)</li></ul>
           <h3>Modern Flow</h3>
           <div class="network-diagram">
           Browser → DNS → CDN → Load Balancer → Web Server → Database
           </div>
+          <h3>Let's use one real example: you open YouTube.</h3>
+          <h3>Step 1. Browser 🌐</h3>
+
+<p>This is Chrome, Safari, Firefox, Edge, etc.</p>
+
+<p>You type:</p>
+<div class="code-block">www.youtube.com</div>
+<p>The browser says:</p>
+
+<p>"I want the YouTube homepage."</p>
+
+<div class="code-block">You
+ │
+ ▼
+Browser</div>
+
+<p>The browser doesn't know where YouTube is yet.</p>
+<h3>Step 2. DNS 📖</h3>
+
+<p>The browser asks DNS:</p>
+
+<div class="code-block">"What is the IP address of youtube.com?"</div>
+
+<p>DNS replies:</p>
+
+<div class="code-block">youtube.com
+
+↓
+
+142.xxx.xxx.xxx</div>
+
+<p>Now the browser knows which server to contact.</p>
+
+<p>Think of DNS as Google Maps.</p>
+
+<p>You know the restaurant's name.</p>
+
+<p>Google Maps tells you its address.</p>
+<h3>Step 3. CDN 🚚</h3>
+
+<p><strong>What is a CDN?</strong></p>
+
+<p>Imagine YouTube stores videos only in America.</p>
+
+<p>If you're in Myanmar,</p>
+
+<p>every video would travel thousands of kilometers.</p>
+
+<p>Slow!</p>
+
+<p>Instead,</p>
+
+<p>YouTube has copies around the world.</p>
+<div class="code-block">USA
+ 🇺🇸
+
+Singapore
+ 🇸🇬
+
+Japan
+ 🇯🇵
+
+Australia
+ 🇦🇺</div>
+<p>If you're in Myanmar, </p>
+
+<p>the browser is sent to the nearest copy.</p>
+
+<p>This nearby copy is called a CDN (Content Delivery Network).</p>
+
+<p>The CDN usually stores static content such as:</p>
+<ul>
+<li>Images</li>
+<li>Videos</li>
+<li>CSS</li>
+<li>JavaScript</li></ul>
+
+<p>This makes websites much faster.</p>
+<h3>Step 4. Load Balancer 🚦</h3>
+
+<p>Suppose 10 million people open YouTube at the same time.</p>
+
+<p>If everyone goes to one server:</p>
+
+<div class="code-block">10 Million Users
+
+↓
+
+One Server 😭</div>
+
+<p>The server crashes.</p>
+<p>Instead:</p>
+
+<div class="code-block">Users
+
+↓
+
+Load Balancer
+
+↓
+
+Server A
+Server B
+Server C
+Server D</div>
+
+<p>The Load Balancer is like a traffic police officer.</p>
+
+<p>It says:</p>
+
+<p>"You go to Server A."</p>
+
+<p>"Next person, go to Server B."</p>
+
+<p>This keeps the system running smoothly.</p>
+<h3>Step 5. Web Server 🖥️</h3>
+
+<p>The Web Server receives your request.</p>
+
+<p>Example:</p>
+
+<div class="code-block">Show me YouTube homepage</div>
+
+<p>The server asks:</p>
+<ul>
+<li>Who is this user?</li>
+<li>Which videos should be shown?</li>
+<li>Is the user logged in?</li></ul>
+
+<p>If it needs information,</p>
+
+<p>it asks the database.</p>
+<h3>Step 6. Database 💾</h3>
+
+<p>The database stores information.</p>
+
+<p>Example:</p>
+
+<div class="code-block">Users
+
+Videos
+
+Comments
+
+Likes
+
+Passwords
+
+Subscriptions</div>
+<p>Suppose you log into YouTube.</p>
+
+<p>The server asks:</p>
+
+<div class="code-block">Database,
+
+find user:
+
+Hsu Lae Waddy</div>
+<p>Database replies:</p>
+
+<div class="code-block">Found!
+
+Subscriptions:
+5
+
+Watch History:
+120 videos</div>
+
+<p>The server builds your personalized homepage.</p>
+<h3>Step 7. Response</h3>
+
+<p>The server sends everything back.</p>
+
+<div class="code-block">Database
+
+↓
+
+Web Server
+
+↓
+
+Browser
+
+↓
+
+You see YouTube</div>
+<h3>The Complete Journey</h3>
+<div class="code-block">① You type
+
+youtube.com
+      │
+      ▼
+② Browser
+"I want YouTube."
+      │
+      ▼
+③ DNS
+"Where is YouTube?"
+      │
+      ▼
+Returns IP Address
+      │
+      ▼
+④ CDN
+Gets nearby images/videos
+      │
+      ▼
+⑤ Load Balancer
+Chooses Server B
+      │
+      ▼
+⑥ Web Server
+Processes your request
+      │
+      ▼
+⑦ Database
+Gets your account information
+      │
+      ▼
+⑧ Web Server
+Creates the webpage
+      │
+      ▼
+⑨ Browser
+Displays YouTube</div>
         `
       },
 
@@ -935,6 +1196,11 @@ Videos</div>
               <tr><td><strong>Speed</strong></td><td>Faster (no encryption)</td><td>HTTP/2 + caching</td></tr>
             </tbody>
           </table>
+          <h2>What is a Port?</h2>
+
+<p>A port is like a door to a building.</p>
+
+<p>Imagine Google owns a big office building.</p>
           <h3>TLS/SSL Handshake</h3>
           <ol>
             <li>Client: "Hello" + supported ciphers</li>
