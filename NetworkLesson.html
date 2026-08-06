@@ -1196,22 +1196,125 @@ Displays YouTube</div>
               <tr><td><strong>Speed</strong></td><td>Faster (no encryption)</td><td>HTTP/2 + caching</td></tr>
             </tbody>
           </table>
+          <p>✅ Modern HTTPS (HTTP/2 & HTTP/3) is usually just as fast or faster in real-world use</p>
           <h2>What is a Port?</h2>
 
 <p>A port is like a door to a building.</p>
 
 <p>Imagine Google owns a big office building.</p>
-          <h3>TLS/SSL Handshake</h3>
-          <ol>
-            <li>Client: "Hello" + supported ciphers</li>
-            <li>Server: Certificate + "Hello"</li>
-            <li>Client verifies certificate (CA)</li>
-            <li>Both generate session keys</li>
-            <li>Encrypted communication begins</li>
-          </ol>
+<div class="code-block"> 🏢 Google Server
+
+  🚪 Door 21
+  🚪 Door 22
+  🚪 Door 25
+  🚪 Door 80
+  🚪 Door 443</div>
+  <p>The building has one IP address, but many doors (ports).</p>
+
+<p>The IP address tells you which building to go to.</p>
+
+<p>The port number tells you which door to use.</p>
+<h3>HTTP</h3>
+
+<p>When you type:</p>
+
+<div class="code-block"> http://example.com</div>
+<p>Your browser automatically uses:</p>
+
+<div class="code-block"> IP Address:
+142.250.190.78
+
+Port:
+80
+</div>
+<p>So your browser is really connecting to:</p>
+
+<div class="code-block">142.250.190.78:80</div>
+
+<p>The :80 means Port 80.</p>
+<h3>HTTPS</h3>
+
+<p>When you type:</p>
+
+<div class="code-block"> https://google.com</div>
+
+<p>Your browser automatically uses:</p>
+
+<div class="code-block"> 142.250.190.78:443</div>
+
+<p>That means:</p>
+<ul>
+<li>Server = 142.250.190.78</li>
+<li>Port = 443</li></ul>
+<h2>What is Encryption?</h2>
+<p>Encryption changes readable text into unreadable text.</p>
+
+<p>Example:</p>
+
+<p>Before encryption:</p>
+
+<div class="code-block">Hi Hsu Lae Waddy</div>
+
+<p>After encryption:</p>
+
+<div class="code-block">X9#L@2$k8!Pq...</div>
+
+<p>If a hacker intercepts it:</p>
+
+<div class="code-block">X9#L@2$k8!Pq...</div>
+
+<p>It looks like nonsense.</p>
+<h3>HTTP vs HTTPS</h3>
+<table>
+  <tr><th>Feature</th><th>http</th><th>https</th></tr>
+  <tr><td>Encryption</td><td>❌ None</td><td>✅ TLS encryption</td></tr>
+  </table>
+  <h3>What is TLS?</h3>
+  <p>HTTP sends plain text.</p>
+
+<p>HTTPS wraps HTTP inside TLS (Transport Layer Security).</p>
+
+<p>Think of it like this:</p>
+
+<div class="code-block">HTTP
+
+↓
+
+TLS
+
+↓
+
+Internet</div>
+<h3>TLS provides:</h3>
+<ul>  <li>Encryption 🔒</li>
+  <p class="text-sm">Only the sender and receiver can read the data.</p>
+  <li> Authentication (you know you're talking to the real website)</li>
+  <p class="text-sm">Confirms the website's identity</p>
+  <li> Data integrity (the data wasn't changed in transit)?</li>
+  <p class="text-sm">Ensures data wasn't modified</p>
+   </ul>       
           <h3>Lock Icon</h3>
           <p>🔒 = HTTPS with valid certificate<br>
           ⚠️ = Mixed content or invalid cert</p>
+
+          <h3>SEO (Search Engine Optimization)</h3>
+          <p>SEO means:</p>
+
+<p>Making a website appear higher in search engine results.</p>
+
+<p>Example:</p>
+
+<p>Suppose two websites are almost identical.</p>
+<div class="code-block">Website A
+HTTP
+
+Website B
+HTTPS</div>
+
+<p>Google prefers the secure one.</p>
+
+<p>So Website B has a better chance of appearing higher in search results.</p>
+
         `
       },
       {
