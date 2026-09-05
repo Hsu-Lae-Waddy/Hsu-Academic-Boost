@@ -78,7 +78,6 @@ body{
 .carousel-wrapper{
     width:100%;
     aspect-ratio:16/9;
-     height:650px; /* adjust */
     overflow:hidden;
 
     border-radius:16px;
@@ -87,23 +86,28 @@ body{
 
 .carousel-images{
     display:flex;
+    width:100%;
+    height:100%;
     transition:transform .4s ease;
 }
 
 .slide{
     min-width:100%;
     width:100%;
+    height:100%;
 
     display:flex;
     justify-content:center;
     align-items:center;
+
+    background:white;
 }
 
 .slide img{
     width:100%;
     height:100%;
     object-fit:contain;
-    background:white;
+    display:block;
 }
 
 .nav-btn{

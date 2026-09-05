@@ -76,79 +76,572 @@
     const lessons = [
       // 🟡 BEGINNER LEVEL
       {
-  title: "🔴 POOP",
+  title: "🟡 What is OOP?",
   content: `
-    <h2>Python Object-Oriented Programming (OOP)</h2>
+    <h2>🧩 What is Object-Oriented Programming?</h2>
 
     <p>
-      <strong>Object-Oriented Programming (OOP)</strong> is a programming style that organizes code using <strong>objects</strong>.
+      <strong>OOP</strong> stands for <strong>Object-Oriented Programming</strong>.
+      It is a programming style where we organize our code around
+      <strong>objects</strong>.
     </p>
 
     <p>
-      An <strong>object</strong> contains <strong>data (attributes)</strong> and <strong>actions (methods)</strong>.
-    </p>
-
-    <hr>
-
-    <h3>🏠 Real-Life Example</h3>
-
-    <p>Think about a <strong>Car</strong>.</p>
-
-    <table>
-      <tr>
-        <th>Object</th>
-        <th>Attributes (Data)</th>
-        <th>Methods (Actions)</th>
-      </tr>
-      <tr>
-        <td>🚗 Car</td>
-        <td>Color, Brand, Speed</td>
-        <td>Start(), Stop(), Drive()</td>
-      </tr>
-    </table>
-
-    <p>
-      The <strong>Car</strong> is an object.
-      It has information (attributes) and actions (methods).
+      An object can contain <strong>data</strong> (attributes) and
+      <strong>actions</strong> (methods).
     </p>
 
     <hr>
 
-    <h3>🧑 Another Example</h3>
-
-    <table>
-      <tr>
-        <th>Object</th>
-        <th>Attributes</th>
-        <th>Methods</th>
-      </tr>
-      <tr>
-        <td>👨 Student</td>
-        <td>Name, Age, Grade</td>
-        <td>Study(), Sleep(), Introduce()</td>
-      </tr>
-    </table>
-
-    <hr>
-
-    <h3>📦 What is a Class?</h3>
+    <h3>💡 What is OOP?</h3>
 
     <p>
-      A <strong>Class</strong> is a blueprint or template used to create objects.
+      In OOP, we model things in our program as
+      <strong>objects</strong>.
     </p>
 
     <p>
-      Think of a class as a <strong>cookie cutter</strong>.
+      For example, in a school program, we might have:
     </p>
 
     <ul>
-      <li>🍪 Cookie Cutter → Class</li>
-      <li>🍪 Cookies → Objects</li>
+      <li>👩‍🎓 Student</li>
+      <li>👨‍🏫 Teacher</li>
+      <li>📚 Book</li>
+      <li>🏫 School</li>
+    </ul>
+
+    <p>
+      Each object can have its own information and actions.
+    </p>
+
+    <hr>
+
+    <h3>🌎 Real-World Example</h3>
+
+    <p>
+      Think about a <strong>car</strong>.
+    </p>
+
+    <table>
+      <tr>
+        <th>Car Data</th>
+        <th>Car Actions</th>
+      </tr>
+
+      <tr>
+        <td>Color: Red</td>
+        <td>Start()</td>
+      </tr>
+
+      <tr>
+        <td>Brand: Toyota</td>
+        <td>Stop()</td>
+      </tr>
+
+      <tr>
+        <td>Speed: 60 km/h</td>
+        <td>Accelerate()</td>
+      </tr>
+    </table>
+
+    <p>
+      In programming, we can represent this car as an
+      <strong>object</strong>.
+    </p>
+
+    <hr>
+
+    <h3>🤔 Why Do We Use OOP?</h3>
+
+    <p>
+      Imagine you are creating a large school management system.
+      If all of your code is inside one huge file, it can become difficult
+      to understand and maintain.
+    </p>
+
+    <p>
+      OOP allows us to organize related data and actions together.
+    </p>
+
+    <div class="code-block">Student
+│
+├── name
+├── age
+├── grade
+│
+├── study()
+├── attend_class()
+└── show_info()</div>
+
+    <p>
+      Everything related to a student can be organized inside the
+      <strong>Student class</strong>.
+    </p>
+
+    <hr>
+
+    <h3>🔄 Procedural Programming vs OOP</h3>
+
+    <p>
+      There are different ways to organize a program.
+      Two common approaches are <strong>procedural programming</strong>
+      and <strong>object-oriented programming</strong>.
+    </p>
+
+    <h4>📋 Procedural Programming</h4>
+
+    <p>
+      Procedural programming organizes code mainly around
+      <strong>functions and procedures</strong>.
+    </p>
+
+    <div class="code-block">students = ["Alice", "Bob", "Charlie"]
+
+def show_student(name):
+    print("Student:", name)
+
+show_student(students[0])</div>
+
+    <h4>🧩 Object-Oriented Programming</h4>
+
+    <p>
+      OOP organizes code around <strong>objects and classes</strong>.
+    </p>
+
+    <div class="code-block">class Student:
+
+    def __init__(self, name):
+        self.name = name
+
+    def show_info(self):
+        print("Student:", self.name)
+
+
+student1 = Student("Alice")
+
+student1.show_info()</div>
+
+    <table>
+      <tr>
+        <th>Procedural</th>
+        <th>OOP</th>
+      </tr>
+
+      <tr>
+        <td>Functions</td>
+        <td>Objects & Classes</td>
+      </tr>
+
+      <tr>
+        <td>Data and functions are often separate</td>
+        <td>Data and methods can be grouped together</td>
+      </tr>
+
+      <tr>
+        <td>Good for smaller programs</td>
+        <td>Useful for larger programs</td>
+      </tr>
+    </table>
+
+    <hr>
+
+    <h3>🏫 Real-World Objects</h3>
+
+    <p>
+      OOP is easier to understand when we think about things in the real world.
+    </p>
+
+    <table>
+      <tr>
+        <th>Real-World Thing</th>
+        <th>Possible Data</th>
+        <th>Possible Actions</th>
+      </tr>
+
+      <tr>
+        <td>👩‍🎓 Student</td>
+        <td>Name, age, grade</td>
+        <td>Study, attend class</td>
+      </tr>
+
+      <tr>
+        <td>🚗 Car</td>
+        <td>Color, speed, brand</td>
+        <td>Start, stop, drive</td>
+      </tr>
+
+      <tr>
+        <td>📱 Phone</td>
+        <td>Brand, model, battery</td>
+        <td>Call, message, take photo</td>
+      </tr>
+
+      <tr>
+        <td>🐕 Dog</td>
+        <td>Name, age, breed</td>
+        <td>Eat, sleep, bark</td>
+      </tr>
+    </table>
+
+    <hr>
+
+    <h3>📐 Classes and Objects</h3>
+
+    <p>
+      Two important words in OOP are <strong>class</strong> and
+      <strong>object</strong>.
+    </p>
+
+    <h4>📐 Class = Blueprint</h4>
+
+    <p>
+      A <strong>class</strong> is like a blueprint or template for creating objects.
+    </p>
+
+    <p>
+      Think about a house blueprint 🏠.
+      The blueprint describes how the house should be built,
+      but the blueprint itself is not the actual house.
+    </p>
+
+    <h4>🏠 Object = Actual Thing</h4>
+
+    <p>
+      An <strong>object</strong> is an actual instance created from a class.
+    </p>
+
+    <div class="code-block">class Student:
+    pass
+
+
+student1 = Student()
+student2 = Student()</div>
+
+    <p>
+      Here:
+    </p>
+
+    <ul>
+      <li><code>Student</code> → Class 📐</li>
+      <li><code>student1</code> → Object 👩‍🎓</li>
+      <li><code>student2</code> → Object 👩‍🎓</li>
+    </ul>
+
+    <div class="code-block">Student Class
+        📐 Blueprint
+             │
+       ┌─────┴─────┐
+       ↓           ↓
+   student1     student2
+   👩‍🎓 Alice     👨‍🎓 Bob</div>
+
+    <hr>
+
+    <h3>⭐ OOP Advantages</h3>
+
+    <ul>
+      <li>
+        <strong>♻️ Reusability</strong> —
+        Create a class once and create many objects from it.
+      </li>
+
+      <li>
+        <strong>🧹 Organization</strong> —
+        Keep related data and methods together.
+      </li>
+
+      <li>
+        <strong>🔒 Encapsulation</strong> —
+        Control how data is accessed and modified.
+      </li>
+
+      <li>
+        <strong>🧬 Inheritance</strong> —
+        Create new classes based on existing classes.
+      </li>
+
+      <li>
+        <strong>🔄 Polymorphism</strong> —
+        Allow different objects to respond to the same method in different ways.
+      </li>
+
+      <li>
+        <strong>🛠️ Easier Maintenance</strong> —
+        Large programs can be easier to update and manage.
+      </li>
     </ul>
 
     <hr>
 
-    <h3>🐍 Python Example</h3>
+    <h3>🧠 Easy Memory Trick</h3>
+
+    <div class="code-block">Class  = 📐 Blueprint
+
+Object = 🏠 Actual Thing
+
+Attribute = 📋 Information
+
+Method = ⚙️ Action</div>
+
+    <p>
+      For example:
+    </p>
+
+    <div class="code-block">class Dog:
+
+    # Attribute
+    name = "Buddy"
+
+    # Method
+    def bark(self):
+        print("Woof!")</div>
+
+    <table>
+      <tr>
+        <th>OOP Concept</th>
+        <th>Simple Meaning</th>
+      </tr>
+
+      <tr>
+        <td>Class</td>
+        <td>📐 Blueprint for objects</td>
+      </tr>
+
+      <tr>
+        <td>Object</td>
+        <td>🏠 An instance of a class</td>
+      </tr>
+
+      <tr>
+        <td>Attribute</td>
+        <td>📋 Object's data</td>
+      </tr>
+
+      <tr>
+        <td>Method</td>
+        <td>⚙️ Object's action</td>
+      </tr>
+    </table>
+
+    <hr>
+
+    <h3>🎯 Try It Yourself</h3>
+
+    <p>
+      Think of something from your everyday life and identify its
+      <strong>data</strong> and <strong>actions</strong>.
+    </p>
+
+    <p>For example, choose:</p>
+
+    <ul>
+      <li>🚗 Car</li>
+      <li>🐕 Dog</li>
+      <li>📱 Phone</li>
+      <li>🎮 Game Character</li>
+      <li>👩‍🎓 Student</li>
+    </ul>
+
+    <p>
+      Then answer:
+    </p>
+
+    <ol>
+      <li>What information does it have?</li>
+      <li>What actions can it perform?</li>
+      <li>What could its class be called?</li>
+    </ol>
+
+    <hr>
+
+    <h3>📚 Summary</h3>
+
+    <p>
+      <strong>Object-Oriented Programming (OOP)</strong> is a programming
+      approach that organizes programs around objects.
+    </p>
+
+    <p>
+      Objects contain <strong>data</strong> and can perform
+      <strong>actions</strong>. A <strong>class</strong> acts as a blueprint
+      for creating objects.
+    </p>
+
+    <p>
+      The main goal is to make programs more
+      <strong>organized, reusable, maintainable, and easier to manage</strong>.
+    </p>
+  `
+},
+{
+  title: "🔴 Classes & Objects",
+  content: `
+    <h2>🔴 Python Classes & Objects</h2>
+
+    <h3>📐 What is a Class?</h3>
+
+    <p>
+      A <strong>class</strong> is a blueprint or template for creating objects.
+      It defines what data an object can have and what actions it can perform.
+    </p>
+
+    <p>
+      Think about a <strong>student ID card design</strong> 🎓.
+      The design tells us that every student card should have a name, age,
+      and student ID. The actual cards are the objects.
+    </p>
+
+    <div class="code-block">class Student:
+    pass</div>
+
+    <p>
+      Here, <code>Student</code> is a class.
+      The <code>pass</code> keyword means we are not adding anything to the
+      class yet.
+    </p>
+
+    <hr>
+
+    <h3>👤 What is an Object?</h3>
+
+    <p>
+      An <strong>object</strong> is an actual instance created from a class.
+    </p>
+
+    <div class="code-block">class Student:
+    pass
+
+student1 = Student()
+student2 = Student() </div>
+
+    <p>
+      Here:
+    </p>
+
+    <ul>
+      <li><code>Student</code> → 📐 Class</li>
+      <li><code>student1</code> → 👩‍🎓 Object</li>
+      <li><code>student2</code> → 👨‍🎓 Object</li>
+    </ul>
+
+    <div class="code-block">Student
+          📐 Class
+              │
+       ┌──────┴──────┐
+       ↓             ↓
+   student1       student2
+      👩‍🎓             👨‍🎓</div>
+
+    <hr>
+
+    <h3>🏭 Creating Objects</h3>
+
+    <p>
+      To create an object, write the class name followed by parentheses:
+    </p>
+
+    <div class="code-block">class Car:
+    pass
+
+car1 = Car()
+car2 = Car()</div>
+
+    <p>
+      We have created two different objects from the same class.
+    </p>
+
+    <hr>
+
+    <h3>📋 Adding Attributes</h3>
+
+    <p>
+      Objects can have <strong>attributes</strong>.
+      Attributes are pieces of information that belong to an object.
+    </p>
+
+    <div class="code-block">class Student:
+    pass
+
+student1 = Student()
+
+student1.name = "Alice"
+student1.age = 12
+student1.grade = 6
+
+print(student1.name)
+print(student1.age)
+print(student1.grade)</div>
+
+    <strong>Output:</strong>
+
+    <div class="code-block">Alice
+12
+6</div>
+
+    <hr>
+
+    <h3>👥 Different Objects Can Have Different Data</h3>
+
+    <p>
+      Objects created from the same class do not have to contain the same values.
+    </p>
+
+    <div class="code-block">class Student:
+    pass
+
+student1 = Student()
+student2 = Student()
+
+student1.name = "Alice"
+student1.age = 12
+
+student2.name = "Bob"
+student2.age = 13
+
+print(student1.name)
+print(student2.name)</div>
+
+    <strong>Output:</strong>
+
+    <div class="code-block">Alice
+Bob </div>
+
+    <p>
+      Both objects are <code>Student</code> objects, but each object has
+      its own data.
+    </p>
+
+    <hr>
+
+    <h3>⚙️ Adding Methods</h3>
+
+    <p>
+      A <strong>method</strong> is a function that belongs to a class.
+      Methods describe what an object can do.
+    </p>
+
+    <div class="code-block">class Student:
+
+    def say_hello(self):
+        print("Hello! I am a student.")
+
+student1 = Student()
+
+student1.say_hello()</div>
+
+    <strong>Output:</strong>
+
+    <div class="code-block">Hello! I am a student. </div>
+
+    <hr>
+
+    <h3>🧩 Class with Attributes and Methods</h3>
+
+    <p>
+      A class can contain both <strong>data</strong> and
+      <strong>actions</strong>.
+    </p>
 
     <div class="code-block">class Student:
 
@@ -157,266 +650,133 @@
         self.age = age
 
     def introduce(self):
-        print("Hello, my name is", self.name)</div>
+        print("My name is", self.name)
+        print("I am", self.age, "years old.")
 
-    <hr>
 
-    <h3>📌 Creating an Object</h3>
-
-    <div class="code-block">student1 = Student("Alice", 18)
+student1 = Student("Alice", 12)
 
 student1.introduce()</div>
 
-    <strong>Output</strong>
+    <strong>Output:</strong>
 
-    <div class="code-block">Hello, my name is Alice</div>
-
-    <hr>
-
-    <h3>🧩 OOP Vocabulary</h3>
-
-    <table>
-      <tr>
-        <th>Term</th>
-        <th>Meaning</th>
-      </tr>
-      <tr>
-        <td>Class</td>
-        <td>A blueprint for creating objects.</td>
-      </tr>
-      <tr>
-        <td>Object</td>
-        <td>An instance created from a class.</td>
-      </tr>
-      <tr>
-        <td>Attribute</td>
-        <td>Data stored inside an object.</td>
-      </tr>
-      <tr>
-        <td>Method</td>
-        <td>A function that belongs to an object.</td>
-      </tr>
-    </table>
-
-    <hr>
-
-    <h3>🌍 Real-World Examples</h3>
-
-    <table>
-      <tr>
-        <th>Class</th>
-        <th>Objects</th>
-      </tr>
-      <tr>
-        <td>Car</td>
-        <td>Toyota, Honda, Tesla</td>
-      </tr>
-      <tr>
-        <td>Dog</td>
-        <td>Buddy, Max, Coco</td>
-      </tr>
-      <tr>
-        <td>Student</td>
-        <td>Alice, Bob, John</td>
-      </tr>
-      <tr>
-        <td>Phone</td>
-        <td>iPhone, Samsung, Pixel</td>
-      </tr>
-    </table>
-
-    <hr>
-
-    <h3>🎯 Why Learn OOP?</h3>
-
-    <ul>
-      <li>✅ Organizes code</li>
-      <li>✅ Makes programs easier to understand</li>
-      <li>✅ Reuses code</li>
-      <li>✅ Easier to maintain large projects</li>
-      <li>✅ Used in real-world software development</li>
-    </ul>
-
-    <hr>
-
-    <h3>📚 Summary</h3>
-
-    <table>
-      <tr>
-        <th>Concept</th>
-        <th>Simple Meaning</th>
-      </tr>
-      <tr>
-        <td>Class</td>
-        <td>Blueprint</td>
-      </tr>
-      <tr>
-        <td>Object</td>
-        <td>Something created from the blueprint</td>
-      </tr>
-      <tr>
-        <td>Attribute</td>
-        <td>Information about an object</td>
-      </tr>
-      <tr>
-        <td>Method</td>
-        <td>Action an object can perform</td>
-      </tr>
-    </table>
+    <div class="code-block">My name is Alice
+I am 12 years old. </div>
 
     <p>
-      OOP helps programmers model real-world objects, making programs more organized, reusable, and easier to build.
-    </p>
-  `
-},{
-  title: "🔴 Classes & Objects",
-  content: `
-    <h2>Python Classes & Objects</h2>
-
-    <p>
-      Python is an <strong>Object-Oriented Programming (OOP)</strong> language.
-    </p>
-
-    <p>
-      In Python, <strong>almost everything is an object</strong>. Objects contain
-      <strong>attributes (data)</strong> and <strong>methods (functions)</strong>.
+      We will learn more about <code>__init__()</code> and
+      <code>self</code> in the next lessons.
     </p>
 
     <hr>
 
-    <h3>🏗️ What is a Class?</h3>
+    <h3>🏫 Real-World Example: School</h3>
 
     <p>
-      A <strong>class</strong> is a blueprint or template used to create objects.
+      Imagine we are building a school management program.
     </p>
-
-    <p>
-      Think of a class like a blueprint for building a house or a cookie cutter used to make cookies.
-    </p>
-    <img src="images/cookie_cutter .jpg" class="w-30 h-30" style="display:block; margin:auto;">
-    <hr>
-
-    <h3>📦 What is an Object?</h3>
-
-    <p>
-      An <strong>object</strong> is an instance of a class.
-    </p>
-
-    <p>
-      You can create many objects from the same class.
-    </p>
-
-    <table>
-      <tr>
-        <th>Class</th>
-        <th>Objects</th>
-      </tr>
-      <tr>
-        <td>Student</td>
-        <td>Alice, Bob, John</td>
-      </tr>
-      <tr>
-        <td>Car</td>
-        <td>Toyota, Honda, Tesla</td>
-      </tr>
-      <tr>
-        <td>Dog</td>
-        <td>Buddy, Max, Coco</td>
-      </tr>
-    </table>
-
-    <hr>
-
-    <h3>🏠 Real-Life Example</h3>
-
-    <table>
-      <tr>
-        <th>Class</th>
-        <th>Attributes</th>
-        <th>Methods</th>
-      </tr>
-      <tr>
-        <td>🚗 Car</td>
-        <td>Color, Brand, Speed</td>
-        <td>Start(), Stop(), Drive()</td>
-      </tr>
-    </table>
-
-    <p>
-      Every car has its own color and brand, but they are all created from the same <strong>Car</strong> class.
-    </p>
-
-    <hr>
-
-    <h3>📝 Creating a Class</h3>
 
     <div class="code-block">class Student:
     pass</div>
 
     <p>
-      The <code>class</code> keyword creates a new class.
+      The class is the blueprint.
+      We can then create many students:
     </p>
 
-    <p>
-      The <code>pass</code> statement means the class is empty for now.
-    </p>
-
-    <hr>
-
-    <h3>🧑 Creating an Object</h3>
-
-    <div class="code-block">class Student:
-    pass
-
-student1 = Student()
-
-print(student1)</div>
-
-    <p>
-      <code>student1</code> is an object created from the <strong>Student</strong> class.
-    </p>
-
-    <hr>
-
-    <h3>📌 Multiple Objects</h3>
-
-    <div class="code-block">class Student:
-    pass
-
-student1 = Student()
+    <div class="code-block">student1 = Student()
 student2 = Student()
 student3 = Student()</div>
 
-    <p>
-      One class can create many different objects.
-    </p>
+    <div class="code-block">Student Class
+       📐 Blueprint
+            │
+     ┌──────┼──────┐
+     ↓      ↓      ↓
+  Alice    Bob    Emma
+   👩‍🎓     👨‍🎓     👩‍🎓</div>
+
+    <hr>
+
+    <h3>📌 Class vs Object</h3>
+
+    <table>
+      <tr>
+        <th>Class</th>
+        <th>Object</th>
+      </tr>
+
+      <tr>
+        <td>📐 Blueprint</td>
+        <td>🏠 Actual thing</td>
+      </tr>
+
+      <tr>
+        <td>Defines the structure</td>
+        <td>Uses the structure</td>
+      </tr>
+
+      <tr>
+        <td>Can create many objects</td>
+        <td>One specific instance</td>
+      </tr>
+
+      <tr>
+        <td><code>class Student:</code></td>
+        <td><code>student1 = Student()</code></td>
+      </tr>
+    </table>
 
     <hr>
 
     <h3>🧠 Easy Memory Trick</h3>
 
-    <table>
-      <tr>
-        <th>Think Of</th>
-        <th>Python</th>
-      </tr>
-      <tr>
-        <td>🏗️ Blueprint</td>
-        <td>Class</td>
-      </tr>
-      <tr>
-        <td>🏠 Built House</td>
-        <td>Object</td>
-      </tr>
-      <tr>
-        <td>🍪 Cookie Cutter</td>
-        <td>Class</td>
-      </tr>
-      <tr>
-        <td>🍪 Cookie</td>
-        <td>Object</td>
-      </tr>
-    </table>
+    <div class="code-block">Class  = 📐 Blueprint
+
+Object = 🏠 Thing created from the blueprint
+
+Attribute = 📋 Information about the object
+
+Method = ⚙️ Action the object can perform</div>
+
+    <p>
+      For example:
+    </p>
+
+    <div class="code-block">
+class Dog:
+    ...
+
+dog1 = Dog()
+    </div>
+
+    <ul>
+      <li>🐕 <code>Dog</code> → Class</li>
+      <li>🐕 <code>dog1</code> → Object</li>
+      <li>📋 <code>dog1.name</code> → Attribute</li>
+      <li>⚙️ <code>dog1.bark()</code> → Method</li>
+    </ul>
+
+    <hr>
+
+    <h3>🎯 Try It Yourself</h3>
+
+    <p>
+      Create a <strong>GameCharacter</strong> class.
+    </p>
+
+    <p>Your class should represent a game character with:</p>
+
+    <ul>
+      <li>🎮 Name</li>
+      <li>❤️ Health</li>
+      <li>⭐ Level</li>
+      <li>⚔️ An attack method</li>
+    </ul>
+
+    <p>
+      Then create two different characters from your class.
+    </p>
 
     <hr>
 
@@ -427,64 +787,112 @@ student3 = Student()</div>
         <th>Concept</th>
         <th>Meaning</th>
       </tr>
+
       <tr>
         <td>Class</td>
-        <td>A blueprint used to create objects.</td>
+        <td>📐 A blueprint for creating objects.</td>
       </tr>
+
       <tr>
         <td>Object</td>
-        <td>An instance created from a class.</td>
+        <td>🏠 An instance created from a class.</td>
       </tr>
+
       <tr>
         <td>Attribute</td>
-        <td>Data stored inside an object.</td>
+        <td>📋 Data that belongs to an object.</td>
       </tr>
+
       <tr>
         <td>Method</td>
-        <td>A function that belongs to an object.</td>
+        <td>⚙️ A function that belongs to a class.</td>
       </tr>
     </table>
 
     <p>
-      A <strong>class</strong> defines what an object should look like, and an <strong>object</strong> is the real thing created from that class.
+      <strong>Remember:</strong>
+      A class is the blueprint; an object is the actual thing created from
+      that blueprint.
     </p>
   `
 },{
   title: "🔴 __init__() Method",
   content: `
-    <h2>Python <code>__init__()</code> Method</h2>
+    <h2>🔴 Python __init__() Method</h2>
+
+    <h3>🏗️ What is __init__()?</h3>
 
     <p>
-      The <code>__init__()</code> method is a <strong>special method</strong> that is
-      automatically called whenever a new object is created from a class.
+      The <code>__init__()</code> method is a special method in a Python class.
+      It runs <strong>automatically</strong> when a new object is created.
     </p>
 
     <p>
-      It is mainly used to <strong>initialize (set up)</strong> the object's attributes.
+      We commonly use it to give an object its initial data.
     </p>
+
+    <div class="code-block">class Student:
+
+    def __init__(self):
+        print("A student object was created!")
+
+
+student1 = Student()</div>
+
+    <strong>Output:</strong>
+
+    <div class="code-block">A student object was created!</div>
+
+    <p>
+      Notice that we did not call <code>__init__()</code> ourselves.
+      Python called it automatically when we wrote:
+    </p>
+
+    <div class="code-block">student1 = Student() </div>
 
     <hr>
 
-    <h3>🏠 Real-Life Example</h3>
+    <h3>🎯 Why Do We Use __init__()?</h3>
 
     <p>
-      Imagine buying a new phone.
+      Without <code>__init__()</code>, we would have to manually add
+      information to every object.
     </p>
 
-    <ul>
-      <li>📱 Brand: Apple</li>
-      <li>🎨 Color: Black</li>
-      <li>💾 Storage: 128 GB</li>
-    </ul>
+    <div class="code-block">class Student:
+    pass
+
+student1 = Student()
+
+student1.name = "Alice"
+student1.age = 12
+student1.grade = 6</div>
 
     <p>
-      When the phone is created, these details are set automatically.
-      The <code>__init__()</code> method works the same way.
+      This works, but it can become inconvenient when we create many objects.
     </p>
+
+    <p>
+      With <code>__init__()</code>, we can set the information when the
+      object is created.
+    </p>
+
+    <div class="code-block">class Student:
+
+    def __init__(self, name, age, grade):
+        self.name = name
+        self.age = age
+        self.grade = grade
+
+
+student1 = Student("Alice", 12, 6)
+student2 = Student("Bob", 13, 7)</div>
 
     <hr>
 
-    <h3>📝 Example</h3>
+    <h3>🧩 How Does It Work?</h3>
+
+    <p>Look at this example:</p>
 
     <div class="code-block">class Student:
 
@@ -492,68 +900,275 @@ student3 = Student()</div>
         self.name = name
         self.age = age
 
-student1 = Student("Alice", 18)
 
-print(student1.name)
-print(student1.age) </div>
+student1 = Student("Alice", 12)</div>
 
-    <strong>Output</strong>
+    <p>When Python sees:</p>
 
-    <div class="code-block">Alice
-18</div>
-
-    <hr>
-
-    <h3>🔍 How It Works</h3>
-
-    <p>When this line runs:</p>
-
-    <div class="code-block">student1 = Student("Alice", 18) </div>
-
-    <p>Python automatically calls:</p>
-
-    <div class="code-block">__init__(student1, "Alice", 18) </div>
+    <div class="code-block">Student("Alice", 12)</div>
 
     <p>
-      Then the values are stored inside the object:
+      Python creates a new <code>Student</code> object and automatically
+      calls:
+    </p>
+
+    <div class="code-block">__init__(self, "Alice", 12)</div>
+
+    <p>
+      Then these values are stored in the object:
     </p>
 
     <div class="code-block">self.name = "Alice"
-self.age = 18</div>
+self.age = 12</div>
 
     <hr>
 
-    <h3>🧑 What is <code>self</code>?</h3>
+    <h3>📋 What is self?</h3>
+
+    <p>
+      <code>self</code> refers to the <strong>current object</strong>.
+    </p>
+
+    <div class="code-block">class Student:
+
+    def __init__(self, name):
+        self.name = name</div>
+
+    <p>
+      If we create:
+    </p>
+
+    <div class="code-block">student1 = Student("Alice")
+student2 = Student("Bob")</div>
+
+    <p>Python stores:</p>
+
+    <div class="code-block">student1.name → "Alice"
+
+student2.name → "Bob"</div>
+
+    <p>
+      Each object has its own <code>name</code>.
+    </p>
+
+    <hr>
+
+    <h3>👩‍🎓 Example: Student</h3>
+
+    <div class="code-block">class Student:
+
+    def __init__(self, name, age, grade):
+        self.name = name
+        self.age = age
+        self.grade = grade
+
+    def show_info(self):
+        print("Name:", self.name)
+        print("Age:", self.age)
+        print("Grade:", self.grade)
+
+
+student1 = Student("Alice", 12, 6)
+
+student1.show_info()</div>
+
+    <strong>Output:</strong>
+
+    <div class="code-block">Name: Alice
+Age: 12
+Grade: 6</div>
+
+    <hr>
+
+    <h3>🚗 Example: Car</h3>
+
+    <div class="code-block">class Car:
+
+    def __init__(self, brand, color):
+        self.brand = brand
+        self.color = color
+
+
+car1 = Car("Toyota", "Red")
+car2 = Car("Honda", "Blue")
+
+print(car1.brand)
+print(car1.color)
+
+print(car2.brand)
+print(car2.color)</div>
+
+    <strong>Output:</strong>
+
+    <div class="code-block">Toyota
+Red
+Honda
+Blue</div>
+
+    <p>
+      The same class can create many objects with different information.
+    </p>
+
+    <hr>
+
+    <h3>⚠️ __init__() Is Not a Normal Function Call</h3>
+
+    <p>
+      You normally do <strong>not</strong> call <code>__init__()</code>
+      directly.
+    </p>
+
+    <p>Instead, create an object:</p>
+
+    <div class="code-block">student1 = Student("Alice", 12, 6)</div>
+
+    <p>
+      Python automatically runs the <code>__init__()</code> method.
+    </p>
+
+    <hr>
+
+    <h3>🧠 Easy Way to Remember</h3>
+
+    <div class="code-block">class Student:
+
+    def __init__(self, name):
+        self.name = name
+
+
+student1 = Student("Alice")</div>
+
+    <table>
+      <tr>
+        <th>Part</th>
+        <th>Meaning</th>
+      </tr>
+
+      <tr>
+        <td><code>class Student</code></td>
+        <td>📐 Creates a class.</td>
+      </tr>
+
+      <tr>
+        <td><code>__init__()</code></td>
+        <td>🏗️ Initializes a new object.</td>
+      </tr>
+
+      <tr>
+        <td><code>name</code></td>
+        <td>📥 Value passed when creating the object.</td>
+      </tr>
+
+      <tr>
+        <td><code>self.name</code></td>
+        <td>📋 Attribute stored inside the object.</td>
+      </tr>
+
+      <tr>
+        <td><code>Student("Alice")</code></td>
+        <td>👩‍🎓 Creates a new Student object.</td>
+      </tr>
+    </table>
+
+    <hr>
+
+    <h3>🎯 Try It Yourself</h3>
+
+    <p>
+      Create a <strong>GameCharacter</strong> class.
+    </p>
+
+    <p>Your <code>__init__()</code> should receive:</p>
+
+    <ul>
+      <li>🎮 name</li>
+      <li>❤️ health</li>
+      <li>⭐ level</li>
+    </ul>
+
+    <p>Then create two characters:</p>
+
+    <div class="code-block">character1 = GameCharacter("Hero", 100, 1)
+character2 = GameCharacter("Wizard", 80, 2)</div>
+
+    <p>
+      Finally, print each character's information.
+    </p>
+
+    <hr>
+
+    <h3>📚 Summary</h3>
+
+    <p>
+      The <code>__init__()</code> method is used to
+      <strong>initialize an object when it is created</strong>.
+    </p>
+
+    <div class="code-block">class ClassName:
+
+    def __init__(self, data):
+        self.data = data
+
+
+object1 = ClassName(value)</div>
+
+    <p>
+      <strong>Remember:</strong>
+      <code>__init__()</code> runs automatically when a new object is created.
+      It is commonly used to set the object's initial attributes.
+    </p>
+  `
+},{
+  title: "🔴 `self` Parameter",
+  content: `
+    <h2> Python <code>self</code> Parameter</h2>
+
+    <h3>🤔 What is <code>self</code>?</h3>
 
     <p>
       <code>self</code> refers to the <strong>current object</strong>.
     </p>
 
     <p>
-      It allows each object to store and access its own data.
+      It allows an object to access its own attributes and methods.
     </p>
 
-    <table>
-      <tr>
-        <th>Object</th>
-        <th>self.name</th>
-        <th>self.age</th>
-      </tr>
-      <tr>
-        <td>student1</td>
-        <td>Alice</td>
-        <td>18</td>
-      </tr>
-      <tr>
-        <td>student2</td>
-        <td>Bob</td>
-        <td>20</td>
-      </tr>
-    </table>
+    <p>
+      Think of <code>self</code> as saying:
+      <strong>"this object"</strong>.
+    </p>
 
     <hr>
 
-    <h3>📌 Creating Multiple Objects</h3>
+    <h3>📌 Simple Example</h3>
+
+    <div class="code-block">class Student:
+
+    def introduce(self):
+        print("Hello! I am a student.")
+
+
+student1 = Student()
+
+student1.introduce() </div>
+
+    <p>
+      Here, <code>self</code> refers to <code>student1</code>.
+    </p>
+
+    <div class="code-block">student1.introduce()
+
+        ↓
+
+self = student1</div>
+
+    <hr>
+
+    <h3>📋 Using <code>self</code> with Attributes</h3>
+
+    <p>
+      We use <code>self</code> to store data inside a specific object.
+    </p>
 
     <div class="code-block">class Student:
 
@@ -561,107 +1176,372 @@ self.age = 18</div>
         self.name = name
         self.age = age
 
-student1 = Student("Alice", 18)
-student2 = Student("Bob", 20)
+
+student1 = Student("Alice", 12)
+student2 = Student("Bob", 13)
 
 print(student1.name)
-print(student2.name)</div>
+print(student2.name) </div>
 
-    <strong>Output</strong>
+    <strong>Output:</strong>
 
     <div class="code-block">Alice
 Bob</div>
 
-    <hr>
+    <p>
+      Each object has its own data:
+    </p>
 
-    <h3>🎯 Why Use <code>__init__()</code>?</h3>
+    <div class="code-block">student1.name → "Alice"
 
-    <ul>
-      <li>✅ Initialize object data automatically.</li>
-      <li>✅ Give every object its own values.</li>
-      <li>✅ Reduce repetitive code.</li>
-      <li>✅ Make classes easier to use.</li>
-    </ul>
+student2.name → "Bob"</div>
 
     <hr>
 
-    <h3>📚 Summary</h3>
+    <h3>🧠 Why Do We Need <code>self</code>?</h3>
+
+    <p>
+      Imagine we have two students:
+    </p>
+
+    <div class="code-block">student1 = Student("Alice", 12)
+student2 = Student("Bob", 13)</div>
+
+    <p>
+      Python needs to know <strong>which object's data</strong> we are talking about.
+    </p>
+
+    <div class="code-block">self.name</div>
+
+    <p>
+      means:
+    </p>
+
+    <div class="code-block">"the name belonging to THIS object"</div>
+
+    <hr>
+
+    <h3>👩‍🎓 Example with Two Objects</h3>
+
+    <div class="code-block">class Student:
+
+    def __init__(self, name):
+        self.name = name
+
+    def introduce(self):
+        print("My name is", self.name)
+
+
+student1 = Student("Alice")
+student2 = Student("Bob")
+
+student1.introduce()
+student2.introduce()</div>
+
+    <strong>Output:</strong>
+
+    <div class="code-block">My name is Alice
+My name is Bob</div>
+
+    <p>
+      When <code>student1.introduce()</code> runs:
+    </p>
+
+    <div class="code-block">self → student1
+self.name → "Alice" </div>
+
+    <p>
+      When <code>student2.introduce()</code> runs:
+    </p>
+
+    <div class="code-block">self → student2
+self.name → "Bob" </div>
+
+    <hr>
+
+    <h3>⚙️ <code>self</code> in Methods</h3>
+
+    <p>
+      <code>self</code> is used inside instance methods to access the
+      current object's attributes and other methods.
+    </p>
+
+    <div class="code-block">class Dog:
+
+    def __init__(self, name):
+        self.name = name
+
+    def bark(self):
+        print(self.name, "says Woof!")
+
+    def show_name(self):
+        self.bark()
+
+
+dog1 = Dog("Buddy")
+
+dog1.bark()
+dog1.show_name()</div>
+
+    <strong>Output:</strong>
+
+    <div class="code-block">Buddy says Woof!
+Buddy says Woof!</div>
+
+    <p>
+      Notice that <code>self.bark()</code> calls the method belonging to
+      the current object.
+    </p>
+
+    <hr>
+
+    <h3>⚠️ <code>self</code> Is Not a Keyword</h3>
+
+    <p>
+      <code>self</code> is a convention in Python, not a reserved keyword.
+      However, you should <strong>always use <code>self</code></strong>
+      for normal instance methods because it is the standard Python style.
+    </p>
+
+    <div class="code-block">class Student:
+
+    def __init__(self, name):
+        self.name = name</div>
+
+    <p>
+      Do not confuse <code>self.name</code> with <code>name</code>.
+    </p>
 
     <table>
       <tr>
-        <th>Concept</th>
+        <th>Code</th>
         <th>Meaning</th>
       </tr>
+
       <tr>
-        <td><code>__init__()</code></td>
-        <td>Runs automatically when an object is created.</td>
+        <td><code>name</code></td>
+        <td>📥 A parameter received by the method.</td>
       </tr>
+
       <tr>
-        <td><code>self</code></td>
-        <td>Refers to the current object.</td>
-      </tr>
-      <tr>
-        <td>Parameters</td>
-        <td>Values passed when creating an object.</td>
-      </tr>
-      <tr>
-        <td>Attributes</td>
-        <td>Variables that belong to an object.</td>
+        <td><code>self.name</code></td>
+        <td>📋 An attribute belonging to the current object.</td>
       </tr>
     </table>
 
-    <p>
-      Think of <code>__init__()</code> as the object's <strong>constructor</strong>.
-      It prepares the object by giving it its initial data as soon as it is created.
-    </p>
-  `
-},{
-  title: "🔴 Self Parameter",
-  content: `
-    <h2>Python <code>self</code> Parameter</h2>
+    <hr>
+
+    <h3>🔄 Parameter vs Attribute</h3>
+
+    <div class="code-block">class Student:
+
+    def __init__(self, name):
+        self.name = name</div>
 
     <p>
-      The <code>self</code> parameter refers to the <strong>current object</strong> of a class.
+      Think of it like this:
     </p>
 
-    <p>
-      It allows an object to access its own <strong>attributes</strong> and <strong>methods</strong>.
-    </p>
+    <div class="code-block">name
+ ↓
+Value coming INTO the method
+
+self.name
+ ↓
+Value stored INSIDE the object</div>
 
     <hr>
 
     <h3>🏠 Real-Life Example</h3>
 
     <p>
-      Imagine a classroom with many students.
+      Imagine three houses 🏠.
+      Each house has its own address.
     </p>
 
-    <table>
-      <tr>
-        <th>Student</th>
-        <th>Name</th>
-        <th>Age</th>
-      </tr>
-      <tr>
-        <td>student1</td>
-        <td>Alice</td>
-        <td>18</td>
-      </tr>
-      <tr>
-        <td>student2</td>
-        <td>Bob</td>
-        <td>20</td>
-      </tr>
-    </table>
+    <div class="code-block">house1.address → "Yangon"
+
+house2.address → "Mandalay"
+
+house3.address → "Naypyidaw"</div>
 
     <p>
-      Each student has their own information.
-      <code>self</code> tells Python <strong>which object</strong> it is working with.
+      If a method says:
+    </p>
+
+    <div class="code-block">self.address</div>
+
+    <p>
+      <code>self</code> means:
+      <strong>"the address of this particular house."</strong>
     </p>
 
     <hr>
 
-    <h3>📝 Example</h3>
+    <h3>🧠 Easy Memory Trick</h3>
+
+    <div class="code-block">self = THIS OBJECT 👈
+
+self.name
+    ↓
+This object's name
+
+self.age
+    ↓
+This object's age
+
+self.study()
+    ↓
+This object's study method</div>
+
+    <hr>
+
+    <h3>📚 Class, Object, self</h3>
+
+    <table>
+      <tr>
+        <th>Concept</th>
+        <th>Simple Meaning</th>
+      </tr>
+
+      <tr>
+        <td>Class</td>
+        <td>📐 Blueprint</td>
+      </tr>
+
+      <tr>
+        <td>Object</td>
+        <td>🏠 Actual thing created from the class</td>
+      </tr>
+
+      <tr>
+        <td><code>self</code></td>
+        <td>👉 Refers to the current object</td>
+      </tr>
+
+      <tr>
+        <td><code>self.name</code></td>
+        <td>📋 The current object's name</td>
+      </tr>
+    </table>
+
+    <hr>
+
+    <h3>🎯 Try It Yourself</h3>
+
+    <p>
+      Create a <strong>GameCharacter</strong> class.
+    </p>
+
+    <p>Give each character:</p>
+
+    <ul>
+      <li>🎮 <code>name</code></li>
+      <li>❤️ <code>health</code></li>
+      <li>⭐ <code>level</code></li>
+    </ul>
+
+    <p>
+      Then create two different characters and use <code>self</code>
+      to display their information.
+    </p>
+
+    <div class="code-block">character1 = GameCharacter("Hero", 100, 1)
+character2 = GameCharacter("Wizard", 80, 2)</div>
+
+    <hr>
+
+    <h3>📚 Summary</h3>
+
+    <p>
+      The <code>self</code> parameter refers to the
+      <strong>current object</strong>.
+    </p>
+
+    <p>
+      It is used to access the object's own attributes and methods.
+    </p>
+
+    <div class="code-block">class Student:
+
+    def __init__(self, name):
+        self.name = name
+
+    def introduce(self):
+        print("My name is", self.name) </div>
+
+    <p>
+      <strong>Remember:</strong>
+      <code>self</code> = <strong>"this particular object"</strong>.
+    </p>
+  `
+},{
+  title: "🔴 Attributes",
+  content: `
+
+    <h2>📋 What is an Attribute?</h2>
+
+    <p>
+      An <strong>attribute</strong> is a piece of data or information that
+      belongs to an object.
+    </p>
+
+    <p>
+      Think of an object as a real-world thing. Its attributes describe
+      its <strong>properties</strong>.
+    </p>
+
+    <div class="code-block">Student
+│
+├── name
+├── age
+├── grade
+└── school</div>
+
+    <p>
+      Here, <code>name</code>, <code>age</code>, <code>grade</code>, and
+      <code>school</code> are attributes of a Student object.
+    </p>
+
+    <hr>
+
+    <h3>🌎 Real-World Examples</h3>
+
+    <table>
+      <tr>
+        <th>Object</th>
+        <th>Attributes</th>
+      </tr>
+
+      <tr>
+        <td>👩‍🎓 Student</td>
+        <td>Name, Age, Grade</td>
+      </tr>
+
+      <tr>
+        <td>🚗 Car</td>
+        <td>Brand, Color, Speed</td>
+      </tr>
+
+      <tr>
+        <td>🐕 Dog</td>
+        <td>Name, Age, Breed</td>
+      </tr>
+
+      <tr>
+        <td>📱 Phone</td>
+        <td>Brand, Model, Battery</td>
+      </tr>
+    </table>
+
+    <hr>
+
+    <h3>📌 Creating Attributes</h3>
+
+    <p>
+      In Python, we commonly create object attributes using
+      <code>self</code>.
+    </p>
 
     <div class="code-block">class Student:
 
@@ -674,110 +1554,330 @@ Bob</div>
     </p>
 
     <ul>
-      <li><code>self.name</code> stores the student's name.</li>
-      <li><code>self.age</code> stores the student's age.</li>
+      <li><code>self.name</code> → Name attribute</li>
+      <li><code>self.age</code> → Age attribute</li>
     </ul>
 
     <hr>
 
-    <h3>📌 Creating Objects</h3>
+    <h3>👤 Creating an Object</h3>
 
-    <div class="code-block">student1 = Student("Alice", 18)
-student2 = Student("Bob", 20)</div>
+    <div class="code-block">class Student:
 
-    <p>
-      Each object has its own values.
-    </p>
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
 
-    <table>
-      <tr>
-        <th>Object</th>
-        <th>self.name</th>
-        <th>self.age</th>
-      </tr>
-      <tr>
-        <td>student1</td>
-        <td>Alice</td>
-        <td>18</td>
-      </tr>
-      <tr>
-        <td>student2</td>
-        <td>Bob</td>
-        <td>20</td>
-      </tr>
-    </table>
 
-    <hr>
+student1 = Student("Alice", 12)
 
-    <h3>📌 Accessing Attributes</h3>
+print(student1.name)
+print(student1.age)</div>
 
-    <div class="code-block">print(student1.name)
-print(student2.age)</div>
-
-    <strong>Output</strong>
+    <strong>Output:</strong>
 
     <div class="code-block">Alice
-20 </div>
+12 </div>
+
+    <p>
+      We access an attribute using:
+    </p>
+
+    <div class="code-block">object.attribute </div>
+
+    <p>For example:</p>
+
+    <div class="code-block">student1.name
+student1.age </div>
 
     <hr>
 
-    <h3>📌 Using <code>self</code> in Methods</h3>
+    <h3>👥 Each Object Has Its Own Attributes</h3>
+
+    <p>
+      Objects created from the same class can have different attribute values.
+    </p>
+
+    <div class="code-block">class Student:
+
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+
+student1 = Student("Alice", 12)
+student2 = Student("Bob", 13)
+
+print(student1.name)
+print(student2.name)    </div>
+
+    <strong>Output:</strong>
+
+    <div class="code-block">Alice
+Bob</div>
+
+    <p>
+      Both objects have a <code>name</code> attribute, but each object
+      stores a different value.
+    </p>
+
+    <div class="code-block">student1
+├── name = "Alice"
+└── age = 12
+
+student2
+├── name = "Bob"
+└── age = 13</div>
+
+    <hr>
+
+    <h3>🟠 Instance Attributes</h3>
+
+    <p>
+      An <strong>instance attribute</strong> belongs to a specific object.
+    </p>
 
     <div class="code-block">class Student:
 
     def __init__(self, name):
         self.name = name
 
-    def introduce(self):
-        print("Hello, my name is", self.name)
 
-student = Student("Alice")
-student.introduce()</div>
-
-    <strong>Output</strong>
-
-    <div class="code-block">Hello, my name is Alice </div>
+student1 = Student("Alice")
+student2 = Student("Bob")</div>
 
     <p>
-      Inside the <code>introduce()</code> method,
-      <code>self.name</code> gets the name of the current object.
+      <code>student1.name</code> and <code>student2.name</code> are
+      separate instance attributes.
     </p>
 
     <hr>
 
-    <h3>❓ Can We Use Another Name?</h3>
+    <h3>🟣 Class Attributes</h3>
 
     <p>
-      Yes. The first parameter can have any valid name, but by convention Python programmers use <code>self</code>.
+      A <strong>class attribute</strong> belongs to the class itself and
+      is shared by objects unless an object provides its own value.
     </p>
 
     <div class="code-block">class Student:
 
-    def __init__(myobject, name):
-        myobject.name = name</div>
+    school = "Hsu Academic Boost"
+
+    def __init__(self, name):
+        self.name = name
+
+
+student1 = Student("Alice")
+student2 = Student("Bob")
+
+print(student1.school)
+print(student2.school)</div>
+
+    <strong>Output:</strong>
+
+    <div class="code-block">Hsu Academic Boost
+Hsu Academic Boost</div>
 
     <p>
-      This code works, but using <code>self</code> is the recommended and standard practice.
+      Both students can access the same class attribute:
+      <code>school</code>.
     </p>
 
     <hr>
 
-    <h3>🧠 Easy Memory Trick</h3>
+    <h3>🆚 Instance Attribute vs Class Attribute</h3>
 
     <table>
       <tr>
-        <th>Word</th>
-        <th>Meaning</th>
+        <th>Feature</th>
+        <th>Instance Attribute</th>
+        <th>Class Attribute</th>
       </tr>
+
       <tr>
-        <td><code>self</code></td>
-        <td>Me / This Object</td>
+        <td>Belongs to</td>
+        <td>One object</td>
+        <td>The class</td>
+      </tr>
+
+      <tr>
+        <td>Usually created</td>
+        <td>Inside <code>__init__()</code></td>
+        <td>Inside the class</td>
+      </tr>
+
+      <tr>
+        <td>Example</td>
+        <td><code>self.name</code></td>
+        <td><code>school</code></td>
+      </tr>
+
+      <tr>
+        <td>Different for each object?</td>
+        <td>✅ Usually</td>
+        <td>❌ Usually shared</td>
       </tr>
     </table>
 
+    <hr>
+
+    <h3>✏️ Changing an Attribute</h3>
+
     <p>
-      Think of <code>self</code> as saying:
-      <strong>"Use my own data."</strong>
+      We can change an object's attribute after creating the object.
+    </p>
+
+    <div class="code-block">class Student:
+
+    def __init__(self, name):
+        self.name = name
+
+
+student1 = Student("Alice")
+
+print(student1.name)
+
+student1.name = "Emma"
+
+print(student1.name)</div>
+
+    <strong>Output:</strong>
+
+    <div class="code-block">Alice
+Emma</div>
+
+    <hr>
+
+    <h3>➕ Adding an Attribute</h3>
+
+    <p>
+      Python also allows us to add a new attribute to an individual object.
+    </p>
+
+    <div class="code-block">class Student:
+
+    def __init__(self, name):
+        self.name = name
+
+
+student1 = Student("Alice")
+
+student1.favorite_subject = "Computer Science"
+
+print(student1.favorite_subject)</div>
+
+    <strong>Output:</strong>
+
+    <div class="code-block">Computer Science</div>
+
+    <p>
+      This new attribute belongs to <code>student1</code>.
+    </p>
+
+    <hr>
+
+    <h3>🗑️ Deleting an Attribute</h3>
+
+    <p>
+      We can delete an attribute using the <code>del</code> statement.
+    </p>
+
+    <div class="code-block">class Student:
+
+    def __init__(self, name):
+        self.name = name
+
+
+student1 = Student("Alice")
+
+del student1.name</div>
+
+    <p>
+      After deleting it, <code>student1.name</code> no longer exists.
+    </p>
+
+    <hr>
+
+    <h3>🚗 Complete Example</h3>
+
+    <div class="code-block">class Car:
+
+    wheels = 4
+
+    def __init__(self, brand, color, speed):
+        self.brand = brand
+        self.color = color
+        self.speed = speed
+
+
+car1 = Car("Toyota", "Red", 80)
+car2 = Car("Honda", "Blue", 100)
+
+print(car1.brand)
+print(car1.color)
+print(car1.speed)
+print(car1.wheels)
+
+print(car2.brand)
+print(car2.color)
+print(car2.speed)
+print(car2.wheels)</div>
+
+    <strong>Output:</strong>
+
+    <div class="code-block">Toyota
+Red
+80
+4
+Honda
+Blue
+100
+4</div>
+
+    <hr>
+
+    <h3>🧠 Easy Way to Remember</h3>
+
+    <div class="code-block">Object
+  ↓
+Attributes = Information about the object
+  ↓
+Methods = Actions the object can perform</div>
+
+    <p>For example:</p>
+
+    <div class="code-block">Student
+
+Attributes:
+    name = "Alice"
+    age = 12
+    grade = 6
+
+Methods:
+    study()
+    play()
+    attend_class()</div>
+
+    <hr>
+
+    <h3>🎯 Try It Yourself</h3>
+
+    <p>
+      Create a <strong>GameCharacter</strong> class.
+    </p>
+
+    <p>Give each character these attributes:</p>
+
+    <ul>
+      <li>🎮 name</li>
+      <li>❤️ health</li>
+      <li>⚔️ attack_power</li>
+      <li>⭐ level</li>
+    </ul>
+
+    <p>
+      Create two different characters and print their attributes.
     </p>
 
     <hr>
@@ -787,31 +1887,913 @@ student.introduce()</div>
     <table>
       <tr>
         <th>Concept</th>
-        <th>Description</th>
+        <th>Meaning</th>
       </tr>
+
       <tr>
-        <td><code>self</code></td>
-        <td>Refers to the current object.</td>
+        <td>Attribute</td>
+        <td>📋 Data that belongs to an object or class.</td>
       </tr>
+
+      <tr>
+        <td>Instance Attribute</td>
+        <td>👤 Data belonging to one specific object.</td>
+      </tr>
+
+      <tr>
+        <td>Class Attribute</td>
+        <td>🏫 Data associated with the class and commonly shared.</td>
+      </tr>
+
       <tr>
         <td><code>self.name</code></td>
-        <td>Stores or accesses the object's name.</td>
+        <td>👉 The current object's name attribute.</td>
       </tr>
+
       <tr>
-        <td><code>self.age</code></td>
-        <td>Stores or accesses the object's age.</td>
-      </tr>
-      <tr>
-        <td>Convention</td>
-        <td>Always use <code>self</code> as the first parameter.</td>
+        <td><code>object.attribute</code></td>
+        <td>🔍 Access an object's attribute.</td>
       </tr>
     </table>
 
     <p>
-      <code>self</code> allows each object to keep and use its own data, making it possible to create many independent objects from the same class.
+      <strong>Remember:</strong>
+      Attributes describe an object, while methods describe what the object
+      can do.
+    </p>
+  `
+},{
+  title: "🔴 Object Methods",
+  content: `
+
+    <h2>⚙️ What is a Method?</h2>
+
+    <p>
+      A <strong>method</strong> is a function that belongs to a class or object.
+      It describes something that an object can <strong>do</strong>.
+    </p>
+
+    <p>
+      In OOP:
+    </p>
+
+    <div class="code-block">Attributes → What an object HAS 📋
+Methods    → What an object CAN DO ⚙️</div>
+
+    <p>For example, a student might have:</p>
+
+    <div class="code-block">Student
+
+Attributes:
+    name
+    age
+    grade
+
+Methods:
+    study()
+    introduce()
+    attend_class()</div>
+
+    <hr>
+
+    <h3>📌 Creating a Method</h3>
+
+    <p>
+      A method is created inside a class using the <code>def</code> keyword.
+    </p>
+
+    <div class="code-block">class Student:
+
+    def say_hello(self):
+        print("Hello! I am a student.") </div>
+
+    <p>
+      <code>say_hello()</code> is a method of the <code>Student</code> class.
+    </p>
+
+    <hr>
+
+    <h3>👤 Calling a Method</h3>
+
+    <p>
+      After creating an object, we can call its method using:
+    </p>
+
+    <div class="code-block">object.method()</div>
+
+    <p>Example:</p>
+
+    <div class="code-block">class Student:
+
+    def say_hello(self):
+        print("Hello! I am a student.")
+
+
+student1 = Student()
+
+student1.say_hello()</div>
+
+    <strong>Output:</strong>
+
+    <div class="code-block">Hello! I am a student. </div>
+
+    <hr>
+
+    <h3>👉 Why Does a Method Use <code>self</code>?</h3>
+
+    <p>
+      <code>self</code> refers to the <strong>current object</strong>.
+      It allows the method to access that object's attributes and other methods.
+    </p>
+
+    <div class="code-block">class Student:
+
+    def __init__(self, name):
+        self.name = name
+
+    def introduce(self):
+        print("My name is", self.name)
+
+
+student1 = Student("Alice")
+student1.introduce()</div>
+
+    <strong>Output:</strong>
+
+    <div class="code-block">My name is Alice </div>
+
+    <p>
+      Here, <code>self.name</code> means:
+      <strong>"the name of this particular Student object."</strong>
+    </p>
+
+    <hr>
+
+    <h3>👥 Methods Work with Different Objects</h3>
+
+    <div class="code-block">class Student:
+
+    def __init__(self, name):
+        self.name = name
+
+    def introduce(self):
+        print("My name is", self.name)
+
+
+student1 = Student("Alice")
+student2 = Student("Bob")
+
+student1.introduce()
+student2.introduce() </div>
+
+    <strong>Output:</strong>
+
+    <div class="code-block">My name is Alice
+My name is Bob</div>
+
+    <p>
+      The same method works with different objects because
+      <code>self</code> refers to the object that called the method.
+    </p>
+
+    <div class="code-block">student1.introduce()
+       ↓
+self = student1
+
+student2.introduce()
+       ↓
+self = student2    </div>
+
+    <hr>
+
+    <h3>📥 Methods with Parameters</h3>
+
+    <p>
+      A method can receive additional information through parameters.
+    </p>
+
+    <div class="code-block">class Student:
+
+    def greet(self, message):
+        print(message)
+
+
+student1 = Student()
+
+student1.greet("Good morning!")</div>
+
+    <strong>Output:</strong>
+
+    <div class="code-block">Good morning!</div>
+
+    <p>
+      Remember that <code>self</code> is the first parameter,
+      and additional parameters come after it.
+    </p>
+
+    <hr>
+
+    <h3>📋 Method with Attributes and Parameters</h3>
+
+    <div class="code-block">class Student:
+
+    def __init__(self, name):
+        self.name = name
+
+    def greet(self, other_name):
+        print(self.name, "says hello to", other_name)
+
+
+student1 = Student("Alice")
+
+student1.greet("Bob")</div>
+
+    <strong>Output:</strong>
+
+    <div class="code-block">Alice says hello to Bob</div>
+
+    <hr>
+
+    <h3>↩️ Methods Can Return Values</h3>
+
+    <p>
+      A method can use <code>return</code> to send a value back.
+    </p>
+
+    <div class="code-block">class Calculator:
+
+    def add(self, a, b):
+        return a + b
+
+
+calculator = Calculator()
+
+result = calculator.add(5, 3)
+
+print(result)</div>
+
+    <strong>Output:</strong>
+
+    <div class="code-block">8</div>
+
+    <p>
+      The method calculates <code>5 + 3</code> and returns the result.
+    </p>
+
+    <hr>
+
+    <h3>🔄 Methods Can Change Attributes</h3>
+
+    <p>
+      A method can also change the data stored inside an object.
+    </p>
+
+    <div class="code-block">class Student:
+
+    def __init__(self, name, score):
+        self.name = name
+        self.score = score
+
+    def add_score(self, points):
+        self.score += points
+
+
+student1 = Student("Alice", 80)
+
+print(student1.score)
+
+student1.add_score(10)
+
+print(student1.score)</div>
+
+    <strong>Output:</strong>
+
+    <div class="code-block">80
+90 </div>
+
+    <p>
+      The method changed the object's <code>score</code> attribute.
+    </p>
+
+    <hr>
+
+    <h3>🎮 Real-World Example: Game Character</h3>
+
+    <div class="code-block">class GameCharacter:
+
+    def __init__(self, name, health):
+        self.name = name
+        self.health = health
+
+    def attack(self):
+        print(self.name, "attacks!")
+
+    def take_damage(self, damage):
+        self.health -= damage
+        print(self.name, "has", self.health, "HP left.")
+
+
+hero = GameCharacter("Hero", 100)
+
+hero.attack()
+
+hero.take_damage(20) </div>
+
+    <strong>Output:</strong>
+
+    <div class="code-block">Hero attacks!
+Hero has 80 HP left.</div>
+
+    <p>
+      Here:
+    </p>
+
+    <ul>
+      <li><code>name</code> → 📋 Attribute</li>
+      <li><code>health</code> → 📋 Attribute</li>
+      <li><code>attack()</code> → ⚔️ Method</li>
+      <li><code>take_damage()</code> → 💥 Method</li>
+    </ul>
+
+    <hr>
+
+    <h3>🆚 Attribute vs Method</h3>
+
+    <table>
+      <tr>
+        <th>Feature</th>
+        <th>Attribute</th>
+        <th>Method</th>
+      </tr>
+
+      <tr>
+        <td>Meaning</td>
+        <td>Information / data</td>
+        <td>Action / behavior</td>
+      </tr>
+
+      <tr>
+        <td>Example</td>
+        <td><code>student.name</code></td>
+        <td><code>student.study()</code></td>
+      </tr>
+
+      <tr>
+        <td>Usually</td>
+        <td>Stores a value</td>
+        <td>Runs code</td>
+      </tr>
+
+      <tr>
+        <td>Think</td>
+        <td>📋 HAS</td>
+        <td>⚙️ DOES</td>
+      </tr>
+    </table>
+
+    <hr>
+
+    <h3>🏫 Complete Student Example</h3>
+
+    <div class="code-block">class Student:
+
+    def __init__(self, name, age, score):
+        self.name = name
+        self.age = age
+        self.score = score
+
+    def introduce(self):
+        print("My name is", self.name)
+
+    def study(self):
+        print(self.name, "is studying.")
+
+    def show_score(self):
+        print("Score:", self.score)
+
+
+student1 = Student("Alice", 12, 90)
+
+student1.introduce()
+student1.study()
+student1.show_score()</div>
+
+    <strong>Output:</strong>
+
+    <div class="code-block">My name is Alice
+Alice is studying.
+Score: 90 </div>
+
+    <hr>
+
+    <h3>🧠 Easy Memory Trick</h3>
+
+    <div class="code-block">Class
+  ↓
+Object
+  ↓
+┌─────────────────────┐
+│ Attributes 📋       │
+│ What the object HAS │
+│                     │
+│ Methods ⚙️          │
+│ What the object DOES│
+└─────────────────────┘
+</div>
+
+    <p>
+      For example:
+    </p>
+
+    <div class="code-block">Dog
+
+Attributes:
+    name
+    age
+    breed
+
+Methods:
+    bark()
+    eat()
+    sleep()
+    run()</div>
+
+    <hr>
+
+    <h3>🎯 Try It Yourself</h3>
+
+    <p>
+      Create a <strong>BankAccount</strong> class.
+    </p>
+
+    <p>Give it:</p>
+
+    <ul>
+      <li>👤 <code>owner</code> attribute</li>
+      <li>💰 <code>balance</code> attribute</li>
+      <li>➕ <code>deposit()</code> method</li>
+      <li>➖ <code>withdraw()</code> method</li>
+      <li>📊 <code>show_balance()</code> method</li>
+    </ul>
+
+    <p>
+      Create an account and test all three methods.
+    </p>
+
+    <hr>
+
+    <h3>📚 Summary</h3>
+
+    <table>
+      <tr>
+        <th>Concept</th>
+        <th>Meaning</th>
+      </tr>
+
+      <tr>
+        <td>Method</td>
+        <td>⚙️ A function that belongs to a class.</td>
+      </tr>
+
+      <tr>
+        <td><code>self</code></td>
+        <td>👉 Refers to the current object.</td>
+      </tr>
+
+      <tr>
+        <td><code>object.method()</code></td>
+        <td>▶️ Calls a method.</td>
+      </tr>
+
+      <tr>
+        <td><code>return</code></td>
+        <td>↩️ Sends a value back from a method.</td>
+      </tr>
+    </table>
+
+    <p>
+      <strong>Remember:</strong>
+      Attributes describe what an object <strong>has</strong>,
+      while methods describe what an object <strong>does</strong>.
+    </p>
+  `
+},{
+  title: "🔴 Class Methods",
+  content: `<h2>⚙️ What is a Class Method?</h2>
+
+    <p>
+      A <strong>class method</strong> is a method that belongs to the
+      <strong>class itself</strong>, rather than one specific object.
+    </p>
+
+    <p>
+      Class methods use the <code>@classmethod</code> decorator and
+      receive <code>cls</code> as the first parameter.
+    </p>
+
+    <div class="code-block">class Student:
+
+    school = "Hsu Academic Boost"
+
+    @classmethod
+    def show_school(cls):
+        print(cls.school)</div>
+
+    <p>
+      Here:
+    </p>
+
+    <ul>
+      <li><code>@classmethod</code> → Tells Python this is a class method.</li>
+      <li><code>cls</code> → Refers to the class itself.</li>
+      <li><code>cls.school</code> → Accesses a class attribute.</li>
+    </ul>
+
+    <hr>
+
+    <h3>🆚 Instance Method vs Class Method</h3>
+
+    <table>
+      <tr>
+        <th>Feature</th>
+        <th>Instance Method</th>
+        <th>Class Method</th>
+      </tr>
+
+      <tr>
+        <td>First parameter</td>
+        <td><code>self</code></td>
+        <td><code>cls</code></td>
+      </tr>
+
+      <tr>
+        <td>Refers to</td>
+        <td>Current object</td>
+        <td>Class itself</td>
+      </tr>
+
+      <tr>
+        <td>Decorator</td>
+        <td>None</td>
+        <td><code>@classmethod</code></td>
+      </tr>
+
+      <tr>
+        <td>Usually accesses</td>
+        <td>Instance attributes</td>
+        <td>Class attributes</td>
+      </tr>
+    </table>
+
+    <hr>
+
+    <h3>👤 Instance Method Example</h3>
+
+    <div class="code-block">class Student:
+
+    def __init__(self, name):
+        self.name = name
+
+    def introduce(self):
+        print("My name is", self.name)
+
+
+student1 = Student("Alice")
+
+student1.introduce()</div>
+
+    <strong>Output:</strong>
+
+    <div class="code-block">My name is Alice</div>
+
+    <p>
+      <code>self</code> refers to <code>student1</code>.
+    </p>
+
+    <div class="code-block">student1.introduce()
+       ↓
+self = student1 </div>
+
+    <hr>
+
+    <h3>🏫 Class Method Example</h3>
+
+    <div class="code-block">class Student:
+
+    school = "Hsu Academic Boost"
+
+    @classmethod
+    def show_school(cls):
+        print("School:", cls.school)
+
+
+Student.show_school()</div>
+
+    <strong>Output:</strong>
+
+    <div class="code-block">School: Hsu Academic Boost</div>
+
+    <p>
+      Notice that we can call the method directly using the class:
+    </p>
+
+    <div class="code-block">Student.show_school()</div>
+
+    <p>
+      We don't need to create a Student object first.
+    </p>
+
+    <hr>
+
+    <h3>📌 What is <code>cls</code>?</h3>
+
+    <p>
+      <code>cls</code> means <strong>"this class"</strong>.
+    </p>
+
+    <div class="code-block">self → THIS OBJECT 👤
+
+cls  → THIS CLASS 🏫</div>
+
+    <p>
+      For example:
+    </p>
+
+    <div class="code-block">class Student:
+
+    school = "Hsu Academic Boost"
+
+    @classmethod
+    def show_school(cls):
+        print(cls.school)</div>
+
+    <p>
+      <code>cls.school</code> means:
+      <strong>"the school attribute of this class."</strong>
+    </p>
+
+    <hr>
+
+    <h3>🔄 Changing a Class Attribute</h3>
+
+    <p>
+      Class methods are useful when we want to work with class-level data.
+    </p>
+
+    <div class="code-block">class Student:
+
+    school = "Hsu Academic Boost"
+
+    @classmethod
+    def change_school(cls, new_school):
+        cls.school = new_school
+
+
+print(Student.school)
+
+Student.change_school("ABC School")
+
+print(Student.school)</div>
+
+    <strong>Output:</strong>
+
+    <div class="code-block">Hsu Academic Boost
+ABC School</div>
+
+    <p>
+      The class method changed the class attribute
+      <code>school</code>.
+    </p>
+
+    <hr>
+
+    <h3>👥 Class Methods Are Shared</h3>
+
+    <div class="code-block">class Student:
+
+    school = "Hsu Academic Boost"
+
+    def __init__(self, name):
+        self.name = name
+
+    @classmethod
+    def show_school(cls):
+        print(cls.school)
+
+
+student1 = Student("Alice")
+student2 = Student("Bob")
+
+student1.show_school()
+student2.show_school()</div>
+
+    <strong>Output:</strong>
+
+    <div class="code-block">Hsu Academic Boost
+Hsu Academic Boost </div>
+
+    <p>
+      Both objects can access the same class method because it belongs
+      to the class.
+    </p>
+
+    <hr>
+
+    <h3>🏭 Class Method as an Alternative Constructor</h3>
+
+    <p>
+      One important use of class methods is creating objects in a different
+      way. This is sometimes called an <strong>alternative constructor</strong>.
+    </p>
+
+    <div class="code-block">class Student:
+
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+    @classmethod
+    def from_string(cls, data):
+        name, age = data.split(",")
+        return cls(name, int(age))
+
+
+student1 = Student.from_string("Alice,12")
+
+print(student1.name)
+print(student1.age)</div>
+
+    <strong>Output:</strong>
+
+    <div class="code-block">Alice
+12</div>
+
+    <p>
+      Here, <code>from_string()</code> creates a Student object from a
+      single string.
+    </p>
+
+    <hr>
+
+    <h3>🧠 How Does <code>cls</code> Create an Object?</h3>
+
+    <div class="code-block">return cls(name, int(age))</div>
+
+    <p>
+      Because <code>cls</code> refers to the current class,
+      this is effectively creating an object using the class:
+    </p>
+
+    <div class="code-block">return Student(name, int(age))</div>
+
+    <p>
+      This makes class methods useful for providing different ways to
+      create objects.
+    </p>
+
+    <hr>
+
+    <h3>🆚 self vs cls</h3>
+
+    <div class="code-block">class Student:
+
+    school = "Hsu Academic Boost"
+
+    def __init__(self, name):
+        self.name = name
+
+    # Instance method
+    def show_name(self):
+        print(self.name)
+
+    # Class method
+    @classmethod
+    def show_school(cls):
+        print(cls.school)</div>
+
+    <table>
+      <tr>
+        <th>Code</th>
+        <th>Refers to</th>
+      </tr>
+
+      <tr>
+        <td><code>self.name</code></td>
+        <td>👤 The current object's name</td>
+      </tr>
+
+      <tr>
+        <td><code>cls.school</code></td>
+        <td>🏫 The class's school</td>
+      </tr>
+    </table>
+
+    <hr>
+
+    <h3>📚 Three Common Types of Methods</h3>
+
+    <table>
+      <tr>
+        <th>Type</th>
+        <th>First Parameter</th>
+        <th>Used For</th>
+      </tr>
+
+      <tr>
+        <td>Instance Method</td>
+        <td><code>self</code></td>
+        <td>Working with object data</td>
+      </tr>
+
+      <tr>
+        <td>Class Method</td>
+        <td><code>cls</code></td>
+        <td>Working with class data</td>
+      </tr>
+
+      <tr>
+        <td>Static Method</td>
+        <td>None</td>
+        <td>Utility/helper functions related to the class</td>
+      </tr>
+    </table>
+
+    <hr>
+
+    <h3>🎯 Try It Yourself</h3>
+
+    <p>
+      Create a <strong>School</strong> class.
+    </p>
+
+    <p>Give it:</p>
+
+    <ul>
+      <li>🏫 A class attribute called <code>school_name</code></li>
+      <li>📊 A class attribute called <code>student_count</code></li>
+      <li>⚙️ A class method called <code>show_school()</code></li>
+      <li>🔄 A class method called <code>change_school()</code></li>
+    </ul>
+
+    <p>
+      Then use the class methods to display and change the school name.
+    </p>
+
+    <hr>
+
+    <h3>📚 Summary</h3>
+
+    <div class="code-block">
+@classmethod
+def method_name(cls):
+    ...
+    </div>
+
+    <table>
+      <tr>
+        <th>Concept</th>
+        <th>Meaning</th>
+      </tr>
+
+      <tr>
+        <td><code>@classmethod</code></td>
+        <td>🏫 Creates a class method.</td>
+      </tr>
+
+      <tr>
+        <td><code>cls</code></td>
+        <td>👉 Refers to the class itself.</td>
+      </tr>
+
+      <tr>
+        <td><code>cls.attribute</code></td>
+        <td>📋 Accesses a class attribute.</td>
+      </tr>
+
+      <tr>
+        <td><code>cls(...)</code></td>
+        <td>🏗️ Can create an object of the class.</td>
+      </tr>
+    </table>
+
+    <p>
+      <strong>Remember:</strong>
+      <code>self</code> → current <strong>object</strong> 👤
+      <br>
+      <code>cls</code> → current <strong>class</strong> 🏫
     </p>
   `
 }
+
+
+
+   
+
+ 
+
+
+    
+     
   ];
 
     let currentLesson = 0;
