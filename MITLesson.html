@@ -184,7 +184,7 @@
          <li><strong>TextBoxes: </strong>Allow the user to type in data. </li> 
          <li><strong>Layouts: </strong>Containers (like Horizontal or Vertical Arrangements) used to organize other components neatly side-by-side or stacked.
        </ul>
-        <img src="assests/MIT/E2.jpg">
+        <img src="assests/MIT/E2.jpg" class="rounded-2xl shadow-lg mb-6 w-full" >
        <h3> 2. Non-Visible Components (Device Functions & Logic)</h3>
        <p>These work behind the scenes and give the app its actual power.</p>
        <ul>
@@ -193,10 +193,10 @@
        <li>Storage: Save data locally using TinyDB or in the cloud using the File component.</li>
        <li>Connectivity: Allow the app to communicate via Bluetooth or retrieve data from the web via APIs</li>
         </ul>
-        <img src="assests/MIT/E3.jpg">
+        <img src="assests/MIT/E3.jpg" class="rounded-2xl shadow-lg mb-6 w-full" >
        <h2> Properties</h2>
 <p>Every component is characterized by various properties. <strong> Properties</strong> are the specific attributes or settings that define how those components look and behave .</p>
-<img src="assests/MIT/E4.jpg">
+<img src="assests/MIT/E4.jpg" class="rounded-2xl shadow-lg mb-6 w-full" >
 `
          
       },{title: "🟡 Blocks Editor",
@@ -349,6 +349,368 @@ Install the app on Android.</p>
         `
         
       },{
+    title: "🟣 User Interface",
+    content: `
+    
+    <h2>How to Design an Actual App</h2>
+
+    <p>
+        The <strong>User Interface (UI)</strong> is what users see and interact with
+        when they use an app.
+    </p>
+
+    <h3>🎨 Palette</h3>
+
+    <p>
+        The <strong>Palette</strong> contains different components that we can
+        add to our app.
+    </p>
+
+    <ul>
+        <li>🔘 Button</li>
+        <li>🏷️ Label</li>
+        <li>📝 TextBox</li>
+        <li>🖼️ Image</li>
+        <li>🎵 Sound</li>
+    </ul>
+    <img src="assests/MIT/pattle.jpg">
+
+    <h3>⚙️ Properties</h3>
+
+    <p>
+        When you choose a component, you can use its
+        <strong>Properties</strong> to change how it looks and behaves.
+    </p>
+
+    <p>
+        For example, if you select a <strong>Label</strong>, you can customize:
+    </p>
+
+    <ul>
+        <li>🎨 Background Color</li>
+        <li>🖌️ Text Color</li>
+        <li>✏️ Text</li>
+        <li>🔤 Font Size</li>
+        <li>🔠 Font Style</li>
+        <li>↔️ Width</li>
+        <li>↕️ Height</li>
+        <li>📍 Text Alignment</li>
+    </ul>
+    <img src="assests/MIT/properties.jpg">
+
+    <h3>💡 Simple Idea</h3>
+
+    <p>
+        <strong>Palette</strong> → Choose a component
+    </p>
+
+    <p>
+        <strong>Properties</strong> → Customize the component
+    </p>
+
+    <p>
+        <strong>Blocks</strong> → Make the component do something
+    </p>
+
+    <hr>
+
+    <h3>🌟 Example</h3>
+
+    <p>
+        Suppose we want to create a button that says
+        <strong>"Click Me!"</strong>.
+    </p>
+
+    <ol>
+        <li>Open the <strong>Palette</strong>.</li>
+        <li>Drag a <strong>Button</strong> into the Viewer.</li>
+        <li>Select the Button.</li>
+        <li>Use <strong>Properties</strong> to change its text, color, size, and font.</li>
+        <li>Use the <strong>Blocks Editor</strong> to make the button perform an action.</li>
+    </ol>
+    <div>
+      </div>
+      <img src="assests/MIT/exampleclickme.png">
+<p>If you want to place a component in the center of the screen, set <code>AlignHorizontal</code> to Center and <code>AlignVertical</code> to Center.
+  For Background color set <code>BackgroundColor</code></p>
+<img src="assests/MIT/screen.png">
+    <p>
+        🎯 <strong>Remember:</strong>
+        Designer = <strong>Design what the app looks like</strong><br>
+        Blocks = <strong>Program what the app does</strong>
+    </p>
+    <p>
+    If you want to add a function or make your app do something,
+    you need to use the <strong>Blocks Editor</strong>.
+</p>
+
+<img src="assests/MIT/blockshow.jpg">
+
+<p>
+    For an <strong>event block</strong>, such as
+    <strong>“when Button.Click”</strong>, choose the block for the button you want to control.
+</p>
+<img src="assests/MIT/whenclicked.jpg"/>
+
+<p>
+    This means that the code inside the block will run
+    <strong>when you click that button</strong>.
+</p>
+<img src="assests/MIT/text1.jpg">
+<img src="assests/MIT/text2.jpg">
+    
+    `
+},
+{ 
+    title: "🟣 Component Names",
+    content: `<h2> The Component Name Matters</h2>
+<p>Every component has a <strong>name</strong>.
+The name helps you identify and control the component
+in the <strong>Blocks Editor</strong>.
+        </p>
+        <p>
+            For example:
+        </p>
+
+        <ul>
+            <li>Button1 → <strong>btnStart</strong></li>
+            <li>Label1 → <strong>lblTitle</strong></li>
+            <li>TextBox1 → <strong>txtName</strong></li>
+        </ul>
+
+        <p>
+            💡 It is a good idea to give your components
+            <strong>clear and meaningful names</strong>.
+        </p>
+
+        <p>
+            For example, <strong>btnStart</strong> is easier to understand
+            than <strong>Button3</strong>.
+        </p>
+    <p>
+        Give components clear names so you can easily identify them
+        in the Blocks Editor.
+    </p>
+
+    <p>
+        Example:
+        <strong>Button1</strong> → <strong>btnStart</strong>
+    </p>
+    <img src="assests/MIT/rename.jpg" class="rounded-2xl shadow-lg mb-6 w-full" />
+    <img src="assests/MIT/rename2.jpg" class="rounded-2xl shadow-lg mb-6 w-full" />`}
+
+,
+{
+    title: "🟣 Adding a New Screen",
+    content: ` <h2>📱 Adding a New Screen</h2>
+        <p>
+            📱 An app can have <strong>more than one screen</strong>.
+        </p>
+
+        <p>
+            For example:
+        </p>
+
+        <ul>
+            <li>🏠 <strong>Screen1</strong> → Home Page</li>
+            <li>📖 <strong>Screen2</strong> → Information Page</li>
+            <li>⚙️ <strong>Screen3</strong> → Settings Page</li>
+        </ul>
+
+        <p>
+            To add a new screen, click
+            <strong>Add Screen</strong> in the Designer.
+        </p>
+
+        <p>
+            💡 You can use buttons to move from one screen to another.
+        </p>
+        <img src="assests/MIT/screen2.jpg" />
+    `
+},{
+    title: "🟣 Phone Preview Size",
+    content: ` <h2>📐 Changing the Phone Size</h2>
+        <p>
+            📱 In the <strong>Designer</strong>, the Viewer shows
+            how your app may look on a phone.
+        </p>
+
+        <p>
+            You can change the <strong>Viewer's phone size or display</strong>
+            to see how your app looks on different screen sizes.
+        </p>
+
+        <p>
+            💡 Always check your app layout on different screen sizes
+            so that your components are not too large, too small,
+            or in the wrong position.
+        </p>
+        <img src="assests/MIT/screensize.jpg" />
+    `
+},{
+    title: "🟣 Build & Export Your App",
+    content: `
+    
+    <h2>📱 From App Inventor Project to Mobile App</h2>
+
+    <p>
+        After you finish designing and programming your app,
+        you can <strong>build</strong> it into an app file that
+        can be installed on a mobile device.
+    </p>
+
+    <h3>🤖 Android — APK</h3>
+
+    <p>
+        An <strong>APK</strong> is an Android application package.
+        It is a file that can be used to install an app on
+        an Android device.
+    </p>
+
+    <p>
+        Example:
+        <strong>MyCalculator.apk</strong>
+    </p>
+
+    <h3>🍎 iPhone — iOS</h3>
+
+    <p>
+        iPhone apps use the <strong>iOS app format</strong>.
+        App Inventor's iOS building process is different from
+        simply creating an APK for Android.
+    </p>
+
+    <h3>🛠️ Build Your App</h3>
+
+    <ol>
+        <li>Finish your app in the <strong>Designer</strong>.</li>
+        <li>Program your app in the <strong>Blocks Editor</strong>.</li>
+        <li>Test the app.</li>
+        <li>Fix any problems.</li>
+        <li>Use the <strong>Build</strong> option to create the app.</li>
+        <li>Install or distribute the resulting app.</li>
+    </ol>
+
+    <h3>⭐ Remember</h3>
+
+    <p>
+        <strong>Design → Program → Test → Debug → Build → Install</strong>
+    </p>
+
+    <p>
+        💡 <strong>APK</strong> is mainly associated with Android.
+        iPhone apps use Apple's iOS app packaging and distribution
+        system.
+    </p>
+    <img src="assests/MIT/appexport.jpg">
+
+    `
+},{
+    title: "📝 Note for MIT App Inventor",
+    content: `<h2>📝 Note </h2>
+    <h3>🧩 1. Designer vs Blocks Editor</h3>
+
+    <p>
+        <strong>Designer</strong> → Design how the app looks.
+    </p>
+
+    <p>
+        <strong>Blocks Editor</strong> → Program what the app does.
+    </p>
+ <img src="assests/MIT/db.jpg"/>
+    <hr>
+
+    <h3>🗑️ 2. Deleting a Block</h3>
+
+    <p>
+        Drag the block into the <strong>Trash</strong> to delete it.
+    </p>
+     <img src="assests/MIT/delete.jpg">
+
+    <hr>
+
+    <h3>📦 3. Every Component Has Properties</h3>
+
+    <p>
+        Select a component to see its <strong>Properties</strong>.
+        You can change things such as text, color, size, and alignment.
+    </p>
+   <img src="assests/MIT/properties.jpg" />
+    <hr>
+
+    <h3>⚡ 4. Events Make Things Happen</h3>
+
+    <p>
+        An event tells the app <strong>when something happens</strong>.
+    </p>
+
+    <p>
+        Example:
+        <strong>when Button1.Click</strong>
+        means the code runs when Button1 is clicked.
+    </p>
+   <img src="assests/MIT/eventblock.jpg"/>
+    <hr>
+
+    <h3>🎯 5. The Component Name Matters</h3>
+
+    <p>
+        Give components clear names so you can easily identify them
+        in the Blocks Editor.
+    </p>
+
+    <p>
+        Example:
+        <strong>Button1</strong> → <strong>btnStart</strong>
+    </p>
+   <img src="assests/MIT/rename.jpg" />
+    <hr>
+
+    <h3>🔗 6. Blocks Must Connect</h3>
+
+    <p>
+        Blocks need to fit together correctly.
+        If they cannot connect, they may not work together.
+    </p>
+
+    <hr>
+
+    <h3>🧪 7. Test Your App Often</h3>
+
+    <p>
+        Don't wait until the end to test your app.
+        Test it after adding each important feature.
+    </p>
+
+    <hr>
+
+    <h3>🐛 8. Debugging</h3>
+
+    <p>
+        If your app doesn't work, check your blocks and components.
+        Find the problem, fix it, and test again.
+    </p>
+
+    <hr>
+
+    <h3>📱 9. Screen Size</h3>
+
+    <p>
+        Your app may look different on different devices.
+        Test your app on a phone or emulator to make sure the layout works.
+    </p>
+  <img src="assests/MIT/screensize.jpg" />
+    <hr>
+
+    <h3>🧹 10. Keep Your Blocks Organized</h3>
+
+    <p>
+        Arrange blocks neatly and use clear component names.
+        This makes your program easier to understand and debug.
+    </p>
+
+    `
+},{
     title: "🔴 Example",
     content: `
     <h2>MIT App Inventor Practice Projects</h2>
@@ -447,7 +809,8 @@ Install the app on Android.</p>
         <li>Create your own unique app idea.</li>
     </ul>
     `
-}
+},
+
     ];
 
     let currentLesson = 0;
