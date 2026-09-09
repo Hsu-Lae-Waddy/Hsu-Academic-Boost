@@ -1,0 +1,1559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Online Safety Quiz</title>
+
+<link rel="icon" type="image/png" href="LogoHAB-removebg-preview.png">
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<style>
+
+.correct {
+    border: 4px solid #16a34a !important;
+    transform: scale(1.05);
+}
+
+.wrong {
+    border: 4px solid #dc2626 !important;
+    opacity: 0.7;
+}
+
+.disabled {
+    pointer-events: none;
+}
+
+</style>
+
+</head>
+
+
+<body class="bg-gray-100">
+
+
+<!-- ================= NAVBAR ================= -->
+
+<nav class="bg-slate-950 border-b border-slate-800">
+
+    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+
+        <h1 class="text-2xl font-bold text-teal-500">
+            🎓 Hsu Academic Boost
+        </h1>
+
+        <button
+            onclick="history.back()"
+            class="bg-teal-500 hover:bg-teal-600 text-white px-5 py-2 rounded-lg transition">
+            Back Home
+        </button>
+
+    </div>
+
+</nav>
+
+
+<!-- ================= SOUND EFFECTS ================= -->
+
+<audio id="correct-sound" src="sound/correct.mp3" preload="auto"></audio>
+
+<audio id="wrong-sound" src="sound/wrong.mp3" preload="auto"></audio>
+
+
+<!-- ================= MAIN ================= -->
+
+<div class="bg-gradient-to-r from-teal-200 to-teal-500 min-h-screen py-10 px-4">
+
+<div class="max-w-4xl mx-auto bg-white rounded-2xl shadow-xl p-6 md:p-8">
+
+
+    <!-- ================= TITLE ================= -->
+
+    <h1 class="text-4xl font-bold text-center mb-3">
+        🛡️ Online Safety for Kids
+    </h1>
+
+    <p class="text-center text-gray-600 mb-8">
+        Choose the safest answer for each situation.
+    </p>
+
+
+    <!-- ================= TRAFFIC LIGHT GUIDE ================= -->
+
+    <div class="bg-slate-50 border-2 border-slate-200 rounded-xl p-5 mb-8">
+
+        <h2 class="text-xl font-bold text-center mb-4">
+            🚦 Remember the Traffic Light
+        </h2>
+
+        <div class="grid md:grid-cols-3 gap-3 text-center">
+
+
+            <!-- RED -->
+
+            <div class="bg-red-100 rounded-xl p-4">
+
+                <div class="text-3xl mb-1">
+                    🔴
+                </div>
+
+                <p class="font-bold text-red-700">
+                    Don't 
+                </p>
+
+
+            </div>
+
+
+            <!-- YELLOW -->
+
+            <div class="bg-yellow-100 rounded-xl p-4">
+
+                <div class="text-3xl mb-1">
+                    🟡
+                </div>
+
+                <p class="font-bold text-yellow-700">
+                    Ask an adult
+                </p>
+
+               
+
+            </div>
+
+
+            <!-- GREEN -->
+
+            <div class="bg-green-100 rounded-xl p-4">
+
+                <div class="text-3xl mb-1">
+                    🟢
+                </div>
+
+                <p class="font-bold text-green-700">
+                    Safe
+                </p>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ================= QUESTION 1 ================= -->
+
+    <div class="bg-gray-100 p-5 rounded-xl mb-5">
+
+        <h2 class="text-xl font-bold mb-3">
+            1️⃣ Personal Information
+        </h2>
+
+        <p class="text-lg mb-5">
+            Someone online asks:
+            <strong>"What is your home address?"</strong>
+        </p>
+
+
+        <div class="flex flex-wrap gap-3">
+
+            <button
+                id="q1-red"
+                onclick="checkAnswer('q1', 'red', this)"
+                class="bg-red-500 hover:bg-red-600 text-white font-bold px-6 py-3 rounded-xl transition">
+                🔴 Don't share it
+            </button>
+
+            <button
+                id="q1-yellow"
+                onclick="checkAnswer('q1', 'yellow', this)"
+                class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold px-6 py-3 rounded-xl transition">
+                🟡 Ask an adult
+            </button>
+
+            <button
+                id="q1-green"
+                onclick="checkAnswer('q1', 'green', this)"
+                class="bg-green-500 hover:bg-green-600 text-white font-bold px-6 py-3 rounded-xl transition">
+                🟢 Safe
+            </button>
+
+        </div>
+
+        <p id="q1-result" class="font-bold mt-4"></p>
+
+    </div>
+
+
+
+    <!-- ================= QUESTION 2 ================= -->
+
+    <div class="bg-gray-100 p-5 rounded-xl mb-5">
+
+        <h2 class="text-xl font-bold mb-3">
+            2️⃣ Password
+        </h2>
+
+        <p class="text-lg mb-5">
+            Someone online asks:
+            <strong>"What is your password?"</strong>
+        </p>
+
+
+        <div class="flex flex-wrap gap-3">
+
+            <button
+                id="q2-red"
+                onclick="checkAnswer('q2', 'red', this)"
+                class="bg-red-500 hover:bg-red-600 text-white font-bold px-6 py-3 rounded-xl transition">
+                🔴 Don't share it
+            </button>
+
+            <button
+                id="q2-yellow"
+                onclick="checkAnswer('q2', 'yellow', this)"
+                class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold px-6 py-3 rounded-xl transition">
+                🟡 Ask an adult
+            </button>
+
+            <button
+                id="q2-green"
+                onclick="checkAnswer('q2', 'green', this)"
+                class="bg-green-500 hover:bg-green-600 text-white font-bold px-6 py-3 rounded-xl transition">
+                🟢 Safe
+            </button>
+
+        </div>
+
+        <p id="q2-result" class="font-bold mt-4"></p>
+
+    </div>
+
+
+
+    <!-- ================= QUESTION 3 ================= -->
+
+    <div class="bg-gray-100 p-5 rounded-xl mb-5">
+
+        <h2 class="text-xl font-bold mb-3">
+            3️⃣ Non-Personal Information
+        </h2>
+
+        <p class="text-lg mb-5">
+            Someone asks:
+            <strong>"What is your favorite color?"</strong>
+        </p>
+
+
+        <div class="flex flex-wrap gap-3">
+
+            <button
+                id="q3-red"
+                onclick="checkAnswer('q3', 'red', this)"
+                class="bg-red-500 hover:bg-red-600 text-white font-bold px-6 py-3 rounded-xl transition">
+                🔴 Don't share it
+            </button>
+
+            <button
+                id="q3-yellow"
+                onclick="checkAnswer('q3', 'yellow', this)"
+                class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold px-6 py-3 rounded-xl transition">
+                🟡 Ask an adult
+            </button>
+
+            <button
+                id="q3-green"
+                onclick="checkAnswer('q3', 'green', this)"
+                class="bg-green-500 hover:bg-green-600 text-white font-bold px-6 py-3 rounded-xl transition">
+                🟢 Safe
+            </button>
+
+        </div>
+
+        <p id="q3-result" class="font-bold mt-4"></p>
+
+    </div>
+
+
+
+    <!-- ================= QUESTION 4 ================= -->
+
+    <div class="bg-gray-100 p-5 rounded-xl mb-5">
+
+        <h2 class="text-xl font-bold mb-3">
+            4️⃣ Personal Information
+        </h2>
+
+        <p class="text-lg mb-5">
+            Someone online asks for your
+            <strong>phone number</strong>.
+        </p>
+
+
+        <div class="flex flex-wrap gap-3">
+
+            <button
+                id="q4-red"
+                onclick="checkAnswer('q4', 'red', this)"
+                class="bg-red-500 hover:bg-red-600 text-white font-bold px-6 py-3 rounded-xl transition">
+                🔴 Don't share it
+            </button>
+
+            <button
+                id="q4-yellow"
+                onclick="checkAnswer('q4', 'yellow', this)"
+                class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold px-6 py-3 rounded-xl transition">
+                🟡 Ask an adult
+            </button>
+
+            <button
+                id="q4-green"
+                onclick="checkAnswer('q4', 'green', this)"
+                class="bg-green-500 hover:bg-green-600 text-white font-bold px-6 py-3 rounded-xl transition">
+                🟢 Safe
+            </button>
+
+        </div>
+
+        <p id="q4-result" class="font-bold mt-4"></p>
+
+    </div>
+
+
+
+    <!-- ================= QUESTION 5 ================= -->
+
+    <div class="bg-gray-100 p-5 rounded-xl mb-5">
+
+        <h2 class="text-xl font-bold mb-3">
+            5️⃣ Online Stranger
+        </h2>
+
+        <p class="text-lg mb-5">
+            A stranger online asks you to
+            <strong>send a photo of yourself</strong>.
+        </p>
+
+
+        <div class="flex flex-wrap gap-3">
+
+            <button
+                id="q5-red"
+                onclick="checkAnswer('q5', 'red', this)"
+                class="bg-red-500 hover:bg-red-600 text-white font-bold px-6 py-3 rounded-xl transition">
+                🔴 Don't share it
+            </button>
+
+            <button
+                id="q5-yellow"
+                onclick="checkAnswer('q5', 'yellow', this)"
+                class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold px-6 py-3 rounded-xl transition">
+                🟡 Ask an adult
+            </button>
+
+            <button
+                id="q5-green"
+                onclick="checkAnswer('q5', 'green', this)"
+                class="bg-green-500 hover:bg-green-600 text-white font-bold px-6 py-3 rounded-xl transition">
+                🟢 Safe
+            </button>
+
+        </div>
+
+        <p id="q5-result" class="font-bold mt-4"></p>
+
+    </div>
+
+
+
+    <!-- ================= QUESTION 6 ================= -->
+
+    <div class="bg-gray-100 p-5 rounded-xl mb-5">
+
+        <h2 class="text-xl font-bold mb-3">
+            6️⃣ When You Are Not Sure
+        </h2>
+
+        <p class="text-lg mb-5">
+            A website asks for information,
+            but you <strong>don't know if it is safe</strong>.
+        </p>
+
+
+        <div class="flex flex-wrap gap-3">
+
+            <button
+                id="q6-red"
+                onclick="checkAnswer('q6', 'red', this)"
+                class="bg-red-500 hover:bg-red-600 text-white font-bold px-6 py-3 rounded-xl transition">
+                🔴 Don't share it
+            </button>
+
+            <button
+                id="q6-yellow"
+                onclick="checkAnswer('q6', 'yellow', this)"
+                class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold px-6 py-3 rounded-xl transition">
+                🟡 Ask an adult
+            </button>
+
+            <button
+                id="q6-green"
+                onclick="checkAnswer('q6', 'green', this)"
+                class="bg-green-500 hover:bg-green-600 text-white font-bold px-6 py-3 rounded-xl transition">
+                🟢 Safe
+            </button>
+
+        </div>
+
+        <p id="q6-result" class="font-bold mt-4"></p>
+
+    </div>
+
+
+
+    <!-- ================= QUESTION 7 ================= -->
+
+    <div class="bg-gray-100 p-5 rounded-xl mb-5">
+
+        <h2 class="text-xl font-bold mb-3">
+            7️⃣ Non-Personal Information
+        </h2>
+
+        <p class="text-lg mb-5">
+            Someone asks:
+            <strong>"What is your favorite animal?"</strong>
+        </p>
+
+
+        <div class="flex flex-wrap gap-3">
+
+            <button
+                id="q7-red"
+                onclick="checkAnswer('q7', 'red', this)"
+                class="bg-red-500 hover:bg-red-600 text-white font-bold px-6 py-3 rounded-xl transition">
+                🔴 Don't share it
+            </button>
+
+            <button
+                id="q7-yellow"
+                onclick="checkAnswer('q7', 'yellow', this)"
+                class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold px-6 py-3 rounded-xl transition">
+                🟡 Ask an adult
+            </button>
+
+            <button
+                id="q7-green"
+                onclick="checkAnswer('q7', 'green', this)"
+                class="bg-green-500 hover:bg-green-600 text-white font-bold px-6 py-3 rounded-xl transition">
+                🟢 Safe
+            </button>
+
+        </div>
+
+        <p id="q7-result" class="font-bold mt-4"></p>
+
+    </div>
+
+
+
+    <!-- ================= QUESTION 8 ================= -->
+
+    <div class="bg-gray-100 p-5 rounded-xl mb-5">
+
+        <h2 class="text-xl font-bold mb-3">
+            8️⃣ Something Feels Wrong
+        </h2>
+
+        <p class="text-lg mb-5">
+            Something online makes you feel
+            <strong>scared or uncomfortable</strong>.
+        </p>
+
+
+        <div class="flex flex-wrap gap-3">
+
+            <button
+                id="q8-red"
+                onclick="checkAnswer('q8', 'red', this)"
+                class="bg-red-500 hover:bg-red-600 text-white font-bold px-6 py-3 rounded-xl transition">
+                🔴 Don't share it
+            </button>
+
+            <button
+                id="q8-yellow"
+                onclick="checkAnswer('q8', 'yellow', this)"
+                class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold px-6 py-3 rounded-xl transition">
+                🟡 Ask an adult
+            </button>
+
+            <button
+                id="q8-green"
+                onclick="checkAnswer('q8', 'green', this)"
+                class="bg-green-500 hover:bg-green-600 text-white font-bold px-6 py-3 rounded-xl transition">
+                🟢 Safe
+            </button>
+
+        </div>
+
+        <p id="q8-result" class="font-bold mt-4"></p>
+
+    </div>
+
+     <!-- ================= QUESTION 9 ================= -->
+
+    <div class="bg-gray-100 p-5 rounded-xl mb-5">
+
+        <h2 class="text-xl font-bold mb-3">
+            9️⃣ When You Are Not Sure
+        </h2>
+
+        <p class="text-lg mb-5">
+            Someone you don't know sends you a message with a link and says, <strong>"Click this!"</strong>.
+        </p>
+
+
+        <div class="flex flex-wrap gap-3">
+
+            <button
+                id="q9-red"
+                onclick="checkAnswer('q9', 'red', this)"
+                class="bg-red-500 hover:bg-red-600 text-white font-bold px-6 py-3 rounded-xl transition">
+                🔴 Don't click it
+            </button>
+
+            <button
+                id="q9-yellow"
+                onclick="checkAnswer('q9', 'yellow', this)"
+                class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold px-6 py-3 rounded-xl transition">
+                🟡 Ask an adult
+            </button>
+
+            <button
+                id="q9-green"
+                onclick="checkAnswer('q9', 'green', this)"
+                class="bg-green-500 hover:bg-green-600 text-white font-bold px-6 py-3 rounded-xl transition">
+                🟢 Safe
+            </button>
+
+        </div>
+
+        <p id="q9-result" class="font-bold mt-4"></p>
+
+    </div>
+    <!-- ================= QUESTION 10 ================= -->
+
+<div class="bg-gray-100 p-5 rounded-xl mb-5">
+
+    <h2 class="text-xl font-bold mb-3">
+        🔟 Online Friend
+    </h2>
+
+    <p class="text-lg mb-5">
+        Someone you met in a game asks, <strong>"Can we meet in person?"</strong>
+    </p>
+
+    <div class="flex flex-wrap gap-3">
+
+        <button
+            id="q10-red"
+            onclick="checkAnswer('q10', 'red', this)"
+            class="bg-red-500 hover:bg-red-600 text-white font-bold px-6 py-3 rounded-xl transition">
+            🔴 Don't agree
+        </button>
+
+        <button
+            id="q10-yellow"
+            onclick="checkAnswer('q10', 'yellow', this)"
+            class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold px-6 py-3 rounded-xl transition">
+            🟡 Ask an adult
+        </button>
+
+        <button
+            id="q10-green"
+            onclick="checkAnswer('q10', 'green', this)"
+            class="bg-green-500 hover:bg-green-600 text-white font-bold px-6 py-3 rounded-xl transition">
+            🟢 Safe
+        </button>
+
+    </div>
+
+    <p id="q10-result" class="font-bold mt-4"></p>
+
+</div>
+
+
+<!-- ================= QUESTION 11 ================= -->
+
+<div class="bg-gray-100 p-5 rounded-xl mb-5">
+
+    <h2 class="text-xl font-bold mb-3">
+        1️⃣1️⃣ School Information
+    </h2>
+
+    <p class="text-lg mb-5">
+        Someone online asks, <strong>"What school do you go to?"</strong>
+    </p>
+
+    <div class="flex flex-wrap gap-3">
+
+        <button
+            id="q11-red"
+            onclick="checkAnswer('q11', 'red', this)"
+            class="bg-red-500 hover:bg-red-600 text-white font-bold px-6 py-3 rounded-xl transition">
+            🔴 Don't share it
+        </button>
+
+        <button
+            id="q11-yellow"
+            onclick="checkAnswer('q11', 'yellow', this)"
+            class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold px-6 py-3 rounded-xl transition">
+            🟡 Ask an adult
+        </button>
+
+        <button
+            id="q11-green"
+            onclick="checkAnswer('q11', 'green', this)"
+            class="bg-green-500 hover:bg-green-600 text-white font-bold px-6 py-3 rounded-xl transition">
+            🟢 Safe
+        </button>
+
+    </div>
+
+    <p id="q11-result" class="font-bold mt-4"></p>
+
+</div>
+
+
+<!-- ================= QUESTION 12 ================= -->
+
+<div class="bg-gray-100 p-5 rounded-xl mb-5">
+
+    <h2 class="text-xl font-bold mb-3">
+        1️⃣2️⃣ Your Location
+    </h2>
+
+    <p class="text-lg mb-5">
+        An online game asks you to <strong>turn on your location</strong>.
+    </p>
+
+    <div class="flex flex-wrap gap-3">
+
+        <button
+            id="q12-red"
+            onclick="checkAnswer('q12', 'red', this)"
+            class="bg-red-500 hover:bg-red-600 text-white font-bold px-6 py-3 rounded-xl transition">
+            🔴 Don't turn it on
+        </button>
+
+        <button
+            id="q12-yellow"
+            onclick="checkAnswer('q12', 'yellow', this)"
+            class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold px-6 py-3 rounded-xl transition">
+            🟡 Ask an adult
+        </button>
+
+        <button
+            id="q12-green"
+            onclick="checkAnswer('q12', 'green', this)"
+            class="bg-green-500 hover:bg-green-600 text-white font-bold px-6 py-3 rounded-xl transition">
+            🟢 Safe
+        </button>
+
+    </div>
+
+    <p id="q12-result" class="font-bold mt-4"></p>
+
+</div>
+
+
+<!-- ================= QUESTION 13 ================= -->
+
+<div class="bg-gray-100 p-5 rounded-xl mb-5">
+
+    <h2 class="text-xl font-bold mb-3">
+        1️⃣3️⃣ Suspicious Message
+    </h2>
+
+    <p class="text-lg mb-5">
+        You receive a message saying,
+        <strong>"You won a prize! Send your password to claim it."</strong>
+    </p>
+
+    <div class="flex flex-wrap gap-3">
+
+        <button
+            id="q13-red"
+            onclick="checkAnswer('q13', 'red', this)"
+            class="bg-red-500 hover:bg-red-600 text-white font-bold px-6 py-3 rounded-xl transition">
+            🔴 Don't share it
+        </button>
+
+        <button
+            id="q13-yellow"
+            onclick="checkAnswer('q13', 'yellow', this)"
+            class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold px-6 py-3 rounded-xl transition">
+            🟡 Ask an adult
+        </button>
+
+        <button
+            id="q13-green"
+            onclick="checkAnswer('q13', 'green', this)"
+            class="bg-green-500 hover:bg-green-600 text-white font-bold px-6 py-3 rounded-xl transition">
+            🟢 Safe
+        </button>
+
+    </div>
+
+    <p id="q13-result" class="font-bold mt-4"></p>
+
+</div>
+
+
+<!-- ================= QUESTION 14 ================= -->
+
+<div class="bg-gray-100 p-5 rounded-xl mb-5">
+
+    <h2 class="text-xl font-bold mb-3">
+        1️⃣4️⃣ Online Bullying
+    </h2>
+
+    <p class="text-lg mb-5">
+        Someone sends you a <strong>mean or hurtful message</strong>.
+    </p>
+
+    <div class="flex flex-wrap gap-3">
+
+        <button
+            id="q14-red"
+            onclick="checkAnswer('q14', 'red', this)"
+            class="bg-red-500 hover:bg-red-600 text-white font-bold px-6 py-3 rounded-xl transition">
+            🔴 Reply with something mean
+        </button>
+
+        <button
+            id="q14-yellow"
+            onclick="checkAnswer('q14', 'yellow', this)"
+            class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold px-6 py-3 rounded-xl transition">
+            🟡 Tell an adult
+        </button>
+
+        <button
+            id="q14-green"
+            onclick="checkAnswer('q14', 'green', this)"
+            class="bg-green-500 hover:bg-green-600 text-white font-bold px-6 py-3 rounded-xl transition">
+            🟢 Ignore everything
+        </button>
+
+    </div>
+
+    <p id="q14-result" class="font-bold mt-4"></p>
+
+</div>
+
+
+<!-- ================= QUESTION 15 ================= -->
+
+<div class="bg-gray-100 p-5 rounded-xl mb-5">
+
+    <h2 class="text-xl font-bold mb-3">
+        1️⃣5️⃣ Private Photo
+    </h2>
+
+    <p class="text-lg mb-5">
+        Someone online asks you to <strong>send a private photo</strong>.
+    </p>
+
+    <div class="flex flex-wrap gap-3">
+
+        <button
+            id="q15-red"
+            onclick="checkAnswer('q15', 'red', this)"
+            class="bg-red-500 hover:bg-red-600 text-white font-bold px-6 py-3 rounded-xl transition">
+            🔴 Don't send it
+        </button>
+
+        <button
+            id="q15-yellow"
+            onclick="checkAnswer('q15', 'yellow', this)"
+            class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold px-6 py-3 rounded-xl transition">
+            🟡 Ask an adult
+        </button>
+
+        <button
+            id="q15-green"
+            onclick="checkAnswer('q15', 'green', this)"
+            class="bg-green-500 hover:bg-green-600 text-white font-bold px-6 py-3 rounded-xl transition">
+            🟢 Safe
+        </button>
+
+    </div>
+
+    <p id="q15-result" class="font-bold mt-4"></p>
+
+</div>
+
+
+<!-- ================= QUESTION 16 ================= -->
+
+<div class="bg-gray-100 p-5 rounded-xl mb-5">
+
+    <h2 class="text-xl font-bold mb-3">
+        1️⃣6️⃣ Full Name
+    </h2>
+
+    <p class="text-lg mb-5">
+        Someone you don't know asks, <strong>"What is your full name?"</strong>
+    </p>
+
+    <div class="flex flex-wrap gap-3">
+
+        <button
+            id="q16-red"
+            onclick="checkAnswer('q16', 'red', this)"
+            class="bg-red-500 hover:bg-red-600 text-white font-bold px-6 py-3 rounded-xl transition">
+            🔴 Don't share it
+        </button>
+
+        <button
+            id="q16-yellow"
+            onclick="checkAnswer('q16', 'yellow', this)"
+            class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold px-6 py-3 rounded-xl transition">
+            🟡 Ask an adult
+        </button>
+
+        <button
+            id="q16-green"
+            onclick="checkAnswer('q16', 'green', this)"
+            class="bg-green-500 hover:bg-green-600 text-white font-bold px-6 py-3 rounded-xl transition">
+            🟢 Safe
+        </button>
+
+    </div>
+
+    <p id="q16-result" class="font-bold mt-4"></p>
+
+</div>
+
+
+<!-- ================= QUESTION 17 ================= -->
+
+<div class="bg-gray-100 p-5 rounded-xl mb-5">
+
+    <h2 class="text-xl font-bold mb-3">
+        1️⃣7️⃣ Webcam
+    </h2>
+
+    <p class="text-lg mb-5">
+        A stranger online asks you to <strong>turn on your webcam</strong>.
+    </p>
+
+    <div class="flex flex-wrap gap-3">
+
+        <button
+            id="q17-red"
+            onclick="checkAnswer('q17', 'red', this)"
+            class="bg-red-500 hover:bg-red-600 text-white font-bold px-6 py-3 rounded-xl transition">
+            🔴 Don't turn it on
+        </button>
+
+        <button
+            id="q17-yellow"
+            onclick="checkAnswer('q17', 'yellow', this)"
+            class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold px-6 py-3 rounded-xl transition">
+            🟡 Ask an adult
+        </button>
+
+        <button
+            id="q17-green"
+            onclick="checkAnswer('q17', 'green', this)"
+            class="bg-green-500 hover:bg-green-600 text-white font-bold px-6 py-3 rounded-xl transition">
+            🟢 Safe
+        </button>
+
+    </div>
+
+    <p id="q17-result" class="font-bold mt-4"></p>
+
+</div>
+
+
+<!-- ================= QUESTION 18 ================= -->
+
+<div class="bg-gray-100 p-5 rounded-xl mb-5">
+
+    <h2 class="text-xl font-bold mb-3">
+        1️⃣8️⃣ Strange Website
+    </h2>
+
+    <p class="text-lg mb-5">
+        You visit a website and it suddenly asks for your
+        <strong>name, address, and password</strong>.
+    </p>
+
+    <div class="flex flex-wrap gap-3">
+
+        <button
+            id="q18-red"
+            onclick="checkAnswer('q18', 'red', this)"
+            class="bg-red-500 hover:bg-red-600 text-white font-bold px-6 py-3 rounded-xl transition">
+            🔴 Enter everything
+        </button>
+
+        <button
+            id="q18-yellow"
+            onclick="checkAnswer('q18', 'yellow', this)"
+            class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold px-6 py-3 rounded-xl transition">
+            🟡 Ask an adult
+        </button>
+
+        <button
+            id="q18-green"
+            onclick="checkAnswer('q18', 'green', this)"
+            class="bg-green-500 hover:bg-green-600 text-white font-bold px-6 py-3 rounded-xl transition">
+            🟢 Leave the website
+        </button>
+
+    </div>
+
+    <p id="q18-result" class="font-bold mt-4"></p>
+
+</div>
+
+
+<!-- ================= QUESTION 19 ================= -->
+
+<div class="bg-gray-100 p-5 rounded-xl mb-5">
+
+    <h2 class="text-xl font-bold mb-3">
+        1️⃣9️⃣ Secret Request
+    </h2>
+
+    <p class="text-lg mb-5">
+        Someone online says,
+        <strong>"Don't tell your parents about our chat."</strong>
+    </p>
+
+    <div class="flex flex-wrap gap-3">
+
+        <button
+            id="q19-red"
+            onclick="checkAnswer('q19', 'red', this)"
+            class="bg-red-500 hover:bg-red-600 text-white font-bold px-6 py-3 rounded-xl transition">
+            🔴 Keep it secret
+        </button>
+
+        <button
+            id="q19-yellow"
+            onclick="checkAnswer('q19', 'yellow', this)"
+            class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold px-6 py-3 rounded-xl transition">
+            🟡 Tell an adult
+        </button>
+
+        <button
+            id="q19-green"
+            onclick="checkAnswer('q19', 'green', this)"
+            class="bg-green-500 hover:bg-green-600 text-white font-bold px-6 py-3 rounded-xl transition">
+            🟢 Continue chatting
+        </button>
+
+    </div>
+
+    <p id="q19-result" class="font-bold mt-4"></p>
+
+</div>
+
+
+<!-- ================= QUESTION 20 ================= -->
+
+<div class="bg-gray-100 p-5 rounded-xl mb-5">
+
+    <h2 class="text-xl font-bold mb-3">
+        2️⃣0️⃣ Downloading Files
+    </h2>
+
+    <p class="text-lg mb-5">
+        A stranger sends you a file and says,
+        <strong>"Download this game!"</strong>
+    </p>
+
+    <div class="flex flex-wrap gap-3">
+
+        <button
+            id="q20-red"
+            onclick="checkAnswer('q20', 'red', this)"
+            class="bg-red-500 hover:bg-red-600 text-white font-bold px-6 py-3 rounded-xl transition">
+            🔴 Download it
+        </button>
+
+        <button
+            id="q20-yellow"
+            onclick="checkAnswer('q20', 'yellow', this)"
+            class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold px-6 py-3 rounded-xl transition">
+            🟡 Ask an adult
+        </button>
+
+        <button
+            id="q20-green"
+            onclick="checkAnswer('q20', 'green', this)"
+            class="bg-green-500 hover:bg-green-600 text-white font-bold px-6 py-3 rounded-xl transition">
+            🟢 Open it
+        </button>
+
+    </div>
+
+    <p id="q20-result" class="font-bold mt-4"></p>
+
+</div>
+
+
+<!-- ================= QUESTION 21 ================= -->
+
+<div class="bg-gray-100 p-5 rounded-xl mb-5">
+
+    <h2 class="text-xl font-bold mb-3">
+        2️⃣1️⃣ Fake Account
+    </h2>
+
+    <p class="text-lg mb-5">
+        Someone creates an account pretending to be
+        <strong>your friend</strong> and asks for information.
+    </p>
+
+    <div class="flex flex-wrap gap-3">
+
+        <button
+            id="q21-red"
+            onclick="checkAnswer('q21', 'red', this)"
+            class="bg-red-500 hover:bg-red-600 text-white font-bold px-6 py-3 rounded-xl transition">
+            🔴 Share the information
+        </button>
+
+        <button
+            id="q21-yellow"
+            onclick="checkAnswer('q21', 'yellow', this)"
+            class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold px-6 py-3 rounded-xl transition">
+            🟡 Ask your friend or an adult
+        </button>
+
+        <button
+            id="q21-green"
+            onclick="checkAnswer('q21', 'green', this)"
+            class="bg-green-500 hover:bg-green-600 text-white font-bold px-6 py-3 rounded-xl transition">
+            🟢 Trust the account
+        </button>
+
+    </div>
+
+    <p id="q21-result" class="font-bold mt-4"></p>
+
+</div>
+
+
+<!-- ================= QUESTION 22 ================= -->
+
+<div class="bg-gray-100 p-5 rounded-xl mb-5">
+
+    <h2 class="text-xl font-bold mb-3">
+        2️⃣2️⃣ Something Scary
+    </h2>
+
+    <p class="text-lg mb-5">
+        Someone online sends you something that makes you feel
+        <strong>scared or uncomfortable</strong>.
+    </p>
+
+    <div class="flex flex-wrap gap-3">
+
+        <button
+            id="q22-red"
+            onclick="checkAnswer('q22', 'red', this)"
+            class="bg-red-500 hover:bg-red-600 text-white font-bold px-6 py-3 rounded-xl transition">
+            🔴 Keep it secret
+        </button>
+
+        <button
+            id="q22-yellow"
+            onclick="checkAnswer('q22', 'yellow', this)"
+            class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold px-6 py-3 rounded-xl transition">
+            🟡 Tell a trusted adult
+        </button>
+
+        <button
+            id="q22-green"
+            onclick="checkAnswer('q22', 'green', this)"
+            class="bg-green-500 hover:bg-green-600 text-white font-bold px-6 py-3 rounded-xl transition">
+            🟢 Send it to your friends
+        </button>
+
+    </div>
+
+    <p id="q22-result" class="font-bold mt-4"></p>
+
+</div>
+
+
+<!-- ================= QUESTION 23 ================= -->
+
+<div class="bg-gray-100 p-5 rounded-xl mb-5">
+
+    <h2 class="text-xl font-bold mb-3">
+        2️⃣3️⃣ Good Online Behavior
+    </h2>
+
+    <p class="text-lg mb-5">
+        You see someone being <strong>bullied in an online game</strong>.
+    </p>
+
+    <div class="flex flex-wrap gap-3">
+
+        <button
+            id="q23-red"
+            onclick="checkAnswer('q23', 'red', this)"
+            class="bg-red-500 hover:bg-red-600 text-white font-bold px-6 py-3 rounded-xl transition">
+            🔴 Join the bullying
+        </button>
+
+        <button
+            id="q23-yellow"
+            onclick="checkAnswer('q23', 'yellow', this)"
+            class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold px-6 py-3 rounded-xl transition">
+            🟡 Tell an adult / report it
+        </button>
+
+        <button
+            id="q23-green"
+            onclick="checkAnswer('q23', 'green', this)"
+            class="bg-green-500 hover:bg-green-600 text-white font-bold px-6 py-3 rounded-xl transition">
+            🟢 Make fun of them too
+        </button>
+
+    </div>
+
+    <p id="q23-result" class="font-bold mt-4"></p>
+
+</div>
+
+
+
+    <!-- ================= SCORE ================= -->
+
+    <div class="text-center mt-8">
+
+        <div
+            id="result"
+            class="text-3xl font-bold mb-5">
+            🎯 Score: 0 / 9
+        </div>
+
+
+        <button
+            onclick="resetQuiz()"
+            class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-xl font-bold text-lg transition">
+            🔄 Try Again
+        </button>
+
+    </div>
+
+
+</div>
+
+</div>
+
+
+
+<!-- ================= JAVASCRIPT ================= -->
+
+<script>
+
+
+/* ==========================================
+   CORRECT ANSWERS
+========================================== */
+
+const answers = {
+
+    q1: "red",
+    q2: "red",
+    q3: "green",
+    q4: "red",
+    q5: "red",
+    q6: "yellow",
+    q7: "green",
+    q8: "yellow",
+    q9: "red",
+    q10: "yellow",
+    q11: "yellow",
+    q12: "yellow",
+    q13: "yellow",
+    q14: "yellow",
+    q15: "yellow",
+    q16: "yellow",
+    q17: "yellow",
+    q18: "yellow",
+    q19: "yellow",
+    q20: "yellow",
+    q21: "yellow",
+    q22: "yellow",
+    q23: "yellow"
+
+};
+
+
+
+/* ==========================================
+   QUIZ VARIABLES
+========================================== */
+
+let score = 0;
+
+let answeredQuestions = new Set();
+
+
+
+/* ==========================================
+   CHECK ANSWER
+========================================== */
+
+function checkAnswer(question, answer, button) {
+
+
+    // Prevent answering the same question twice
+
+    if (answeredQuestions.has(question)) {
+        return;
+    }
+
+
+    // Get correct answer
+
+    const correctAnswer = answers[question];
+
+
+    // Get correct button
+
+    const correctButton =
+        document.getElementById(
+            `${question}-${correctAnswer}`
+        );
+
+
+    // Get result message
+
+    const result =
+        document.getElementById(
+            `${question}-result`
+        );
+
+
+    // Mark question as answered
+
+    answeredQuestions.add(question);
+
+
+
+    /* ==========================================
+       GET ALL BUTTONS FOR THIS QUESTION
+    ========================================== */
+
+    const buttons =
+        document.querySelectorAll(
+            `[id^="${question}-"]`
+        );
+
+
+    // Disable all buttons
+
+    buttons.forEach(btn => {
+
+        btn.classList.add("disabled");
+
+    });
+
+
+
+    /* ==========================================
+       CORRECT ANSWER
+    ========================================== */
+
+    if (answer === correctAnswer) {
+
+
+        // Play correct sound
+
+        playCorrectSound();
+
+
+        // Highlight selected button
+
+        button.classList.add("correct");
+
+
+        // Show message
+
+        result.innerHTML =
+            "🎉 Correct! Great job!";
+
+
+        result.className =
+            "font-bold mt-4 text-green-600";
+
+
+        // Add score
+
+        score++;
+
+    }
+
+
+
+    /* ==========================================
+       WRONG ANSWER
+    ========================================== */
+
+    else {
+
+
+        // Play wrong sound
+
+        playWrongSound();
+
+
+        // Highlight selected button
+
+        button.classList.add("wrong");
+
+
+        // Show correct answer
+
+        correctButton.classList.add("correct");
+
+
+        // Show message
+
+        result.innerHTML =
+            "❌ Not quite! The correct answer is highlighted in green.";
+
+
+        result.className =
+            "font-bold mt-4 text-red-600";
+
+    }
+
+
+
+    /* ==========================================
+       UPDATE SCORE
+    ========================================== */
+
+    document.getElementById("result").innerHTML =
+        "🎯 Score: " + score + " / 8";
+
+
+
+    /* ==========================================
+       FINISH QUIZ
+    ========================================== */
+
+    if (answeredQuestions.size === 8) {
+
+        setTimeout(showFinalResult, 500);
+
+    }
+
+}
+
+
+
+/* ==========================================
+   CORRECT SOUND
+========================================== */
+
+function playCorrectSound() {
+
+    const sound =
+        document.getElementById("correct-sound");
+
+    sound.currentTime = 0;
+
+    sound.play().catch(error => {
+
+        console.log("Correct sound could not play:", error);
+
+    });
+
+}
+
+
+
+/* ==========================================
+   WRONG SOUND
+========================================== */
+
+function playWrongSound() {
+
+    const sound =
+        document.getElementById("wrong-sound");
+
+    sound.currentTime = 0;
+
+    sound.play().catch(error => {
+
+        console.log("Wrong sound could not play:", error);
+
+    });
+
+}
+
+
+
+/* ==========================================
+   FINAL RESULT
+========================================== */
+
+function showFinalResult() {
+
+
+    let message = "";
+
+
+    if (score === 8) {
+
+        message =
+            "🏆 Excellent! You are an Online Safety Expert!";
+
+        // Extra celebration sound
+
+        playCorrectSound();
+
+    }
+
+
+    else if (score >= 6) {
+
+        message =
+            "🌟 Great job! You know how to stay safe online!";
+
+    }
+
+
+    else if (score >= 4) {
+
+        message =
+            "👍 Good effort! Keep learning about online safety.";
+
+    }
+
+
+    else {
+
+        message =
+            "💡 Keep practicing! Remember: STOP → THINK → ASK.";
+
+    }
+
+
+
+    document.getElementById("result").innerHTML =
+
+        "🎯 Score: " + score + " / 8<br>" +
+
+        "<span class='text-xl'>" +
+        message +
+        "</span>";
+
+}
+
+
+
+/* ==========================================
+   RESET QUIZ
+========================================== */
+
+function resetQuiz() {
+
+
+    // Reset score
+
+    score = 0;
+
+
+    // Clear answered questions
+
+    answeredQuestions.clear();
+
+
+
+    /* ==========================================
+       RESET EACH QUESTION
+    ========================================== */
+
+    for (let question in answers) {
+
+
+        // Get buttons
+
+        const buttons =
+            document.querySelectorAll(
+                `[id^="${question}-"]`
+            );
+
+
+        // Remove styles and enable buttons
+
+        buttons.forEach(button => {
+
+            button.classList.remove(
+                "correct",
+                "wrong",
+                "disabled"
+            );
+
+        });
+
+
+        // Clear result message
+
+        const result =
+            document.getElementById(
+                `${question}-result`
+            );
+
+
+        result.innerHTML = "";
+
+    }
+
+
+
+    /* ==========================================
+       RESET SCORE DISPLAY
+    ========================================== */
+
+    document.getElementById("result").innerHTML =
+        "🎯 Score: 0 / 8";
+
+
+
+    /* ==========================================
+       SCROLL TO TOP
+    ========================================== */
+
+    window.scrollTo({
+
+        top: 0,
+
+        behavior: "smooth"
+
+    });
+
+}
+
+</script>
+
+
+</body>
+</html>
