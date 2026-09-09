@@ -1146,7 +1146,7 @@
         <div
             id="result"
             class="text-3xl font-bold mb-5">
-            🎯 Score: 0 / 9
+            🎯 Score: 0 / 23
         </div>
 
 
@@ -1350,7 +1350,7 @@ function checkAnswer(question, answer, button) {
     ========================================== */
 
     document.getElementById("result").innerHTML =
-        "🎯 Score: " + score + " / 8";
+        "🎯 Score: " + score + " / 23";
 
 
 
@@ -1358,7 +1358,7 @@ function checkAnswer(question, answer, button) {
        FINISH QUIZ
     ========================================== */
 
-    if (answeredQuestions.size === 8) {
+    if (answeredQuestions.size === 23) {
 
         setTimeout(showFinalResult, 500);
 
@@ -1420,7 +1420,7 @@ function showFinalResult() {
     let message = "";
 
 
-    if (score === 8) {
+    if (score === 23) {
 
         message =
             "🏆 Excellent! You are an Online Safety Expert!";
@@ -1432,7 +1432,7 @@ function showFinalResult() {
     }
 
 
-    else if (score >= 6) {
+    else if (score >= 15) {
 
         message =
             "🌟 Great job! You know how to stay safe online!";
@@ -1440,7 +1440,7 @@ function showFinalResult() {
     }
 
 
-    else if (score >= 4) {
+    else if (score >= 8) {
 
         message =
             "👍 Good effort! Keep learning about online safety.";
