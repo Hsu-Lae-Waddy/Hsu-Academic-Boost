@@ -1,0 +1,1015 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Safe or Unsafe? - Computer Safety Quiz</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<style>
+
+body {
+    background: linear-gradient(135deg, #e0f2fe, #fef9c3);
+    font-family: Arial, sans-serif;
+}
+
+.quiz-card {
+    transition: all 0.3s ease;
+}
+
+.quiz-card:hover {
+    transform: translateY(-3px);
+}
+
+.answer-btn {
+    transition: all 0.2s ease;
+}
+
+.answer-btn:hover {
+    transform: scale(1.04);
+}
+
+.answer-btn.correct {
+    border: 5px solid #22c55e;
+    background-color: #dcfce7 !important;
+    color: #166534;
+}
+
+.answer-btn.wrong {
+    border: 5px solid #ef4444;
+    background-color: #fee2e2 !important;
+    color: #991b1b;
+}
+
+.answer-btn.disabled {
+    pointer-events: none;
+    opacity: 0.9;
+}
+
+.feedback {
+    min-height: 32px;
+}
+
+</style>
+</head>
+
+
+<body class="min-h-screen">
+
+<!-- Sounds -->
+<audio id="correct-sound" src="sound/correct.mp3" preload="auto"></audio>
+<audio id="wrong-sound" src="sound/wrong.mp3" preload="auto"></audio>
+
+
+
+<!-- ================= NAVBAR ================= -->
+
+<nav class="bg-slate-950 border-b border-slate-800">
+
+    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+
+        <h1 class="text-2xl font-bold text-teal-500">
+            🎓 Hsu Academic Boost
+        </h1>
+
+        <button
+            onclick="history.back()"
+            class="bg-teal-500 hover:bg-teal-600 text-white px-5 py-2 rounded-lg transition">
+            Back Home
+        </button>
+
+    </div>
+
+</nav>
+
+<!-- HEADER -->
+<section class="text-center px-4 pt-10 pb-6">
+
+    <div class="text-6xl mb-4">
+        🛡️💻
+    </div>
+
+    <h2 class="text-3xl md:text-4xl font-extrabold text-sky-700">
+        Safe or Unsafe?
+    </h2>
+
+    <p class="text-lg text-gray-700 mt-3">
+        Look at the picture and choose the correct answer!
+    </p>
+
+    <div class="flex justify-center gap-4 mt-5 flex-wrap">
+
+        <div class="bg-green-100 text-green-700 px-5 py-2 rounded-full font-bold">
+            🟢 SAFE
+        </div>
+
+        <div class="bg-red-100 text-red-700 px-5 py-2 rounded-full font-bold">
+            🔴 UNSAFE
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- QUIZ -->
+<main class="max-w-3xl mx-auto px-4 pb-12">
+
+
+    <!-- QUESTION 1 -->
+    <div class="quiz-card bg-white rounded-3xl shadow-lg p-6 md:p-8 mb-7">
+
+        <div class="text-center">
+<div class="text-8xl mb-5">
+    <img 
+        src="https://managedserviceprovider.com/wp-content/uploads/2018/07/Bad-Computer-Habits-to-Break-Now-1080x675.jpg"
+        alt="Bad computer habits"
+        class="w-full max-w-md mx-auto rounded-2xl"
+    />
+</div>
+
+            <div class="text-sm font-bold text-sky-500 mb-2">
+                QUESTION 1
+            </div>
+
+            <h3 class="text-2xl font-bold text-gray-800">
+                Eating while using a laptop.
+            </h3>
+
+        </div>
+
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-7">
+
+            <button
+                id="q1-safe"
+                onclick="checkAnswer('q1', 'safe', this)"
+                class="answer-btn bg-green-500 hover:bg-green-600 text-white font-bold text-xl py-4 rounded-2xl">
+                🟢 SAFE
+            </button>
+
+            <button
+                id="q1-unsafe"
+                onclick="checkAnswer('q1', 'unsafe', this)"
+                class="answer-btn bg-red-500 hover:bg-red-600 text-white font-bold text-xl py-4 rounded-2xl">
+                🔴 UNSAFE
+            </button>
+
+        </div>
+
+        <p id="q1-result" class="feedback text-center font-bold mt-5"></p>
+
+    </div>
+
+
+
+    <!-- QUESTION 2 -->
+    <div class="quiz-card bg-white rounded-3xl shadow-lg p-6 md:p-8 mb-7">
+
+        <div class="text-center">
+
+            <div class="text-8xl mb-5">
+    <img 
+        src="https://epicelectric.ca/wp-content/uploads/2016/03/kelowna-electrician-epic-electric-electrical-safety-for-kids.jpg"
+        alt="Bad computer habits"
+        class="w-full max-w-md mx-auto rounded-2xl"
+    />
+</div>
+
+            <div class="text-sm font-bold text-sky-500 mb-2">
+                QUESTION 2
+            </div>
+
+            <h3 class="text-2xl font-bold text-gray-800">
+                Playing computer wires.
+            </h3>
+
+        </div>
+
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-7">
+
+            <button
+                id="q2-safe"
+                onclick="checkAnswer('q2', 'safe', this)"
+                class="answer-btn bg-green-500 hover:bg-green-600 text-white font-bold text-xl py-4 rounded-2xl">
+                🟢 SAFE
+            </button>
+
+            <button
+                id="q2-unsafe"
+                onclick="checkAnswer('q2', 'unsafe', this)"
+                class="answer-btn bg-red-500 hover:bg-red-600 text-white font-bold text-xl py-4 rounded-2xl">
+                🔴 UNSAFE
+            </button>
+
+        </div>
+
+        <p id="q2-result" class="feedback text-center font-bold mt-5"></p>
+
+    </div>
+
+
+
+    <!-- QUESTION 3 -->
+    <div class="quiz-card bg-white rounded-3xl shadow-lg p-6 md:p-8 mb-7">
+
+        <div class="text-center">
+
+            <div class="text-8xl mb-5">
+    <img 
+        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRlOPyJiTDBhS-tk4VWwq6HL-Jt2g6MPMFD-FTWWxYFY5phvkDmor5axCg&s=10"
+        alt="Bad computer habits"
+        class="w-full max-w-md mx-auto rounded-2xl"
+    />
+</div>
+
+            <div class="text-sm font-bold text-sky-500 mb-2">
+                QUESTION 3
+            </div>
+
+            <h3 class="text-2xl font-bold text-gray-800">
+                Do not sit properly while using a laptop.
+            </h3>
+
+        </div>
+
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-7">
+
+            <button
+                id="q3-safe"
+                onclick="checkAnswer('q3', 'safe', this)"
+                class="answer-btn bg-green-500 hover:bg-green-600 text-white font-bold text-xl py-4 rounded-2xl">
+                🟢 SAFE
+            </button>
+
+            <button
+                id="q3-unsafe"
+                onclick="checkAnswer('q3', 'unsafe', this)"
+                class="answer-btn bg-red-500 hover:bg-red-600 text-white font-bold text-xl py-4 rounded-2xl">
+                🔴 UNSAFE
+            </button>
+
+        </div>
+
+        <p id="q3-result" class="feedback text-center font-bold mt-5"></p>
+
+    </div>
+
+
+
+    <!-- QUESTION 4 -->
+    <div class="quiz-card bg-white rounded-3xl shadow-lg p-6 md:p-8 mb-7">
+
+        <div class="text-center">
+
+            
+            <div class="text-8xl mb-5">
+    <img 
+        src="https://ixbapi.healthwise.net/resource/15.0/media/medical/hw/hwkb17_087_02.jpg"
+        alt="good habits"
+        class="w-full max-w-md mx-auto rounded-2xl"
+    />
+</div>
+
+            <div class="text-sm font-bold text-sky-500 mb-2">
+                QUESTION 4
+            </div>
+
+            <h3 class="text-2xl font-bold text-gray-800">
+                Sitting up straight while using a laptop.
+            </h3>
+
+        </div>
+
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-7">
+
+            <button
+                id="q4-safe"
+                onclick="checkAnswer('q4', 'safe', this)"
+                class="answer-btn bg-green-500 hover:bg-green-600 text-white font-bold text-xl py-4 rounded-2xl">
+                🟢 SAFE
+            </button>
+
+            <button
+                id="q4-unsafe"
+                onclick="checkAnswer('q4', 'unsafe', this)"
+                class="answer-btn bg-red-500 hover:bg-red-600 text-white font-bold text-xl py-4 rounded-2xl">
+                🔴 UNSAFE
+            </button>
+
+        </div>
+
+        <p id="q4-result" class="feedback text-center font-bold mt-5"></p>
+
+    </div>
+
+
+
+    <!-- QUESTION 5 -->
+    <div class="quiz-card bg-white rounded-3xl shadow-lg p-6 md:p-8 mb-7">
+
+        <div class="text-center">
+
+            <div class="text-8xl mb-5">
+    <img 
+        src="https://i.pinimg.com/1200x/0f/9e/d8/0f9ed87dfab871bf5e33de4bae07c21a.jpg"
+        alt="good habits"
+        class="w-full max-w-md mx-auto rounded-2xl"
+    />
+</div>
+
+            <div class="text-sm font-bold text-sky-500 mb-2">
+                QUESTION 5
+            </div>
+
+            <h3 class="text-2xl font-bold text-gray-800">
+                Closing the laptop without shutting it down.
+            </h3>
+
+        </div>
+
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-7">
+
+            <button
+                id="q5-safe"
+                onclick="checkAnswer('q5', 'safe', this)"
+                class="answer-btn bg-green-500 hover:bg-green-600 text-white font-bold text-xl py-4 rounded-2xl">
+                🟢 SAFE
+            </button>
+
+            <button
+                id="q5-unsafe"
+                onclick="checkAnswer('q5', 'unsafe', this)"
+                class="answer-btn bg-red-500 hover:bg-red-600 text-white font-bold text-xl py-4 rounded-2xl">
+                🔴 UNSAFE
+            </button>
+
+        </div>
+
+        <p id="q5-result" class="feedback text-center font-bold mt-5"></p>
+
+    </div>
+
+
+
+    <!-- QUESTION 6 -->
+    <div class="quiz-card bg-white rounded-3xl shadow-lg p-6 md:p-8 mb-7">
+
+        <div class="text-center">
+
+             <div class="text-8xl mb-5">
+    <img 
+        src="assests/putlatopconer.jpg"
+        alt="good habits"
+        class="w-full max-w-md mx-auto rounded-2xl"
+    />
+</div>
+
+            <div class="text-sm font-bold text-sky-500 mb-2">
+                QUESTION 6
+            </div>
+
+            <h3 class="text-2xl font-bold text-gray-800">
+                Putting the laptop on the corner of a table.
+            </h3>
+
+        </div>
+
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-7">
+
+            <button
+                id="q6-safe"
+                onclick="checkAnswer('q6', 'safe', this)"
+                class="answer-btn bg-green-500 hover:bg-green-600 text-white font-bold text-xl py-4 rounded-2xl">
+                🟢 SAFE
+            </button>
+
+            <button
+                id="q6-unsafe"
+                onclick="checkAnswer('q6', 'unsafe', this)"
+                class="answer-btn bg-red-500 hover:bg-red-600 text-white font-bold text-xl py-4 rounded-2xl">
+                🔴 UNSAFE
+            </button>
+
+        </div>
+
+        <p id="q6-result" class="feedback text-center font-bold mt-5"></p>
+
+    </div>
+
+
+
+    <!-- QUESTION 7 -->
+    <div class="quiz-card bg-white rounded-3xl shadow-lg p-6 md:p-8 mb-7">
+
+        <div class="text-center">
+
+            <div class="text-8xl mb-5">
+                🥤💻
+            </div>
+
+            <div class="text-sm font-bold text-sky-500 mb-2">
+                QUESTION 7
+            </div>
+
+            <h3 class="text-2xl font-bold text-gray-800">
+                Keeping drinks away from the laptop.
+            </h3>
+
+        </div>
+
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-7">
+
+            <button
+                id="q7-safe"
+                onclick="checkAnswer('q7', 'safe', this)"
+                class="answer-btn bg-green-500 hover:bg-green-600 text-white font-bold text-xl py-4 rounded-2xl">
+                🟢 SAFE
+            </button>
+
+            <button
+                id="q7-unsafe"
+                onclick="checkAnswer('q7', 'unsafe', this)"
+                class="answer-btn bg-red-500 hover:bg-red-600 text-white font-bold text-xl py-4 rounded-2xl">
+                🔴 UNSAFE
+            </button>
+
+        </div>
+
+        <p id="q7-result" class="feedback text-center font-bold mt-5"></p>
+
+    </div>
+
+
+
+    <!-- QUESTION 8 -->
+    <div class="quiz-card bg-white rounded-3xl shadow-lg p-6 md:p-8 mb-7">
+
+        <div class="text-center">
+
+            <div class="text-8xl mb-5">
+    <img 
+        src="https://img.magnific.com/premium-photo/young-adult-happy-smiling-hispanic-asian-student-wearing-headphones-talking-online-chat-meeting-using-laptop-university-campus-virtual-office-college-female-student-learning-remotely_265022-46013.jpg?semt=ais_hybrid&w=740&q=80"
+        alt="bad habits"
+        class="w-full max-w-md mx-auto rounded-2xl"
+    />
+</div>
+
+            <div class="text-sm font-bold text-sky-500 mb-2">
+                QUESTION 8
+            </div>
+
+            <h3 class="text-2xl font-bold text-gray-800">
+                Using a laptop on a soft bed or pillow.
+            </h3>
+
+        </div>
+
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-7">
+
+            <button
+                id="q8-safe"
+                onclick="checkAnswer('q8', 'safe', this)"
+                class="answer-btn bg-green-500 hover:bg-green-600 text-white font-bold text-xl py-4 rounded-2xl">
+                🟢 SAFE
+            </button>
+
+            <button
+                id="q8-unsafe"
+                onclick="checkAnswer('q8', 'unsafe', this)"
+                class="answer-btn bg-red-500 hover:bg-red-600 text-white font-bold text-xl py-4 rounded-2xl">
+                🔴 UNSAFE
+            </button>
+
+        </div>
+
+        <p id="q8-result" class="feedback text-center font-bold mt-5"></p>
+
+    </div>
+
+
+
+    <!-- QUESTION 9 -->
+    <div class="quiz-card bg-white rounded-3xl shadow-lg p-6 md:p-8 mb-7">
+
+        <div class="text-center">
+
+            <div class="text-8xl mb-5">
+                🧼🙌💻
+            </div>
+
+            <div class="text-sm font-bold text-sky-500 mb-2">
+                QUESTION 9
+            </div>
+
+            <h3 class="text-2xl font-bold text-gray-800">
+                Washing your hands before using the computer.
+            </h3>
+
+        </div>
+
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-7">
+
+            <button
+                id="q9-safe"
+                onclick="checkAnswer('q9', 'safe', this)"
+                class="answer-btn bg-green-500 hover:bg-green-600 text-white font-bold text-xl py-4 rounded-2xl">
+                🟢 SAFE
+            </button>
+
+            <button
+                id="q9-unsafe"
+                onclick="checkAnswer('q9', 'unsafe', this)"
+                class="answer-btn bg-red-500 hover:bg-red-600 text-white font-bold text-xl py-4 rounded-2xl">
+                🔴 UNSAFE
+            </button>
+
+        </div>
+
+        <p id="q9-result" class="feedback text-center font-bold mt-5"></p>
+
+    </div>
+
+
+
+    <!-- QUESTION 10 -->
+    <div class="quiz-card bg-white rounded-3xl shadow-lg p-6 md:p-8 mb-7">
+
+        <div class="text-center">
+
+           
+    <div class="text-8xl mb-5">
+    <img 
+        src="assests/unsafeholding.jpeg"
+        alt="bad habits"
+        class="w-full max-w-md mx-auto rounded-2xl"
+    />
+</div>
+
+            <div class="text-sm font-bold text-sky-500 mb-2">
+                QUESTION 10
+            </div>
+
+            <h3 class="text-2xl font-bold text-gray-800">
+                Carrying a laptop by holding the screen.
+            </h3>
+
+        </div>
+
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-7">
+
+            <button
+                id="q10-safe"
+                onclick="checkAnswer('q10', 'safe', this)"
+                class="answer-btn bg-green-500 hover:bg-green-600 text-white font-bold text-xl py-4 rounded-2xl">
+                🟢 SAFE
+            </button>
+
+            <button
+                id="q10-unsafe"
+                onclick="checkAnswer('q10', 'unsafe', this)"
+                class="answer-btn bg-red-500 hover:bg-red-600 text-white font-bold text-xl py-4 rounded-2xl">
+                🔴 UNSAFE
+            </button>
+
+        </div>
+
+        <p id="q10-result" class="feedback text-center font-bold mt-5"></p>
+
+    </div>
+
+
+
+    <!-- QUESTION 11 -->
+    <div class="quiz-card bg-white rounded-3xl shadow-lg p-6 md:p-8 mb-7">
+
+        <div class="text-center">
+
+            <div class="text-8xl mb-5">
+                🖥️🌬️
+            </div>
+
+            <div class="text-sm font-bold text-sky-500 mb-2">
+                QUESTION 11
+            </div>
+
+            <h3 class="text-2xl font-bold text-gray-800">
+                Keeping the laptop's air vents clear.
+            </h3>
+
+        </div>
+
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-7">
+
+            <button
+                id="q11-safe"
+                onclick="checkAnswer('q11', 'safe', this)"
+                class="answer-btn bg-green-500 hover:bg-green-600 text-white font-bold text-xl py-4 rounded-2xl">
+                🟢 SAFE
+            </button>
+
+            <button
+                id="q11-unsafe"
+                onclick="checkAnswer('q11', 'unsafe', this)"
+                class="answer-btn bg-red-500 hover:bg-red-600 text-white font-bold text-xl py-4 rounded-2xl">
+                🔴 UNSAFE
+            </button>
+
+        </div>
+
+        <p id="q11-result" class="feedback text-center font-bold mt-5"></p>
+
+    </div>
+
+
+
+    <!-- QUESTION 12 -->
+    <div class="quiz-card bg-white rounded-3xl shadow-lg p-6 md:p-8 mb-7">
+
+        <div class="text-center">
+
+            <div class="text-8xl mb-5">
+                🖐️💻👊
+            </div>
+
+            <div class="text-sm font-bold text-sky-500 mb-2">
+                QUESTION 12
+            </div>
+
+            <h3 class="text-2xl font-bold text-gray-800">
+                Hitting or pressing the laptop very hard.
+            </h3>
+
+        </div>
+
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-7">
+
+            <button
+                id="q12-safe"
+                onclick="checkAnswer('q12', 'safe', this)"
+                class="answer-btn bg-green-500 hover:bg-green-600 text-white font-bold text-xl py-4 rounded-2xl">
+                🟢 SAFE
+            </button>
+
+            <button
+                id="q12-unsafe"
+                onclick="checkAnswer('q12', 'unsafe', this)"
+                class="answer-btn bg-red-500 hover:bg-red-600 text-white font-bold text-xl py-4 rounded-2xl">
+                🔴 UNSAFE
+            </button>
+
+        </div>
+
+        <p id="q12-result" class="feedback text-center font-bold mt-5"></p>
+
+    </div>
+
+
+
+    <!-- FINAL SCORE -->
+    <div id="final-card"
+        class="hidden bg-white rounded-3xl shadow-xl p-8 text-center">
+
+        <div id="final-emoji" class="text-7xl mb-4">
+            🏆
+        </div>
+
+        <h2 class="text-3xl font-extrabold text-sky-700">
+            Quiz Complete!
+        </h2>
+
+        <p id="final-score"
+            class="text-2xl font-bold text-gray-800 mt-4">
+        </p>
+
+        <p id="final-message"
+            class="text-lg text-gray-600 mt-3">
+        </p>
+
+        <button
+            onclick="resetQuiz()"
+            class="mt-7 bg-sky-500 hover:bg-sky-600 text-white font-bold px-7 py-3 rounded-2xl transition">
+            🔄 Try Again
+        </button>
+
+    </div>
+
+</main>
+
+
+<script>
+
+let score = 0;
+let answered = 0;
+
+const answers = {
+
+    q1: "unsafe",
+    q2: "unsafe",
+    q3: "unsafe",
+    q4: "safe",
+    q5: "unsafe",
+    q6: "unsafe",
+    q7: "safe",
+    q8: "unsafe",
+    q9: "safe",
+    q10: "unsafe",
+    q11: "safe",
+    q12: "unsafe"
+
+};
+
+
+const explanations = {
+
+    q1: {
+        safe: "Food can spill and make the laptop dirty or damaged.",
+        unsafe: "Keep food away from the laptop to help keep it clean and safe."
+    },
+
+    q2: {
+        safe: "Food near wires can make a mess or cause a safety problem.",
+        unsafe: "Keep food away from computer wires and equipment."
+    },
+
+    q3: {
+        safe: "Using a laptop while sleepy can make it easy to drop or damage it.",
+        unsafe: "Use your laptop when you are awake and sitting safely."
+    },
+
+    q4: {
+        safe: "Sitting up straight helps you use the computer comfortably.",
+        unsafe: "Slouching is not a good sitting position for computer use."
+    },
+
+    q5: {
+        safe: "Closing the laptop does not always mean the computer is fully shut down.",
+        unsafe: "When you finish using a computer, use the proper shutdown option when needed."
+    },
+
+    q6: {
+        safe: "A laptop near the edge can easily fall from the table.",
+        unsafe: "Keep the laptop safely away from the edge of the table."
+    },
+
+    q7: {
+        safe: "Keeping drinks away helps protect the laptop from spills.",
+        unsafe: "A drink near a laptop could spill onto the computer."
+    },
+
+    q8: {
+        safe: "Soft surfaces can block airflow and may make a laptop too warm.",
+        unsafe: "Use a firm, flat surface so air can move around the laptop."
+    },
+
+    q9: {
+        safe: "Clean hands help keep the keyboard, mouse and computer clean.",
+        unsafe: "Dirty hands can make computer equipment dirty."
+    },
+
+    q10: {
+        safe: "The screen is delicate and can be damaged if you carry the laptop this way.",
+        unsafe: "Carry a laptop carefully using its base or a suitable laptop bag."
+    },
+
+    q11: {
+        safe: "Clear vents help the laptop get the airflow it needs.",
+        unsafe: "Blocking the vents can reduce airflow and make the laptop too warm."
+    },
+
+    q12: {
+        safe: "Computer equipment should be handled gently.",
+        unsafe: "Hitting or pressing hard can damage the laptop."
+    }
+
+};
+
+
+function playCorrectSound() {
+
+    const sound = document.getElementById("correct-sound");
+
+    sound.currentTime = 0;
+
+    sound.play().catch(error => {
+        console.log("Correct sound could not play:", error);
+    });
+
+}
+
+
+function playWrongSound() {
+
+    const sound = document.getElementById("wrong-sound");
+
+    sound.currentTime = 0;
+
+    sound.play().catch(error => {
+        console.log("Wrong sound could not play:", error);
+    });
+
+}
+
+
+function checkAnswer(question, answer, button) {
+
+    const correctAnswer = answers[question];
+
+    const result = document.getElementById(question + "-result");
+
+    const safeButton = document.getElementById(question + "-safe");
+
+    const unsafeButton = document.getElementById(question + "-unsafe");
+
+
+    // Prevent answering twice
+    if (
+        safeButton.classList.contains("disabled") ||
+        unsafeButton.classList.contains("disabled")
+    ) {
+        return;
+    }
+
+
+    // Disable both buttons
+    safeButton.classList.add("disabled");
+    unsafeButton.classList.add("disabled");
+
+
+    if (answer === correctAnswer) {
+
+        playCorrectSound();
+
+        button.classList.add("correct");
+
+        result.innerHTML =
+            "🎉 Great job! " + explanations[question][answer];
+
+        result.className =
+            "feedback text-center font-bold mt-5 text-green-600";
+
+        score++;
+
+    } else {
+
+        playWrongSound();
+
+        button.classList.add("wrong");
+
+        const correctButton =
+            document.getElementById(
+                question + "-" + correctAnswer
+            );
+
+        correctButton.classList.add("correct");
+
+        result.innerHTML =
+            "💡 Let's learn! " +
+            explanations[question][correctAnswer];
+
+        result.className =
+            "feedback text-center font-bold mt-5 text-red-600";
+
+    }
+
+
+    answered++;
+
+
+    if (answered === 12) {
+
+        setTimeout(showFinalScore, 700);
+
+    }
+
+}
+
+
+function showFinalScore() {
+
+    const finalCard =
+        document.getElementById("final-card");
+
+    const finalScore =
+        document.getElementById("final-score");
+
+    const finalMessage =
+        document.getElementById("final-message");
+
+    const finalEmoji =
+        document.getElementById("final-emoji");
+
+
+    finalCard.classList.remove("hidden");
+
+
+    finalScore.innerHTML =
+        "⭐ Your Score: " + score + " / 12";
+
+
+    if (score === 12) {
+
+        finalEmoji.innerHTML = "🏆🌟";
+
+        finalMessage.innerHTML =
+            "Amazing! You know how to use a computer safely!";
+
+    } else if (score >= 9) {
+
+        finalEmoji.innerHTML = "🎉👏";
+
+        finalMessage.innerHTML =
+            "Great job! You know many computer safety rules.";
+
+    } else if (score >= 6) {
+
+        finalEmoji.innerHTML = "😊👍";
+
+        finalMessage.innerHTML =
+            "Good try! Let's practise our computer safety rules.";
+
+    } else {
+
+        finalEmoji.innerHTML = "💪📚";
+
+        finalMessage.innerHTML =
+            "Keep learning! We can practise computer safety together.";
+
+    }
+
+
+    finalCard.scrollIntoView({
+        behavior: "smooth"
+    });
+
+}
+
+
+function resetQuiz() {
+
+    score = 0;
+    answered = 0;
+
+
+    for (let i = 1; i <= 12; i++) {
+
+        const safeButton =
+            document.getElementById("q" + i + "-safe");
+
+        const unsafeButton =
+            document.getElementById("q" + i + "-unsafe");
+
+        const result =
+            document.getElementById("q" + i + "-result");
+
+
+        safeButton.classList.remove(
+            "correct",
+            "wrong",
+            "disabled"
+        );
+
+        unsafeButton.classList.remove(
+            "correct",
+            "wrong",
+            "disabled"
+        );
+
+
+        result.innerHTML = "";
+
+        result.className =
+            "feedback text-center font-bold mt-5";
+
+    }
+
+
+    document.getElementById("final-card")
+        .classList.add("hidden");
+
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+
+}
+
+</script>
+
+</body>
+</html>
