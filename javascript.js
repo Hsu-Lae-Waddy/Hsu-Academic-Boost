@@ -123,6 +123,9 @@ function showPasswordOverlay(subject) {
   if (subject === 'pythonOOP') {
     targetPage = 'POOP.html';
   }
+  if (subject === 'JSAdvance') {
+    targetPage = 'JavaScript.html'
+  }
 
   document
     .getElementById('password-overlay')

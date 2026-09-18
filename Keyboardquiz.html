@@ -1,0 +1,1106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Keyboard Keys Quiz - Year 1–2</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .key {
+            transition: all 0.2s ease;
+            box-shadow: 0 5px 0 #cbd5e1;
+        }
+
+        .key:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 0 #cbd5e1;
+        }
+
+        .key:active {
+            transform: translateY(3px);
+            box-shadow: 0 2px 0 #cbd5e1;
+        }
+
+        .correct {
+            background-color: #22c55e !important;
+            color: white !important;
+            border-color: #16a34a !important;
+            box-shadow: 0 5px 0 #15803d !important;
+        }
+
+        .wrong {
+            background-color: #ef4444 !important;
+            color: white !important;
+            border-color: #dc2626 !important;
+            box-shadow: 0 5px 0 #b91c1c !important;
+        }
+
+        .disabled {
+            pointer-events: none;
+            opacity: 0.7;
+        }
+    </style>
+</head>
+
+<body class="bg-sky-50 min-h-screen">
+
+    <!-- Sounds -->
+    <audio id="correct-sound" src="sound/correct.mp3" preload="auto"></audio>
+    <audio id="wrong-sound" src="sound/wrong.mp3" preload="auto"></audio>
+
+
+<!-- ================= NAVBAR ================= -->
+
+<nav class="bg-slate-950 border-b border-slate-800">
+
+    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+
+        <h1 class="text-2xl font-bold text-teal-500">
+            🎓 Hsu Academic Boost
+        </h1>
+
+        <button
+            onclick="history.back()"
+            class="bg-teal-500 hover:bg-teal-600 text-white px-5 py-2 rounded-lg transition">
+            Back Home
+        </button>
+
+    </div>
+
+</nav>
+
+
+    <!-- Score -->
+    <section class="max-w-5xl mx-auto px-4 mt-6">
+
+        <div class="bg-white rounded-3xl shadow-md p-5 text-center">
+
+            <div class="text-2xl font-bold text-sky-600">
+                🎯 Score:
+                <span id="score">0</span> / 20
+            </div>
+
+            <div class="mt-3 bg-gray-200 rounded-full h-5 overflow-hidden">
+
+                <div
+                    id="progress"
+                    class="bg-green-500 h-5 rounded-full transition-all duration-500"
+                    style="width: 0%">
+                </div>
+
+            </div>
+
+            <p id="progress-text" class="mt-2 text-gray-600">
+                0 / 20 answered
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- Quiz -->
+    <main id="quiz" class="max-w-5xl mx-auto px-4 py-8 space-y-8">
+
+
+        <!-- Question 1 -->
+        <div class="question bg-white rounded-3xl shadow-md p-6"
+             data-answer="Arrow Keys">
+
+            <p class="text-lg font-semibold text-gray-500 mb-3">
+                Question 1
+            </p>
+
+            <h2 class="text-2xl font-bold text-gray-800 mb-6">
+                What are these keys called?
+            </h2>
+
+            <div class="flex justify-center gap-3 mb-6 flex-wrap">
+
+                <span class="key bg-gray-100 border-2 border-gray-300 rounded-xl px-5 py-3 text-3xl">
+                    ↑
+                </span>
+
+                <span class="key bg-gray-100 border-2 border-gray-300 rounded-xl px-5 py-3 text-3xl">
+                    ↓
+                </span>
+
+                <span class="key bg-gray-100 border-2 border-gray-300 rounded-xl px-5 py-3 text-3xl">
+                    ←
+                </span>
+
+                <span class="key bg-gray-100 border-2 border-gray-300 rounded-xl px-5 py-3 text-3xl">
+                    →
+                </span>
+
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-4">
+                <button onclick="checkAnswer(this, false)"
+                        class="answer key bg-white border-2 border-gray-300 rounded-2xl p-5 text-xl font-bold">
+                    Number Keys
+                </button>
+
+                <button onclick="checkAnswer(this, true)"
+                        class="answer key bg-white border-2 border-gray-300 rounded-2xl p-5 text-xl font-bold">
+                    Arrow Keys
+                </button>
+
+                <button onclick="checkAnswer(this, false)"
+                        class="answer key bg-white border-2 border-gray-300 rounded-2xl p-5 text-xl font-bold">
+                    Letter Keys
+                </button>
+            </div>
+
+        </div>
+
+
+        <!-- Question 2 -->
+        <div class="question bg-white rounded-3xl shadow-md p-6">
+
+            <p class="text-lg font-semibold text-gray-500 mb-3">
+                Question 2
+            </p>
+
+            <h2 class="text-2xl font-bold text-gray-800 mb-6">
+                Which key moves the cursor UP?
+            </h2>
+
+            <div class="grid grid-cols-3 gap-4 max-w-md mx-auto">
+
+                <button onclick="checkAnswer(this, true)"
+                        class="answer key bg-white border-2 border-gray-300 rounded-2xl p-6 text-5xl font-bold">
+                    ↑
+                </button>
+
+                <button onclick="checkAnswer(this, false)"
+                        class="answer key bg-white border-2 border-gray-300 rounded-2xl p-6 text-5xl font-bold">
+                    ↓
+                </button>
+
+                <button onclick="checkAnswer(this, false)"
+                        class="answer key bg-white border-2 border-gray-300 rounded-2xl p-6 text-5xl font-bold">
+                    →
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- Question 3 -->
+        <div class="question bg-white rounded-3xl shadow-md p-6">
+
+            <p class="text-lg font-semibold text-gray-500 mb-3">
+                Question 3
+            </p>
+
+            <h2 class="text-2xl font-bold text-gray-800 mb-6">
+                Which key moves the cursor DOWN?
+            </h2>
+
+            <div class="grid grid-cols-3 gap-4 max-w-md mx-auto">
+
+                <button onclick="checkAnswer(this, false)"
+                        class="answer key bg-white border-2 border-gray-300 rounded-2xl p-6 text-5xl font-bold">
+                    ↑
+                </button>
+
+                <button onclick="checkAnswer(this, true)"
+                        class="answer key bg-white border-2 border-gray-300 rounded-2xl p-6 text-5xl font-bold">
+                    ↓
+                </button>
+
+                <button onclick="checkAnswer(this, false)"
+                        class="answer key bg-white border-2 border-gray-300 rounded-2xl p-6 text-5xl font-bold">
+                    ←
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- Question 4 -->
+        <div class="question bg-white rounded-3xl shadow-md p-6">
+
+            <p class="text-lg font-semibold text-gray-500 mb-3">
+                Question 4
+            </p>
+
+            <h2 class="text-2xl font-bold text-gray-800 mb-6">
+                Which key moves the cursor LEFT?
+            </h2>
+
+            <div class="grid grid-cols-3 gap-4 max-w-md mx-auto">
+
+                <button onclick="checkAnswer(this, false)"
+                        class="answer key bg-white border-2 border-gray-300 rounded-2xl p-6 text-5xl font-bold">
+                    →
+                </button>
+
+                <button onclick="checkAnswer(this, true)"
+                        class="answer key bg-white border-2 border-gray-300 rounded-2xl p-6 text-5xl font-bold">
+                    ←
+                </button>
+
+                <button onclick="checkAnswer(this, false)"
+                        class="answer key bg-white border-2 border-gray-300 rounded-2xl p-6 text-5xl font-bold">
+                    ↓
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- Question 5 -->
+        <div class="question bg-white rounded-3xl shadow-md p-6">
+
+            <p class="text-lg font-semibold text-gray-500 mb-3">
+                Question 5
+            </p>
+
+            <h2 class="text-2xl font-bold text-gray-800 mb-6">
+                Which key moves the cursor RIGHT?
+            </h2>
+
+            <div class="grid grid-cols-3 gap-4 max-w-md mx-auto">
+
+                <button onclick="checkAnswer(this, true)"
+                        class="answer key bg-white border-2 border-gray-300 rounded-2xl p-6 text-5xl font-bold">
+                    →
+                </button>
+
+                <button onclick="checkAnswer(this, false)"
+                        class="answer key bg-white border-2 border-gray-300 rounded-2xl p-6 text-5xl font-bold">
+                    ←
+                </button>
+
+                <button onclick="checkAnswer(this, false)"
+                        class="answer key bg-white border-2 border-gray-300 rounded-2xl p-6 text-5xl font-bold">
+                    ↑
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- Question 6 -->
+        <div class="question bg-white rounded-3xl shadow-md p-6">
+
+            <p class="text-lg font-semibold text-gray-500 mb-3">
+                Question 6
+            </p>
+
+            <h2 class="text-2xl font-bold text-gray-800 mb-6">
+                Which key helps us type a CAPITAL letter?
+            </h2>
+
+            <div class="grid md:grid-cols-3 gap-4">
+
+                <button onclick="checkAnswer(this, true)"
+                        class="answer key bg-white border-2 border-gray-300 rounded-2xl p-5 text-xl font-bold">
+                    Shift
+                </button>
+
+                <button onclick="checkAnswer(this, false)"
+                        class="answer key bg-white border-2 border-gray-300 rounded-2xl p-5 text-xl font-bold">
+                    Enter
+                </button>
+
+                <button onclick="checkAnswer(this, false)"
+                        class="answer key bg-white border-2 border-gray-300 rounded-2xl p-5 text-xl font-bold">
+                    Spacebar
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- Question 7 -->
+        <div class="question bg-white rounded-3xl shadow-md p-6">
+
+            <p class="text-lg font-semibold text-gray-500 mb-3">
+                Question 7
+            </p>
+
+            <h2 class="text-2xl font-bold text-gray-800 mb-6">
+                Which key moves the typing cursor to a new line?
+            </h2>
+
+            <div class="grid md:grid-cols-3 gap-4">
+
+                <button onclick="checkAnswer(this, false)"
+                        class="answer key bg-white border-2 border-gray-300 rounded-2xl p-5 text-xl font-bold">
+                    Shift
+                </button>
+
+                <button onclick="checkAnswer(this, true)"
+                        class="answer key bg-white border-2 border-gray-300 rounded-2xl p-5 text-xl font-bold">
+                    Enter
+                </button>
+
+                <button onclick="checkAnswer(this, false)"
+                        class="answer key bg-white border-2 border-gray-300 rounded-2xl p-5 text-xl font-bold">
+                    Spacebar
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- Question 8 -->
+        <div class="question bg-white rounded-3xl shadow-md p-6">
+
+            <p class="text-lg font-semibold text-gray-500 mb-3">
+                Question 8
+            </p>
+
+            <h2 class="text-2xl font-bold text-gray-800 mb-6">
+                Which key can erase a letter before the cursor?
+            </h2>
+
+            <div class="grid md:grid-cols-3 gap-4">
+
+                <button onclick="checkAnswer(this, true)"
+                        class="answer key bg-white border-2 border-gray-300 rounded-2xl p-5 text-xl font-bold">
+                    Backspace
+                </button>
+
+                <button onclick="checkAnswer(this, false)"
+                        class="answer key bg-white border-2 border-gray-300 rounded-2xl p-5 text-xl font-bold">
+                    Enter
+                </button>
+
+                <button onclick="checkAnswer(this, false)"
+                        class="answer key bg-white border-2 border-gray-300 rounded-2xl p-5 text-xl font-bold">
+                    Shift
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- Question 9 -->
+        <div class="question bg-white rounded-3xl shadow-md p-6">
+
+            <p class="text-lg font-semibold text-gray-500 mb-3">
+                Question 9
+            </p>
+
+            <h2 class="text-2xl font-bold text-gray-800 mb-6">
+                Shift and Enter are examples of what?
+            </h2>
+
+            <div class="grid md:grid-cols-3 gap-4">
+
+                <button onclick="checkAnswer(this, false)"
+                        class="answer key bg-white border-2 border-gray-300 rounded-2xl p-5 text-xl font-bold">
+                    Number Keys
+                </button>
+
+                <button onclick="checkAnswer(this, true)"
+                        class="answer key bg-white border-2 border-gray-300 rounded-2xl p-5 text-xl font-bold">
+                    Special Keys
+                </button>
+
+                <button onclick="checkAnswer(this, false)"
+                        class="answer key bg-white border-2 border-gray-300 rounded-2xl p-5 text-xl font-bold">
+                    Letter Keys
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- Question 10 -->
+        <div class="question bg-white rounded-3xl shadow-md p-6">
+
+            <p class="text-lg font-semibold text-gray-500 mb-3">
+                Question 10
+            </p>
+
+            <h2 class="text-2xl font-bold text-gray-800 mb-6">
+                A, B, C and D are what kind of keys?
+            </h2>
+
+            <div class="grid md:grid-cols-3 gap-4">
+
+                <button onclick="checkAnswer(this, true)"
+                        class="answer key bg-white border-2 border-gray-300 rounded-2xl p-5 text-xl font-bold">
+                    Letter Keys
+                </button>
+
+                <button onclick="checkAnswer(this, false)"
+                        class="answer key bg-white border-2 border-gray-300 rounded-2xl p-5 text-xl font-bold">
+                    Number Keys
+                </button>
+
+                <button onclick="checkAnswer(this, false)"
+                        class="answer key bg-white border-2 border-gray-300 rounded-2xl p-5 text-xl font-bold">
+                    Arrow Keys
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- Question 11 -->
+        <div class="question bg-white rounded-3xl shadow-md p-6">
+
+            <p class="text-lg font-semibold text-gray-500 mb-3">
+                Question 11
+            </p>
+
+            <h2 class="text-2xl font-bold text-gray-800 mb-6">
+                Which one is a LETTER key?
+            </h2>
+
+            <div class="grid grid-cols-3 gap-4 max-w-lg mx-auto">
+
+                <button onclick="checkAnswer(this, true)"
+                        class="answer key bg-white border-2 border-gray-300 rounded-2xl p-6 text-4xl font-bold">
+                    A
+                </button>
+
+                <button onclick="checkAnswer(this, false)"
+                        class="answer key bg-white border-2 border-gray-300 rounded-2xl p-6 text-4xl font-bold">
+                    5
+                </button>
+
+                <button onclick="checkAnswer(this, false)"
+                        class="answer key bg-white border-2 border-gray-300 rounded-2xl p-6 text-4xl font-bold">
+                    ↑
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- Question 12 -->
+        <div class="question bg-white rounded-3xl shadow-md p-6">
+
+            <p class="text-lg font-semibold text-gray-500 mb-3">
+                Question 12
+            </p>
+
+            <h2 class="text-2xl font-bold text-gray-800 mb-6">
+                Which one is a LETTER key?
+            </h2>
+
+            <div class="grid grid-cols-3 gap-4 max-w-lg mx-auto">
+
+                <button onclick="checkAnswer(this, true)"
+                        class="answer key bg-white border-2 border-gray-300 rounded-2xl p-6 text-4xl font-bold">
+                    B
+                </button>
+
+                <button onclick="checkAnswer(this, false)"
+                        class="answer key bg-white border-2 border-gray-300 rounded-2xl p-6 text-4xl font-bold">
+                    2
+                </button>
+
+                <button onclick="checkAnswer(this, false)"
+                        class="answer key bg-white border-2 border-gray-300 rounded-2xl p-6 text-xl font-bold">
+                    Enter
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- Question 13 -->
+        <div class="question bg-white rounded-3xl shadow-md p-6">
+
+            <p class="text-lg font-semibold text-gray-500 mb-3">
+                Question 13
+            </p>
+
+            <h2 class="text-2xl font-bold text-gray-800 mb-6">
+                Which key is usually the longest key on the keyboard?
+            </h2>
+
+            <div class="grid md:grid-cols-3 gap-4">
+
+                <button onclick="checkAnswer(this, false)"
+                        class="answer key bg-white border-2 border-gray-300 rounded-2xl p-5 text-xl font-bold">
+                    Enter
+                </button>
+
+                <button onclick="checkAnswer(this, true)"
+                        class="answer key bg-white border-2 border-gray-300 rounded-2xl p-5 text-xl font-bold">
+                    Spacebar
+                </button>
+
+                <button onclick="checkAnswer(this, false)"
+                        class="answer key bg-white border-2 border-gray-300 rounded-2xl p-5 text-xl font-bold">
+                    Shift
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- Question 14 -->
+        <div class="question bg-white rounded-3xl shadow-md p-6">
+
+            <p class="text-lg font-semibold text-gray-500 mb-3">
+                Question 14
+            </p>
+
+            <h2 class="text-2xl font-bold text-gray-800 mb-6">
+                What do we press to make a space between words?
+            </h2>
+
+            <div class="grid md:grid-cols-3 gap-4">
+
+                <button onclick="checkAnswer(this, false)"
+                        class="answer key bg-white border-2 border-gray-300 rounded-2xl p-5 text-xl font-bold">
+                    Enter
+                </button>
+
+                <button onclick="checkAnswer(this, false)"
+                        class="answer key bg-white border-2 border-gray-300 rounded-2xl p-5 text-xl font-bold">
+                    Shift
+                </button>
+
+                <button onclick="checkAnswer(this, true)"
+                        class="answer key bg-white border-2 border-gray-300 rounded-2xl p-5 text-xl font-bold">
+                    Spacebar
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- Question 15 -->
+        <div class="question bg-white rounded-3xl shadow-md p-6">
+
+            <p class="text-lg font-semibold text-gray-500 mb-3">
+                Question 15
+            </p>
+
+            <h2 class="text-2xl font-bold text-gray-800 mb-6">
+                1, 2, 3 and 4 are what kind of keys?
+            </h2>
+
+            <div class="grid md:grid-cols-3 gap-4">
+
+                <button onclick="checkAnswer(this, false)"
+                        class="answer key bg-white border-2 border-gray-300 rounded-2xl p-5 text-xl font-bold">
+                    Letter Keys
+                </button>
+
+                <button onclick="checkAnswer(this, true)"
+                        class="answer key bg-white border-2 border-gray-300 rounded-2xl p-5 text-xl font-bold">
+                    Number Keys
+                </button>
+
+                <button onclick="checkAnswer(this, false)"
+                        class="answer key bg-white border-2 border-gray-300 rounded-2xl p-5 text-xl font-bold">
+                    Arrow Keys
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- Question 16 -->
+        <div class="question bg-white rounded-3xl shadow-md p-6">
+
+            <p class="text-lg font-semibold text-gray-500 mb-3">
+                Question 16
+            </p>
+
+            <h2 class="text-2xl font-bold text-gray-800 mb-6">
+                Which one is a NUMBER key?
+            </h2>
+
+            <div class="grid grid-cols-3 gap-4 max-w-lg mx-auto">
+
+                <button onclick="checkAnswer(this, true)"
+                        class="answer key bg-white border-2 border-gray-300 rounded-2xl p-6 text-4xl font-bold">
+                    7
+                </button>
+
+                <button onclick="checkAnswer(this, false)"
+                        class="answer key bg-white border-2 border-gray-300 rounded-2xl p-6 text-4xl font-bold">
+                    G
+                </button>
+
+                <button onclick="checkAnswer(this, false)"
+                        class="answer key bg-white border-2 border-gray-300 rounded-2xl p-6 text-4xl font-bold">
+                    ↑
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- Question 17 -->
+        <div class="question bg-white rounded-3xl shadow-md p-6">
+
+            <p class="text-lg font-semibold text-gray-500 mb-3">
+                Question 17
+            </p>
+
+            <h2 class="text-2xl font-bold text-gray-800 mb-6">
+                Which one is an ARROW key?
+            </h2>
+
+            <div class="grid grid-cols-3 gap-4 max-w-lg mx-auto">
+
+                <button onclick="checkAnswer(this, false)"
+                        class="answer key bg-white border-2 border-gray-300 rounded-2xl p-6 text-4xl font-bold">
+                    C
+                </button>
+
+                <button onclick="checkAnswer(this, true)"
+                        class="answer key bg-white border-2 border-gray-300 rounded-2xl p-6 text-4xl font-bold">
+                    ↓
+                </button>
+
+                <button onclick="checkAnswer(this, false)"
+                        class="answer key bg-white border-2 border-gray-300 rounded-2xl p-6 text-4xl font-bold">
+                    5
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- Question 18 -->
+        <div class="question bg-white rounded-3xl shadow-md p-6">
+
+            <p class="text-lg font-semibold text-gray-500 mb-3">
+                Question 18
+            </p>
+
+            <h2 class="text-2xl font-bold text-gray-800 mb-6">
+                Which one is a SPECIAL key?
+            </h2>
+
+            <div class="grid md:grid-cols-3 gap-4">
+
+                <button onclick="checkAnswer(this, false)"
+                        class="answer key bg-white border-2 border-gray-300 rounded-2xl p-5 text-xl font-bold">
+                    B
+                </button>
+
+                <button onclick="checkAnswer(this, false)"
+                        class="answer key bg-white border-2 border-gray-300 rounded-2xl p-5 text-xl font-bold">
+                    4
+                </button>
+
+                <button onclick="checkAnswer(this, true)"
+                        class="answer key bg-white border-2 border-gray-300 rounded-2xl p-5 text-xl font-bold">
+                    Enter
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- Question 19 -->
+        <div class="question bg-white rounded-3xl shadow-md p-6">
+
+            <p class="text-lg font-semibold text-gray-500 mb-3">
+                Question 19
+            </p>
+
+            <h2 class="text-2xl font-bold text-gray-800 mb-6">
+                Which key do we use between two words?
+            </h2>
+
+            <div class="text-center mb-6">
+
+                <div class="inline-block">
+
+                    <div class="text-sm text-gray-500 mb-2">
+                        HELLO
+                    </div>
+
+                    <div class="flex items-center gap-2">
+
+                        <span class="key bg-gray-100 border-2 border-gray-300 rounded-xl px-5 py-3 text-2xl font-bold">
+                            HELLO
+                        </span>
+
+                        <span class="text-3xl">➜</span>
+
+                        <span class="key bg-gray-100 border-2 border-gray-300 rounded-xl px-12 py-3 text-xl font-bold">
+                            SPACE
+                        </span>
+
+                        <span class="text-3xl">➜</span>
+
+                        <span class="key bg-gray-100 border-2 border-gray-300 rounded-xl px-5 py-3 text-2xl font-bold">
+                            WORLD
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-4">
+
+                <button onclick="checkAnswer(this, false)"
+                        class="answer key bg-white border-2 border-gray-300 rounded-2xl p-5 text-xl font-bold">
+                    Enter
+                </button>
+
+                <button onclick="checkAnswer(this, true)"
+                        class="answer key bg-white border-2 border-gray-300 rounded-2xl p-5 text-xl font-bold">
+                    Spacebar
+                </button>
+
+                <button onclick="checkAnswer(this, false)"
+                        class="answer key bg-white border-2 border-gray-300 rounded-2xl p-5 text-xl font-bold">
+                    Shift
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- Question 20 -->
+        <div class="question bg-white rounded-3xl shadow-md p-6">
+
+            <p class="text-lg font-semibold text-gray-500 mb-3">
+                Question 20
+            </p>
+
+            <h2 class="text-2xl font-bold text-gray-800 mb-6">
+                Which group contains only NUMBER keys?
+            </h2>
+
+            <div class="grid md:grid-cols-3 gap-4">
+
+                <button onclick="checkAnswer(this, false)"
+                        class="answer key bg-white border-2 border-gray-300 rounded-2xl p-5 text-xl font-bold">
+                    A, B, C, D
+                </button>
+
+                <button onclick="checkAnswer(this, false)"
+                        class="answer key bg-white border-2 border-gray-300 rounded-2xl p-5 text-xl font-bold">
+                    ↑, ↓, ←, →
+                </button>
+
+                <button onclick="checkAnswer(this, true)"
+                        class="answer key bg-white border-2 border-gray-300 rounded-2xl p-5 text-xl font-bold">
+                    1, 2, 3, 4
+                </button>
+
+            </div>
+
+        </div>
+
+
+    </main>
+
+
+    <!-- Final Score -->
+    <section id="result"
+             class="hidden max-w-3xl mx-auto px-4 pb-10">
+
+        <div class="bg-white rounded-3xl shadow-xl p-8 text-center">
+
+            <div id="result-emoji" class="text-7xl mb-4">
+                🎉
+            </div>
+
+            <h2 class="text-3xl md:text-4xl font-bold text-teal-600">
+                Quiz Complete!
+            </h2>
+
+            <p class="text-xl mt-4 text-gray-700">
+                Your final score is:
+            </p>
+
+            <p class="text-5xl font-bold text-green-500 mt-3">
+                <span id="final-score">0</span> / 20
+            </p>
+
+            <p id="result-message"
+               class="text-xl font-semibold mt-5 text-gray-700">
+            </p>
+
+            <button
+                onclick="resetQuiz()"
+                class="mt-8 bg-sky-500 hover:bg-sky-600 text-white font-bold text-xl px-8 py-4 rounded-2xl shadow-lg transition">
+                🔄 Try Again
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- Footer -->
+    <footer class="bg-teal-500 text-white text-center py-6 mt-10">
+
+        <p class="text-lg font-semibold">
+            ⌨️ Keep Practising Your Keyboard Skills! 🌟
+        </p>
+
+    </footer>
+
+
+    <!-- JavaScript -->
+    <script>
+
+        let score = 0;
+        let answered = 0;
+
+        const totalQuestions = 20;
+
+        const scoreElement = document.getElementById("score");
+        const progressElement = document.getElementById("progress");
+        const progressText = document.getElementById("progress-text");
+
+        const correctSound = document.getElementById("correct-sound");
+        const wrongSound = document.getElementById("wrong-sound");
+
+
+        // Play correct sound
+        function playCorrectSound() {
+
+            correctSound.currentTime = 0;
+
+            correctSound.play().catch(error => {
+                console.log("Correct sound could not play:", error);
+            });
+
+        }
+
+
+        // Play wrong sound
+        function playWrongSound() {
+
+            wrongSound.currentTime = 0;
+
+            wrongSound.play().catch(error => {
+                console.log("Wrong sound could not play:", error);
+            });
+
+        }
+
+
+        // Check answer
+        function checkAnswer(button, isCorrect) {
+
+            const question = button.closest(".question");
+
+            // Prevent answering the same question more than once
+            if (question.classList.contains("answered")) {
+                return;
+            }
+
+            question.classList.add("answered");
+
+            const buttons = question.querySelectorAll(".answer");
+
+            // Disable all buttons in this question
+            buttons.forEach(btn => {
+                btn.classList.add("disabled");
+            });
+
+
+            if (isCorrect) {
+
+                button.classList.add("correct");
+
+                score++;
+
+                playCorrectSound();
+
+            } else {
+
+                button.classList.add("wrong");
+
+                playWrongSound();
+
+
+                // Find and show the correct answer
+                buttons.forEach(btn => {
+
+                    const onclickText = btn.getAttribute("onclick");
+
+                    if (onclickText && onclickText.includes("true")) {
+                        btn.classList.add("correct");
+                    }
+
+                });
+
+            }
+
+
+            answered++;
+
+            updateScore();
+
+
+            // Show final result after all questions
+            if (answered === totalQuestions) {
+
+                setTimeout(showResult, 700);
+
+            }
+
+        }
+
+
+        // Update score and progress
+        function updateScore() {
+
+            scoreElement.textContent = score;
+
+            progressText.textContent =
+                answered + " / " + totalQuestions + " answered";
+
+            const percentage =
+                (answered / totalQuestions) * 100;
+
+            progressElement.style.width =
+                percentage + "%";
+
+        }
+
+
+        // Show final result
+        function showResult() {
+
+            const result = document.getElementById("result");
+
+            const finalScore = document.getElementById("final-score");
+
+            const resultMessage =
+                document.getElementById("result-message");
+
+            const resultEmoji =
+                document.getElementById("result-emoji");
+
+
+            finalScore.textContent = score;
+
+
+            if (score === 20) {
+
+                resultEmoji.textContent = "🏆";
+
+                resultMessage.textContent =
+                    "Amazing! You got all 20 questions correct!";
+
+            } else if (score >= 15) {
+
+                resultEmoji.textContent = "🌟";
+
+                resultMessage.textContent =
+                    "Great job! You know your keyboard keys very well!";
+
+            } else if (score >= 10) {
+
+                resultEmoji.textContent = "😊";
+
+                resultMessage.textContent =
+                    "Good job! Keep practising your keyboard keys!";
+
+            } else {
+
+                resultEmoji.textContent = "💪";
+
+                resultMessage.textContent =
+                    "Keep practising! You can do it!";
+
+            }
+
+
+            result.classList.remove("hidden");
+
+            result.scrollIntoView({
+                behavior: "smooth"
+            });
+
+        }
+
+
+        // Reset quiz
+        function resetQuiz() {
+
+            score = 0;
+            answered = 0;
+
+            scoreElement.textContent = "0";
+
+            progressElement.style.width = "0%";
+
+            progressText.textContent = "0 / 20 answered";
+
+
+            const questions =
+                document.querySelectorAll(".question");
+
+
+            questions.forEach(question => {
+
+                question.classList.remove("answered");
+
+
+                const buttons =
+                    question.querySelectorAll(".answer");
+
+
+                buttons.forEach(button => {
+
+                    button.classList.remove(
+                        "correct",
+                        "wrong",
+                        "disabled"
+                    );
+
+                });
+
+            });
+
+
+            document.getElementById("result")
+                .classList.add("hidden");
+
+
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+
+        }
+
+    </script>
+
+</body>
+</html>
