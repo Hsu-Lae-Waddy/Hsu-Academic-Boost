@@ -1,0 +1,897 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My First Computing Coloring Book | Hsu Academic Boost</title>
+
+    <link rel="icon" type="image/png" href="LogoHAB-removebg-preview.png">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Tailwind Configuration -->
+
+
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family:
+                Inter,
+                "Segoe UI",
+                Arial,
+                sans-serif;
+        }
+
+        /* Hide scrollbar */
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        /* Book slider */
+        .book-images {
+            display: flex;
+            height: 100%;
+            transition: transform 0.45s cubic-bezier(.4, 0, .2, 1);
+        }
+
+        .book-slide {
+            min-width: 100%;
+            width: 100%;
+            height: 100%;
+            flex-shrink: 0;
+        }
+
+        .book-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+            user-select: none;
+            -webkit-user-drag: none;
+        }
+
+        /* Navigation button animation */
+        .nav-button {
+            transition:
+                transform 0.2s ease,
+                background-color 0.2s ease,
+                box-shadow 0.2s ease;
+        }
+
+        .nav-button:hover {
+            transform: translateY(-50%) scale(1.08);
+        }
+
+        .nav-button:active {
+            transform: translateY(-50%) scale(0.95);
+        }
+
+        /* Floating decorative shapes */
+        .float-slow {
+            animation: floatSlow 6s ease-in-out infinite;
+        }
+
+        .float-delay {
+            animation: floatSlow 7s ease-in-out 1s infinite;
+        }
+
+        @keyframes floatSlow {
+            0%, 100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        /* Focus accessibility */
+        button:focus-visible,
+        a:focus-visible {
+            outline: 3px solid #ffd85c;
+            outline-offset: 3px;
+        }
+    </style>
+</head>
+
+
+<body class="min-h-screen bg-[#fffaf2] text-[#183b3b]">
+
+
+    <!-- =========================================================
+         NAVBAR
+    ========================================================== -->
+
+   <!-- Navbar -->
+    <nav class="bg-slate-950 border-b border-slate-800">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <h1 class="text-2xl font-bold">
+                🎓  <span class="text-teal-800">Hsu Academic Boost</span>
+            </h1>
+
+            <a href="index.html"
+               class="bg-teal-500 hover:bg-teal-600 px-5 py-2 rounded-lg transition">
+                Back Home
+            </a>
+        </div>
+    </nav>
+
+
+    <!-- =========================================================
+         HERO
+    ========================================================== -->
+
+    <header class="relative overflow-hidden">
+
+        <!-- Decorative background -->
+        <div class="pointer-events-none absolute inset-0">
+
+            <div
+                class="float-slow absolute left-[8%] top-16 text-4xl opacity-20 sm:text-5xl"
+            >
+                💻
+            </div>
+
+            <div
+                class="float-delay absolute right-[8%] top-24 text-4xl opacity-20 sm:text-5xl"
+            >
+                🎨
+            </div>
+
+            <div
+                class="absolute left-1/2 top-20 h-40 w-40 -translate-x-1/2 rounded-full bg-teal-100/50 blur-3xl"
+            ></div>
+
+        </div>
+
+
+        <div class="relative mx-auto max-w-4xl px-5 pb-10 pt-14 text-center sm:pb-12 sm:pt-20">
+
+            <!-- Eyebrow -->
+            <div
+                class="mb-5 inline-flex items-center gap-2 rounded-full border border-teal-100 bg-teal-50 px-4 py-2 text-xs font-extrabold uppercase tracking-wide text-teal-800"
+            >
+                <span>📚</span>
+                <span>Learning Resource</span>
+            </div>
+
+
+            <!-- Title -->
+            <h1
+                class="text-4xl font-black leading-tight tracking-tight text-[#183b3b] sm:text-5xl lg:text-6xl"
+            >
+                My 
+                <span class="text-[#147d72]">
+                    Computing
+                </span>
+              Books Collection
+            </h1>
+
+
+            <!-- Description -->
+            <p
+                class="mx-auto mt-5 max-w-2xl text-sm leading-7 text-[#6b7c7c] sm:text-base"
+            >
+                A fun and simple way for young learners to discover
+                computers and technology through coloring.
+            </p>
+
+
+            <!-- Small features -->
+            <div class="mt-7 flex flex-wrap items-center justify-center gap-2.5">
+
+                <span
+                    class="rounded-full bg-white px-4 py-2 text-xs font-bold text-slate-600 shadow-sm ring-1 ring-slate-100"
+                >
+                    🎨 Coloring
+                </span>
+
+                <span
+                    class="rounded-full bg-white px-4 py-2 text-xs font-bold text-slate-600 shadow-sm ring-1 ring-slate-100"
+                >
+                    💻 Computing
+                </span>
+
+                <span
+                    class="rounded-full bg-white px-4 py-2 text-xs font-bold text-slate-600 shadow-sm ring-1 ring-slate-100"
+                >
+                    👧 Ages 4–5
+                </span>
+
+                <span
+                    class="rounded-full bg-white px-4 py-2 text-xs font-bold text-slate-600 shadow-sm ring-1 ring-slate-100"
+                >
+                    📄 Printable
+                </span>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- =========================================================
+         MAIN
+    ========================================================== -->
+
+    <main class="mx-auto max-w-6xl px-3 pb-16 sm:px-6 lg:px-8">
+
+
+        <!-- =====================================================
+             BOOK CARD
+        ====================================================== -->
+
+        <section
+            class="overflow-hidden rounded-3xl border border-[#e8e3d8] bg-white shadow-soft"
+        >
+
+
+            <!-- =================================================
+                 BOOK HEADER
+            ================================================== -->
+
+            <div
+                class="flex flex-col gap-4 border-b border-[#e8e3d8] px-5 py-5 sm:flex-row sm:items-center sm:justify-between sm:px-7"
+            >
+
+                <!-- Book information -->
+                <div class="flex items-center gap-3.5">
+
+                    <div
+                        class="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-[#fff4c9] text-2xl"
+                    >
+                        🎨
+                    </div>
+
+                    <div>
+
+                        <h2
+                            class="text-base font-extrabold text-[#183b3b] sm:text-lg"
+                        >
+                            My First Computing Coloring Book
+                        </h2>
+
+                        <p
+                            class="mt-0.5 text-xs text-[#6b7c7c] sm:text-sm"
+                        >
+                            12 pages · Printable learning activity
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Age -->
+                <div
+                    class="w-fit rounded-full bg-[#fff5d7] px-4 py-2 text-xs font-extrabold text-[#8a6200]"
+                >
+                    Ages 4–5
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 BOOK VIEWER
+            ================================================== -->
+
+            <div
+                class="relative bg-[radial-gradient(circle_at_top,#ffffff_0%,#faf8f1_72%)] px-4 pb-6 pt-7 sm:px-12 sm:pt-10 lg:px-20"
+            >
+
+                <!-- Book stage -->
+                <div
+                    class="relative mx-auto flex max-w-3xl items-center justify-center"
+                >
+
+
+                    <!-- =========================================
+                         PREVIOUS BUTTON
+                    ========================================== -->
+
+                    <button
+                        id="prevBtn"
+                        type="button"
+                        aria-label="Previous page"
+                        class="nav-button absolute left-0 top-1/2 z-20 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-slate-200 bg-white text-xl font-bold text-[#0d5f57] shadow-lg sm:-left-2 sm:h-13 sm:w-13"
+                    >
+                        ←
+                    </button>
+
+
+
+                    <!-- =========================================
+                         BOOK
+                    ========================================== -->
+
+                    <div
+                        id="bookWrapper"
+                        class="relative w-[calc(100%-3rem)] max-w-[540px] overflow-hidden rounded-md bg-white shadow-book sm:w-full"
+                        style="aspect-ratio: 864 / 1280;"
+                    >
+
+                        <div
+                            id="bookImages"
+                            class="book-images"
+                        >
+
+
+                            <!-- PAGE 1 -->
+                            <div class="book-slide">
+                                <img
+                                    src="assests/book/bookcover1.jpg"
+                                    alt="My First Computing Coloring Book Cover"
+                                    draggable="false"
+                                >
+                            </div>
+
+
+                            <!-- PAGE 2 -->
+                            <div class="book-slide">
+                                <img
+                                    src="assests/book/keyboard1.jpg"
+                                    alt="Keyboard Coloring Page"
+                                    draggable="false"
+                                >
+                            </div>
+
+
+                            <!-- PAGE 3 -->
+                            <div class="book-slide">
+                                <img
+                                    src="assests/book/laptop1.jpg"
+                                    alt="Laptop Coloring Page"
+                                    draggable="false"
+                                >
+                            </div>
+
+
+                            <!-- PAGE 4 -->
+                            <div class="book-slide">
+                                <img
+                                    src="assests/book/Desktop1.jpg"
+                                    alt="Desktop Computer Coloring Page"
+                                    draggable="false"
+                                >
+                            </div>
+
+
+                            <!-- PAGE 5 -->
+                            <div class="book-slide">
+                                <img
+                                    src="assests/book/speaker1.jpg"
+                                    alt="Speaker Coloring Page"
+                                    draggable="false"
+                                >
+                            </div>
+
+
+                            <!-- PAGE 6 -->
+                            <div class="book-slide">
+                                <img
+                                    src="assests/book/microphone1.jpg"
+                                    alt="Microphone Coloring Page"
+                                    draggable="false"
+                                >
+                            </div>
+
+
+                            <!-- PAGE 7 -->
+                            <div class="book-slide">
+                                <img
+                                    src="assests/book/monitor1.jpg"
+                                    alt="Computer Monitor Coloring Page"
+                                    draggable="false"
+                                >
+                            </div>
+
+
+                            <!-- PAGE 8 -->
+                            <div class="book-slide">
+                                <img
+                                    src="assests/book/mousepad1.jpg"
+                                    alt="Mouse Pad Coloring Page"
+                                    draggable="false"
+                                >
+                            </div>
+
+
+                            <!-- PAGE 9 -->
+                            <div class="book-slide">
+                                <img
+                                    src="assests/book/Headphone1.jpg"
+                                    alt="Headphone Coloring Page"
+                                    draggable="false"
+                                >
+                            </div>
+
+
+                            <!-- PAGE 10 -->
+                            <div class="book-slide">
+                                <img
+                                    src="assests/book/tablet1.png"
+                                    alt="Tablet Coloring Page"
+                                    draggable="false"
+                                >
+                            </div>
+
+
+                            <!-- PAGE 11 -->
+                            <div class="book-slide">
+                                <img
+                                    src="assests/book/mouse1.png"
+                                    alt="Computer Mouse Coloring Page"
+                                    draggable="false"
+                                >
+                            </div>
+
+
+                            <!-- PAGE 12 -->
+                            <div class="book-slide">
+                                <img
+                                    src="assests/book/Printer1.jpg"
+                                    alt="Computer Printer Coloring Page"
+                                    draggable="false"
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <!-- =====================================
+                             NEXT BUTTON
+                        ====================================== -->
+
+                        <button
+                            id="nextBtn"
+                            type="button"
+                            aria-label="Next page"
+                            class="nav-button absolute right-0 top-1/2 z-20 flex h-11 w-11 -translate-y-1/2 rounded-full border border-slate-200 bg-white items-center justify-center text-xl font-bold text-[#0d5f57] shadow-lg sm:-right-2 sm:h-13 sm:w-13"
+                        >
+                            →
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- =================================================
+                     PAGE CONTROLS
+                ================================================== -->
+
+                <div class="mt-6 flex flex-col items-center gap-4">
+
+
+                    <!-- Counter -->
+                    <div
+                        class="text-sm font-bold text-[#6b7c7c]"
+                    >
+                        Page
+
+                        <span
+                            id="currentSlide"
+                            class="text-[#0d5f57]"
+                        >
+                            1
+                        </span>
+
+                        <span class="mx-1">
+                            of
+                        </span>
+
+                        <span
+                            id="totalSlides"
+                            class="text-[#0d5f57]"
+                        >
+                            12
+                        </span>
+                    </div>
+
+
+                    <!-- Dots -->
+                    <div
+                        id="dots"
+                        class="flex max-w-full flex-wrap items-center justify-center gap-1.5 px-4"
+                        aria-label="Book pages"
+                    ></div>
+
+
+                    <!-- Keyboard hint -->
+                    <div
+                        class="hidden items-center gap-2 rounded-full bg-white px-3 py-1.5 text-[11px] font-semibold text-slate-400 shadow-sm ring-1 ring-slate-100 sm:flex"
+                    >
+                        <span>←</span>
+                        <span>Use keyboard arrows to turn pages</span>
+                        <span>→</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 BOOK FOOTER
+            ================================================== -->
+
+            <div
+                class="flex flex-col items-center gap-4 border-t border-[#e8e3d8] px-5 py-5 text-center sm:flex-row sm:justify-between sm:px-7 sm:text-left"
+            >
+
+                <div>
+
+                    <strong
+                        class="block text-sm font-extrabold text-[#183b3b]"
+                    >
+                        Ready to learn and color?
+                    </strong>
+
+                    <span
+                        class="mt-0.5 block text-xs text-[#6b7c7c]"
+                    >
+                        Download the complete printable PDF.
+                    </span>
+
+                </div>
+
+
+                <!-- Download -->
+                <a
+                    href="powerpoint/myfirstcoloringbook.pdf"
+                    download
+                    class="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#147d72] px-6 py-3 text-sm font-extrabold text-white shadow-lg shadow-teal-900/10 transition hover:-translate-y-0.5 hover:bg-[#0d5f57] sm:w-auto"
+                >
+                    <span class="text-base">
+                        ↓
+                    </span>
+
+                    Download PDF
+                </a>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================================================
+             NOTE
+        ====================================================== -->
+
+        <div class="py-6 text-center">
+
+            <p class="text-xs font-medium text-[#6b7c7c]">
+                Hsu Academic Boost
+                <span class="mx-1">·</span>
+                Coding
+                <span class="mx-1">·</span>
+                Creativity
+                <span class="mx-1">·</span>
+                Technology
+            </p>
+
+        </div>
+
+    </main>
+
+
+
+    <!-- =========================================================
+         FOOTER
+    ========================================================== -->
+
+    <footer class="border-t border-[#e8e3d8] bg-white">
+
+        <div
+            class="mx-auto max-w-7xl px-5 py-8 text-center"
+        >
+
+            <p class="text-sm">
+
+                <strong class="font-extrabold text-[#0d5f57]">
+                    Hsu Academic Boost
+                </strong>
+
+                <span class="text-[#6b7c7c]">
+                    · Learn Smart. Build Strong Future.
+                </span>
+
+            </p>
+
+        </div>
+
+    </footer>
+
+
+
+    <!-- =========================================================
+         JAVASCRIPT
+    ========================================================== -->
+
+    <script>
+
+        /* =====================================================
+           ELEMENTS
+        ====================================================== */
+
+        const slider =
+            document.getElementById("bookImages");
+
+        const slides =
+            document.querySelectorAll(".book-slide");
+
+        const prevBtn =
+            document.getElementById("prevBtn");
+
+        const nextBtn =
+            document.getElementById("nextBtn");
+
+        const currentSlide =
+            document.getElementById("currentSlide");
+
+        const totalSlides =
+            document.getElementById("totalSlides");
+
+        const dotsContainer =
+            document.getElementById("dots");
+
+        const bookWrapper =
+            document.getElementById("bookWrapper");
+
+
+        /* =====================================================
+           STATE
+        ====================================================== */
+
+        let currentIndex = 0;
+
+        let touchStartX = 0;
+
+        let touchEndX = 0;
+
+
+        /* =====================================================
+           TOTAL PAGES
+        ====================================================== */
+
+        totalSlides.textContent =
+            slides.length;
+
+
+        /* =====================================================
+           CREATE PAGE DOTS
+        ====================================================== */
+
+        slides.forEach((slide, index) => {
+
+            const dot =
+                document.createElement("button");
+
+            dot.type = "button";
+
+            dot.className =
+                "h-2 w-2 rounded-full bg-slate-300 transition-all duration-200";
+
+            dot.setAttribute(
+                "aria-label",
+                `Go to page ${index + 1}`
+            );
+
+            dot.addEventListener(
+                "click",
+                () => {
+
+                    currentIndex = index;
+
+                    updateBook();
+
+                }
+            );
+
+            dotsContainer.appendChild(dot);
+
+        });
+
+
+        const dots =
+            dotsContainer.querySelectorAll("button");
+
+
+        /* =====================================================
+           UPDATE BOOK
+        ====================================================== */
+
+        function updateBook() {
+
+            slider.style.transform =
+                `translateX(-${currentIndex * 100}%)`;
+
+
+            currentSlide.textContent =
+                currentIndex + 1;
+
+
+            dots.forEach((dot, index) => {
+
+                if (index === currentIndex) {
+
+                    dot.className =
+                        "h-2 w-7 rounded-full bg-[#147d72] transition-all duration-200";
+
+                } else {
+
+                    dot.className =
+                        "h-2 w-2 rounded-full bg-slate-300 transition-all duration-200 hover:bg-slate-400";
+
+                }
+
+            });
+
+        }
+
+
+        /* =====================================================
+           NEXT PAGE
+        ====================================================== */
+
+        function nextPage() {
+
+            currentIndex =
+                (currentIndex + 1) %
+                slides.length;
+
+            updateBook();
+
+        }
+
+
+        /* =====================================================
+           PREVIOUS PAGE
+        ====================================================== */
+
+        function previousPage() {
+
+            currentIndex =
+                (currentIndex - 1 + slides.length) %
+                slides.length;
+
+            updateBook();
+
+        }
+
+
+        /* =====================================================
+           BUTTON EVENTS
+        ====================================================== */
+
+        nextBtn.addEventListener(
+            "click",
+            nextPage
+        );
+
+        prevBtn.addEventListener(
+            "click",
+            previousPage
+        );
+
+
+        /* =====================================================
+           KEYBOARD
+        ====================================================== */
+
+        document.addEventListener(
+            "keydown",
+            (event) => {
+
+                if (event.key === "ArrowRight") {
+
+                    nextPage();
+
+                }
+
+                if (event.key === "ArrowLeft") {
+
+                    previousPage();
+
+                }
+
+            }
+        );
+
+
+        /* =====================================================
+           TOUCH START
+        ====================================================== */
+
+        bookWrapper.addEventListener(
+            "touchstart",
+            (event) => {
+
+                touchStartX =
+                    event.changedTouches[0].screenX;
+
+            },
+            {
+                passive: true
+            }
+        );
+
+
+        /* =====================================================
+           TOUCH END
+        ====================================================== */
+
+        bookWrapper.addEventListener(
+            "touchend",
+            (event) => {
+
+                touchEndX =
+                    event.changedTouches[0].screenX;
+
+                handleSwipe();
+
+            },
+            {
+                passive: true
+            }
+        );
+
+
+        /* =====================================================
+           SWIPE
+        ====================================================== */
+
+        function handleSwipe() {
+
+            const difference =
+                touchStartX - touchEndX;
+
+
+            if (Math.abs(difference) < 40) {
+                return;
+            }
+
+
+            if (difference > 0) {
+
+                nextPage();
+
+            } else {
+
+                previousPage();
+
+            }
+
+        }
+
+
+        /* =====================================================
+           INITIALIZE
+        ====================================================== */
+
+        updateBook();
+
+    </script>
+
+</body>
+</html>
