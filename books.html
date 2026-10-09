@@ -1,0 +1,323 @@
+<!doctype html>
+<html lang="en" class="h-full">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Preview My First Computing Coloring Book by Hsu Academic Boost and order the full e-book PDF or a printed copy.">
+  <title>My Computing Books | Hsu Academic Boost</title>
+  <link rel="icon" type="image/png" href="LogoHAB-removebg-preview.png">
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    html, body { min-height: 100%; margin: 0; }
+    * { font-family: 'Outfit', sans-serif; box-sizing: border-box; }
+    .mono { font-family: 'Space Mono', monospace; }
+    .gradient-hero {
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 40%, #0f766e 100%);
+      position: relative; overflow: hidden;
+    }
+    .gradient-hero::before {
+      content: ''; position: absolute; top: -48%; right: -12%; width: 570px; height: 570px;
+      background: radial-gradient(circle, rgba(20,184,166,.18) 0%, transparent 70%); border-radius: 50%;
+    }
+    .gradient-hero::after {
+      content: ''; position: absolute; bottom: -180px; left: 28%; width: 360px; height: 360px;
+      background: radial-gradient(circle, rgba(45,212,191,.10) 0%, transparent 70%); border-radius: 50%;
+    }
+    .card-hover { transition: transform .3s ease, box-shadow .3s ease; }
+    .card-hover:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(15,23,42,.13); }
+    .nav-link { position: relative; }
+    .nav-link::after { content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 2px; background: #14b8a6; transition: width .3s; }
+    .nav-link:hover::after { width: 100%; }
+    .book-cover {
+      background: linear-gradient(150deg, #ffffff 0%, #f0fdfa 100%);
+      border-left: 8px solid #14b8a6; box-shadow: 12px 14px 0 rgba(15,23,42,.25), 0 25px 45px rgba(0,0,0,.25);
+      transform: rotate(3deg);
+    }
+    .preview-paper { aspect-ratio: 3 / 4; background: white; }
+    .preview-frame { background: linear-gradient(135deg,#e2e8f0,#f0fdfa); }
+    .email-link { cursor: pointer; transition: all .2s ease; }
+    .email-link:hover { transform: translateX(4px); }
+    .btn { transition: transform .2s ease, box-shadow .2s ease; }
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(15,23,42,.12); }
+    .focus-ring:focus-visible { outline: 3px solid #2dd4bf; outline-offset: 3px; }
+    @media (max-width: 640px) {
+      .hero-title { font-size: 2.45rem !important; }
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+  <!-- Navigation: styled to match the HAB homepage -->
+  <nav class="fixed top-0 w-full z-50 bg-slate-900/95 backdrop-blur-sm border-b border-slate-700/50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <a href="index.html" class="flex items-center gap-2 focus-ring rounded" aria-label="Hsu Academic Boost home">
+          <span class="text-2xl">🎓</span>
+          <span class="text-white font-bold text-lg mono">HAB</span>
+        </a>
+        <div class="hidden sm:flex items-center gap-6">
+          <a href="index.html" class="nav-link text-slate-300 hover:text-teal-400 text-sm font-medium">Home</a>
+          <a href="#book" class="nav-link text-slate-300 hover:text-teal-400 text-sm font-medium">Book</a>
+          <a href="#preview" class="nav-link text-slate-300 hover:text-teal-400 text-sm font-medium">Preview</a>
+          <a href="#order" class="nav-link text-slate-300 hover:text-teal-400 text-sm font-medium">Order</a>
+        </div>
+        <a href="#order" class="btn focus-ring rounded-lg bg-teal-500 hover:bg-teal-400 text-slate-950 text-sm font-bold px-4 py-2">Order Book <span aria-hidden="true">↗</span></a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+ 
+
+   <!-- BOOK SECTION: TWO-COLUMN LAYOUT -->
+<section id="book" class="gradient-hero py-16 sm:py-20">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-16 items-center">
+
+      <!-- LEFT COLUMN: BOOK COVER -->
+      <div class="flex justify-center items-center">
+        <div class="w-64 sm:w-72 bg-white rounded-r-2xl rounded-l-md overflow-hidden border-l-8 border-teal-400 shadow-2xl">
+          <!-- Replace with your actual book cover image -->
+          <img
+            src="assests/book/cover.png"
+            alt="My First Computing Coloring Book cover"
+            class="w-full h-auto object-cover"
+            onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"
+          />
+
+          <!-- Fallback cover if the image is not available -->
+          <div class="hidden min-h-[390px] p-7 flex-col items-center text-center bg-gradient-to-br from-white to-teal-50">
+            <p class="mono text-xs font-bold tracking-widest text-teal-700">
+              HS​U ACADEMIC BOOST
+            </p>
+            <div class="w-16 h-1 bg-teal-400 rounded-full mt-5 mb-5"></div>
+            <h2 class="text-3xl font-extrabold text-slate-900 leading-tight">
+              MY FIRST<br>
+              COMPUTING<br>
+              COLORING BOOK
+            </h2>
+            <div class="my-7 text-6xl" aria-hidden="true">💻 ✏️</div>
+            <p class="text-sm font-semibold text-slate-600">
+              Discover · Learn · Color
+            </p>
+            <span class="mt-auto bg-teal-100 text-teal-800 rounded-full px-4 py-2 text-xs font-bold">
+              AGES 4–6
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT COLUMN: BOOK DETAILS AND ACTIONS -->
+      <div class="text-white">
+        <p class="mono text-xs text-teal-300 font-bold tracking-widest uppercase mb-4">
+          THE FIRST HAB BOOK
+        </p>
+
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-tight mb-5">
+          My First Computing Coloring Book
+        </h1>
+
+        <p class="text-slate-300 text-lg leading-relaxed mb-4">
+          For children aged 4–6, with coloring pages, computer-part puzzles,
+          mazes, and fun activities.
+        </p>
+
+        <p class="text-slate-300 leading-relaxed mb-7">
+          Introduce young learners to computing in a simple, creative, and
+          child-friendly way. Explore the sample pages before ordering the
+          complete book.
+        </p>
+
+        <div class="flex flex-col gap-3">
+
+          <!-- View Preview -->
+          <a
+            href="#preview"
+            class="inline-flex items-center justify-center gap-2 rounded-xl bg-teal-400 hover:bg-teal-300 text-slate-950 font-bold px-5 py-3 transition"
+          >
+            <i data-lucide="eye" style="width:18px;height:18px"></i>
+            View Preview
+          </a>
+<p class="text-slate-300 leading-relaxed mb-7">
+          Order the complete PDF e-book or a physical printed book.
+        </p>
+         
+
+          <!-- Order Printed Book -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <a
+              href="mailto:suwaddy9@gmail.com?subject=Order%20Printed%20Book%20-%20My%20First%20Computing%20Coloring%20Book"
+              class="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-500 hover:border-teal-400 hover:bg-white/5 text-white font-semibold px-4 py-3 transition"
+            >
+              <i data-lucide="mail" style="width:18px;height:18px"></i>
+              Order by Email
+            </a>
+
+            <a
+              href="https://t.me/Hsuclass"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-500 hover:border-teal-400 hover:bg-white/5 text-white font-semibold px-4 py-3 transition"
+            >
+              <i data-lucide="send" style="width:18px;height:18px"></i>
+              Order via Telegram
+            </a>
+          </div>
+        </div>
+
+        <p class="text-xs text-slate-400 mt-5">
+          Contact HAB for printed-book prices, payment options, and delivery details.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- PREVIEW SECTION -->
+<section id="preview" class="py-14 sm:py-16 bg-slate-50 border-y border-slate-200">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-5 mb-9">
+      <div>
+        <p class="mono text-xs text-teal-700 font-bold tracking-widest uppercase mb-3">
+          TAKE A LOOK INSIDE
+        </p>
+
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900">
+          Preview Sample Pages
+        </h2>
+
+        <p class="text-slate-500 mt-3 max-w-2xl">
+          Explore a few sample pages from My First Computing Coloring Book
+          before ordering the complete book.
+        </p>
+      </div>
+
+      <span class="inline-flex items-center gap-2 rounded-full bg-teal-50 text-teal-800 px-4 py-2 text-sm font-bold whitespace-nowrap">
+        <i data-lucide="eye" style="width:16px;height:16px"></i>
+        Preview Only
+      </span>
+    </div>
+
+    <!-- Replace these image paths with your actual sample-page images -->
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+      <article class="rounded-2xl overflow-hidden border border-slate-200 bg-white shadow-sm hover:shadow-lg transition">
+        <img
+          src="assests/book/Desktop1.jpg"
+          alt="Sample coloring page from My First Computing Coloring Book"
+          class="w-full aspect-[3/4] object-contain bg-slate-100"
+          loading="lazy"
+        >
+        <div class="p-4">
+          <h3 class="font-bold text-slate-900">Coloring Page</h3>
+          <p class="text-sm text-slate-500 mt-1">
+            Learn about computers through coloring.
+          </p>
+        </div>
+      </article>
+
+      <article class="rounded-2xl overflow-hidden border border-slate-200 bg-white shadow-sm hover:shadow-lg transition">
+        <img
+          src="assests/book/samplebook.jpg"
+          alt="Computer parts activity page"
+          class="w-full aspect-[3/4] object-contain bg-slate-100"
+          loading="lazy"
+        >
+        <div class="p-4">
+          <h3 class="font-bold text-slate-900">Computer Parts</h3>
+          <p class="text-sm text-slate-500 mt-1">
+            Recognize common computer parts.
+          </p>
+        </div>
+      </article>
+
+      <article class="rounded-2xl overflow-hidden border border-slate-200 bg-white shadow-sm hover:shadow-lg transition">
+        <img
+          src="assests/book/maze.png"
+          alt="Puzzle and maze activity page"
+          class="w-full aspect-[3/4] object-contain bg-slate-100"
+          loading="lazy"
+        >
+        <div class="p-4">
+          <h3 class="font-bold text-slate-900">Puzzles and Mazes</h3>
+          <p class="text-sm text-slate-500 mt-1">
+            Practise problem-solving with fun activities.
+          </p>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+    <!-- Ordering -->
+    <section id="order" class="py-14 sm:py-20">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="gradient-hero rounded-3xl p-7 sm:p-10 lg:p-12">
+          <div class="grid md:grid-cols-[1fr_auto] gap-8 items-center relative z-10">
+            <div>
+              <p class="mono text-xs text-teal-300 font-bold tracking-widest uppercase mb-3">Get the complete book</p>
+              <h2 class="text-3xl sm:text-4xl font-extrabold text-white leading-tight">Enjoyed the preview?</h2>
+              <p class="text-slate-300 mt-4 max-w-2xl">Order the complete PDF e-book or a physical printed book. Contact HAB to confirm the price, payment process, and delivery details before placing your order.</p>
+              <div class="mt-5 flex flex-wrap gap-3 text-sm text-slate-300">
+                <span class="inline-flex items-center gap-2"><i data-lucide="file-text" class="text-teal-400" style="width:17px;height:17px"></i> Full PDF e-book</span>
+                <span class="inline-flex items-center gap-2"><i data-lucide="package" class="text-teal-400" style="width:17px;height:17px"></i> Printed physical book</span>
+              </div>
+            </div>
+            <div class="flex flex-col gap-3 min-w-48">
+              <a class="btn focus-ring inline-flex items-center justify-center gap-2 rounded-xl bg-teal-400 hover:bg-teal-300 text-slate-950 font-bold px-5 py-3" href="mailto:suwaddy9@gmail.com?subject=Order%20My%20First%20Computing%20Coloring%20Book&body=Hello%20Hsu%20Academic%20Boost%2C%0A%0AI%20would%20like%20to%20order%20My%20First%20Computing%20Coloring%20Book.%0A%0AFormat%3A%20%5BFull%20PDF%20e-book%20or%20printed%20book%5D%0A%0APlease%20share%20the%20price%2C%20payment%20method%2C%20and%20delivery%20details.%0A%0AThank%20you.">
+                <i data-lucide="mail" style="width:18px;height:18px"></i> Order by Email
+              </a>
+              <a class="btn focus-ring inline-flex items-center justify-center gap-2 rounded-xl border border-slate-500 bg-white/5 hover:bg-white/10 text-white font-semibold px-5 py-3" href="https://t.me/Hsuclass" target="_blank" rel="noopener noreferrer">
+                <i data-lucide="send" style="width:18px;height:18px"></i> Ask on Telegram
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer follows the same dark style as the current HAB website -->
+  <footer class="bg-slate-900 text-slate-400 py-10 px-4 border-t border-slate-800">
+    <div class="max-w-5xl mx-auto">
+      <div class="grid md:grid-cols-3 gap-8 mb-8">
+        <div>
+          <div class="flex items-center gap-2 mb-4"><span class="text-2xl">🎓</span><span class="text-white font-bold text-lg mono">HAB</span></div>
+          <p class="text-slate-400 text-sm mb-3">အနာဂတ်မှာ နည်းပညာကို နားလည်ပြီး ဖန်တီးတတ်သော ကလေးများဖြစ်လာစေရန် ရည်ရွယ်ပါသည်။</p>
+          <p class="text-teal-400 font-semibold">Learn Smart. Build Strong Future.</p>
+        </div>
+        <div>
+          <h3 class="text-white font-semibold mb-4">Quick Links</h3>
+          <ul class="space-y-2 text-sm">
+            <li><a href="index.html" class="hover:text-teal-400 transition">Home</a></li>
+            <li><a href="#book" class="hover:text-teal-400 transition">About the Book</a></li>
+            <li><a href="#preview" class="hover:text-teal-400 transition">Preview Pages</a></li>
+            <li><a href="#order" class="hover:text-teal-400 transition">Order</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-white font-semibold mb-4">Get in Touch</h3>
+          <ul class="space-y-3 text-sm">
+            <li class="flex items-center gap-2"><i data-lucide="facebook" style="width:16px;height:16px;color:#14b8a6"></i><a href="https://www.facebook.com/profile.php?id=61588821399820" target="_blank" rel="noopener noreferrer" class="hover:text-teal-400 transition">Facebook</a></li>
+            <li class="flex items-center gap-2"><i data-lucide="send" style="width:16px;height:16px;color:#14b8a6"></i><a href="https://t.me/Hsuclass" target="_blank" rel="noopener noreferrer" class="hover:text-teal-400 transition">Telegram</a></li>
+            <li class="flex items-center gap-2 email-link" onclick="window.location.href='mailto:suwaddy9@gmail.com?subject=Hsu%20Academic%20Boost%20Book%20Inquiry'"><i data-lucide="mail" style="width:16px;height:16px;color:#14b8a6"></i><span class="hover:text-teal-400 transition">suwaddy9@gmail.com</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-slate-800 pt-6 text-center text-sm">
+        <p class="text-slate-500">© <span id="year"></span> Hsu Academic Boost. All rights reserved.</p>
+        <p class="text-teal-400 font-semibold mt-2">Learn Smart. Build Strong Future. 🚀</p>
+      </div>
+    </div>
+  </footer>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    if (window.lucide) lucide.createIcons();
+  </script>
+</body>
+</html>
