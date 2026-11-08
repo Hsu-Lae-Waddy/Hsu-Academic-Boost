@@ -1,0 +1,841 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Digital Word Search | Hsu Academic Boost</title>
+<script src="https://cdn.tailwindcss.com"></script>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: #eef7ff;
+}
+.letter-cell {
+    aspect-ratio: 1;
+    min-width: 0;
+    border: 1px solid #dbe5ef;
+    border-radius: 5px;
+    background: white;
+    font-weight: 800;
+    font-size: clamp(10px, 2.6vw, 19px);
+    color: #1e293b;
+    cursor: pointer;
+    user-select: none;
+    touch-action: none;
+}
+.letter-cell.selected {
+    background: #bfdbfe;
+    border-color: #2563eb;
+}
+.letter-cell.found {
+    background: #bbf7d0;
+    color: #166534;
+    border-color: #22c55e;
+}
+.word-item {
+    background: #eff6ff;
+    border-radius: 10px;
+    padding: 10px;
+    font-weight: bold;
+    text-align: center;
+}
+.word-item.found {
+    background: #dcfce7;
+    color: #15803d;
+    text-decoration: line-through;
+}
+select, button {
+    cursor: pointer;
+}
+</style>
+</head>
+
+<body class="min-h-screen">
+     <!-- Navbar -->
+    <nav class="bg-slate-950 border-b border-slate-800">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <h1 class="text-2xl font-bold text-teal-500">
+                🎓 Hsu Academic Boost
+            </h1>
+
+           <button  onclick="history.back()"
+               class="bg-teal-500 hover:bg-teal-600 px-5 py-2 rounded-lg transition">
+                Back Home
+            </button >
+        </div>
+    </nav>
+
+<header class="text-center px-4 py-8">
+    <div class="text-5xl mb-3">🔎 💻 🔤</div>
+    <h1 class="text-3xl md:text-5xl font-extrabold text-slate-900">
+        Digital Word Search
+    </h1>
+    <p class="text-xl font-bold text-blue-600 mt-2">
+        Find the Hidden Technology Words!
+    </p>
+    <p class="text-gray-600 mt-2">
+        Explore, discover and learn new technology words.
+    </p>
+</header>
+
+<main class="max-w-5xl mx-auto px-3 pb-12">
+
+    <!-- SETTINGS -->
+    <section class="bg-white rounded-3xl shadow-lg p-5 md:p-7">
+
+        <h2 class="text-2xl font-extrabold text-slate-800 mb-5">
+            ⚙️ Customize Your Puzzle
+        </h2>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+
+            <div>
+                <label class="block font-bold mb-2">📚 Word Category</label>
+                <select id="category"
+                    class="w-full border-2 border-blue-200 rounded-xl p-3">
+                    <option value="Mixed">🌎 Mixed Technology Words</option>
+                    <option value="Internet">🌐 Internet</option>
+                    <option value="Computer">💻 Computer</option>
+                    <option value="Networking">🔗 Networking</option>
+                    <option value="Digital Tools">🛠️ Digital Tools</option>
+                    <option value="Programming">👩‍💻 Programming</option>
+                    <option value="Online Safety">🔐 Online Safety</option>
+                </select>
+            </div>
+
+            <div>
+                <label class="block font-bold mb-2">⭐ Difficulty</label>
+                <select id="difficulty"
+                    class="w-full border-2 border-blue-200 rounded-xl p-3">
+                    <option value="Easy">Easy - 8 Words</option>
+                    <option value="Medium" selected>Medium - 10 Words</option>
+                    <option value="Challenge">Challenge - 12 Words</option>
+                </select>
+            </div>
+
+        </div>
+
+        <button onclick="newPuzzle()"
+            class="w-full mt-5 bg-teal-600  hover:bg-teal-700  text-white font-bold p-3 rounded-xl">
+            🎮 Generate Puzzle
+        </button>
+
+    </section>
+
+
+    <!-- GAME -->
+    <section class="bg-white rounded-3xl shadow-lg p-4 md:p-7 mt-6">
+
+        <div class="flex justify-between items-center gap-3 flex-wrap mb-4">
+            <div>
+                <h2 class="text-xl md:text-2xl font-extrabold">
+                    🔤 Find These Words
+                </h2>
+                <p id="currentCategory" class="text-gray-500 text-sm mt-1">
+                    Mixed Technology Words
+                </p>
+            </div>
+
+            <div class="bg-blue-100 text-blue-800 px-4 py-2 rounded-xl font-bold">
+                <span id="foundCount">0</span> /
+                <span id="totalCount">10</span> Found
+            </div>
+        </div>
+
+        <div class="w-full h-3 bg-gray-200 rounded-full overflow-hidden mb-5">
+            <div id="progress"
+                class="h-full bg-green-500 transition-all"
+                style="width:0%">
+            </div>
+        </div>
+
+        <div class="bg-blue-50 rounded-2xl p-2 sm:p-4">
+            <div id="wordGrid"
+                class="grid gap-1 w-full mx-auto"
+                style="grid-template-columns:repeat(12,minmax(0,1fr));">
+            </div>
+        </div>
+
+        <p id="feedback" aria-live="polite"
+            class="text-center font-bold text-blue-700 mt-4 min-h-7">
+            🌟 Find your first word!
+        </p>
+
+        <div class="mt-6">
+            <h3 class="text-xl font-extrabold mb-3 text-center">
+                📖 Word List
+            </h3>
+            <div id="wordList"
+                class="grid grid-cols-2 sm:grid-cols-3 gap-2">
+            </div>
+        </div>
+
+        <div class="flex flex-wrap justify-center gap-3 mt-7">
+            <button onclick="showHint()"
+                class="bg-amber-500 hover:bg-amber-600 text-white font-bold px-5 py-3 rounded-xl">
+                💡 Hint
+            </button>
+
+            <button onclick="newPuzzle()"
+                class="bg-teal-600 hover:bg-teal-700  text-white font-bold px-5 py-3 rounded-xl">
+                ➡️ Next Puzzle
+            </button>
+        </div>
+
+    </section>
+
+
+    <!-- COMPLETION -->
+    <section id="completion"
+        class="hidden bg-white rounded-3xl shadow-lg p-8 text-center mt-6">
+
+        <div class="text-6xl">🏆</div>
+        <h2 class="text-3xl font-extrabold text-green-600 mt-3">
+            Excellent Work!
+        </h2>
+        <p class="text-gray-700 mt-3">
+            You found all the hidden technology words!
+        </p>
+        <p class="text-xl font-bold text-blue-600 mt-3">
+            🎉 You are a Digital Explorer!
+        </p>
+
+        <button onclick="newPuzzle()"
+            class="mt-6 bg-teal-700  text-white font-bold px-7 py-3 rounded-xl">
+            Play Another Puzzle
+        </button>
+    </section>
+
+</main>
+
+<footer class="text-center py-6 text-gray-500">
+    <p class="font-semibold">💻 Learn • Explore • Have Fun!</p>
+    <p class="text-sm mt-1">Hsu Academic Boost</p>
+</footer>
+
+
+<script>
+
+// =====================================
+// TECHNOLOGY WORD BANK
+// =====================================
+
+const wordBank = {
+
+
+    // 🌐 INTERNET
+    "Internet": [
+        "INTERNET", "WEBSITE", "BROWSER", "SEARCH",
+        "LINK", "NETWORK", "URL", "WEBPAGE",
+        "ONLINE", "HOMEPAGE", "DOWNLOAD", "UPLOAD",
+        "HYPERLINK", "ADDRESS", "DOMAIN", "TAB",
+        "COOKIE", "BOOKMARK", "SURFING", "INTERNET"
+    ],
+
+    // 💻 COMPUTER
+    "Computer": [
+        "KEYBOARD", "MOUSE", "MONITOR", "COMPUTER",
+        "LAPTOP", "SCREEN", "PRINTER", "SPEAKER",
+        "MEMORY", "PROCESSOR", "STORAGE", "CAMERA",
+        "MICROPHONE", "WEBCAM", "TOUCHPAD", "DESKTOP",
+        "HEADPHONES", "SCANNER", "CURSOR", "USB",
+        "HARDWARE", "CHARGER", "BATTERY", "PIXEL"
+    ],
+
+    // 🔗 NETWORKING
+    "Networking": [
+        "NETWORK", "ROUTER", "SERVER", "CONNECT",
+        "DEVICE", "WIFI", "SIGNAL", "CABLE",
+        "MODEM", "ETHERNET", "CLIENT", "DATA",
+        "WIRELESS", "BANDWIDTH", "INTERNET", "PACKET",
+        "FIREWALL", "ACCESS", "HOST", "IPADDRESS",
+        "BLUETOOTH", "HOTSPOT", "FIBER", "PROTOCOL"
+    ],
+
+    // 🛠️ DIGITAL TOOLS
+    "Digital Tools": [
+        "SOFTWARE", "HARDWARE", "APPLICATION",
+        "DOCUMENT", "FOLDER", "FILE", "EMAIL",
+        "VIDEO", "AUDIO", "IMAGE", "DIGITAL", "TABLET",
+        "SPREADSHEET", "PRESENTATION", "DATABASE",
+        "EDITOR", "PAINT", "SLIDESHOW", "TEXT",
+        "DOWNLOAD", "UPLOAD", "FORMAT", "COPY",
+        "PASTE", "DELETE", "SAVE", "PRINT"
+    ],
+
+    // 👩‍💻 PROGRAMMING
+    "Programming": [
+        "CODING", "PROGRAM", "ALGORITHM", "VARIABLE",
+        "LOOP", "BLOCK", "SCRATCH", "PYTHON",
+        "DEBUG", "OUTPUT", "INPUT", "COMMAND",
+        "FUNCTION", "BOOLEAN", "INTEGER", "STRING",
+        "CONDITION", "EVENT", "SEQUENCE", "REPEAT",
+        "SPRITE", "SCRIPT", "OPERATOR", "INTEGER",
+        "COMPILE", "SYNTAX", "CLASS", "OBJECT",
+        "METHOD", "ARRAY", "DATA"
+    ],
+
+    // 🔐 ONLINE SAFETY
+    "Online Safety": [
+        "PASSWORD", "PRIVACY", "SAFETY", "SECURE",
+        "PRIVATE", "PROTECT", "STRANGER", "REPORT",
+        "CYBER", "TRUSTED", "ACCOUNT", "PHISHING",
+        "SCAM", "HACKER", "IDENTITY", "PERSONAL",
+        "BLOCK", "SHARE", "SECRET", "PERMISSION",
+        "SECURITY", "ANTIVIRUS", "MALWARE", "SPAM",
+        "ENCRYPTION", "BACKUP", "VERIFY", "DIGITAL"
+    ]
+
+};
+
+
+// =====================================
+// GAME VARIABLES
+// =====================================
+
+let grid = [];
+let selectedWords = [];
+let placements = {};
+let foundWords = new Set();
+let gridSize = 12;
+let isDragging = false;
+let startCell = null;
+let currentSelection = [];
+let hintTimer = null;
+
+const directions = [
+    [0, 1],   // Horizontal →
+    [1, 0],   // Vertical ↓
+    [1, 1],   // Diagonal ↘
+];
+
+
+// =====================================
+// HELPER: SHUFFLE ARRAY
+// =====================================
+
+function shuffle(array) {
+    const copy = [...array];
+
+    for (let i = copy.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [copy[i], copy[j]] = [copy[j], copy[i]];
+    }
+
+    return copy;
+}
+
+
+// =====================================
+// SELECT CATEGORY AND WORDS
+// =====================================
+
+function selectWords() {
+
+    const category = document.getElementById("category").value;
+    const difficulty = document.getElementById("difficulty").value;
+
+    const amount = {
+        Easy: 8,
+        Medium: 10,
+        Challenge: 12
+    }[difficulty];
+
+    let availableWords;
+
+    availableWords = [...new Set(availableWords)];
+
+    if (category === "Mixed") {
+        availableWords = Object.values(wordBank).flat();
+    } else {
+        availableWords = wordBank[category];
+    }
+
+    // Select words that fit the current grid.
+    availableWords = availableWords.filter(
+        word => word.length <= gridSize
+    );
+
+    selectedWords = shuffle(availableWords).slice(0, amount);
+
+    document.getElementById("currentCategory").textContent =
+        category === "Mixed" ? "🌎 Mixed Technology Words" : category;
+
+    document.getElementById("totalCount").textContent =
+        selectedWords.length;
+}
+
+
+// =====================================
+// CREATE EMPTY GRID
+// =====================================
+
+function createEmptyGrid() {
+    return Array.from(
+        { length: gridSize },
+        () => Array(gridSize).fill("")
+    );
+}
+
+
+// =====================================
+// CHECK WORD PLACEMENT
+// =====================================
+
+function canPlace(word, row, col, dr, dc) {
+
+    for (let i = 0; i < word.length; i++) {
+
+        const r = row + dr * i;
+        const c = col + dc * i;
+
+        if (
+            r < 0 || r >= gridSize ||
+            c < 0 || c >= gridSize
+        ) return false;
+
+        if (grid[r][c] !== "" && grid[r][c] !== word[i]) {
+            return false;
+        }
+    }
+
+    return true;
+}
+
+
+// =====================================
+// PLACE WORD
+// =====================================
+
+function placeWord(word) {
+
+    const options = shuffle(directions);
+
+    for (let attempt = 0; attempt < 300; attempt++) {
+
+        const [dr, dc] = options[attempt % options.length];
+
+        const row = Math.floor(Math.random() * gridSize);
+        const col = Math.floor(Math.random() * gridSize);
+
+        if (canPlace(word, row, col, dr, dc)) {
+
+            const cells = [];
+
+            for (let i = 0; i < word.length; i++) {
+
+                const r = row + dr * i;
+                const c = col + dc * i;
+
+                grid[r][c] = word[i];
+                cells.push(`${r}-${c}`);
+            }
+
+            placements[word] = cells;
+            return true;
+        }
+    }
+
+    return false;
+}
+
+
+// =====================================
+// GENERATE GRID
+// =====================================
+
+function generateGrid() {
+
+    let success = false;
+
+    for (let attempt = 0; attempt < 100; attempt++) {
+
+        grid = createEmptyGrid();
+        placements = {};
+
+        const words = [...selectedWords].sort(
+            (a, b) => b.length - a.length
+        );
+
+        success = words.every(word => placeWord(word));
+
+        if (success) break;
+    }
+
+    if (!success) {
+        throw new Error("Unable to generate puzzle. Try again.");
+    }
+
+    const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+    for (let r = 0; r < gridSize; r++) {
+        for (let c = 0; c < gridSize; c++) {
+            if (grid[r][c] === "") {
+                grid[r][c] = alphabet[
+                    Math.floor(Math.random() * alphabet.length)
+                ];
+            }
+        }
+    }
+}
+
+
+// =====================================
+// DISPLAY GRID
+// =====================================
+
+function displayGrid() {
+
+    const container = document.getElementById("wordGrid");
+
+    container.innerHTML = "";
+
+    container.style.gridTemplateColumns =
+        `repeat(${gridSize}, minmax(0, 1fr))`;
+
+    for (let r = 0; r < gridSize; r++) {
+        for (let c = 0; c < gridSize; c++) {
+
+            const cell = document.createElement("button");
+
+            cell.type = "button";
+            cell.className = "letter-cell";
+            cell.textContent = grid[r][c];
+
+            cell.dataset.row = r;
+            cell.dataset.col = c;
+
+            cell.addEventListener("pointerdown", startSelection);
+
+            container.appendChild(cell);
+        }
+    }
+}
+
+
+// =====================================
+// DISPLAY WORD LIST
+// =====================================
+
+function displayWordList() {
+
+    const list = document.getElementById("wordList");
+
+    list.innerHTML = "";
+
+    selectedWords.forEach(word => {
+
+        const item = document.createElement("div");
+
+        item.className = "word-item";
+        item.id = "word-" + word;
+        item.textContent = word;
+
+        list.appendChild(item);
+    });
+}
+
+
+// =====================================
+// GET CELLS IN A STRAIGHT LINE
+// =====================================
+
+function getLineCells(start, end) {
+
+    const dr = end.row - start.row;
+    const dc = end.col - start.col;
+
+    if (
+        dr !== 0 &&
+        dc !== 0 &&
+        Math.abs(dr) !== Math.abs(dc)
+    ) return [];
+
+    const steps = Math.max(Math.abs(dr), Math.abs(dc));
+
+    if (steps === 0) {
+        return [`${start.row}-${start.col}`];
+    }
+
+    const rowStep = Math.sign(dr);
+    const colStep = Math.sign(dc);
+
+    const cells = [];
+
+    for (let i = 0; i <= steps; i++) {
+        cells.push(
+            `${start.row + rowStep * i}-${start.col + colStep * i}`
+        );
+    }
+
+    return cells;
+}
+
+
+// =====================================
+// START DRAG SELECTION
+// =====================================
+
+function startSelection(event) {
+
+    if (event.button !== 0 && event.pointerType === "mouse") return;
+
+    event.preventDefault();
+
+    clearTimeout(hintTimer);
+
+    isDragging = true;
+
+    startCell = {
+        row: Number(event.currentTarget.dataset.row),
+        col: Number(event.currentTarget.dataset.col)
+    };
+
+    currentSelection = [
+        `${startCell.row}-${startCell.col}`
+    ];
+
+    updateSelection(currentSelection);
+}
+
+
+// =====================================
+// TRACK POINTER WHILE DRAGGING
+// =====================================
+
+document.addEventListener("pointermove", event => {
+
+    if (!isDragging || !startCell) return;
+
+    const target = document.elementFromPoint(event.clientX, event.clientY);
+
+    if (!target || !target.classList.contains("letter-cell")) return;
+
+    const row = Number(target.dataset.row);
+    const col = Number(target.dataset.col);
+
+    const cells = getLineCells(startCell, { row, col });
+
+    if (cells.length > 0) {
+        currentSelection = cells;
+        updateSelection(cells);
+    }
+});
+
+
+// =====================================
+// UPDATE SELECTED LETTERS
+// =====================================
+
+function updateSelection(cells) {
+
+    document.querySelectorAll(".letter-cell").forEach(cell => {
+        cell.classList.remove("selected");
+    });
+
+    cells.forEach(id => {
+
+        const [r, c] = id.split("-").map(Number);
+
+        const cell = document.querySelector(
+            `.letter-cell[data-row="${r}"][data-col="${c}"]`
+        );
+
+        if (cell && !cell.classList.contains("found")) {
+            cell.classList.add("selected");
+        }
+    });
+}
+
+
+// =====================================
+// FINISH SELECTION
+// =====================================
+
+document.addEventListener("pointerup", () => {
+
+    if (!isDragging) return;
+
+    isDragging = false;
+
+    document.querySelectorAll(".letter-cell").forEach(cell => {
+        cell.classList.remove("selected");
+    });
+
+    if (currentSelection.length > 0) {
+        checkWord(currentSelection);
+    }
+
+    startCell = null;
+    currentSelection = [];
+});
+
+
+// =====================================
+// READ SELECTED LETTERS
+// =====================================
+
+function getLetters(cells) {
+
+    return cells.map(id => {
+
+        const [r, c] = id.split("-").map(Number);
+
+        return grid[r][c];
+
+    }).join("");
+}
+
+
+// =====================================
+// CHECK WORD
+// =====================================
+
+function checkWord(cells) {
+
+    const selected = getLetters(cells);
+
+    const matchedWord = selectedWords.find(
+        word => word === selected
+    );
+
+    if (matchedWord && !foundWords.has(matchedWord)) {
+
+        foundWords.add(matchedWord);
+
+        cells.forEach(id => {
+
+            const [r, c] = id.split("-").map(Number);
+
+            const cell = document.querySelector(
+                `.letter-cell[data-row="${r}"][data-col="${c}"]`
+            );
+
+            if (cell) cell.classList.add("found");
+        });
+
+        document.getElementById("word-" + matchedWord)
+            .classList.add("found");
+
+        document.getElementById("feedback").textContent =
+            "🎉 Excellent! You found " + matchedWord + "!";
+
+        updateProgress();
+
+    } else {
+
+        document.getElementById("feedback").textContent =
+            "🔎 Not quite! Try another word.";
+    }
+}
+
+
+// =====================================
+// UPDATE SCORE
+// =====================================
+
+function updateProgress() {
+
+    const count = foundWords.size;
+    const total = selectedWords.length;
+
+    document.getElementById("foundCount").textContent = count;
+
+    document.getElementById("progress").style.width =
+        (count / total * 100) + "%";
+
+    if (count === total) {
+
+        document.getElementById("feedback").textContent =
+            "🏆 Amazing! You found every word!";
+
+        document.getElementById("completion")
+            .classList.remove("hidden");
+    }
+}
+
+
+// =====================================
+// HINT
+// =====================================
+
+function showHint() {
+
+    const remaining = selectedWords.find(
+        word => !foundWords.has(word)
+    );
+
+    if (!remaining) return;
+
+    const firstCell = placements[remaining][0];
+
+    const [r, c] = firstCell.split("-").map(Number);
+
+    const cell = document.querySelector(
+        `.letter-cell[data-row="${r}"][data-col="${c}"]`
+    );
+
+    document.getElementById("feedback").textContent =
+        "💡 Hint: Find a word starting with " + remaining[0] + ".";
+
+    cell.classList.add("selected");
+
+    clearTimeout(hintTimer);
+
+    hintTimer = setTimeout(() => {
+        cell.classList.remove("selected");
+    }, 1500);
+}
+
+
+// =====================================
+// NEW PUZZLE
+// =====================================
+
+function newPuzzle() {
+
+    const difficulty = document.getElementById("difficulty").value;
+
+    gridSize = {
+        Easy: 10,
+        Medium: 12,
+        Challenge: 15
+    }[difficulty];
+
+    foundWords = new Set();
+
+    isDragging = false;
+    startCell = null;
+    currentSelection = [];
+
+    clearTimeout(hintTimer);
+
+    document.getElementById("completion").classList.add("hidden");
+
+    document.getElementById("foundCount").textContent = "0";
+    document.getElementById("progress").style.width = "0%";
+
+    document.getElementById("feedback").textContent =
+        "🌟 Find your first word!";
+
+    selectWords();
+    generateGrid();
+    displayGrid();
+    displayWordList();
+
+    window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+
+// =====================================
+// START GAME
+// =====================================
+
+newPuzzle();
+
+</script>
+
+</body>
+</html>
