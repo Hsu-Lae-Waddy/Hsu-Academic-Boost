@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brain Teaser | Hsu Academic Boost</title>
+<style>
+:root{--navy:#102d55;--blue:#2563eb;--sky:#eaf3ff;--gold:#f6bd4b;--ink:#17243b;--muted:#64748b;--green:#16a34a;--red:#dc2626;--line:#dbe5f1}
+*{box-sizing:border-box}body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;background:linear-gradient(135deg,#f4f8ff,#f8fbff 55%,#fff9eb);color:var(--ink);min-height:100vh}
+header{background:var(--navy);color:white;padding:22px 16px;text-align:center}header .brand{font-weight:800;letter-spacing:.08em;color:#fbd477;font-size:.82rem}header h1{margin:7px 0 4px;font-size:clamp(1.65rem,4vw,2.5rem)}header p{margin:0;color:#d7e7ff}
+main{width:min(820px,94%);margin:24px auto 48px}.panel{background:white;border:1px solid var(--line);border-radius:22px;padding:clamp(16px,3vw,28px);box-shadow:0 12px 35px #17365d0d}
+.controls{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.field label{display:block;font-size:.83rem;font-weight:750;margin:0 0 7px;color:#42536b}select,button{font:inherit}select{width:100%;padding:12px;border:1px solid #cbd8e8;border-radius:12px;background:white;color:var(--ink)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:18px 0}.stat{background:var(--sky);border-radius:14px;text-align:center;padding:11px}.stat strong{display:block;font-size:1.35rem;color:var(--navy)}.stat span{font-size:.78rem;color:var(--muted);font-weight:650}
+.progress{height:8px;background:#e8eef7;border-radius:99px;overflow:hidden;margin:0 0 18px}.progress div{height:100%;width:0;background:linear-gradient(90deg,#2563eb,#38bdf8);transition:width .25s}
+.qtop{display:flex;justify-content:space-between;gap:10px;align-items:center;color:var(--muted);font-size:.85rem;font-weight:750}.question{background:#f6f9fe;border:1px solid #e1eaf6;border-radius:18px;padding:clamp(18px,4vw,30px);text-align:center;margin-top:12px}.category{display:inline-block;background:#e5efff;color:#1d4ed8;border-radius:99px;padding:6px 11px;font-size:.75rem;font-weight:850}.prompt{font-size:clamp(1.1rem,3vw,1.55rem);font-weight:850;line-height:1.45;margin:15px auto 10px}.visual{font-size:clamp(2rem,7vw,3.5rem);letter-spacing:.12em;margin:12px 0;overflow-wrap:anywhere}.options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:18px}.option{background:white;border:2px solid #dbe5f1;border-radius:13px;padding:14px 10px;font-weight:800;color:var(--ink);cursor:pointer;min-height:56px}.option:hover:not(:disabled){border-color:#7daaf0;background:#f4f8ff}.option:disabled{cursor:default}.option.correct{border-color:#69c58a;background:#eaf9ef;color:#166534}.option.wrong{border-color:#f09b9b;background:#fff0f0;color:#991b1b}
+.feedback{min-height:56px;margin:14px 0 0;padding:12px;border-radius:12px;text-align:center;font-weight:750;line-height:1.45}.feedback.good{background:#eaf9ef;color:#166534}.feedback.bad{background:#fff1f1;color:#991b1b}.feedback.neutral{background:#f1f5f9;color:#475569}
+.actions{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:18px}.btn{border:0;border-radius:12px;padding:12px 18px;font-weight:800;cursor:pointer}.primary{background:var(--blue);color:white}.secondary{background:#eaf1fa;color:var(--navy)}.gold{background:#fff3d6;color:#805500}.btn:disabled{opacity:.45;cursor:not-allowed}.btn:hover:not(:disabled){filter:brightness(.97);transform:translateY(-1px)}
+footer{text-align:center;color:#738198;font-size:.8rem;padding:0 15px 25px}
+@media(max-width:620px){.controls{grid-template-columns:1fr}.options{grid-template-columns:1fr}.stats{gap:7px}.stat{padding:9px 4px}.qtop{font-size:.77rem}}
+</style>
+</head>
+<body>
+<header><div class="brand">HSU ACADEMIC BOOST</div><h1>🔍 Brain Teaser</h1><p>Think Carefully • Find Patterns • Solve Problems</p></header>
+<main><section class="panel">
+ <div class="controls">
+  <div class="field"><label for="category">Puzzle category</label><select id="category"><option value="all">All Categories</option><option value="number">Number Puzzles</option><option value="shape">Shape Puzzles</option><option value="logic">Logic Puzzles</option><option value="math">Mathematical Thinking</option></select></div>
+  <div class="field"><label for="level">Difficulty</label><select id="level"><option value="easy">Easy</option><option value="medium" selected>Medium</option><option value="hard">Hard</option></select></div>
+  <div class="field"><label for="sound">Sound effects</label><select id="sound"><option value="on">On</option><option value="off">Off</option></select></div>
+ </div>
+ <div class="stats"><div class="stat"><strong id="score">0</strong><span>SCORE</span></div><div class="stat"><strong id="progressText">1/10</strong><span>QUESTION</span></div><div class="stat"><strong id="accuracy">—</strong><span>ACCURACY</span></div></div>
+ <div class="progress"><div id="bar"></div></div>
+ <div class="qtop"><span id="qNumber">QUESTION 1</span><span id="levelTag">MEDIUM</span></div>
+ <div class="question">
+  <span class="category" id="catLabel">NUMBER PUZZLE</span>
+  <div class="prompt" id="prompt"></div><div class="visual" id="visual"></div>
+  <div class="options" id="options"></div>
+  <div class="feedback neutral" id="feedback" aria-live="polite">Choose the best answer.</div>
+ </div>
+ <div class="actions"><button class="btn gold" id="hint">💡 Hint</button><button class="btn primary" id="next" disabled>Next Question →</button><button class="btn secondary" id="restart">↻ Start Again</button></div>
+</section></main><footer>© Hsu Academic Boost · Learn Smart. Build Strong Future.</footer>
+<script>
+const bank={
+easy:[
+["number","What number comes next?","2, 4, 6, 8, ?","10",["9","10","11","12"],"The numbers increase by 2 each time.","Each step adds 2."],
+["shape","Which symbol comes next?","🔴 🔵 🔴 🔵 ?", "🔴",["🔵","🟢","🔴","🟡"],"The two colours take turns.","Red, blue, red, blue…"],
+["logic","Which one does NOT belong?","⌨️  🖱️  🖥️  🍎","🍎",["⌨️","🖱️","🖥️","🍎"],"Three are computer equipment.","An apple is food, not a computer device."],
+["math","What is 5 + 3?","","8",["7","8","9","10"],"Start at 5 and count three more.","5 + 3 = 8."],
+["number","Fill in the missing number.","3, 6, 9, 12, ?", "15",["13","14","15","16"],"Add 3 each time.","12 + 3 = 15."],
+["logic","Tom is taller than Ben. Ben is taller than Sam. Who is shortest?","","Sam",["Tom","Ben","Sam","Cannot tell"],"Compare the two statements.","Sam is shorter than Ben, and Ben is shorter than Tom."],
+["shape","How many sides does a triangle have?","🔺","3",["2","3","4","5"],"Think of the three straight edges.","A triangle has 3 sides."],
+["math","You have 10 stickers and give away 4. How many remain?","","6",["4","5","6","7"],"Subtract the stickers you gave away.","10 − 4 = 6."],
+["number","What comes next?","5, 10, 15, 20, ?", "25",["22","24","25","30"],"Count forward in fives.","20 + 5 = 25."],
+["logic","Which is the largest?","","21",["12","21","18","9"],"Compare the tens digits first.","21 is the largest number."]
+],
+medium:[
+["number","What number comes next?","4, 8, 16, 32, ?","64",["48","56","64","72"],"Each number is doubled.","32 × 2 = 64."],
+["shape","Which symbol completes the pattern?","⭐ ❤️ ⭐ ❤️ ?", "⭐",["❤️","⭐","🔺","🔵"],"The two symbols alternate.","A star comes after a heart."],
+["logic","Mia is older than Leo. Leo is older than Ava. Who is youngest?","","Ava",["Mia","Leo","Ava","Cannot tell"],"Put them in age order.","Mia > Leo > Ava, so Ava is youngest."],
+["math","What is 5 + 3 × 2?","","11",["16","13","11","10"],"Remember multiplication before addition.","3 × 2 = 6, then 5 + 6 = 11."],
+["number","Find the missing number.","2, 5, 8, 11, ?", "14",["12","13","14","15"],"The difference is always the same.","Add 3: 11 + 3 = 14."],
+["logic","A box has 3 red balls and 2 blue balls. How many balls are there altogether?","","5",["4","5","6","7"],"Add both groups.","3 + 2 = 5."],
+["shape","A square has 4 equal sides. How many corners does it have?","⬜","4",["3","4","5","6"],"Count each vertex.","A square has 4 corners."],
+["math","A book costs 7 coins. How much do 3 books cost?","","21",["10","18","21","24"],"Add 7 three times.","7 × 3 = 21."],
+["number","What comes next?","1, 4, 9, 16, ?", "25",["20","24","25","36"],"These are square numbers: 1², 2², 3², 4².","The next is 5² = 25."],
+["logic","You overtake the person in second place in a race. What place are you in?","","Second",["First","Second","Third","Fourth"],"You take the place of the person you passed.","You are now in second place."]
+],
+hard:[
+["number","What number comes next?","2, 6, 12, 20, 30, ?", "42",["36","40","42","44"],"The differences are 4, 6, 8, 10…","Add 12 to 30 to get 42."],
+["shape","How many triangles are in this simple shape?","🔺 + 🔺 + 🔺","3",["2","3","4","6"],"Count each separate triangle.","There are 3 triangles."],
+["logic","A farmer has 12 sheep. All but 5 run away. How many are left?","","5",["5","7","12","0"],"Read the phrase “all but 5” carefully.","All except 5 run away, so 5 remain."],
+["math","What is (18 ÷ 3) + 4 × 2?","","14",["10","12","14","20"],"Do division and multiplication before addition.","18 ÷ 3 = 6; 4 × 2 = 8; 6 + 8 = 14."],
+["number","Find the missing number.","1, 1, 2, 3, 5, 8, ?", "13",["11","12","13","15"],"Add the previous two numbers.","5 + 8 = 13."],
+["logic","A clock shows 3:00. What is the angle between its hands?","","90°",["45°","60°","90°","180°"],"At 3:00, the hands point to 12 and 3.","They form a right angle: 90°."],
+["shape","How many sides do 2 hexagons have altogether?","","12",["10","11","12","14"],"A hexagon has 6 sides.","6 + 6 = 12."],
+["math","A number is multiplied by 4 and the answer is 36. What is the number?","","9",["8","9","10","12"],"Use the opposite operation: divide by 4.","36 ÷ 4 = 9."],
+["number","What comes next?","81, 27, 9, 3, ?", "1",["0","1","2","6"],"Each number is divided by 3.","3 ÷ 3 = 1."],
+["logic","There are 5 machines. Each makes 5 toys in 5 minutes. How many toys do 5 machines make in 5 minutes?","","25",["5","10","20","25"],"Each machine makes 5 toys in that same 5 minutes.","5 machines × 5 toys = 25 toys."]
+]};
+const $=id=>document.getElementById(id);let questions=[],index=0,score=0,answered=0,correct=0,usedHint=false,locked=false;
+function shuffle(a){return [...a].sort(()=>Math.random()-.5)}
+function beep(ok=true){if($("sound").value==="off")return;try{const C=window.AudioContext||window.webkitAudioContext,ctx=new C(),o=ctx.createOscillator(),g=ctx.createGain();o.connect(g);g.connect(ctx.destination);o.frequency.value=ok?700:190;o.type="sine";g.gain.setValueAtTime(.1,ctx.currentTime);g.gain.exponentialRampToValueAtTime(.001,ctx.currentTime+.2);o.start();o.stop(ctx.currentTime+.2);o.onended=()=>ctx.close()}catch(e){}}
+function start(){const cat=$("category").value,level=$("level").value;let pool=bank[level].filter(q=>cat==="all"||q[0]===cat);questions=shuffle(pool);index=0;score=0;answered=0;correct=0;updateStats();showQuestion()}
+function updateStats(){$("score").textContent=score;$("progressText").textContent=questions.length?`${Math.min(index+1,questions.length)}/${questions.length}`:"0/0";$("accuracy").textContent=answered?Math.round(correct/answered*100)+"%":"—";$("bar").style.width=(questions.length?index/questions.length*100:0)+"%"}
+function showQuestion(){locked=false;usedHint=false;$("next").disabled=true;$("hint").disabled=false;const q=questions[index];if(!q){finish();return}
+ $("qNumber").textContent=`QUESTION ${index+1}`;$("levelTag").textContent=$("level").value.toUpperCase();$("catLabel").textContent=({number:"NUMBER PUZZLE",shape:"SHAPE PUZZLE",logic:"LOGIC PUZZLE",math:"MATHEMATICAL THINKING"})[q[0]];
+ $("prompt").textContent=q[1];$("visual").textContent=q[2];$("feedback").className="feedback neutral";$("feedback").textContent="Choose the best answer.";
+ const opts=shuffle(q[4]);$("options").innerHTML="";opts.forEach(opt=>{const b=document.createElement("button");b.className="option";b.textContent=opt;b.addEventListener("click",()=>answer(b,opt,q));$("options").appendChild(b)});updateStats()}
+function answer(button,choice,q){if(locked)return;locked=true;answered++;const good=choice===q[3];if(good){correct++;score+=usedHint?5:10;beep(true);$("feedback").className="feedback good";$("feedback").textContent="✅ Correct! "+q[6]}else{beep(false);$("feedback").className="feedback bad";$("feedback").textContent="❌ Not quite. "+q[6]}
+ [...$("options").children].forEach(b=>{b.disabled=true;if(b.textContent===q[3])b.classList.add("correct");else if(b===button&&!good)b.classList.add("wrong")});$("next").disabled=false;$("hint").disabled=true;updateStats()}
+$("hint").addEventListener("click",()=>{if(locked)return;usedHint=true;$("feedback").className="feedback neutral";$("feedback").textContent="💡 Hint: "+questions[index][5]});
+$("next").addEventListener("click",()=>{index++;if(index>=questions.length)finish();else showQuestion()});
+$("restart").addEventListener("click",start);$("category").addEventListener("change",start);$("level").addEventListener("change",start);
+function finish(){$("bar").style.width="100%";$("qNumber").textContent="CHALLENGE COMPLETE";$("levelTag").textContent="WELL DONE";$("catLabel").textContent="YOUR RESULT";$("prompt").textContent=`You scored ${score} points!`; $("visual").textContent=correct===questions.length?"🏆":"🎉";$("options").innerHTML="";$("feedback").className="feedback good";$("feedback").textContent=`You answered ${correct} out of ${questions.length} correctly. Accuracy: ${Math.round(correct/questions.length*100)}%. Keep practising!`;$("next").disabled=true;$("hint").disabled=true;$("progressText").textContent=`${questions.length}/${questions.length}`;$("accuracy").textContent=Math.round(correct/questions.length*100)+"%"}
+start();
+</script>
+</body></html>
