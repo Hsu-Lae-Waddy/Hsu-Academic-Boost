@@ -23,7 +23,98 @@
         .card-hover:hover{
             transform:translateY(-6px);
         }
-    </style>
+
+.quiz-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-height: 255px;
+    padding: 24px;
+    border-radius: 18px;
+    background: #111d35;
+    border: 1px solid #263752;
+    text-decoration: none;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.quiz-card:hover {
+    transform: translateY(-5px);
+    border-color: #38bdf8;
+    background: #172640;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.22);
+}
+
+.quiz-icon {
+    width: 52px;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+    font-size: 25px;
+    margin-bottom: 20px;
+    transition: transform 0.3s ease;
+}
+
+.quiz-card:hover .quiz-icon {
+    transform: scale(1.08) rotate(-4deg);
+}
+
+.quiz-category {
+    color: #7f9bbd;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.3px;
+    margin-bottom: 9px;
+}
+
+.quiz-card h2 {
+    color: #f1f5f9;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.4;
+    margin-bottom: 8px;
+}
+
+.quiz-card:hover h2 {
+    color: #7dd3fc;
+}
+
+.quiz-card p {
+    color: #94a3b8;
+    font-size: 13px;
+    line-height: 1.7;
+    margin-bottom: 20px;
+}
+
+.quiz-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: auto;
+    padding-top: 14px;
+    border-top: 1px solid rgba(148, 163, 184, 0.12);
+    color: #7dd3fc;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.quiz-arrow {
+    font-size: 19px;
+    transition: transform 0.3s ease;
+}
+
+.quiz-card:hover .quiz-arrow {
+    transform: translate(3px, -3px);
+}
+
+@media (max-width: 640px) {
+    .quiz-card {
+        min-height: 230px;
+    }
+}
+</style>
 </head>
 
 <body class="bg-slate-900 text-white">
@@ -54,443 +145,182 @@
         </p>
     </section>
   
-<!-- Quizzes -->
+
+<!-- QUIZZES SECTION -->
 <section class="max-w-6xl mx-auto px-6 pb-20">
 
-    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
 
-        <!-- Input / Output Quiz -->
-        <a href="Quiz.html"
-           class="group relative bg-blue-90 border border-blue-700 rounded-2xl p-6
-                  hover:border-blue-400/60 hover:bg-blue-80
-                  hover:-translate-y-1 hover:shadow-xl hover:shadow-teal-500/10
-                  transition-all duration-300">
-
-            <div class="flex items-start justify-between mb-5">
-                <div class="w-12 h-12 flex items-center justify-center
-                            bg-blue-400/10 border border-blue-400/20
-                            rounded-xl text-2xl">
-                    🧩
-                </div>
-
-                <span class="text-blue-500 group-hover:text-blue-400
-                             transition-colors text-xl">
-                    →
-                </span>
+        <!-- Input / Output -->
+        <a href="Quiz.html" class="quiz-card group">
+            <div class="quiz-icon bg-sky-500/10 text-sky-400">🧩</div>
+            <span class="quiz-category">COMPUTER BASICS</span>
+            <h2>Input / Output Quiz</h2>
+            <p>Test your knowledge of input and output devices.</p>
+            <div class="quiz-footer">
+                <span>Start Quiz</span>
+                <span class="quiz-arrow">↗</span>
             </div>
-
-            <h2 class="text-xl font-bold text-white group-hover:text-blue-400
-                       transition-colors mb-2">
-                Input / Output Quiz
-            </h2>
-
-            <p class="text-sm text-blue-400">
-                Test your knowledge of input and output devices.
-            </p>
         </a>
-
-
 
         <!-- Computer or Not -->
-        <a href="QuizComputer.html"
-           class="group relative bg-blue-90 border border-blue-700 rounded-2xl p-6
-                  hover:border-blue-400/60 hover:bg-blue-80
-                  hover:-translate-y-1 hover:shadow-xl hover:shadow-teal-500/10
-                  transition-all duration-300">
-
-            <div class="flex items-start justify-between mb-5">
-                <div class="w-12 h-12 flex items-center justify-center
-                            bg-blue-400/10 border border-blue-400/20
-                            rounded-xl text-2xl">
-                    🖥️
-                </div>
-
-                <span class="text-blue-500 group-hover:text-blue-400
-                             transition-colors text-xl">
-                    →
-                </span>
+        <a href="QuizComputer.html" class="quiz-card group">
+            <div class="quiz-icon bg-violet-500/10 text-violet-400">🖥️</div>
+            <span class="quiz-category">COMPUTER BASICS</span>
+            <h2>Computer or Not Quiz</h2>
+            <p>Decide whether an object is a computer or not.</p>
+            <div class="quiz-footer">
+                <span>Start Quiz</span>
+                <span class="quiz-arrow">↗</span>
             </div>
-
-            <h2 class="text-xl font-bold text-white group-hover:text-blue-400
-                       transition-colors mb-2">
-                Computer or Not Quiz
-            </h2>
-
-            <p class="text-sm text-blue-400">
-                Decide whether an object is a computer or not.
-            </p>
         </a>
- <!-- Hardware vs Software -->
-        <a href="QuizH&S.html"
-          class="group relative bg-blue-90 border border-blue-700 rounded-2xl p-6
-                  hover:border-blue-400/60 hover:bg-blue-80
-                  hover:-translate-y-1 hover:shadow-xl hover:shadow-teal-500/10
-                  transition-all duration-300">
 
-            <div class="flex items-start justify-between mb-5">
-                <div class="w-12 h-12 flex items-center justify-center
-                            bg-blue-400/10 border border-blue-400/20
-                            rounded-xl text-2xl">
-                    ⚙️
-                </div>
-
-                <span class="text-blue-500 group-hover:text-blue-400
-                             transition-colors text-xl">
-                    →
-                </span>
+        <!-- Hardware vs Software -->
+        <a href="QuizH&S.html" class="quiz-card group">
+            <div class="quiz-icon bg-orange-500/10 text-orange-400">⚙️</div>
+            <span class="quiz-category">COMPUTER BASICS</span>
+            <h2>Hardware vs Software Quiz</h2>
+            <p>Learn to identify hardware and software.</p>
+            <div class="quiz-footer">
+                <span>Start Quiz</span>
+                <span class="quiz-arrow">↗</span>
             </div>
-
-            <h2 class="text-xl font-bold text-white group-hover:text-blue-400
-                       transition-colors mb-2">
-                Hardware vs Software Quiz
-            </h2>
-
-            <p class="text-sm text-blue-400">
-                Learn to identify hardware and software.
-            </p>
         </a>
 
         <!-- Flowchart -->
-        <a href="Quizflowchart.html"
-           class="group relative bg-slate-800/90 border border-slate-700 rounded-2xl p-6
-                  hover:border-teal-400/60 hover:bg-slate-800
-                  hover:-translate-y-1 hover:shadow-xl hover:shadow-teal-500/10
-                  transition-all duration-300">
-
-            <div class="flex items-start justify-between mb-5">
-                <div class="w-12 h-12 flex items-center justify-center
-                            bg-teal-400/10 border border-teal-400/20
-                            rounded-xl text-2xl">
-                    🔀
-                </div>
-
-                <span class="text-slate-500 group-hover:text-teal-400
-                             transition-colors text-xl">
-                    →
-                </span>
+        <a href="Quizflowchart.html" class="quiz-card group">
+            <div class="quiz-icon bg-emerald-500/10 text-emerald-400">🔀</div>
+            <span class="quiz-category">COMPUTATIONAL THINKING</span>
+            <h2>Flowchart Building Quiz</h2>
+            <p>Build and understand simple computer flowcharts.</p>
+            <div class="quiz-footer">
+                <span>Start Quiz</span>
+                <span class="quiz-arrow">↗</span>
             </div>
-
-            <h2 class="text-xl font-bold text-white group-hover:text-teal-400
-                       transition-colors mb-2">
-                Flowchart Building Quiz
-            </h2>
-
-            <p class="text-sm text-slate-400">
-                Build and understand simple computer flowcharts.
-            </p>
         </a>
-
 
         <!-- Decimal Binary -->
-        <a href="QuizBD.html"
-           class="group relative bg-slate-800/90 border border-slate-700 rounded-2xl p-6
-                  hover:border-teal-400/60 hover:bg-slate-800
-                  hover:-translate-y-1 hover:shadow-xl hover:shadow-teal-500/10
-                  transition-all duration-300">
-
-            <div class="flex items-start justify-between mb-5">
-                <div class="w-12 h-12 flex items-center justify-center
-                            bg-teal-400/10 border border-teal-400/20
-                            rounded-xl text-2xl">
-                    💻
-                </div>
-
-                <span class="text-slate-500 group-hover:text-teal-400
-                             transition-colors text-xl">
-                    →
-                </span>
+        <a href="QuizBD.html" class="quiz-card group">
+            <div class="quiz-icon bg-cyan-500/10 text-cyan-400">💻</div>
+            <span class="quiz-category">NUMBER SYSTEMS</span>
+            <h2>Decimal ↔ Binary Exercise</h2>
+            <p>Practise converting between decimal and binary numbers.</p>
+            <div class="quiz-footer">
+                <span>Start Exercise</span>
+                <span class="quiz-arrow">↗</span>
             </div>
-
-            <h2 class="text-xl font-bold text-white group-hover:text-teal-400
-                       transition-colors mb-2">
-                Decimal ↔ Binary Exercise
-            </h2>
-
-            <p class="text-sm text-slate-400">
-                Practise converting between decimal and binary numbers.
-            </p>
         </a>
-
 
         <!-- Storage Units -->
-        <a href="QuizBB.html"
-           class="group relative bg-slate-800/90 border border-slate-700 rounded-2xl p-6
-                  hover:border-teal-400/60 hover:bg-slate-800
-                  hover:-translate-y-1 hover:shadow-xl hover:shadow-teal-500/10
-                  transition-all duration-300">
-
-            <div class="flex items-start justify-between mb-5">
-                <div class="w-12 h-12 flex items-center justify-center
-                            bg-teal-400/10 border border-teal-400/20
-                            rounded-xl text-2xl">
-                    💾
-                </div>
-
-                <span class="text-slate-500 group-hover:text-teal-400
-                             transition-colors text-xl">
-                    →
-                </span>
+        <a href="QuizBB.html" class="quiz-card group">
+            <div class="quiz-icon bg-amber-500/10 text-amber-400">💾</div>
+            <span class="quiz-category">COMPUTER BASICS</span>
+            <h2>Storage Units Quiz</h2>
+            <p>Check your understanding of bytes, KB, MB, GB and TB.</p>
+            <div class="quiz-footer">
+                <span>Start Quiz</span>
+                <span class="quiz-arrow">↗</span>
             </div>
-
-            <h2 class="text-xl font-bold text-white group-hover:text-teal-400
-                       transition-colors mb-2">
-                Storage Units Quiz
-            </h2>
-
-            <p class="text-sm text-slate-400">
-                Check your understanding of bytes, KB, MB, GB and TB.
-            </p>
         </a>
-
-
-       
-
 
         <!-- IPO -->
-        <a href="QuizIPO.html"
-           class="group relative bg-blue-90 border border-blue-700 rounded-2xl p-6
-                  hover:border-blue-400/60 hover:bg-blue-80
-                  hover:-translate-y-1 hover:shadow-xl hover:shadow-teal-500/10
-                  transition-all duration-300">
-
-            <div class="flex items-start justify-between mb-5">
-                <div class="w-12 h-12 flex items-center justify-center
-                            bg-blue-400/10 border border-blue-400/20
-                            rounded-xl text-2xl">
-                    🔄
-                </div>
-
-                <span class="text-slate-500 group-hover:text-blue-400
-                             transition-colors text-xl">
-                    →
-                </span>
+        <a href="QuizIPO.html" class="quiz-card group">
+            <div class="quiz-icon bg-pink-500/10 text-pink-400">🔄</div>
+            <span class="quiz-category">COMPUTER BASICS</span>
+            <h2>Input, Process, or Output Quiz</h2>
+            <p>Identify each part of the input-process-output cycle.</p>
+            <div class="quiz-footer">
+                <span>Start Quiz</span>
+                <span class="quiz-arrow">↗</span>
             </div>
-
-            <h2 class="text-xl font-bold text-white group-hover:text-blue-400
-                       transition-colors mb-2">
-                Input, Process, or Output Quiz
-            </h2>
-
-            <p class="text-sm text-blue-400">
-                Identify each part of the input-process-output cycle.
-            </p>
         </a>
-          <!-- Safe or Unsafe -->
-        <a href="safeorunsafequiz.html"
-           class="group relative bg-blue-90 border border-blue-700 rounded-2xl p-6
-                  hover:border-blue-400/60 hover:bg-blue-80
-                  hover:-translate-y-1 hover:shadow-xl hover:shadow-teal-500/10
-                  transition-all duration-300">
 
-            <div class="flex items-start justify-between mb-5">
-                <div class="w-12 h-12 flex items-center justify-center
-                            bg-blue-400/10 border border-blue-400/20
-                            rounded-xl text-2xl">
-                    💻
-                </div>
-
-                <span class="text-blue-500 group-hover:text-blue-400
-                             transition-colors text-xl">
-                    →
-                </span>
+        <!-- Safe or Unsafe -->
+        <a href="safeorunsafequiz.html" class="quiz-card group">
+            <div class="quiz-icon bg-green-500/10 text-green-400">💻</div>
+            <span class="quiz-category">DIGITAL CITIZENSHIP</span>
+            <h2>Safe or Unsafe Quiz</h2>
+            <p>Understand computer safety and good digital habits.</p>
+            <div class="quiz-footer">
+                <span>Start Quiz</span>
+                <span class="quiz-arrow">↗</span>
             </div>
-
-            <h2 class="text-xl font-bold text-white group-hover:text-blue-400
-                       transition-colors mb-2">
-                Safe or Unsafe Quiz
-            </h2>
-
-            <p class="text-sm text-blue-400">
-                Understand computer safety
-            </p>
         </a>
 
         <!-- Online Safety -->
-        <a href="PornotPquiz.html"
-           class="group relative bg-blue-90 border border-blue-700 rounded-2xl p-6
-                  hover:border-blue-400/60 hover:bg-blue-80
-                  hover:-translate-y-1 hover:shadow-xl hover:shadow-teal-500/10
-                  transition-all duration-300">
-
-            <div class="flex items-start justify-between mb-5">
-                <div class="w-12 h-12 flex items-center justify-center
-                            bg-blue-400/10 border border-blue-400/20
-                            rounded-xl text-2xl">
-                    🛡️
-                </div>
-
-                <span class="text-slate-500 group-hover:text-blue-400
-                             transition-colors text-xl">
-                    →
-                </span>
+        <a href="PornotPquiz.html" class="quiz-card group">
+            <div class="quiz-icon bg-rose-500/10 text-rose-400">🛡️</div>
+            <span class="quiz-category">DIGITAL CITIZENSHIP</span>
+            <h2>Online Safety for Kids</h2>
+            <p>Learn how to stay safe and responsible online.</p>
+            <div class="quiz-footer">
+                <span>Start Quiz</span>
+                <span class="quiz-arrow">↗</span>
             </div>
-
-            <h2 class="text-xl font-bold text-white group-hover:text-blue-400
-                       transition-colors mb-2">
-                Online Safety for Kids
-            </h2>
-
-            <p class="text-sm text-blue-400">
-                Learn how to stay safe and responsible online.
-            </p>
         </a>
-
 
         <!-- Python -->
-        <a href="Pythonquiz.html"
-           class="group relative bg-slate-800/90 border border-slate-700 rounded-2xl p-6
-                  hover:border-teal-400/60 hover:bg-slate-800
-                  hover:-translate-y-1 hover:shadow-xl hover:shadow-teal-500/10
-                  transition-all duration-300">
-
-            <div class="flex items-start justify-between mb-5">
-                <div class="w-12 h-12 flex items-center justify-center
-                            bg-teal-400/10 border border-teal-400/20
-                            rounded-xl text-2xl">
-                    🐍
-                </div>
-
-                <span class="text-slate-500 group-hover:text-teal-400
-                             transition-colors text-xl">
-                    →
-                </span>
+        <a href="Pythonquiz.html" class="quiz-card group">
+            <div class="quiz-icon bg-yellow-500/10 text-yellow-400">🐍</div>
+            <span class="quiz-category">PROGRAMMING</span>
+            <h2>Python Quiz</h2>
+            <p>Test your Python programming knowledge.</p>
+            <div class="quiz-footer">
+                <span>Start Quiz</span>
+                <span class="quiz-arrow">↗</span>
             </div>
-
-            <h2 class="text-xl font-bold text-white group-hover:text-teal-400
-                       transition-colors mb-2">
-                Python Quiz
-            </h2>
-
-            <p class="text-sm text-slate-400">
-                Test your Python programming knowledge.
-            </p>
-        </a>
-          <!-- Algorithm Order Quiz -->
-        <a href="QuizAlg.html"
-           class="group relative bg-slate-800/90 border border-slate-700 rounded-2xl p-6
-                  hover:border-teal-400/60 hover:bg-slate-800
-                  hover:-translate-y-1 hover:shadow-xl hover:shadow-teal-500/10
-                  transition-all duration-300">
-
-            <div class="flex items-start justify-between mb-5">
-                <div class="w-12 h-12 flex items-center justify-center
-                            bg-teal-400/10 border border-teal-400/20
-                            rounded-xl text-2xl">
-                    🔢
-                </div>
-
-                <span class="text-slate-500 group-hover:text-teal-400
-                             transition-colors text-xl">
-                    →
-                </span>
-            </div>
-
-            <h2 class="text-xl font-bold text-white group-hover:text-teal-400
-                       transition-colors mb-2">
-                Algorithm Order Quiz
-            </h2>
-
-            <p class="text-sm text-slate-400">
-                Arrange algorithm steps in the correct order.
-            </p>
         </a>
 
-          <!-- Algorithm Order Quiz -->
-        <a href="Keyboardquiz.html"
-           class="group relative bg-slate-800/90 border border-slate-700 rounded-2xl p-6
-                  hover:border-teal-400/60 hover:bg-slate-800
-                  hover:-translate-y-1 hover:shadow-xl hover:shadow-teal-500/10
-                  transition-all duration-300">
-
-            <div class="flex items-start justify-between mb-5">
-                <div class="w-12 h-12 flex items-center justify-center
-                            bg-teal-400/10 border border-teal-400/20
-                            rounded-xl text-2xl">
-                    ⌨️
-                </div>
-
-                <span class="text-slate-500 group-hover:text-teal-400
-                             transition-colors text-xl">
-                    →
-                </span>
+        <!-- Algorithm -->
+        <a href="QuizAlg.html" class="quiz-card group">
+            <div class="quiz-icon bg-indigo-500/10 text-indigo-400">🔢</div>
+            <span class="quiz-category">COMPUTATIONAL THINKING</span>
+            <h2>Algorithm Order Quiz</h2>
+            <p>Arrange algorithm steps in the correct order.</p>
+            <div class="quiz-footer">
+                <span>Start Quiz</span>
+                <span class="quiz-arrow">↗</span>
             </div>
-
-            <h2 class="text-xl font-bold text-white group-hover:text-teal-400
-                       transition-colors mb-2">
-                Keyboard Keys Quiz
-            </h2>
-
-            <p class="text-sm text-slate-400">
-                🌟Computer Quiz 🌟
-            </p>
-        </a>
-           <!-- Keyboard Shortcuts Quiz -->
-        <a href="quizforshortcuts.html"
-           class="group relative bg-blue-90 border border-blue-700 rounded-2xl p-6
-                  hover:border-blue-400/60 hover:bg-blue-80
-                  hover:-translate-y-1 hover:shadow-xl hover:shadow-teal-500/10
-                  transition-all duration-300">
-
-            <div class="flex items-start justify-between mb-5">
-                <div class="w-12 h-12 flex items-center justify-center
-                            bg-blue-400/10 border border-blue-400/20
-                            rounded-xl text-2xl">
-                    🧩
-                </div>
-
-                <span class="text-blue-500 group-hover:text-blue-400
-                             transition-colors text-xl">
-                    →
-                </span>
-            </div>
-
-            <h2 class="text-xl font-bold text-white group-hover:text-blue-400
-                       transition-colors mb-2">
-                Keyboard Shortcuts Quiz
-            </h2>
-
-            <p class="text-sm text-blue-400">
-                What does each key or shortcut do?
-            </p>
-        </a>
-  <!-- Scratch 03 · Quiz -->
-        <a href="quizscratch.html"
-           class="group relative bg-blue-90 border border-blue-700 rounded-2xl p-6
-                  hover:border-blue-400/60 hover:bg-blue-80
-                  hover:-translate-y-1 hover:shadow-xl hover:shadow-teal-500/10
-                  transition-all duration-300">
-
-            <div class="flex items-start justify-between mb-5">
-                <div class="w-12 h-12 flex items-center justify-center
-                            bg-blue-400/10 border border-blue-400/20
-                            rounded-xl text-2xl">
-                    🧩
-                </div>
-
-                <span class="text-blue-500 group-hover:text-blue-400
-                             transition-colors text-xl">
-                    →
-                </span>
-            </div>
-
-            <h2 class="text-xl font-bold text-white group-hover:text-blue-400
-                       transition-colors mb-2">
-                Scratch 03 · Quiz
-            </h2>
-
-            <p class="text-sm text-blue-400">
-                Questions about Scratch blocks, sprites, and coding!
-            </p>
         </a>
 
+        <!-- Keyboard Keys -->
+        <a href="Keyboardquiz.html" class="quiz-card group">
+            <div class="quiz-icon bg-teal-500/10 text-teal-400">⌨️</div>
+            <span class="quiz-category">DIGITAL SKILLS</span>
+            <h2>Keyboard Keys Quiz</h2>
+            <p>Discover the functions of different keyboard keys.</p>
+            <div class="quiz-footer">
+                <span>Start Quiz</span>
+                <span class="quiz-arrow">↗</span>
+            </div>
+        </a>
 
+        <!-- Keyboard Shortcuts -->
+        <a href="quizforshortcuts.html" class="quiz-card group">
+            <div class="quiz-icon bg-blue-500/10 text-blue-400">⌨️</div>
+            <span class="quiz-category">DIGITAL SKILLS</span>
+            <h2>Keyboard Shortcuts Quiz</h2>
+            <p>What does each keyboard shortcut do?</p>
+            <div class="quiz-footer">
+                <span>Start Quiz</span>
+                <span class="quiz-arrow">↗</span>
+            </div>
+        </a>
 
-      
+        <!-- Scratch -->
+        <a href="quizscratch.html" class="quiz-card group">
+            <div class="quiz-icon bg-orange-500/10 text-orange-400">🐱</div>
+            <span class="quiz-category">PROGRAMMING</span>
+            <h2>Scratch 03 · Quiz</h2>
+            <p>Questions about Scratch blocks, sprites, and coding!</p>
+            <div class="quiz-footer">
+                <span>Start Quiz</span>
+                <span class="quiz-arrow">↗</span>
+            </div>
+        </a>
 
     </div>
-
 </section>
-
 
     <!-- Footer -->
     <footer class="bg-slate-950 border-t border-slate-800 py-8 text-center">
