@@ -1,0 +1,1335 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#020617">
+<title>IT & Coding Brain Teaser | Hsu Academic Boost</title>
+
+<style>
+:root {
+  --navy:#020617;
+  --panel:#0f172a;
+  --teal:#14b8a6;
+  --teal-light:#5eead4;
+  --text:#f8fafc;
+  --muted:#94a3b8;
+  --green:#22c55e;
+  --red:#ef4444;
+  --gold:#fbbf24;
+}
+
+* { box-sizing:border-box; }
+
+body {
+  margin:0;
+  min-height:100vh;
+  background:radial-gradient(circle at top,#102447 0,#071326 38%,#020617 78%);
+  color:var(--text);
+  font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+
+nav {
+  background:#020617;
+  border-bottom:1px solid #1e293b;
+  position:sticky;
+  top:0;
+  z-index:10;
+}
+
+.nav-inner {
+  max-width:1120px;
+  margin:auto;
+  padding:15px 22px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+}
+
+.brand {
+  font-size:clamp(1rem,3vw,1.35rem);
+  font-weight:850;
+  color:var(--teal);
+  letter-spacing:-.02em;
+}
+
+.back {
+  background:var(--teal);
+  color:#042f2e;
+  font-weight:800;
+  padding:10px 17px;
+  border-radius:10px;
+  white-space:nowrap;
+  border:0;
+  cursor:pointer;
+}
+
+.back:hover { background:var(--teal-light); }
+
+main {
+  width:min(1000px,94%);
+  margin:30px auto 50px;
+}
+
+.hero {
+  text-align:center;
+  margin:0 auto 24px;
+}
+
+.eyebrow {
+  display:inline-block;
+  color:var(--teal-light);
+  background:#0f766e22;
+  border:1px solid #0f766e66;
+  border-radius:99px;
+  padding:6px 12px;
+  font-size:.72rem;
+  font-weight:850;
+  letter-spacing:.13em;
+}
+
+h1 {
+  font-size:clamp(1.8rem,5vw,2.8rem);
+  margin:12px 0 7px;
+  letter-spacing:-.04em;
+}
+
+.hero p { color:#b6c5d8; }
+
+.panel {
+  background:linear-gradient(145deg,#0f1c32f5,#0b1426f5);
+  border:1px solid #293b55;
+  border-radius:23px;
+  padding:clamp(16px,3vw,28px);
+  box-shadow:0 22px 60px #0005;
+}
+
+.screen { display:none; }
+.screen.active { display:block; }
+
+.settings-title {
+  text-align:center;
+  margin:4px 0 8px;
+  font-size:clamp(1.35rem,3vw,1.8rem);
+}
+
+.settings-sub {
+  text-align:center;
+  color:var(--muted);
+  margin:0 0 24px;
+}
+
+.controls {
+  display:grid;
+  grid-template-columns:1.5fr 1fr 1fr;
+  gap:12px;
+}
+
+.field label {
+  display:block;
+  color:#cbd5e1;
+  font-size:.8rem;
+  font-weight:800;
+  margin:0 0 7px;
+}
+
+select {
+  width:100%;
+  padding:12px 13px;
+  background:#071326;
+  border:1px solid #334155;
+  border-radius:11px;
+  color:#f8fafc;
+  font:inherit;
+  outline:none;
+}
+
+select:focus {
+  border-color:var(--teal);
+  box-shadow:0 0 0 3px #14b8a622;
+}
+
+#questionCountNote {
+  color:var(--muted);
+  text-align:center;
+  font-size:.82rem;
+  margin:16px 0 0;
+}
+
+.start-wrap {
+  text-align:center;
+  margin-top:24px;
+}
+
+.btn {
+  border:0;
+  border-radius:11px;
+  padding:12px 17px;
+  font:inherit;
+  font-size:.9rem;
+  font-weight:850;
+  cursor:pointer;
+  transition:.18s;
+}
+
+.btn:hover:not(:disabled) {
+  transform:translateY(-1px);
+  filter:brightness(1.08);
+}
+
+.btn:disabled {
+  opacity:.4;
+  cursor:not-allowed;
+}
+
+.primary {
+  background:var(--teal);
+  color:#042f2e;
+}
+
+.secondary {
+  background:#24364f;
+  color:#e2e8f0;
+}
+
+.gold {
+  background:#422f0c;
+  color:#fde68a;
+  border:1px solid #785516;
+}
+
+.start-btn {
+  min-width:min(100%,260px);
+  font-size:1rem;
+  padding:15px 24px;
+}
+
+.stats {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:11px;
+  margin:20px 0 16px;
+}
+
+.stat {
+  background:#071326;
+  border:1px solid #23344b;
+  border-radius:14px;
+  text-align:center;
+  padding:12px;
+}
+
+.stat strong {
+  display:block;
+  font-size:1.45rem;
+  color:var(--teal-light);
+  font-variant-numeric:tabular-nums;
+}
+
+.stat span {
+  font-size:.7rem;
+  color:var(--muted);
+  font-weight:850;
+  letter-spacing:.1em;
+}
+
+.progress {
+  height:8px;
+  background:#263449;
+  border-radius:99px;
+  overflow:hidden;
+  margin-bottom:17px;
+}
+
+.progress div {
+  height:100%;
+  width:0;
+  background:linear-gradient(90deg,#0d9488,#38bdf8);
+  transition:width .25s;
+}
+
+.qtop {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+  color:var(--muted);
+  font-size:.78rem;
+  font-weight:850;
+  letter-spacing:.07em;
+}
+
+.tag {
+  background:#123b49;
+  color:#99f6e4;
+  padding:6px 10px;
+  border-radius:99px;
+  font-size:.7rem;
+}
+
+.question {
+  background:#09172b;
+  border:1px solid #263b55;
+  border-radius:18px;
+  padding:clamp(18px,4vw,30px);
+  text-align:center;
+  margin-top:12px;
+}
+
+.category {
+  display:inline-block;
+  background:#0f766e2b;
+  color:#5eead4;
+  border:1px solid #0f766e66;
+  border-radius:99px;
+  padding:6px 11px;
+  font-size:.72rem;
+  font-weight:850;
+}
+
+.prompt {
+  font-size:clamp(1.08rem,3vw,1.5rem);
+  font-weight:850;
+  line-height:1.5;
+  margin:15px auto 10px;
+  max-width:760px;
+}
+
+.visual {
+  font-size:clamp(1.2rem,4vw,2.2rem);
+  font-weight:850;
+  letter-spacing:.04em;
+  margin:12px 0;
+  overflow-wrap:anywhere;
+  color:#bae6fd;
+  white-space:pre-wrap;
+}
+
+.options {
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:14px;
+  margin-top:20px;
+  width:100%;
+}
+
+.option {
+  display:block;
+  width:100%;
+  min-width:0;
+  background:#13243c;
+  border:2px solid #405572;
+  border-radius:13px;
+  padding:15px 12px;
+  font-size:1rem;
+  font-weight:800;
+  color:#e2e8f0;
+  cursor:pointer;
+  min-height:60px;
+  transition:.18s;
+  overflow-wrap:anywhere;
+}
+
+.option:hover:not(:disabled) {
+  border-color:var(--teal);
+  background:#123344;
+  transform:translateY(-1px);
+}
+
+.option:disabled { cursor:default; }
+
+.option.correct {
+  border-color:#22c55e;
+  background:#123522;
+  color:#bbf7d0;
+}
+
+.option.wrong {
+  border-color:#ef4444;
+  background:#3b171d;
+  color:#fecaca;
+}
+
+.feedback {
+  min-height:54px;
+  margin:14px 0 0;
+  padding:12px;
+  border-radius:12px;
+  text-align:center;
+  font-weight:750;
+  line-height:1.5;
+  background:#172338;
+  color:#cbd5e1;
+}
+
+.feedback.good {
+  background:#123522;
+  color:#bbf7d0;
+}
+
+.feedback.bad {
+  background:#3b171d;
+  color:#fecaca;
+}
+
+.feedback.neutral {
+  background:#172338;
+  color:#cbd5e1;
+}
+
+.actions {
+  display:flex;
+  justify-content:center;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-top:18px;
+}
+
+.result-mark {
+  font-size:3.2rem;
+  margin:8px;
+}
+
+.result-heading { text-align:center; }
+.result-heading h2 { font-size:1.6rem; margin:8px 0; }
+.result-heading p { color:var(--muted); }
+
+.result-grid {
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:10px;
+  margin:22px 0;
+}
+
+.result-card {
+  background:#071326;
+  border:1px solid #23344b;
+  border-radius:15px;
+  text-align:center;
+  padding:17px 8px;
+}
+
+.result-card strong {
+  display:block;
+  font-size:clamp(1.3rem,4vw,2rem);
+  color:var(--teal-light);
+}
+
+.result-card span {
+  display:block;
+  font-size:.68rem;
+  color:var(--muted);
+  font-weight:850;
+  letter-spacing:.08em;
+  margin-top:5px;
+}
+
+footer {
+  text-align:center;
+  color:#64748b;
+  font-size:.78rem;
+  padding:0 15px 25px;
+}
+
+@media(max-width:650px) {
+  .controls { grid-template-columns:1fr; }
+  .options { grid-template-columns:1fr; }
+  .stats { gap:7px; }
+  .stat { padding:9px 4px; }
+  .nav-inner { padding:13px 15px; }
+  main { margin-top:22px; }
+  .result-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <h1 class="brand">🎓 Hsu Academic Boost</h1>
+    <button class="back" onclick="history.back()" type="button">
+      Back Home
+    </button>
+  </div>
+</nav>
+
+<main>
+
+  <div class="hero">
+    <span class="eyebrow">THINK • EXPLORE • SOLVE</span>
+    <h1>🧠 IT & Coding Brain Teaser</h1>
+    <p>Challenge your logic, discover patterns, and sharpen your technology skills.</p>
+  </div>
+
+  <section class="panel">
+
+    <!-- SETTINGS SCREEN -->
+    <div class="screen active" id="settingsScreen">
+
+      <h2 class="settings-title">Choose your settings</h2>
+
+      <p class="settings-sub">
+        Students select their preferred options.
+      </p>
+
+      <div class="controls">
+
+        <div class="field">
+          <label for="category">Challenge category</label>
+
+          <select id="category">
+            <option value="all">All Categories</option>
+            <option value="binary">Binary Code Detective</option>
+            <option value="code">Predict the Code</option>
+            <option value="network">Network Detective</option>
+            <option value="debug">Debugging Challenge</option>
+            <option value="algorithm">Algorithm Detective</option>
+            <option value="cyber">Cybersecurity Mystery</option>
+            <option value="html">HTML Tag Detective</option>
+            <option value="logicgate">Logic Gate Challenge</option>
+            <option value="hardware">Computer Hardware Mystery</option>
+            <option value="number">Number Puzzles</option>
+            <option value="logic">Logic Puzzles</option>
+            <option value="math">Mathematical Thinking</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="level">Difficulty</label>
+          <select id="level">
+            <option value="easy">Easy</option>
+            <option value="medium" selected>Medium</option>
+            <option value="hard">Hard</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="sound">Sound effects</label>
+          <select id="sound">
+            <option value="on" selected>On</option>
+            <option value="off">Off</option>
+          </select>
+        </div>
+
+      </div>
+
+      <p id="questionCountNote"></p>
+
+      <div class="start-wrap">
+        <button class="btn primary start-btn" id="startBtn">
+          🚀 Start Challenge
+        </button>
+      </div>
+
+    </div>
+
+    <!-- QUESTION SCREEN -->
+    <div class="screen" id="quizScreen">
+
+      <div class="stats">
+        <div class="stat">
+          <strong id="score">0</strong>
+          <span>SCORE</span>
+        </div>
+
+        <div class="stat">
+          <strong id="progressText">1/10</strong>
+          <span>QUESTION</span>
+        </div>
+
+        <div class="stat">
+          <strong id="accuracy">—</strong>
+          <span>ACCURACY</span>
+        </div>
+      </div>
+
+      <div class="progress">
+        <div id="bar"></div>
+      </div>
+
+      <div class="qtop">
+        <span id="qNumber">QUESTION 1 / 10</span>
+        <span class="tag" id="levelTag">MEDIUM</span>
+      </div>
+
+      <div class="question">
+        <span class="category" id="catLabel">CODING CHALLENGE</span>
+        <div class="prompt" id="prompt"></div>
+        <div class="visual" id="visual"></div>
+        <div class="options" id="options"></div>
+
+        <div class="feedback neutral" id="feedback" aria-live="polite">
+          Choose the best answer.
+        </div>
+      </div>
+
+      <div class="actions">
+        <button class="btn gold" id="hint">💡 Hint</button>
+        <button class="btn primary" id="next" disabled>
+          Next Question →
+        </button>
+      </div>
+
+    </div>
+
+    <!-- RESULTS SCREEN -->
+    <div class="screen" id="resultsScreen">
+
+      <div class="result-heading">
+        <div class="result-mark" id="resultEmoji">🏆</div>
+        <h2>Challenge Complete!</h2>
+        <p>Here are your final results.</p>
+      </div>
+
+      <div class="result-grid">
+        <div class="result-card">
+          <strong id="finalScore">0 / 100</strong>
+          <span>SCORE</span>
+        </div>
+
+        <div class="result-card">
+          <strong id="finalAccuracy">0%</strong>
+          <span>ACCURACY</span>
+        </div>
+
+        <div class="result-card">
+          <strong id="finalCorrect">0 / 10</strong>
+          <span>CORRECT ANSWERS</span>
+        </div>
+
+        <div class="result-card">
+          <strong id="finalLevel">MEDIUM</strong>
+          <span>DIFFICULTY</span>
+        </div>
+      </div>
+
+      <div class="feedback good" id="resultMessage"></div>
+
+      <div class="actions">
+        <button class="btn primary" id="replayBtn">
+          ↻ Replay Challenge
+        </button>
+
+        <button class="btn secondary" id="settingsBtn">
+          ⚙ Change Settings
+        </button>
+      </div>
+
+    </div>
+
+  </section>
+</main>
+
+<footer>
+  © Hsu Academic Boost · Learn Smart. Build Strong Future.
+</footer>
+<script>
+// Each question format:
+// [category, question, correctAnswer, fourOptions, visual]
+
+const rawBank = {
+easy: [
+["binary","What is 10₂ in decimal?","2","1|2|3|4","10₂"],
+["binary","Which digits are used in binary?","0 and 1","0 and 1|1 and 2|0 and 2|1 and 9","BASE 2"],
+["binary","What is 11₂ in decimal?","3","2|3|4|5","11₂"],
+["binary","How many bits are in the binary number 101?","3","2|3|4|5","101"],
+["binary","What is the value of the rightmost binary place?","1","0|1|2|10","… 1"],
+
+["code","What does console.log(2 + 3) display?","5","23|5|6|Error","JavaScript"],
+["code","What is 7 + 2?","9","7|8|9|72","7 + 2"],
+["code","Which keyword declares a variable in JavaScript?","let","print|let|show|write","let age = 10;"],
+["code","What does Python print(8 - 3) display?","5","11|5|83|Error","8 - 3"],
+["code","Which symbol starts a Python comment?","#","//|#|<!--|**","# comment"],
+
+["network","Which device connects a home network to the internet?","Router","Monitor|Router|Printer|Keyboard","🌐"],
+["network","Which connection uses radio waves?","Wi-Fi","Ethernet cable|Wi-Fi|USB cable|HDMI","📶"],
+["network","What does LAN stand for?","Local Area Network","Large Access Number|Local Area Network|Long Analog Node|Linked App Name","LAN"],
+["network","Which cable is used for a wired Ethernet connection?","Ethernet cable","Ethernet cable|Headphones|Stylus|Webcam","🔌"],
+["network","Which device connects several wired devices in a local network?","Switch","Switch|Monitor|Scanner|Microphone","🖧"],
+
+["debug","What is missing from print(\"Hi\"?","Closing parenthesis", "Closing parenthesis|Semicolon|Hashtag|Variable","print(\"Hi\""],
+["debug","Which variable name is used consistently?","The names do not match","The names do not match|Both names match|The print command is missing|There is no issue","score = 5; print(scores)"],
+["debug","What error occurs with 10 / 0 in Python?","ZeroDivisionError","0|10|ZeroDivisionError|10/0","10 / 0"],
+["debug","Which closing bracket is missing?"," )"," )|]|}|>","console.log(\"Hi\";"],
+["debug","What is wrong with this code?","The variable names differ","The variable names differ|The number is too large|It needs a hashtag|Nothing is wrong","age = 10; print(ages)"],
+
+["algorithm","What should you do first when following a recipe?","Read the instructions","Bake|Mix ingredients|Read the instructions|Serve","1. Read\n2. Mix\n3. Bake"],
+["algorithm","What is a sequence in an algorithm?","Steps arranged in order","A random collection|Steps arranged in order|A computer screen|A password","➡️➡️➡️"],
+["algorithm","Which flowchart shape usually represents a decision?","Diamond","Oval|Rectangle|Diamond|Arrow","◇"],
+["algorithm","A robot repeats move forward three times. How many moves?","3","1|2|3|4","FORWARD × 3"],
+["algorithm","Which order is sensible for saving a new document?","Create, save, name the file","Save, close, create|Create, save, name the file|Close, create, save|Name, delete, save","Create → Save"],
+
+["cyber","A stranger asks for your password. What should you do?","Keep it private","Share it|Keep it private|Post it publicly|Send it to a stranger","🔒"],
+["cyber","What should you do with a suspicious link?","Do not click it","Click it quickly|Forward it to everyone|Do not click it|Enter your password","🔗❓"],
+["cyber","What should you do before sharing a friend's photo?","Ask permission","Post it immediately|Ask permission|Add their address|Share with strangers","📷"],
+["cyber","Which information should you keep private?","Your home address","Favourite colour|Home address|Weather report|Fictional character name","🔐"],
+["cyber","What should you do after using your account on a shared computer?","Sign out","Leave it open|Sign out|Save your password|Share your password","🚪"],
+
+["html","Which tag creates the largest standard heading?","<h1>","<p>|<h6>|<h1>|<br>","<h1>"],
+["html","Which tag creates a paragraph?","<p>","<p>|<h1>|<img>|<br>","<p>Text</p>"],
+["html","Which character is used in a closing HTML tag?","/","#|/|\\|*","</p>"],
+["html","Which attribute provides alternative text for an image?","alt","href|src|alt|class","<img alt=\"A cat\">"],
+["html","Which element contains the visible page content?","<body>","<head>|<body>|<title>|<meta>","<body>"],
+
+["logicgate","What is 1 AND 1?","1","0|1|2|10","1 AND 1"],
+["logicgate","What is 0 AND 0?","0","0|1|2|10","0 AND 0"],
+["logicgate","What is 1 OR 1?","1","0|1|2|10","1 OR 1"],
+["logicgate","What is 1 OR 0?","1","0|1|2|10","1 OR 0"],
+["logicgate","What is NOT 1?","0","0|1|10|11","NOT 1"],
+
+["hardware","Which component displays pictures and text?","Monitor","Mouse|Monitor|Microphone|Scanner","🖥️"],
+["hardware","Which device moves the pointer?","Mouse","Mouse|Speaker|Printer|Router","🖱️"],
+["hardware","Which component stores files when power is off?","SSD","RAM|CPU|SSD|Cache","💾"],
+["hardware","Which device produces a paper copy?","Printer","Scanner|Printer|Monitor|Microphone","🖨️"],
+["hardware","Which device is used to type letters?","Keyboard","Keyboard|Monitor|Speaker|Projector","⌨️"],
+
+["number","What comes next: 3, 6, 9, 12, ?","15","13|14|15|18","3, 6, 9, 12"],
+["number","What comes next: 5, 10, 15, 20, ?","25","21|22|25|30","5, 10, 15, 20"],
+["number","Which number is even?","18","13|17|18|21","Choose an even number"],
+["number","What is 9 × 4?","36","32|34|36|38","9 × 4"],
+["number","What is 100 ÷ 10?","10","1|10|20|90","100 ÷ 10"],
+
+["logic","Which does not belong: keyboard, mouse, monitor, apple?","Apple","Keyboard|Mouse|Monitor|Apple","⌨️ 🖱️ 🖥️ 🍎"],
+["logic","How many balls are 2 red and 2 blue altogether?","4","2|3|4|5","🔴🔴🔵🔵"],
+["logic","What comes next: ▲ ● ▲ ● ▲ ?","●","▲|●|■|★","▲ ● ▲ ● ▲"],
+["logic","If today is Monday, what day is it in two days?","Wednesday","Tuesday|Wednesday|Thursday|Friday","Monday → ?"],
+["logic","You have 3 pairs of socks. How many individual socks?","6","3|5|6|9","3 pairs"],
+
+["math","4 folders contain 3 files each. How many files?","12","7|10|12|14","4 × 3"],
+["math","What is 5 pages per day for 4 days?","20","9|15|20|25","5 × 4"],
+["math","What is half of 36?","18","16|18|20|24","36 ÷ 2"],
+["math","12 students are split into 3 equal groups. How many per group?","4","3|4|6|9","12 ÷ 3"],
+["math","A student earns 7 points in each of 6 rounds. Total?","42","36|40|42|48","7 × 6"]
+],
+
+medium: [
+["binary","What is 101₂ in decimal?","5","4|5|6|7","101₂"],
+["binary","Which binary number represents decimal 6?","110","101|110|111|100","6 = 4 + 2"],
+["binary","What is 1001₂ in decimal?","9","7|8|9|10","1001₂"],
+["binary","What is decimal 7 in binary?","111","101|110|111|100","7 = 4 + 2 + 1"],
+["binary","How many bits are in one byte?","8","4|8|16|32","1 BYTE"],
+
+["code","What does this code display?","12","7|12|43|Error","let x = 4; console.log(x * 3);"],
+["code","What is count after two increments?","7","5|6|7|8","count = 5; count++; count++;"],
+["code","What does x += 4 do if x is 6?","10","6|4|10|64","x = 6; x += 4"],
+["code","What does len(\"HAB\") return in Python?","3","2|3|4|HAB","len(\"HAB\")"],
+["code","How many times does range(3) run in a for loop?","3","2|3|4|0","range(3)"],
+
+["network","Which topology connects devices to one central switch?","Star topology","Ring topology|Bus topology|Star topology|Mesh topology","Central switch"],
+["network","What does DNS help a device find?","The IP address for a domain name","A keyboard driver|The IP address for a domain name|A screen resolution|A file password","example.com → ?"],
+["network","Which protocol is used to transfer web pages?","HTTP","FTP only|HTTP|HDMI|Bluetooth","HTTP / HTTPS"],
+["network","What does bandwidth describe?","Data transfer capacity per unit of time","Physical laptop width|Data transfer capacity per unit of time|Keyboard keys|Monitor size","📶"],
+["network","What does LAN stand for?","Local Area Network","Large Access Number|Local Area Network|Long Analog Node|Linked App Name","LAN"],
+
+["debug","What is the error in print(\"Hello)?","Missing closing quote","Missing parentheses|Missing closing quote|Wrong keyword|Missing variable","print(\"Hello)"],
+["debug","What does this Python code print?","5","4|5|41|Error","x = 4; print(x + 1)"],
+["debug","Which name is a valid Python variable?","student_age","2student|student-age|student_age|class","Choose a valid identifier"],
+["debug","What is wrong with if score = 10:?","It uses = instead of == for comparison","Needs a hashtag|It uses = instead of == for comparison|score must be text|if cannot be used","if score = 10:"],
+["debug","What does this Python code print?","Ada","name|Ada|\"Ada\" with quotes|Error","name = \"Ada\"; print(name)"],
+
+["algorithm","A robot moves 3 steps, turns, then moves 2. How many forward steps?","5","2|3|4|5","3 + 2"],
+["algorithm","Which flowchart shape represents a process?","Rectangle","Diamond|Rectangle|Oval|Cloud","▭"],
+["algorithm","Which operator checks a remainder in Python?","Modulo (%)","Addition (+)|Modulo (%)|Multiplication (*)|Assignment (=)","number % 2"],
+["algorithm","Four steps take 2 seconds each. Total time?","8 seconds","6 seconds|8 seconds|10 seconds|12 seconds","4 × 2"],
+["algorithm","An algorithm checks items 1 to 4 and finds the target at item 4. How many checked?","4","3|4|6|10","1 → 2 → 3 → 4"],
+
+["cyber","What is two-factor authentication?","Using two different verification factors","Two usernames|Using two different verification factors|Changing password twice daily|Two browsers open","🔐 + 📱"],
+["cyber","Why install software updates?","They can fix security weaknesses and bugs","They always make devices faster|They can fix security weaknesses and bugs|They remove passwords|They make every site safe","⬆️"],
+["cyber","What is phishing?","A deceptive attempt to steal information","Organising files|A deceptive attempt to steal information|Computer cooling|A printer type","🎣"],
+["cyber","What is a security patch?","An update that fixes a security weakness","Wallpaper|An update that fixes a security weakness|A password type|A network cable","🩹💻"],
+["cyber","Which is the strongest example password?","River!82Moon","password123|12345678|River!82Moon|qwerty","Choose a long, unique password"],
+
+["html","Which attribute specifies a link destination?","href","src|alt|href|width","<a href=\"page.html\">"],
+["html","Which element creates an unordered list?","<ul>","<ol>|<ul>|<table>|<head>","<ul><li>Item</li></ul>"],
+["html","Where is the page title placed?","Inside the head element","Inside the footer|Inside the head element|Inside an image|Inside the body only","<head><title>...</title></head>"],
+["html","Which element creates a clickable link?","<a>","<p>|<img>|<a>|<ul>","Anchor element"],
+["html","Which attribute gives an element a unique identifier?","id","class|id|style|src","<div id=\"intro\">"],
+
+["logicgate","What is 1 AND 0?","0","0|1|10|11","1 AND 0"],
+["logicgate","What is 0 OR 0?","0","0|1|2|10","0 OR 0"],
+["logicgate","What is NOT 0?","1","0|1|2|10","NOT 0"],
+["logicgate","What is 1 XOR 1?","0","0|1|2|10","1 XOR 1"],
+["logicgate","What is the output of 1 OR 0?","1","0|1|2|10","1 OR 0"],
+
+["hardware","Which component temporarily stores data used by programs?","RAM","SSD|RAM|Monitor|Power supply","Short-term memory"],
+["hardware","Which component renders graphics?","GPU","GPU|SSD|RAM|Power supply","Graphics processing"],
+["hardware","Which port carries digital video and audio?","HDMI","Ethernet|HDMI|3.5 mm audio only|PS/2","HDMI"],
+["hardware","Which component supplies power to desktop parts?","Power supply unit","CPU|Power supply unit|RAM|SSD","⚡"],
+["hardware","Which component cools the CPU?","Cooling system","Cooling system|SSD|Keyboard|Network card","Fan and heat sink"],
+
+["number","What comes next: 2, 6, 18, 54, ?","162","108|144|162|216","Multiply by 3"],
+["number","What comes next: 81, 27, 9, 3, ?","1","0|1|2|6","Divide by 3"],
+["number","What is the greatest common factor of 12 and 18?","6","3|6|9|12","GCF(12,18)"],
+["number","What is 25% of 80?","20","15|20|25|40","0.25 × 80"],
+["number","What is the next number: 4, 8, 16, 32, ?","64","48|56|64|72","Double each number"],
+
+["logic","You overtake the runner in second place. What place are you in?","Second","First|Second|Third|Fourth","Think about the person you passed"],
+["logic","Three switches are available. Exactly two are on. How many are off?","1","0|1|2|3","3 switches total"],
+["logic","A pattern repeats red, blue, green. What is the 8th colour?","Blue","Red|Blue|Green|Yellow","R, B, G, R, B, G, R, ?"],
+["logic","All laptops are computers. A Chromebook is a laptop. What follows?","A Chromebook is a computer","A Chromebook is not a computer|A Chromebook is a computer|All computers are Chromebooks|No conclusion","A → B"],
+["logic","A code uses one letter from A, B, C and one digit from 1, 2. How many codes?","6","5|6|8|9","3 choices × 2 choices"],
+
+["math","A download transfers 15 MB each minute for 4 minutes. How much data?","60 MB","19 MB|45 MB|60 MB|75 MB","15 × 4"],
+["math","Three quarters of 24 students submit their work. How many?","18","6|12|16|18","¾ × 24"],
+["math","A file changes from 40 MB to 50 MB. Increase?","10 MB","5 MB|10 MB|15 MB|90 MB","50 − 40"],
+["math","18 of 20 answers are correct. What percentage is correct?","90%","80%|85%|90%|95%","18 ÷ 20 × 100"],
+["math","A 120 MB download is 25% complete. How much has downloaded?","30 MB","25 MB|30 MB|40 MB|90 MB","0.25 × 120"]
+],
+
+hard: [
+["binary","What is 1101₂ in decimal?","13","11|12|13|14","1101₂"],
+["binary","Which 4-bit binary number represents decimal 10?","1010","1001|1010|1100|1110","10 = 8 + 2"],
+["binary","What is 1111₂ in decimal?","15","13|14|15|16","1111₂"],
+["binary","What is decimal 12 in 4-bit binary?","1100","1010|1011|1100|1110","12 = 8 + 4"],
+["binary","What is the largest unsigned value represented by 4 bits?","15","7|8|15|16","1111₂"],
+
+["code","What does this Python code print?","7","5|6|7|9","x = 3; repeat twice: x = x + 2"],
+["code","What does 10 - 2 * 3 evaluate to?","4","24|4|8|6","Multiplication first"],
+["code","What does values[1] return?","4","2|4|6|1","values = [2, 4, 6]"],
+["code","What does 7 // 2 return in Python?","3","3|3.5|4|2","Floor division"],
+["code","What does Boolean(0) return in JavaScript?","false","true|false|0|undefined","Boolean(0)"],
+
+["network","How many traditionally usable host addresses are in an IPv4 /24 subnet?","254","252|253|254|256","256 total addresses minus network and broadcast"],
+["network","Which protocol automatically assigns IP configuration?","DHCP","DNS|HTTP|DHCP|HTML","Dynamic Host Configuration Protocol"],
+["network","Which device forwards packets between IP networks?","Router","Switch|Router|Repeater|Hub","🌐"],
+["network","How many direct links are needed to connect every pair of 5 computers?","10","5|8|10|20","5 × 4 ÷ 2"],
+["network","Which address identifies a device interface on an IP network?","IP address","URL|IP address|File extension|HTML tag","Network identifier"],
+
+["debug","What does this Python code print?","4","3|4|5|[1, 2, 3, 4]","items = [1, 2, 3]; items.append(4); print(len(items))"],
+["debug","What is missing from this Python for statement?","Colon","Colon|Variable|Semicolon|range value","for i in range(5)"],
+["debug","What does 5 === \"5\" return in JavaScript?","false","true|false|5|Error","Strict equality"],
+["debug","What is the output of this Python code?","Yes","Yes|No|10|Error","x = 10; if x > 5: print(\"Yes\")"],
+["debug","What is wrong with this Python code?","The indentation is missing","The indentation is missing|The if statement is invalid|print cannot be used|The number is too large","if 5 > 2: print(\"Yes\")"],
+
+["algorithm","How many halvings reduce 64 items to 1 item?","6","5|6|7|8","64 → 32 → 16 → 8 → 4 → 2 → 1"],
+["algorithm","What is the time complexity of checking every item once?","O(n)","O(1)|O(log n)|O(n)|O(n²)","n items checked once"],
+["algorithm","Which flowchart shape represents start or end?","Oval","Diamond|Rectangle|Oval|Parallelogram","Terminator"],
+["algorithm","A loop starts at 1 and increases by 2 while less than 8. Which values?","1, 3, 5, 7","1, 2, 3, 4, 5, 6, 7|1, 3, 5, 7|1, 3, 5|2, 4, 6, 8","Add 2 each time"],
+["algorithm","An algorithm adds 3 four times to a starting total of 2. Final total?","14","9|12|14|15","2 + (4 × 3)"],
+
+["cyber","What does HTTPS provide for data in transit?","Encryption","A guarantee the website is honest|Encryption|A guarantee of no viruses|Government ownership","🔒"],
+["cyber","What is a zero-day vulnerability?","A vulnerability with no available fix or one unknown to the vendor","A daily password|A vulnerability with no available fix or one unknown to the vendor|A computer without a battery|A harmless update","⚠️"],
+["cyber","What is the principle of least privilege?","Give users only the access they need","Give everyone administrator access|Give users only the access they need|Never use passwords|Share one account","🔐"],
+["cyber","Why is password reuse risky?","One breach could expose multiple accounts","It makes typing slower|One breach could expose multiple accounts|It prevents phishing|It encrypts data","🔁"],
+["cyber","What is the main benefit of a password manager?","It helps create and store unique strong passwords","It makes every website safe|It helps create and store unique strong passwords|It removes the need for updates|It guarantees no account can be hacked","🔑"],
+
+["html","Which element associates a text caption with a form control?","<label>","<label>|<section>|<meta>|<title>","<label>"],
+["html","Which attribute makes an input mandatory?","required","checked|required|placeholder|readonly","<input required>"],
+["html","Which element contains the main unique content of a page?","<main>","<aside>|<main>|<footer>|<nav>","<main>"],
+["html","Which element should contain metadata such as character encoding?","<head>","<footer>|<head>|<main>|<article>","<meta charset=\"UTF-8\">"],
+["html","Which element embeds an image?","<img>","<image>|<picturefile>|<img>|<src>","<img>"],
+
+["logicgate","What is (1 AND 0) OR 1?","1","0|1|2|Cannot tell","Evaluate AND first"],
+["logicgate","What is (1 OR 0) AND 0?","0","0|1|2|Cannot tell","Evaluate parentheses first"],
+["logicgate","Which gate outputs 1 only when inputs differ?","XOR","AND|OR|XOR|NOT","Exclusive OR"],
+["logicgate","What is the output of (1 XOR 0) AND 1?","1","0|1|2|Cannot tell","1 XOR 0 = 1"],
+["logicgate","What is the output of 1 XOR 1?","0","0|1|2|10","Inputs are the same"],
+
+["hardware","Which memory is volatile?","RAM","SSD|HDD|RAM|Blu-ray disc","💾"],
+["hardware","Which storage device has no moving disk platters?","SSD","HDD|SSD|DVD drive|Floppy disk","Solid-state drive"],
+["hardware","Which motherboard component holds the CPU?","CPU socket","RAM slot|CPU socket|SATA cable|Fan","CPU socket"],
+["hardware","Which firmware initializes hardware and starts booting on many PCs?","BIOS/UEFI","HTML|BIOS/UEFI|Spreadsheet|DNS","BIOS / UEFI"],
+["hardware","Which component performs general-purpose instruction processing?","CPU","RAM|CPU|SSD|Monitor","🧠"],
+
+["number","What comes next: 1, 1, 2, 3, 5, 8, ?","13","11|12|13|16","Add the previous two numbers"],
+["number","What is the least common multiple of 6 and 8?","24","12|18|24|48","LCM(6,8)"],
+["number","What is 2⁵?","32","10|16|32|64","2 × 2 × 2 × 2 × 2"],
+["number","What comes next: 3, 9, 27, 81, ?","243","162|216|243|324","Multiply by 3"],
+["number","A file is 2 MB. Using 1 MB = 1,024 KB, how many KB?","2,048 KB","1,024 KB|1,500 KB|2,000 KB|2,048 KB","2 × 1,024"],
+
+["logic","A password has 2 digits, each 0–9, repetition allowed. How many combinations?","100","20|50|100|200","10 choices × 10 choices"],
+["logic","If all Zips are Zaps and no Zaps are Zops, can a Zip be a Zop?","No","Yes, all can|No|Only one|Cannot determine","Follow the two statements"],
+["logic","A sequence repeats 1, 2, 2, 3. What is the 10th term?","2","1|2|3|4","The pattern repeats every four terms"],
+["logic","If every A is B and every B is C, what must be true?","Every A is C","Every C is A|Every A is C|No A is C|Every B is A","A → B → C"],
+["logic","A code has 3 letters. Each can be A or B. Repetition is allowed. How many codes?","8","6|8|9|12","2 × 2 × 2"],
+
+["math","A network transfers 240 MB in 2 minutes. Rate per minute?","120 MB/min","60 MB/min|100 MB/min|120 MB/min|480 MB/min","240 ÷ 2"],
+["math","A 500 MB file is compressed by 20%. New size?","400 MB","100 MB|300 MB|400 MB|480 MB","500 − (0.20 × 500)"],
+["math","A computer costs $800 before a 10% discount. New price?","$720","$700|$720|$760|$790","800 − (0.10 × 800)"],
+["math","A 1.5 GB file copies at 30 MB/s. Using 1 GB = 1,000 MB, how long?","50 seconds","30 seconds|45 seconds|50 seconds|60 seconds","1,500 ÷ 30"],
+["math","A file is 750 MB. It downloads at 25 MB/s. How many seconds?","30 seconds","20 seconds|25 seconds|30 seconds|35 seconds","750 ÷ 25"]
+]
+};
+
+// CATEGORY LABELS
+
+const categoryNames = {
+  binary:"BINARY CODE DETECTIVE",
+  code:"PREDICT THE CODE",
+  network:"NETWORK DETECTIVE",
+  debug:"DEBUGGING CHALLENGE",
+  algorithm:"ALGORITHM DETECTIVE",
+  cyber:"CYBERSECURITY MYSTERY",
+  html:"HTML TAG DETECTIVE",
+  logicgate:"LOGIC GATE CHALLENGE",
+  hardware:"COMPUTER HARDWARE MYSTERY",
+  number:"NUMBER PUZZLES",
+  logic:"LOGIC PUZZLES",
+  math:"MATHEMATICAL THINKING"
+};
+
+const categoryHints = {
+  binary:"Think about the place values of a base-two number.",
+  code:"Read the code carefully and trace the value step by step.",
+  network:"Think about how computers and devices communicate.",
+  debug:"Look carefully for the missing or incorrect part.",
+  algorithm:"Follow the instructions in the correct order.",
+  cyber:"Choose the safest action to protect information.",
+  html:"Think about the purpose of each HTML element or attribute.",
+  logicgate:"Use the truth table for the logic gate.",
+  hardware:"Think about the function of each computer component.",
+  number:"Look for a mathematical pattern.",
+  logic:"Read every condition carefully before deciding.",
+  math:"Choose the correct mathematical operation."
+};
+
+// CONVERT THE COMPACT QUESTION BANK
+
+const bank = {};
+
+for (const level of ["easy", "medium", "hard"]) {
+  bank[level] = rawBank[level].map(item => {
+    const category = item[0];
+    const question = item[1];
+    const answer = item[2].trim();
+    const options = item[3].split("|").map(option => option.trim());
+    const visual = item[4] || "";
+
+    return [
+      category,
+      question,
+      visual,
+      answer,
+      options,
+      categoryHints[category],
+      `The correct answer is ${answer}.`
+    ];
+  });
+}
+
+// VALIDATE THE QUESTION BANK BEFORE STARTING
+
+const categoryKeys = Object.keys(categoryNames);
+
+for (const level of ["easy", "medium", "hard"]) {
+
+  if (bank[level].length !== 60) {
+    throw new Error(
+      `${level} must contain 60 questions. Found ${bank[level].length}.`
+    );
+  }
+
+  for (const q of bank[level]) {
+
+    if (q.length !== 7) {
+      throw new Error("Question data is incomplete: " + q[1]);
+    }
+
+    if (!q[4].includes(q[3])) {
+      throw new Error("Correct answer is missing from options: " + q[1]);
+    }
+
+    if (q[4].length !== 4 || new Set(q[4]).size !== 4) {
+      throw new Error("Each question needs four different options: " + q[1]);
+    }
+  }
+
+  for (const category of categoryKeys) {
+
+    const count = bank[level].filter(q => q[0] === category).length;
+
+    if (count !== 5) {
+      throw new Error(
+        `${category} at ${level} level must have exactly 5 questions. Found ${count}.`
+      );
+    }
+  }
+}
+
+// GAME VARIABLES
+
+const $ = id => document.getElementById(id);
+
+let questions = [];
+let index = 0;
+let score = 0;
+let answered = 0;
+let correct = 0;
+let usedHint = false;
+let locked = false;
+
+// SHUFFLE QUESTIONS
+
+function shuffle(items) {
+
+  const result = [...items];
+
+  for (let i = result.length - 1; i > 0; i--) {
+
+    const j = Math.floor(Math.random() * (i + 1));
+
+    [result[i], result[j]] = [result[j], result[i]];
+  }
+
+  return result;
+}
+
+// SCREEN CONTROL
+
+function showScreen(screenId) {
+
+  ["settingsScreen", "quizScreen", "resultsScreen"].forEach(id => {
+    $(id).classList.remove("active");
+  });
+
+  $(screenId).classList.add("active");
+
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+}
+
+// SOUND EFFECT
+
+function beep(isCorrect = true) {
+
+  if ($("sound").value === "off") return;
+
+  try {
+
+    const AudioContextClass =
+      window.AudioContext || window.webkitAudioContext;
+
+    if (!AudioContextClass) return;
+
+    const context = new AudioContextClass();
+
+    const oscillator = context.createOscillator();
+    const gain = context.createGain();
+
+    oscillator.connect(gain);
+    gain.connect(context.destination);
+
+    oscillator.type = "sine";
+
+    oscillator.frequency.value = isCorrect ? 720 : 190;
+
+    gain.gain.setValueAtTime(0.08, context.currentTime);
+
+    gain.gain.exponentialRampToValueAtTime(
+      0.001,
+      context.currentTime + 0.2
+    );
+
+    oscillator.start();
+    oscillator.stop(context.currentTime + 0.2);
+
+    oscillator.onended = () => context.close();
+
+  } catch (error) {
+    // Sound is optional.
+  }
+}
+
+// UPDATE QUESTION COUNT BEFORE STARTING
+
+function updateQuestionCountNote() {
+
+  const category = $("category").value;
+  const level = $("level").value;
+
+  if (category === "all") {
+
+    $("questionCountNote").textContent =
+      "All Categories: 10 random mixed questions.";
+
+  } else {
+
+    const count = bank[level].filter(q => q[0] === category).length;
+
+    $("questionCountNote").textContent =
+      `${categoryNames[category]}: ${count} questions at ${level.toUpperCase()} difficulty.`;
+  }
+}
+
+$("category").addEventListener("change", updateQuestionCountNote);
+
+$("level").addEventListener("change", updateQuestionCountNote);
+
+updateQuestionCountNote();
+
+// START CHALLENGE
+
+function startChallenge() {
+
+  const category = $("category").value;
+  const level = $("level").value;
+
+  const pool = bank[level].filter(q =>
+    category === "all" || q[0] === category
+  );
+
+  if (!pool.length) {
+    alert("No questions are available for this selection.");
+    return;
+  }
+
+  if (category === "all") {
+
+    // 10 random questions from all 12 categories.
+    questions = shuffle(pool).slice(0, 10);
+
+  } else {
+
+    // Exactly 5 questions from the selected category.
+    questions = shuffle(pool);
+  }
+
+  index = 0;
+  score = 0;
+  answered = 0;
+  correct = 0;
+  usedHint = false;
+  locked = false;
+
+  showScreen("quizScreen");
+
+  showQuestion();
+}
+
+// UPDATE SCORE AND PROGRESS
+
+function updateStats() {
+
+  $("score").textContent = score;
+
+  $("progressText").textContent =
+    `${Math.min(index + 1, questions.length)}/${questions.length}`;
+
+  $("accuracy").textContent = answered
+    ? `${Math.round(correct / answered * 100)}%`
+    : "—";
+
+  $("bar").style.width =
+    `${((index + 1) / questions.length) * 100}%`;
+}
+
+// DISPLAY QUESTION
+
+function showQuestion() {
+
+  locked = false;
+  usedHint = false;
+
+  $("next").disabled = true;
+  $("hint").disabled = false;
+
+  const q = questions[index];
+
+  if (!q) {
+    finish();
+    return;
+  }
+
+  $("qNumber").textContent =
+    `QUESTION ${index + 1} / ${questions.length}`;
+
+  $("levelTag").textContent =
+    $("level").value.toUpperCase();
+
+  $("catLabel").textContent =
+    categoryNames[q[0]];
+
+  $("prompt").textContent = q[1];
+
+  $("visual").textContent = q[2];
+
+  $("feedback").className = "feedback neutral";
+
+  $("feedback").textContent =
+    "Choose the best answer.";
+
+  $("options").innerHTML = "";
+
+  // Shuffle answer choices so the correct answer
+  // does not always appear in the same position.
+
+  shuffle(q[4]).forEach(option => {
+
+    const button = document.createElement("button");
+
+    button.type = "button";
+    button.className = "option";
+    button.textContent = option;
+
+    button.addEventListener("click", () => {
+      answer(button, option, q);
+    });
+
+    $("options").appendChild(button);
+
+  });
+
+  $("next").textContent = "Next Question →";
+
+  updateStats();
+}
+
+// CHECK ANSWER
+
+function answer(button, choice, q) {
+
+  if (locked) return;
+
+  locked = true;
+
+  answered++;
+
+  const isCorrect = choice === q[3];
+
+  if (isCorrect) {
+
+    correct++;
+
+    // Correct answer without hint = 10 points.
+    // Correct answer after using hint = 5 points.
+
+    score += usedHint ? 5 : 10;
+
+    beep(true);
+
+    $("feedback").className = "feedback good";
+
+    $("feedback").textContent =
+      `✅ Correct! ${q[6]}`;
+
+  } else {
+
+    beep(false);
+
+    $("feedback").className = "feedback bad";
+
+    $("feedback").textContent =
+      `❌ Not quite. ${q[6]}`;
+  }
+
+  // Show the correct answer and disable all options.
+
+  [...$("options").children].forEach(optionButton => {
+
+    optionButton.disabled = true;
+
+    if (optionButton.textContent === q[3]) {
+
+      optionButton.classList.add("correct");
+
+    } else if (optionButton === button && !isCorrect) {
+
+      optionButton.classList.add("wrong");
+    }
+
+  });
+
+  $("next").disabled = false;
+
+  $("hint").disabled = true;
+
+  $("next").textContent =
+    index === questions.length - 1
+      ? "View Final Results →"
+      : "Next Question →";
+
+  updateStats();
+}
+
+// HINT BUTTON
+
+$("hint").addEventListener("click", () => {
+
+  if (locked || !questions[index]) return;
+
+  usedHint = true;
+
+  $("feedback").className = "feedback neutral";
+
+  $("feedback").textContent =
+    `💡 Hint: ${questions[index][5]}`;
+
+});
+
+// NEXT QUESTION BUTTON
+
+$("next").addEventListener("click", () => {
+
+  if ($("next").disabled) return;
+
+  index++;
+
+  if (index >= questions.length) {
+
+    finish();
+
+  } else {
+
+    showQuestion();
+  }
+
+});
+
+// FINAL RESULTS
+
+function finish() {
+
+  const accuracy = questions.length
+    ? Math.round(correct / questions.length * 100)
+    : 0;
+
+  const maxScore = questions.length * 10;
+
+  $("finalScore").textContent =
+    `${score} / ${maxScore}`;
+
+  $("finalAccuracy").textContent =
+    `${accuracy}%`;
+
+  $("finalCorrect").textContent =
+    `${correct} / ${questions.length}`;
+
+  $("finalLevel").textContent =
+    $("level").value.toUpperCase();
+
+  $("resultEmoji").textContent =
+    accuracy === 100 ? "🏆" :
+    accuracy >= 70 ? "🎉" : "💪";
+
+  $("resultMessage").textContent =
+    accuracy >= 80
+      ? "Excellent work! You are a Brain Teaser Champion!"
+      : accuracy >= 50
+        ? "Good effort! Review the answers and try again."
+        : "Keep practising. Every challenge helps you grow!";
+
+  $("bar").style.width = "100%";
+
+  showScreen("resultsScreen");
+}
+
+// BUTTON EVENTS
+
+$("startBtn").addEventListener("click", startChallenge);
+
+// Replay uses the same selected category and difficulty.
+$("replayBtn").addEventListener("click", startChallenge);
+
+$("settingsBtn").addEventListener("click", () => {
+  showScreen("settingsScreen");
+});
+
+</script>
+
+</body>
+</html>
