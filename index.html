@@ -846,48 +846,433 @@
 
 </section>
 <hr>
-   <!-- Contact Section -->
-   <section id="contact" class="py-20 px-4 bg-gradient-to-br from-slate-300 to-slate-400 ">
-    <div class="max-w-2xl mx-auto">
-     <h2 class="text-3xl sm:text-4xl font-bold text-slate-800 text-center mb-4">Join <span class="text-teal-600">Our Community</span></h2>
-     <p class="text-slate-500 text-center mb-10">စတင်လေ့လာရန် အလိုအလျှောက် ဆက်သွယ်ပါ!</p>
-     <form id="contact-form" class="bg-white rounded-2xl p-8 border border-slate-100 shadow-sm space-y-5">
-      <div>
-       <label for="c-name" class="block text-sm font-medium text-slate-700 mb-1">Name *</label>
-       <input id="c-name" type="text" required class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-teal-400 focus:ring-2 focus:ring-teal-100 outline-none transition" placeholder="Your name">
-      </div>
-      <div>
-       <label for="c-email" class="block text-sm font-medium text-slate-700 mb-1">Email *</label>
-       <input id="c-email" type="email" required class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-teal-400 focus:ring-2 focus:ring-teal-100 outline-none transition" placeholder="you@email.com">
-      </div>
-      <div>
-       <label for="c-phone" class="block text-sm font-medium text-slate-700 mb-1">Phone (optional)</label>
-       <input id="c-phone" type="tel" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-teal-400 focus:ring-2 focus:ring-teal-100 outline-none transition" placeholder="09xxxxxxxxx">
-      </div>
-      <div>
-       <label for="c-class" class="block text-sm font-medium text-slate-700 mb-1">Interested in Class *</label>
-       <select id="c-class" required class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-teal-400 focus:ring-2 focus:ring-teal-100 outline-none transition bg-white">
-        <option value="">Select a class</option>
-        <option value="Basic Scratch-3">Basic Scratch-3</option>
-        <option value="Advanced Scratch-3">Advanced Scratch-3</option>
-        <option value="Scratch with Python">Scratch with Python</option>
-        <option value="Basic Python">Basic Python</option>
-        <option value="Office & Creative Skills">Office & Creative Skills</option>
-        <option value="Cambridge/Oxford Support">Cambridge/Oxford Support</option>
-        <option value="Trial Class">Trial Class</option>
-       </select>
-      </div>
-      <div>
-       <label for="c-msg" class="block text-sm font-medium text-slate-700 mb-1">Message (optional)</label>
-       <textarea id="c-msg" rows="4" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-teal-400 focus:ring-2 focus:ring-teal-100 outline-none transition resize-none" placeholder="Tell us about yourself..."></textarea>
-      </div>
-      <button type="submit" id="submit-btn" class="w-full bg-teal-500 hover:bg-teal-600 text-white font-semibold py-3 rounded-xl transition-all flex items-center justify-center gap-2">
-       <i data-lucide="send" style="width:18px;height:18px;"></i> Submit
-      </button>
-      <div id="form-status" class="hidden text-center py-3 rounded-xl text-sm font-medium"></div>
-     </form>
+<!--
+<section id="student-voices"
+  class="py-20 px-4 bg-slate-950 text-white">
+
+  <div class="max-w-6xl mx-auto">
+
+   
+    <div class="text-center mb-12">
+
+      <span class="text-teal-400 font-semibold tracking-wider uppercase text-sm">
+        Hsu Academic Boost Community
+      </span>
+
+      <h2 class="text-3xl md:text-4xl font-bold mt-3">
+        💬 Student Voices
+      </h2>
+
+      <p class="text-slate-400 mt-4 max-w-2xl mx-auto">
+        Every learner has a story to share.
+        Share your learning journey, celebrate your achievements,
+        and inspire other learners!
+      </p>
+
     </div>
+
+
+    <div class="grid lg:grid-cols-2 gap-10 items-start">
+
+   
+      <div class="bg-slate-900 border border-slate-800
+                  rounded-2xl p-6 md:p-8">
+
+        <h3 class="text-2xl font-bold mb-2">
+          Share Your Thoughts ✨
+        </h3>
+
+        <p class="text-slate-400 text-sm mb-6">
+          Tell us about your learning experience.
+        </p>
+
+        <form id="hab-comment-form" class="space-y-5">
+
+          
+          <div>
+            <label for="hab-name"
+              class="block text-sm font-medium mb-2">
+              Your Nickname
+            </label>
+
+            <input
+              id="hab-name"
+              type="text"
+              maxlength="24"
+              minlength="2"
+              required
+              placeholder="e.g. LittleCoder"
+              autocomplete="off"
+              class="w-full bg-slate-950 border border-slate-700
+                     rounded-xl px-4 py-3 text-white
+                     focus:outline-none focus:border-teal-400">
+          </div>
+
+
+          <div>
+            <label for="hab-category"
+              class="block text-sm font-medium mb-2">
+              Choose a Topic
+            </label>
+
+            <select
+              id="hab-category"
+              required
+              class="w-full bg-slate-950 border border-slate-700
+                     rounded-xl px-4 py-3 text-white
+                     focus:outline-none focus:border-teal-400">
+
+              <option value="">Select a category</option>
+              <option value="Learning Experience">
+                📚 Learning Experience
+              </option>
+              <option value="Achievement">
+                🏆 Achievement
+              </option>
+              <option value="Ideas">
+                💡 Ideas
+              </option>
+              <option value="Encouragement">
+                ❤️ Encouragement
+              </option>
+
+            </select>
+          </div>
+
+
+  
+          <div>
+            <label for="hab-comment"
+              class="block text-sm font-medium mb-2">
+              Your Message
+            </label>
+
+            <textarea
+              id="hab-comment"
+              rows="5"
+              minlength="5"
+              maxlength="500"
+              required
+              placeholder="What have you learned? What would you like to share?"
+              class="w-full bg-slate-950 border border-slate-700
+                     rounded-xl px-4 py-3 text-white
+                     focus:outline-none focus:border-teal-400
+                     resize-y"></textarea>
+
+            <p class="text-xs text-slate-500 mt-2">
+              Maximum 500 characters.
+            </p>
+          </div>
+
+
+       
+          <div class="hidden" aria-hidden="true">
+            <label for="hab-website">Website</label>
+            <input id="hab-website" type="text"
+              tabindex="-1" autocomplete="off">
+          </div>
+
+
+          <p class="text-xs text-slate-400">
+            Please use a nickname. Do not share your full name,
+            email, phone number, school address, or other private
+            information. Comments are reviewed before publication.
+          </p>
+
+
+
+          <button
+            id="hab-submit-btn"
+            type="submit"
+            class="w-full bg-teal-500 hover:bg-teal-400
+                   text-slate-950 font-bold py-3 px-6
+                   rounded-xl transition duration-300">
+
+            Submit Comment ✨
+
+          </button>
+
+
+
+          <div id="hab-form-status"
+            role="status"
+            aria-live="polite"
+            class="text-sm text-center">
+          </div>
+
+        </form>
+
+      </div>
+
+
+
+      <div>
+
+        <div class="flex items-center justify-between mb-6">
+
+          <div>
+            <h3 class="text-2xl font-bold">
+              🌟 Community Messages
+            </h3>
+
+            <p class="text-slate-400 text-sm mt-1">
+              Messages from our learners.
+            </p>
+          </div>
+
+          <button
+            id="hab-refresh-comments"
+            type="button"
+            class="text-teal-400 hover:text-teal-300 text-sm">
+
+            ↻ Refresh
+
+          </button>
+
+        </div>
+
+
+       
+        <div id="hab-comments-list" class="space-y-4">
+
+          <p class="text-slate-400 text-center py-8">
+            Loading community messages...
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
 </section>
+-->
+
+<!-- SUPABASE LIBRARY -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+
+<script>
+/* =====================================
+   HAB SUPABASE CONNECTION
+===================================== */
+
+// Replace these two values with your own
+const HAB_SUPABASE_URL = "YOUR_SUPABASE_PROJECT_URL";
+const HAB_SUPABASE_KEY = "YOUR_SUPABASE_PUBLISHABLE_OR_ANON_KEY";
+
+const habClient = window.supabase.createClient(
+  HAB_SUPABASE_URL,
+  HAB_SUPABASE_KEY
+);
+
+
+/* =====================================
+   ELEMENTS
+===================================== */
+
+const habForm = document.getElementById("hab-comment-form");
+const habName = document.getElementById("hab-name");
+const habCategory = document.getElementById("hab-category");
+const habComment = document.getElementById("hab-comment");
+
+const habStatus = document.getElementById("hab-form-status");
+const habSubmit = document.getElementById("hab-submit-btn");
+
+const habCommentsList =
+  document.getElementById("hab-comments-list");
+
+const habRefresh =
+  document.getElementById("hab-refresh-comments");
+
+
+/* =====================================
+   DISPLAY STATUS MESSAGE
+===================================== */
+
+function showHabStatus(message, success = false) {
+
+  habStatus.textContent = message;
+
+  habStatus.className =
+    "text-sm text-center " +
+    (success ? "text-teal-400" : "text-red-400");
+
+}
+
+
+/* =====================================
+   LOAD APPROVED COMMENTS
+===================================== */
+
+async function loadHabComments() {
+
+  habCommentsList.textContent = "Loading comments...";
+
+  const { data, error } = await habClient
+    .from("hab_comments")
+    .select("id, display_name, category, comment, created_at")
+    .eq("status", "approved")
+    .order("created_at", { ascending: false })
+    .limit(20);
+
+  if (error) {
+
+    console.error("HAB comments error:", error);
+
+    habCommentsList.textContent =
+      "Unable to load comments. Please try again later.";
+
+    return;
+  }
+
+  habCommentsList.replaceChildren();
+
+  if (!data || data.length === 0) {
+
+    habCommentsList.textContent =
+      "No messages yet. Be the first to share your learning journey!";
+
+    return;
+  }
+
+
+  data.forEach((item) => {
+
+    const card = document.createElement("article");
+
+    card.className =
+      "bg-slate-900 border border-slate-800 " +
+      "rounded-2xl p-5";
+
+
+    const name = document.createElement("h4");
+
+    name.className =
+      "font-bold text-teal-400 text-lg";
+
+    name.textContent = item.display_name;
+
+
+    const category = document.createElement("p");
+
+    category.className =
+      "text-xs text-sky-400 mt-1 mb-3";
+
+    category.textContent = item.category;
+
+
+    const message = document.createElement("p");
+
+    message.className =
+      "text-slate-300 leading-relaxed whitespace-pre-wrap";
+
+    message.textContent = item.comment;
+
+
+    const date = document.createElement("p");
+
+    date.className =
+      "text-xs text-slate-500 mt-4";
+
+    date.textContent =
+      new Date(item.created_at).toLocaleDateString();
+
+
+    card.append(name, category, message, date);
+
+    habCommentsList.appendChild(card);
+
+  });
+
+}
+
+
+/* =====================================
+   SUBMIT NEW COMMENT
+===================================== */
+
+habForm.addEventListener("submit", async function(event) {
+
+  event.preventDefault();
+
+  // Simple spam trap
+  if (document.getElementById("hab-website").value.trim()) {
+    return;
+  }
+
+  const displayName = habName.value.trim();
+  const category = habCategory.value;
+  const comment = habComment.value.trim();
+
+  if (displayName.length < 2 || displayName.length > 24) {
+    showHabStatus("Please enter a nickname between 2 and 24 characters.");
+    return;
+  }
+
+  if (comment.length < 5 || comment.length > 500) {
+    showHabStatus("Your comment must contain 5–500 characters.");
+    return;
+  }
+
+  habSubmit.disabled = true;
+  habSubmit.textContent = "Submitting...";
+
+  showHabStatus("Sending your comment...", true);
+
+
+  const { error } = await habClient
+    .from("hab_comments")
+    .insert({
+      display_name: displayName,
+      category: category,
+      comment: comment
+    });
+
+
+  if (error) {
+
+    console.error("HAB submission error:", error);
+
+    showHabStatus(
+      "Sorry, your comment could not be submitted. Please try again."
+    );
+
+  } else {
+
+    habForm.reset();
+
+    showHabStatus(
+      "Thank you! Your comment has been submitted for review. 💚",
+      true
+    );
+
+  }
+
+
+  habSubmit.disabled = false;
+  habSubmit.textContent = "Submit Comment ✨";
+
+});
+
+
+/* =====================================
+   REFRESH BUTTON
+===================================== */
+
+habRefresh.addEventListener("click", loadHabComments);
+
+
+/* =====================================
+   INITIAL LOAD
+===================================== */
+
+loadHabComments();
+
+</script>
+
 <!-- =========================
      Student Testimonials
 ========================= -->
