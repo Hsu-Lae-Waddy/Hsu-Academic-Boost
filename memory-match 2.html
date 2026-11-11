@@ -1,0 +1,987 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Memory Match Challenge | Hsu Academic Boost</title>
+<script src="https://cdn.tailwindcss.com"></script>
+
+<style>
+:root {
+  --navy: #071a2f;
+  --navy-light: #102d55;
+  --panel: #102744;
+  --teal: #14b8a6;
+  --sky: #38bdf8;
+  --gold: #f6bd4b;
+  --line: #294563;
+  --text: #eaf2ff;
+  --muted: #a9bdd5;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: Inter, system-ui, sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(circle at top left, #123b63 0, transparent 35%),
+    linear-gradient(135deg, #061426, #0b2039 55%, #102d48);
+}
+
+main {
+  width: min(1100px, 94%);
+  margin: 25px auto 45px;
+}
+
+.panel {
+  background: rgba(16, 39, 68, .96);
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  padding: clamp(16px, 3vw, 30px);
+  box-shadow: 0 18px 45px #00000030;
+}
+
+.controls {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.field label {
+  display: block;
+  font-size: .85rem;
+  font-weight: 800;
+  margin-bottom: 10px;
+  color: #c8d9ed;
+}
+
+select {
+  width: 100%;
+  min-height: 50px;
+  padding: 12px 14px;
+  border: 1px solid #426080;
+  border-radius: 12px;
+  background: #0a1d34;
+  color: white;
+  font: inherit;
+  outline: none;
+  cursor: pointer;
+}
+
+select:focus {
+  border-color: var(--teal);
+  box-shadow: 0 0 0 3px #14b8a625;
+}
+
+select option {
+  background: #102744;
+  color: white;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin: 25px 0 18px;
+}
+
+.stat {
+  background: #0b2039;
+  border: 1px solid #294563;
+  border-radius: 15px;
+  text-align: center;
+  padding: 14px 5px;
+}
+
+.stat strong {
+  display: block;
+  font-size: 1.5rem;
+  color: var(--gold);
+}
+
+.stat span {
+  font-size: .72rem;
+  color: var(--muted);
+  font-weight: 800;
+  letter-spacing: .7px;
+}
+
+.message {
+  min-height: 44px;
+  text-align: center;
+  font-weight: 800;
+  color: #7dd3fc;
+  margin: 16px 0 20px;
+}
+
+.game-grid {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 11px;
+  max-width: 900px;
+  margin: auto;
+}
+
+.memory-card {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  min-width: 0;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  perspective: 800px;
+  cursor: pointer;
+}
+
+.card-inner {
+  position: absolute;
+  inset: 0;
+  transform-style: preserve-3d;
+  transition: transform .4s;
+}
+
+.memory-card.flipped .card-inner,
+.memory-card.matched .card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 13px;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.card-front {
+  background: linear-gradient(145deg, #1b477b, #102d55);
+  color: white;
+  border: 2px solid #3d6795;
+  box-shadow: 0 4px 0 #061426;
+}
+
+.card-front .logo {
+  font-size: clamp(1.2rem, 3vw, 2rem);
+  color: var(--gold);
+  font-weight: 900;
+}
+
+.card-front small {
+  font-size: .58rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  color: #dbeafe;
+  margin-top: 5px;
+}
+
+.card-back {
+  transform: rotateY(180deg);
+  background: #e8f4ff;
+  border: 2px solid #7dd3fc;
+  box-shadow: 0 4px 0 #24628b;
+  color: #102d55;
+  gap: 4px;
+}
+
+.card-back .picture {
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  line-height: 1.2;
+}
+
+.card-back .card-name {
+  font-size: clamp(.58rem, 1.4vw, .85rem);
+  font-weight: 800;
+  text-align: center;
+  padding: 0 3px;
+}
+
+.memory-card.matched .card-back {
+  background: #dcfce7;
+  border-color: #4ade80;
+  box-shadow: 0 4px 0 #15803d;
+}
+
+.memory-card:disabled {
+  cursor: default;
+}
+
+.actions {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 25px;
+}
+
+.btn {
+  border: 0;
+  border-radius: 12px;
+  padding: 13px 21px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: .2s;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.08);
+}
+
+.primary {
+  background: var(--teal);
+  color: #042b2a;
+}
+
+.secondary {
+  background: #24466a;
+  color: white;
+  border: 1px solid #426080;
+}
+
+.note {
+  text-align: center;
+  color: var(--muted);
+  font-size: .88rem;
+  margin: 22px auto 0;
+  max-width: 650px;
+  line-height: 1.7;
+}
+
+footer {
+  text-align: center;
+  color: #829bb7;
+  font-size: .8rem;
+  padding: 0 15px 25px;
+}
+
+.win-message {
+  background: #0b352f;
+  border: 1px solid #168b70;
+  padding: 20px;
+  border-radius: 15px;
+  text-align: center;
+  margin-top: 18px;
+  display: none;
+}
+
+.win-message h3 {
+  color: #5eead4;
+  font-size: 1.3rem;
+  font-weight: 900;
+}
+
+@media(max-width: 850px) {
+  .controls {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media(max-width: 650px) {
+  .game-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 8px;
+  }
+
+  .stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .card-front, .card-back {
+    border-radius: 10px;
+  }
+}
+
+@media(max-width: 380px) {
+  .controls {
+    grid-template-columns: 1fr;
+  }
+
+  .game-grid {
+    gap: 5px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav class="bg-slate-950 border-b border-slate-800">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center gap-3">
+    <h1 class="text-lg sm:text-2xl font-bold text-teal-400">
+      🎓 Hsu Academic Boost
+    </h1>
+
+    <a href="index.html"
+       class="bg-teal-500 hover:bg-teal-600 text-slate-950 font-bold px-4 sm:px-5 py-2 rounded-lg transition whitespace-nowrap">
+      Back Home
+    </a>
+  </div>
+</nav>
+
+<!-- HEADER -->
+<header class="text-center px-4 py-8">
+  <div class="text-sm font-extrabold tracking-widest text-teal-400">
+    BRAIN CHALLENGES
+  </div>
+
+  <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-2">
+    🧠 Memory Match Challenge
+  </h2>
+
+  <p class="text-slate-300 mt-2">
+    Flip • Remember • Match • Win
+  </p>
+</header>
+
+<main>
+<section class="panel">
+
+  <!-- GAME SETTINGS -->
+  <div class="controls">
+
+    <div class="field">
+      <label for="category">Choose a Topic</label>
+      <select id="category">
+        <option value="computer">💻 Computer Parts</option>
+        <option value="technology">📱 Technology</option>
+        <option value="internet">🌐 Internet & Web</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <label for="level">Choose Level</label>
+      <select id="level">
+        <option value="12">Level 1 – 12 Cards</option>
+        <option value="16">Level 2 – 16 Cards</option>
+        <option value="20">Level 3 – 20 Cards</option>
+        <option value="24">Level 4 – 24 Cards</option>
+        <option value="28">Level 5 – 28 Cards</option>
+        <option value="30">Level 6 – 30 Cards</option>
+        <option value="36">Level 7 – 36 Cards</option>
+        <option value="42">Level 8 – 42 Cards</option>
+        <option value="48">Level 9 – 48 Cards</option>
+        <option value="54">Level 10 – 54 Cards</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <label for="challenge">Game Mode</label>
+      <select id="challenge">
+        <option value="free">Free Play – Unlimited Misses</option>
+        <option value="limited">Challenge – Limited Misses</option>
+        <option value="perfect">Perfect – No Misses</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <label for="sound">Sound Effects</label>
+      <select id="sound">
+        <option value="on">🔊 On</option>
+        <option value="off">🔇 Off</option>
+      </select>
+    </div>
+
+  </div>
+
+  <!-- SCORE -->
+  <div class="stats">
+    <div class="stat">
+      <strong id="moves">0</strong>
+      <span>MOVES</span>
+    </div>
+
+    <div class="stat">
+      <strong id="matches">0/6</strong>
+      <span>PAIRS FOUND</span>
+    </div>
+
+    <div class="stat">
+      <strong id="misses">0</strong>
+      <span>MISSES</span>
+    </div>
+
+    <div class="stat">
+      <strong id="time">00:00</strong>
+      <span>TIME</span>
+    </div>
+  </div>
+
+  <!-- MESSAGE -->
+  <div class="message" id="message" aria-live="polite">
+    Find two cards with the same picture!
+  </div>
+
+  <!-- GAME GRID -->
+  <div class="game-grid" id="gameGrid"></div>
+
+  <!-- WIN / GAME OVER MESSAGE -->
+  <div class="win-message" id="winMessage">
+    <h3 id="winTitle">🏆 Excellent Work!</h3>
+    <p id="winText" class="mt-2 text-slate-200"></p>
+
+    <button class="btn primary mt-4" id="nextBtn" type="button">
+      Next Level →
+    </button>
+  </div>
+
+  <!-- ACTIONS -->
+  <div class="actions">
+    <button class="btn primary" id="restart" type="button">
+      ↻ Restart Game
+    </button>
+
+    <button class="btn secondary" id="how" type="button">
+      How to Play
+    </button>
+  </div>
+
+  <p class="note">
+    Flip two cards at a time. Find identical pictures and remember their
+    positions. Match all the pairs to win!
+  </p>
+
+</section>
+</main>
+
+<footer>
+  © Hsu Academic Boost · Learn Smart. Build Strong Future.
+</footer>
+
+<!-- SOUNDS -->
+<audio id="correct-sound" preload="auto"
+src="https://actions.google.com/sounds/v1/cartoon/clang_and_wobble.ogg"></audio>
+
+<audio id="wrong-sound" preload="auto"
+src="https://actions.google.com/sounds/v1/cartoon/wood_plank_flicks.ogg"></audio>
+
+<script>
+// =============================================
+// 1. EDUCATIONAL PICTURE DATABASE
+// =============================================
+
+const decks = {
+
+  computer: [
+    ["🖱️","Mouse"],
+    ["🖥️","Monitor"],
+    ["⌨️","Keyboard"],
+    ["🖨️","Printer"],
+    ["🎤","Microphone"],
+    ["🔊","Speaker"],
+    ["🎧","Headphones"],
+    ["📷","Camera"],
+    ["💻","Laptop"],
+    ["🖱️","Touchpad"],
+    ["🧠","CPU"],
+    ["💾","Storage"],
+    ["🧩","RAM"],
+    ["🔌","Power Cable"],
+    ["🔋","Battery"],
+    ["📀","DVD"],
+    ["📱","Tablet"],
+    ["📡","Network Card"],
+    ["🕹️","Joystick"],
+    ["🔦","Scanner"],
+    ["🖊️","Stylus"],
+    ["🖥️","Desktop"],
+    ["📺","Display"],
+    ["🪫","UPS"],
+    ["🔗","USB Cable"],
+    ["💿","CD"],
+    ["🗄️","Hard Drive"]
+  ],
+
+  technology: [
+    ["📱","Smartphone"],
+    ["⌚","Smartwatch"],
+    ["📷","Digital Camera"],
+    ["🎮","Game Console"],
+    ["🤖","Robot"],
+    ["🚁","Drone"],
+    ["🎧","Headphones"],
+    ["🔊","Bluetooth Speaker"],
+    ["📺","Smart TV"],
+    ["🖨️","3D Printer"],
+    ["🕶️","VR Headset"],
+    ["⌨️","Wireless Keyboard"],
+    ["🖱️","Wireless Mouse"],
+    ["🔋","Battery"],
+    ["🔌","Charger"],
+    ["💡","Smart Light"],
+    ["🚗","Electric Car"],
+    ["📡","Satellite"],
+    ["🎙️","Podcast Mic"],
+    ["📹","Video Camera"],
+    ["🛰️","GPS"],
+    ["🧮","Calculator"],
+    ["🔒","Smart Lock"],
+    ["🛜","Wi-Fi Device"],
+    ["🦾","Robot Arm"],
+    ["💾","USB Drive"],
+    ["📟","Pager"]
+  ],
+
+  internet: [
+    ["🌐","Internet"],
+    ["🌍","World Wide Web"],
+    ["🌎","Website"],
+    ["📄","Web Page"],
+    ["🌐","Browser"],
+    ["🔎","Search Engine"],
+    ["🔗","Hyperlink"],
+    ["🔒","HTTPS"],
+    ["🔑","Password"],
+    ["📧","Email"],
+    ["☁️","Cloud Storage"],
+    ["📡","Router"],
+    ["🛜","Wi-Fi"],
+    ["🖥️","Web Server"],
+    ["🏠","Homepage"],
+    ["🔤","URL"],
+    ["📁","Download"],
+    ["📤","Upload"],
+    ["🍪","Cookie"],
+    ["🛡️","Firewall"],
+    ["💬","Chat"],
+    ["📶","Network"],
+    ["📱","Online Device"],
+    ["🧭","Web Navigation"],
+    ["🔍","Search"],
+    ["📂","File"],
+    ["🌍","Domain"]
+  ]
+
+};
+
+// =============================================
+// 2. VARIABLES
+// =============================================
+
+const $ = id => document.getElementById(id);
+
+let cards = [];
+let firstCard = null;
+let lock = false;
+
+let moves = 0;
+let misses = 0;
+let matches = 0;
+let seconds = 0;
+
+let timer = null;
+let started = false;
+let gameOver = false;
+let gameVersion = 0;
+
+let totalPairs = 6;
+let maxMisses = Infinity;
+
+// =============================================
+// 3. SHUFFLE
+// =============================================
+
+function shuffle(array) {
+  const result = [...array];
+
+  for (let i = result.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [result[i], result[j]] = [result[j], result[i]];
+  }
+
+  return result;
+}
+
+// =============================================
+// 4. SOUNDS
+// =============================================
+
+function playSound(type) {
+  if ($("sound").value === "off") return;
+
+  const sound = type === "correct"
+    ? $("correct-sound")
+    : $("wrong-sound");
+
+  if (!sound) return;
+
+  sound.currentTime = 0;
+  sound.play().catch(() => {});
+}
+
+// =============================================
+// 5. TIMER
+// =============================================
+
+function timeText() {
+  return String(Math.floor(seconds / 60)).padStart(2, "0")
+    + ":" +
+    String(seconds % 60).padStart(2, "0");
+}
+
+function startTimer() {
+  if (started || gameOver) return;
+
+  started = true;
+
+  timer = setInterval(() => {
+    seconds++;
+    $("time").textContent = timeText();
+  }, 1000);
+}
+
+function stopTimer() {
+  clearInterval(timer);
+  timer = null;
+}
+
+// =============================================
+// 6. MISS LIMIT
+// =============================================
+
+function getMissLimit(cardCount) {
+  const limits = {
+    12: 1,
+    16: 2,
+    20: 3,
+    24: 4,
+    28: 5,
+    30: 6,
+    36: 8,
+    42: 10,
+    48: 12,
+    54: 14
+  };
+
+  return limits[cardCount] || 1;
+}
+
+// =============================================
+// 7. CREATE CARDS
+// =============================================
+
+function createCards() {
+  const count = Number($("level").value);
+  const category = $("category").value;
+
+  totalPairs = count / 2;
+
+  const selectedItems = shuffle(decks[category])
+    .slice(0, totalPairs);
+
+  const duplicated = selectedItems.flatMap((item, index) => [
+    {
+      id: index,
+      icon: item[0],
+      name: item[1],
+      flipped: false,
+      matched: false
+    },
+    {
+      id: index,
+      icon: item[0],
+      name: item[1],
+      flipped: false,
+      matched: false
+    }
+  ]);
+
+  cards = shuffle(duplicated);
+}
+
+// =============================================
+// 8. NEW GAME
+// =============================================
+
+function newGame() {
+  gameVersion++;
+
+  stopTimer();
+
+  started = false;
+  gameOver = false;
+  lock = false;
+  firstCard = null;
+
+  moves = 0;
+  misses = 0;
+  matches = 0;
+  seconds = 0;
+
+  createCards();
+
+  const mode = $("challenge").value;
+
+  maxMisses =
+    mode === "free" ? Infinity :
+    mode === "perfect" ? 0 :
+    getMissLimit(Number($("level").value));
+
+  $("moves").textContent = "0";
+  $("matches").textContent = `0/${totalPairs}`;
+  $("misses").textContent = "0";
+  $("time").textContent = "00:00";
+
+  $("message").textContent =
+    "Find two cards with the same picture!";
+
+  $("winMessage").style.display = "none";
+  $("winTitle").textContent = "🏆 Excellent Work!";
+  $("winText").textContent = "";
+  $("nextBtn").style.display = "inline-block";
+
+  // Force a fresh card layout every time a new game starts.
+  renderCards(true);
+}
+
+// =============================================
+// 9. DISPLAY CARDS
+// =============================================
+
+function renderCards(forceRebuild = false) {
+  const grid = $("gameGrid");
+
+  if (forceRebuild || grid.children.length !== cards.length) {
+    grid.innerHTML = "";
+
+    cards.forEach((card, index) => {
+      const button = document.createElement("button");
+
+      button.className = "memory-card";
+      button.type = "button";
+      button.setAttribute("aria-label", "Hidden memory card");
+
+      button.innerHTML = `
+        <div class="card-inner">
+          <div class="card-front">
+            <span class="logo">HAB</span>
+            <small>MEMORY GAME</small>
+          </div>
+
+          <div class="card-back">
+            <span class="picture">${card.icon}</span>
+            <span class="card-name">${card.name}</span>
+          </div>
+        </div>
+      `;
+
+      button.addEventListener("click", () => flipCard(index));
+      grid.appendChild(button);
+    });
+  }
+
+  cards.forEach((card, index) => {
+    const button = grid.children[index];
+
+    button.classList.toggle("flipped", card.flipped);
+    button.classList.toggle("matched", card.matched);
+    button.disabled = card.matched || gameOver;
+  });
+}
+
+// =============================================
+// 10. FLIP CARDS
+// =============================================
+
+function flipCard(index) {
+  if (lock || gameOver) return;
+
+  const selected = cards[index];
+
+  if (selected.flipped || selected.matched) return;
+
+  startTimer();
+
+  selected.flipped = true;
+  renderCards();
+
+  // First card
+  if (firstCard === null) {
+    firstCard = index;
+    return;
+  }
+
+  // Second card
+  moves++;
+  $("moves").textContent = moves;
+
+  const first = cards[firstCard];
+  const second = selected;
+
+  // MATCH FOUND
+  if (first.id === second.id) {
+    first.matched = true;
+    second.matched = true;
+
+    matches++;
+
+    $("matches").textContent = `${matches}/${totalPairs}`;
+
+    firstCard = null;
+
+    playSound("correct");
+
+    $("message").textContent =
+      `🎉 Great job! You matched ${second.name}!`;
+
+    renderCards();
+
+    if (matches === totalPairs) {
+      winGame();
+    }
+
+  } else {
+    // NOT A MATCH
+    misses++;
+    $("misses").textContent = misses;
+
+    lock = true;
+
+    playSound("wrong");
+
+    $("message").textContent =
+      "Not a match! Remember the pictures.";
+
+    const currentVersion = gameVersion;
+
+    setTimeout(() => {
+      // Prevent an old timeout from affecting a restarted game.
+      if (currentVersion !== gameVersion) return;
+
+      first.flipped = false;
+      second.flipped = false;
+
+      firstCard = null;
+      lock = false;
+
+      renderCards();
+
+      if (misses >= maxMisses) {
+        loseGame();
+      } else {
+        $("message").textContent =
+          "Try again! Find the matching pictures.";
+      }
+
+    }, 850);
+  }
+}
+
+// =============================================
+// 11. WIN GAME
+// =============================================
+
+function winGame() {
+  gameOver = true;
+  stopTimer();
+  renderCards();
+
+  $("message").textContent = "🏆 You completed the level!";
+  $("winMessage").style.display = "block";
+  $("winTitle").textContent = "🏆 Excellent Work!";
+
+  $("winText").textContent =
+    `You found all ${totalPairs} pairs in ${moves} moves, with ${misses} misses and a time of ${timeText()}.`;
+
+  const levelIndex = $("level").selectedIndex;
+  const isLastLevel = levelIndex === $("level").options.length - 1;
+
+  $("nextBtn").style.display =
+    isLastLevel ? "none" : "inline-block";
+
+  if (isLastLevel) {
+    $("winText").textContent +=
+      " Congratulations! You completed every level!";
+  }
+}
+
+// =============================================
+// 12. GAME OVER
+// =============================================
+
+function loseGame() {
+  gameOver = true;
+  stopTimer();
+  renderCards();
+
+  $("message").textContent =
+    "❌ Game Over! You reached the miss limit.";
+
+  $("winMessage").style.display = "block";
+  $("winTitle").textContent = "😢 Try Again!";
+
+  $("winText").textContent =
+    `You found ${matches} out of ${totalPairs} pairs. Restart the game and try again!`;
+
+  $("nextBtn").style.display = "none";
+}
+
+// =============================================
+// 13. NEXT LEVEL
+// =============================================
+
+function nextLevel() {
+  const currentIndex = $("level").selectedIndex;
+  const nextIndex = currentIndex + 1;
+
+  // Stop if there is no next level.
+  if (nextIndex >= $("level").options.length) return;
+
+  // Select the actual next option instead of adding 4.
+  $("level").selectedIndex = nextIndex;
+
+  newGame();
+}
+
+// =============================================
+// 14. HOW TO PLAY
+// =============================================
+
+$("how").addEventListener("click", () => {
+  alert(
+    "🧠 MEMORY MATCH CHALLENGE\n\n" +
+    "1. Select a topic and level.\n\n" +
+    "2. Choose a game mode.\n\n" +
+    "3. Click one card to reveal its picture.\n\n" +
+    "4. Click another card to find the matching picture.\n\n" +
+    "5. Matching cards stay visible.\n\n" +
+    "6. Different cards turn face-down again.\n\n" +
+    "7. Find every pair to complete the level.\n\n" +
+    "Free Play: Unlimited misses.\n" +
+    "Challenge: Limited misses.\n" +
+    "Perfect: One mistake ends the game.\n\n" +
+    "Good luck, Digital Explorer! 🎓"
+  );
+});
+
+// =============================================
+// 15. BUTTON EVENTS
+// =============================================
+
+$("restart").addEventListener("click", newGame);
+
+$("nextBtn").addEventListener("click", nextLevel);
+
+$("category").addEventListener("change", newGame);
+$("level").addEventListener("change", newGame);
+$("challenge").addEventListener("change", newGame);
+
+// =============================================
+// 16. START GAME
+// =============================================
+
+newGame();
+
+</script>
+</body>
+</html>
