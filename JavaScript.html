@@ -75,10 +75,220 @@
   <script>
     const lessons = [
       // 🟡 BEGINNER LEVEL
-      {
-        title: "🟡 JavaScript Advance",
-        content: `
-        `}
+   
+{
+  title: "🟡 JavaScript Introduction",
+  content: `
+    <h2>JavaScript Introduction</h2>
+
+    <p>
+      <strong>JavaScript</strong> is a programming language used to make websites
+      interactive and dynamic. It allows websites to respond when users click
+      buttons, type information, submit forms, or perform other actions.
+    </p>
+
+    <h3>1. What Is JavaScript?</h3>
+    <p>
+      Imagine you are visiting a website. You can see text, pictures, buttons,
+      animations, and menus. But what makes those buttons work when you click them?
+      What displays a message when you submit a form?
+    </p>
+    <p>
+      <strong>JavaScript makes these interactions possible!</strong>
+    </p>
+
+    <h3>2. HTML, CSS, and JavaScript</h3>
+    <p>Most websites use three important technologies:</p>
+
+    <div class="table-responsive">
+      <table>
+        <thead>
+          <tr>
+            <th>Technology</th>
+            <th>Purpose</th>
+            <th>Example</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>HTML</strong></td>
+            <td>Creates the structure and content.</td>
+            <td>Headings, paragraphs, buttons.</td>
+          </tr>
+          <tr>
+            <td><strong>CSS</strong></td>
+            <td>Controls the appearance and design.</td>
+            <td>Colors, fonts, spacing, layouts.</td>
+          </tr>
+          <tr>
+            <td><strong>JavaScript</strong></td>
+            <td>Adds behavior and interactivity.</td>
+            <td>Click actions, messages, animations.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>3. A Simple Example</h3>
+    <p>
+      Let's imagine a button on a website. HTML creates the button,
+      CSS makes it look attractive, and JavaScript makes something happen
+      when the user clicks it.
+    </p>
+
+    <div class="code-block"><pre><code>&lt;button onclick="alert('Hello, Student!')"&gt;
+  Click Me!
+&lt;/button&gt;</code></pre></div>
+
+    <p><strong>What happens?</strong></p>
+    <ol>
+      <li>HTML creates a button.</li>
+      <li>The user clicks the button.</li>
+      <li>JavaScript displays a pop-up message saying "Hello, Student!"</li>
+    </ol>
+
+    <h3>4. What Can JavaScript Do?</h3>
+    <ul>
+      <li>Display messages and notifications.</li>
+      <li>Respond to button clicks.</li>
+      <li>Check information entered into forms.</li>
+      <li>Create interactive games and quizzes.</li>
+      <li>Change webpage content without reloading the page.</li>
+      <li>Build animations and interactive effects.</li>
+      <li>Communicate with servers and retrieve data.</li>
+    </ul>
+
+    <h3>5. Where Does JavaScript Run?</h3>
+    <p>
+      JavaScript commonly runs inside web browsers such as Google Chrome,
+      Microsoft Edge, Firefox, and Safari.
+    </p>
+    <p>
+      It can also run outside the browser using environments such as
+      <strong>Node.js</strong>, which allows developers to build server-side
+      applications and other tools.
+    </p>
+
+    <h3>6. How to Add JavaScript to HTML</h3>
+    <p>There are three common ways to add JavaScript to an HTML page.</p>
+
+    <h4>Method 1: Inline JavaScript</h4>
+    <p>Write JavaScript directly inside an HTML element.</p>
+    <div class="code-block"><pre><code>&lt;button onclick="alert('Welcome!')"&gt;
+  Click Me
+&lt;/button&gt;</code></pre></div>
+
+    <h4>Method 2: Internal JavaScript</h4>
+    <p>Write JavaScript inside a <code>&lt;script&gt;</code> tag in the HTML file.</p>
+    <div class="code-block"><pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;title&gt;My First JavaScript&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+  &lt;h1&gt;Welcome!&lt;/h1&gt;
+
+  &lt;script&gt;
+    alert("Hello, World!");
+  &lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</code></pre></div>
+
+    <h4>Method 3: External JavaScript</h4>
+    <p>
+      Write JavaScript in a separate <code>.js</code> file and connect it
+      to your HTML file.
+    </p>
+    <p><strong>index.html</strong></p>
+    <div class="code-block"><pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;title&gt;My Website&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+  &lt;h1&gt;My First Website&lt;/h1&gt;
+
+  &lt;script src="script.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre></div>
+
+    <p><strong>script.js</strong></p>
+    <div class="code-block"><pre><code>alert("Hello from JavaScript!");</code></pre></div>
+
+    <p>
+      <strong>Remember:</strong> The <code>src</code> attribute connects
+      the external JavaScript file to the HTML page. A common practice is
+      to place this script tag near the end of the body or use
+      <code>defer</code> in the head.
+    </p>
+
+    <h3>7. Your First JavaScript Program</h3>
+    <p>
+      Let's write a simple JavaScript program that displays a message
+      in the browser's developer console.
+    </p>
+
+    <div class="code-block"><pre><code>console.log("Hello, World!");
+console.log("Welcome to JavaScript!");
+console.log("I am learning programming.");</code></pre></div>
+
+    <p><strong>Output in the browser console:</strong></p>
+    <div class="output-box">
+      Hello, World!<br>
+      Welcome to JavaScript!<br>
+      I am learning programming.</div>
+
+    <p>
+      <code>console.log()</code> is commonly used by programmers to display
+      information and check what is happening in their code.
+    </p>
+
+    <h3>8. JavaScript Is Case-Sensitive</h3>
+    <p>
+      JavaScript is case-sensitive. This means uppercase and lowercase
+      letters are treated differently.
+    </p>
+    <div class="code-block"> <pre><code>let student = "Alex";
+
+console.log(student);  // Works
+
+// console.log(Student); // Error: Student is different</code></pre></div>
+
+    <h3>9. Summary</h3>
+    <ul>
+      <li>JavaScript is a programming language.</li>
+      <li>It makes websites interactive and dynamic.</li>
+      <li>HTML creates the structure of a webpage.</li>
+      <li>CSS controls the design and appearance.</li>
+      <li>JavaScript controls behavior and interactions.</li>
+      <li>JavaScript can be added inline, internally, or externally.</li>
+      <li><code>console.log()</code> displays information in the console.</li>
+    </ul>
+
+    <h3>10. Try It Yourself!</h3>
+    <p>Complete these beginner activities:</p>
+    <ol>
+      <li>Display "Hello, World!" using <code>console.log()</code>.</li>
+      <li>Display your name in the browser console.</li>
+      <li>Create an HTML button that displays a welcome message when clicked.</li>
+      <li>Create an external JavaScript file and connect it to an HTML page.</li>
+    </ol>
+
+    <h3>🧠 Quick Knowledge Check</h3>
+    <ol>
+      <li>What is JavaScript used for?</li>
+      <li>Which technology creates the structure of a webpage?</li>
+      <li>Which technology controls the appearance of a webpage?</li>
+      <li>Which technology makes a webpage interactive?</li>
+      <li>What does <code>console.log()</code> do?</li>
+      <li>What is the file extension of an external JavaScript file?</li>
+    </ol>
+  `
+},
+
     ];
 
     let currentLesson = 0;
