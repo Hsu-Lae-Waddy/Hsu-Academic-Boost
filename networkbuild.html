@@ -1,0 +1,1291 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title> Hsu Academic Boost</title>
+<link rel="icon" type="image/png" href="LogoHAB-removebg-preview.png">
+<script src="https://cdn.tailwindcss.com"></script>
+
+<style>
+body {font-family:Inter,system-ui,sans-serif}
+.network-grid {
+  background-color:#080f1e;
+  background-image:radial-gradient(#475569 1px,transparent 1px);
+  background-size:22px 22px;
+  min-height:480px;
+  position:relative;
+  overflow:hidden;
+  touch-action:pan-y;
+}
+.device {
+  width:105px;
+  min-height:100px;
+  position:absolute;
+  z-index:5;
+  cursor:grab;
+  user-select:none;
+  touch-action:none;
+}
+.device:active {cursor:grabbing}
+.device.selected {
+  border-color:#2dd4bf;
+  box-shadow:0 0 0 3px #2dd4bf55;
+}
+.palette-item {transition:.2s;cursor:grab}
+.palette-item:hover {
+  transform:translateY(-3px);
+  border-color:#2dd4bf;
+}
+.wire {stroke:#38bdf8;stroke-width:4;fill:none}
+.wire.wifi {
+  stroke:#c084fc;
+  stroke-dasharray:7 6;
+}
+.mission-card {transition:.2s}
+@media(max-width:640px) {
+  .network-grid {min-height:520px}
+  .device {width:90px;min-height:90px}
+}
+</style>
+</head>
+
+<body class="bg-slate-900 text-white min-h-screen">
+
+<!-- NAVBAR -->
+<nav class="bg-slate-950 border-b border-slate-800">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center gap-3">
+    <h1 class="text-xl sm:text-2xl font-bold">
+      🎓 Hsu Academic Boost
+    </h1>
+    <a href="index.html#extraLesson"
+       class="bg-teal-500 hover:bg-teal-600 px-5 py-2 rounded-lg transition whitespace-nowrap">
+      Back Home
+    </a>
+  </div>
+</nav>
+
+<main class="max-w-7xl mx-auto px-4 sm:px-6 py-8">
+
+<!-- HEADER -->
+<section class="text-center mb-8">
+  <div class="inline-block bg-teal-500/10 text-teal-300 px-4 py-2 rounded-full text-sm mb-4">
+    🌐 NETWORK EXPLORER
+  </div>
+  <h2 class="text-3xl sm:text-5xl font-extrabold mb-4">
+    Build Your Own Network!
+  </h2>
+  <p class="text-slate-400 max-w-2xl mx-auto">
+    Become a network engineer! Add devices, connect cables,
+    set up Wi-Fi and complete exciting networking missions.
+  </p>
+</section>
+
+<!-- STATS -->
+<section class="grid grid-cols-3 gap-3 mb-6">
+  <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 text-center">
+    <p class="text-slate-400 text-xs sm:text-sm">Score</p>
+    <p id="score" class="text-2xl font-bold text-teal-400">0</p>
+  </div>
+  <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 text-center">
+    <p class="text-slate-400 text-xs sm:text-sm">Connections</p>
+    <p id="connectionCount" class="text-2xl font-bold text-blue-400">0</p>
+  </div>
+  <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 text-center">
+    <p class="text-slate-400 text-xs sm:text-sm">Missions</p>
+    <p id="missionCount" class="text-2xl font-bold text-purple-400">0/12</p>
+  </div>
+</section>
+
+<!-- CAMPAIGN -->
+<section class="bg-gradient-to-br from-teal-950 to-slate-900 border border-teal-800 rounded-2xl p-5 mb-6">
+
+  <div class="flex flex-wrap justify-between items-center gap-3 mb-4">
+    <div>
+      <p class="text-teal-300 text-sm font-bold">NETWORK ENGINEER ACADEMY</p>
+      <h3 class="text-2xl font-extrabold mt-1">🎯 Mission Campaign</h3>
+    </div>
+    <span id="missionBadge"
+      class="bg-teal-500/20 text-teal-300 px-4 py-2 rounded-full text-sm font-bold">
+      Mission 01 / 12
+    </span>
+  </div>
+
+  <!-- LEVELS -->
+  <div class="grid grid-cols-3 gap-2 mb-5">
+    <div id="level1" class="rounded-lg p-3 text-center bg-teal-500/20 border border-teal-500">
+      <div class="text-xl">🌱</div>
+      <p class="text-xs font-bold">Beginner</p>
+      <p class="text-xs text-slate-400">01–04</p>
+    </div>
+    <div id="level2" class="rounded-lg p-3 text-center bg-slate-800 border border-slate-700">
+      <div class="text-xl">🚀</div>
+      <p class="text-xs font-bold">Explorer</p>
+      <p class="text-xs text-slate-400">05–08</p>
+    </div>
+    <div id="level3" class="rounded-lg p-3 text-center bg-slate-800 border border-slate-700">
+      <div class="text-xl">🏆</div>
+      <p class="text-xs font-bold">Engineer</p>
+      <p class="text-xs text-slate-400">09–12</p>
+    </div>
+  </div>
+
+  <div class="bg-slate-900/70 rounded-xl p-4 mb-4">
+    <div id="missionNumber" class="text-xs text-teal-300 font-bold mb-2">
+      MISSION 01
+    </div>
+    <h4 id="missionTitle" class="text-xl font-bold">My First Network</h4>
+    <p id="missionDescription" class="text-slate-400 text-sm mt-2"></p>
+  </div>
+
+  <div class="mb-3 flex justify-between text-sm">
+    <span class="text-slate-300 font-semibold">Mission Progress</span>
+    <span id="missionProgressText" class="text-teal-300">0 / 2</span>
+  </div>
+
+  <div class="w-full h-3 bg-slate-800 rounded-full overflow-hidden mb-5">
+    <div id="missionProgressBar"
+      class="h-full bg-teal-400 rounded-full transition-all"
+      style="width:0%">
+    </div>
+  </div>
+
+  <h4 class="font-bold mb-3">📋 Your Objectives</h4>
+  <div id="missionList" class="space-y-3 text-sm"></div>
+
+  <div class="mt-5 text-xs text-slate-400">
+    ⭐ Complete all objectives and start the simulation to unlock the next mission.
+  </div>
+
+</section>
+
+<!-- TOOLBOX -->
+<section class="bg-slate-900 border border-slate-800 rounded-2xl p-5 mb-6">
+
+  <div class="flex flex-wrap justify-between items-center gap-2 mb-4">
+    <div>
+      <h3 class="text-xl font-bold">🧰 Device Toolbox</h3>
+      <p class="text-slate-400 text-sm">
+        Drag a device into your network or tap to add it.
+      </p>
+    </div>
+    <span class="text-xs text-teal-300">7 devices available</span>
+  </div>
+
+  <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-7 gap-3">
+
+    <button class="palette-item bg-slate-800 border border-slate-700 rounded-xl p-3 text-center"
+      draggable="true" data-type="modem">
+      <div class="text-3xl">📡</div>
+      <p class="font-semibold text-sm mt-2">Modem</p>
+    </button>
+
+    <button class="palette-item bg-slate-800 border border-slate-700 rounded-xl p-3 text-center"
+      draggable="true" data-type="router">
+      <div class="text-3xl">📶</div>
+      <p class="font-semibold text-sm mt-2">Router</p>
+    </button>
+
+    <button class="palette-item bg-slate-800 border border-slate-700 rounded-xl p-3 text-center"
+      draggable="true" data-type="switch">
+      <div class="text-3xl">🔀</div>
+      <p class="font-semibold text-sm mt-2">Switch</p>
+    </button>
+
+    <button class="palette-item bg-slate-800 border border-slate-700 rounded-xl p-3 text-center"
+      draggable="true" data-type="desktop">
+      <div class="text-3xl">🖥️</div>
+      <p class="font-semibold text-sm mt-2">Desktop</p>
+    </button>
+
+    <button class="palette-item bg-slate-800 border border-slate-700 rounded-xl p-3 text-center"
+      draggable="true" data-type="laptop">
+      <div class="text-3xl">💻</div>
+      <p class="font-semibold text-sm mt-2">Laptop</p>
+    </button>
+
+    <button class="palette-item bg-slate-800 border border-slate-700 rounded-xl p-3 text-center"
+      draggable="true" data-type="server">
+      <div class="text-3xl">🗄️</div>
+      <p class="font-semibold text-sm mt-2">Server</p>
+    </button>
+
+    <button class="palette-item bg-slate-800 border border-slate-700 rounded-xl p-3 text-center"
+      draggable="true" data-type="printer">
+      <div class="text-3xl">🖨️</div>
+      <p class="font-semibold text-sm mt-2">Printer</p>
+    </button>
+
+  </div>
+</section>
+
+<!-- WORKSPACE -->
+<section class="bg-slate-900 border border-slate-800 rounded-2xl p-4 sm:p-5 mb-6">
+
+  <div class="flex flex-wrap justify-between items-center gap-3 mb-4">
+    <div>
+      <h3 class="text-xl font-bold">🏗️ Network Builder</h3>
+      <p class="text-slate-400 text-sm">Your virtual network laboratory</p>
+    </div>
+    <button id="clearBtn"
+      class="text-sm bg-red-500/10 text-red-300 hover:bg-red-500/20 border border-red-500/30 px-4 py-2 rounded-lg">
+      🗑️ Clear All
+    </button>
+  </div>
+
+  <div class="flex flex-wrap gap-2 mb-3">
+    <button id="cableBtn"
+      class="bg-blue-600 hover:bg-blue-500 px-4 py-2 rounded-lg text-sm font-semibold">
+      🔌 Connect Ethernet
+    </button>
+
+    <button id="wifiBtn"
+      class="bg-purple-600 hover:bg-purple-500 px-4 py-2 rounded-lg text-sm font-semibold">
+      📶 Connect Wi-Fi
+    </button>
+
+    <button id="cancelBtn"
+      class="bg-slate-700 hover:bg-slate-600 px-4 py-2 rounded-lg text-sm">
+      Cancel
+    </button>
+  </div>
+
+  <div id="instruction"
+    class="bg-slate-800 text-teal-300 rounded-lg p-3 text-sm mb-3">
+    👆 Add devices from the toolbox to begin your mission.
+  </div>
+
+  <div id="workspace" class="network-grid rounded-xl border border-slate-700">
+
+    <svg id="wires"
+      class="absolute inset-0 w-full h-full pointer-events-none"
+      style="z-index:2;overflow:visible">
+    </svg>
+
+    <div id="emptyMessage"
+      class="absolute inset-0 flex items-center justify-center text-center text-slate-500 pointer-events-none p-6">
+      <div>
+        <div class="text-5xl mb-3">🌐</div>
+        <p class="font-bold text-lg">Your network starts here!</p>
+        <p class="text-sm">Add devices from the toolbox above.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="flex flex-wrap gap-4 mt-3 text-xs text-slate-400">
+    <span>🔵 Ethernet cable</span>
+    <span>🟣 Wi-Fi connection</span>
+    <span>🟢 Successful connection</span>
+  </div>
+
+</section>
+
+<!-- SIMULATION -->
+<section class="bg-slate-900 border border-slate-800 rounded-2xl p-5 mb-6">
+
+  <h3 class="text-xl font-bold mb-2">🚀 Test Your Network</h3>
+  <p class="text-slate-400 text-sm mb-4">
+    Have you finished all the objectives? Test your network!
+  </p>
+
+  <button id="startBtn"
+    class="w-full sm:w-auto bg-teal-500 hover:bg-teal-400 text-slate-950 font-bold px-7 py-3 rounded-xl transition">
+    ▶ Start Network Simulation
+  </button>
+
+  <div id="result"
+    class="hidden mt-5 rounded-xl p-5 bg-slate-800 border border-slate-700">
+  </div>
+
+  <button id="nextMissionBtn"
+    class="hidden mt-4 bg-teal-400 hover:bg-teal-300 text-slate-950 font-bold px-6 py-3 rounded-xl">
+    Next Mission →
+  </button>
+
+</section>
+
+<!-- LEARNING CORNER -->
+<section class="bg-slate-900 border border-slate-800 rounded-2xl p-5 mb-6">
+  <h3 class="text-xl font-bold mb-4">💡 Networking Learning Corner</h3>
+
+  <div class="grid sm:grid-cols-2 gap-4">
+
+    <div class="bg-slate-800 rounded-xl p-4">
+      <div class="text-3xl mb-2">📡</div>
+      <h4 class="font-bold text-teal-300">Modem</h4>
+      <p class="text-slate-400 text-sm">
+        A modem connects your network to your Internet service provider.
+      </p>
+    </div>
+
+    <div class="bg-slate-800 rounded-xl p-4">
+      <div class="text-3xl mb-2">📶</div>
+      <h4 class="font-bold text-teal-300">Router</h4>
+      <p class="text-slate-400 text-sm">
+        A router forwards data between networks and can share an Internet connection.
+      </p>
+    </div>
+
+    <div class="bg-slate-800 rounded-xl p-4">
+      <div class="text-3xl mb-2">🔀</div>
+      <h4 class="font-bold text-teal-300">Switch</h4>
+      <p class="text-slate-400 text-sm">
+        A switch connects wired devices within a local network.
+      </p>
+    </div>
+
+    <div class="bg-slate-800 rounded-xl p-4">
+      <div class="text-3xl mb-2">📶</div>
+      <h4 class="font-bold text-teal-300">Wi-Fi</h4>
+      <p class="text-slate-400 text-sm">
+        Wi-Fi lets devices communicate wirelessly with a network access point.
+      </p>
+    </div>
+
+    <div class="bg-slate-800 rounded-xl p-4">
+      <div class="text-3xl mb-2">🗄️</div>
+      <h4 class="font-bold text-teal-300">Server</h4>
+      <p class="text-slate-400 text-sm">
+        A server provides services and resources to other devices on a network.
+      </p>
+    </div>
+
+    <div class="bg-slate-800 rounded-xl p-4">
+      <div class="text-3xl mb-2">🔌</div>
+      <h4 class="font-bold text-teal-300">Ethernet</h4>
+      <p class="text-slate-400 text-sm">
+        Ethernet is a common technology for wired network connections.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<div class="text-center pb-8">
+  <button id="restartBtn"
+    class="border border-slate-600 hover:bg-slate-800 px-6 py-3 rounded-xl">
+    🔄 Restart Entire Game
+  </button>
+  <p class="text-slate-500 text-xs mt-4">
+    © Hsu Academic Boost | Learn Smart. Build Strong Future.
+  </p>
+</div>
+
+</main>
+
+<script>
+// ========================================
+// DEVICE DEFINITIONS
+// ========================================
+
+const definitions = {
+  modem:   {name:"Modem",emoji:"📡",color:"border-orange-400"},
+  router:  {name:"Router",emoji:"📶",color:"border-teal-400"},
+  switch:  {name:"Switch",emoji:"🔀",color:"border-blue-400"},
+  desktop: {name:"Desktop",emoji:"🖥️",color:"border-cyan-400"},
+  laptop:  {name:"Laptop",emoji:"💻",color:"border-purple-400"},
+  server:  {name:"Server",emoji:"🗄️",color:"border-yellow-400"},
+  printer: {name:"Printer",emoji:"🖨️",color:"border-pink-400"}
+};
+
+// ========================================
+// 12 MISSIONS
+// ========================================
+
+const missions = [
+
+{
+ title:"My First Network",
+ description:"Welcome, new Network Engineer! Connect two computers using a network switch.",
+ devices:[
+  {type:"switch",count:1,task:"Add 1 network switch."},
+  {type:"desktop",count:2,task:"Add 2 desktop computers."}
+ ],
+ links:[
+  {a:"switch",b:"desktop",type:"cable",count:2,task:"Connect both computers to the switch using Ethernet cables."}
+ ]
+},
+
+{
+ title:"Connect the Office",
+ description:"A small office needs Internet access for its desktop and laptop.",
+ devices:[
+  {type:"modem",count:1,task:"Add 1 modem."},
+  {type:"router",count:1,task:"Add 1 router."},
+  {type:"desktop",count:1,task:"Add 1 desktop computer."},
+  {type:"laptop",count:1,task:"Add 1 laptop."}
+ ],
+ links:[
+  {a:"modem",b:"router",type:"cable",count:1,task:"Connect the modem to the router using Ethernet."},
+  {a:"router",b:"desktop",type:"cable",count:1,task:"Connect the desktop to the router using Ethernet."},
+  {a:"router",b:"laptop",type:"wifi",count:1,task:"Connect the laptop to the router using Wi-Fi."}
+ ]
+},
+
+{
+ title:"Wireless World",
+ description:"Create a wireless network! Three laptops need to connect without Ethernet cables.",
+ devices:[
+  {type:"router",count:1,task:"Add 1 wireless router."},
+  {type:"laptop",count:3,task:"Add 3 laptops."}
+ ],
+ links:[
+  {a:"router",b:"laptop",type:"wifi",count:3,task:"Connect all 3 laptops to the router using Wi-Fi."}
+ ]
+},
+
+{
+ title:"The Family Network",
+ description:"A family wants to share an Internet connection, use a printer and connect two laptops.",
+ devices:[
+  {type:"modem",count:1,task:"Add 1 modem."},
+  {type:"router",count:1,task:"Add 1 router."},
+  {type:"desktop",count:1,task:"Add 1 desktop."},
+  {type:"laptop",count:2,task:"Add 2 laptops."},
+  {type:"printer",count:1,task:"Add 1 printer."}
+ ],
+ links:[
+  {a:"modem",b:"router",type:"cable",count:1,task:"Connect the modem and router using Ethernet."},
+  {a:"router",b:"desktop",type:"cable",count:1,task:"Connect the desktop using Ethernet."},
+  {a:"router",b:"printer",type:"cable",count:1,task:"Connect the printer using Ethernet."},
+  {a:"router",b:"laptop",type:"wifi",count:2,task:"Connect both laptops using Wi-Fi."}
+ ]
+},
+
+{
+ title:"The Computer Lab",
+ description:"Build a computer laboratory with four desktop computers connected to one switch.",
+ devices:[
+  {type:"switch",count:1,task:"Add 1 network switch."},
+  {type:"desktop",count:4,task:"Add 4 desktop computers."}
+ ],
+ links:[
+  {a:"switch",b:"desktop",type:"cable",count:4,task:"Connect all four computers to the switch using Ethernet."}
+ ]
+},
+
+{
+ title:"Share a Printer",
+ description:"Two office computers need to use the same network printer.",
+ devices:[
+  {type:"router",count:1,task:"Add 1 router."},
+  {type:"desktop",count:2,task:"Add 2 desktop computers."},
+  {type:"printer",count:1,task:"Add 1 printer."}
+ ],
+ links:[
+  {a:"router",b:"desktop",type:"cable",count:2,task:"Connect both computers to the router."},
+  {a:"router",b:"printer",type:"cable",count:1,task:"Connect the printer to the router."}
+ ]
+},
+
+{
+ title:"The School Network",
+ description:"A school needs a network for its computer lab, teachers, server and printer.",
+ devices:[
+  {type:"modem",count:1,task:"Add 1 modem."},
+  {type:"router",count:1,task:"Add 1 router."},
+  {type:"switch",count:2,task:"Add 2 switches."},
+  {type:"desktop",count:4,task:"Add 4 desktop computers."},
+  {type:"laptop",count:2,task:"Add 2 laptops."},
+  {type:"server",count:1,task:"Add 1 server."},
+  {type:"printer",count:1,task:"Add 1 printer."}
+ ],
+ links:[
+  {a:"modem",b:"router",type:"cable",count:1,task:"Connect the modem to the router."},
+  {a:"router",b:"switch",type:"cable",count:2,task:"Connect both switches to the router."},
+  {a:"switch",b:"desktop",type:"cable",count:4,task:"Connect four desktop computers to the switches."},
+  {a:"router",b:"laptop",type:"wifi",count:2,task:"Connect two laptops using Wi-Fi."},
+  {a:"switch",b:"server",type:"cable",count:1,task:"Connect the server to a switch."},
+  {a:"switch",b:"printer",type:"cable",count:1,task:"Connect the printer to a switch."}
+ ]
+},
+
+{
+ title:"Meet the Server",
+ description:"A company needs a server connected to its network so computers can access shared resources.",
+ devices:[
+  {type:"router",count:1,task:"Add 1 router."},
+  {type:"server",count:1,task:"Add 1 server."},
+  {type:"desktop",count:3,task:"Add 3 desktop computers."}
+ ],
+ links:[
+  {a:"router",b:"server",type:"cable",count:1,task:"Connect the server to the router."},
+  {a:"router",b:"desktop",type:"cable",count:3,task:"Connect all three computers to the router."}
+ ]
+},
+
+{
+ title:"Fix the Broken Network",
+ description:"A computer lab has lost its connections. Rebuild the network so all computers can communicate through the switch.",
+ devices:[
+  {type:"switch",count:1,task:"Add 1 network switch."},
+  {type:"desktop",count:3,task:"Add 3 desktop computers."}
+ ],
+ links:[
+  {a:"switch",b:"desktop",type:"cable",count:3,task:"Repair the network by connecting all three computers to the switch."}
+ ]
+},
+
+{
+ title:"Wi-Fi Coverage",
+ description:"A small learning centre wants four laptops connected wirelessly to its router.",
+ devices:[
+  {type:"router",count:1,task:"Add 1 wireless router."},
+  {type:"laptop",count:4,task:"Add 4 laptops."}
+ ],
+ links:[
+  {a:"router",b:"laptop",type:"wifi",count:4,task:"Connect all four laptops using Wi-Fi."}
+ ]
+},
+
+{
+ title:"Internet Troubleshooter",
+ description:"An office network needs Internet, a shared server, a printer and wireless access for a laptop.",
+ devices:[
+  {type:"modem",count:1,task:"Add 1 modem."},
+  {type:"router",count:1,task:"Add 1 router."},
+  {type:"switch",count:1,task:"Add 1 switch."},
+  {type:"desktop",count:2,task:"Add 2 desktops."},
+  {type:"laptop",count:1,task:"Add 1 laptop."},
+  {type:"server",count:1,task:"Add 1 server."},
+  {type:"printer",count:1,task:"Add 1 printer."}
+ ],
+ links:[
+  {a:"modem",b:"router",type:"cable",count:1,task:"Connect the modem to the router."},
+  {a:"router",b:"switch",type:"cable",count:1,task:"Connect the router to the switch."},
+  {a:"switch",b:"desktop",type:"cable",count:2,task:"Connect both desktops to the switch."},
+  {a:"router",b:"laptop",type:"wifi",count:1,task:"Connect the laptop using Wi-Fi."},
+  {a:"switch",b:"server",type:"cable",count:1,task:"Connect the server to the switch."},
+  {a:"switch",b:"printer",type:"cable",count:1,task:"Connect the printer to the switch."}
+ ]
+},
+
+{
+ title:"Build Your Dream Network",
+ description:"You are now a professional network engineer! Build a complete office network with wired and wireless devices.",
+ devices:[
+  {type:"modem",count:1,task:"Add 1 modem."},
+  {type:"router",count:1,task:"Add 1 router."},
+  {type:"switch",count:1,task:"Add 1 switch."},
+  {type:"desktop",count:3,task:"Add 3 desktop computers."},
+  {type:"laptop",count:2,task:"Add 2 laptops."},
+  {type:"server",count:1,task:"Add 1 server."},
+  {type:"printer",count:1,task:"Add 1 printer."}
+ ],
+ links:[
+  {a:"modem",b:"router",type:"cable",count:1,task:"Connect the modem to the router."},
+  {a:"router",b:"switch",type:"cable",count:1,task:"Connect the router to the switch."},
+  {a:"switch",b:"desktop",type:"cable",count:3,task:"Connect all three desktops to the switch."},
+  {a:"router",b:"laptop",type:"wifi",count:2,task:"Connect both laptops using Wi-Fi."},
+  {a:"switch",b:"server",type:"cable",count:1,task:"Connect the server to the switch."},
+  {a:"switch",b:"printer",type:"cable",count:1,task:"Connect the printer to the switch."}
+ ]
+}
+];
+
+// ========================================
+// GAME STATE
+// ========================================
+
+const workspace = document.getElementById("workspace");
+const wires = document.getElementById("wires");
+const emptyMessage = document.getElementById("emptyMessage");
+const instruction = document.getElementById("instruction");
+const result = document.getElementById("result");
+const nextMissionBtn = document.getElementById("nextMissionBtn");
+
+let devices = [];
+let connections = [];
+let currentMission = 0;
+let completedMissions = new Set();
+let selectedDevice = null;
+let connectionMode = null;
+let nextId = 1;
+let score = 0;
+let pointerDrag = null;
+let suppressDeviceClick = false;
+let simulationDone = false;
+
+// ========================================
+// HELPERS
+// ========================================
+
+function notify(message) {
+  instruction.textContent = message;
+}
+
+function addScore(points) {
+  score += points;
+  updateStats();
+}
+
+function countDevices(type) {
+  return devices.filter(d => d.type === type).length;
+}
+
+function getLinkCount(req) {
+  return connections.filter(c => {
+    const a = devices.find(d => d.id === c.a);
+    const b = devices.find(d => d.id === c.b);
+
+    if (!a || !b || c.type !== req.type) return false;
+
+    return (
+      (a.type === req.a && b.type === req.b) ||
+      (a.type === req.b && b.type === req.a)
+    );
+  }).length;
+}
+
+// ========================================
+// MISSION PROGRESS
+// ========================================
+
+function missionProgress() {
+  const m = missions[currentMission];
+  const checks = [];
+
+  m.devices.forEach(req => {
+    checks.push(countDevices(req.type) >= req.count);
+  });
+
+  m.links.forEach(req => {
+    checks.push(getLinkCount(req) >= req.count);
+  });
+
+  const count = checks.filter(Boolean).length;
+  const total = checks.length;
+
+  return {
+    count,
+    total,
+    percent: Math.round(count / total * 100),
+    complete: count === total
+  };
+}
+
+// ========================================
+// UPDATE MISSION DISPLAY
+// ========================================
+
+function updateMission() {
+  const m = missions[currentMission];
+  const p = missionProgress();
+
+  document.getElementById("missionBadge").textContent =
+    `Mission ${String(currentMission+1).padStart(2,"0")} / ${missions.length}`;
+
+  document.getElementById("missionNumber").textContent =
+    `MISSION ${String(currentMission+1).padStart(2,"0")}`;
+
+  document.getElementById("missionTitle").textContent = m.title;
+  document.getElementById("missionDescription").textContent = m.description;
+
+  document.getElementById("missionProgressText").textContent =
+    `${p.count} / ${p.total}`;
+
+  document.getElementById("missionProgressBar").style.width =
+    p.percent + "%";
+
+  const list = document.getElementById("missionList");
+  list.innerHTML = "";
+
+  const tasks = [
+    ...m.devices.map(req => ({
+      task:req.task,
+      done:countDevices(req.type) >= req.count
+    })),
+    ...m.links.map(req => ({
+      task:req.task,
+      done:getLinkCount(req) >= req.count
+    }))
+  ];
+
+  tasks.forEach(t => {
+    const item = document.createElement("div");
+    item.className =
+      "flex gap-3 items-start bg-slate-900/70 p-3 rounded-lg " +
+      (t.done ? "text-green-300" : "text-slate-300");
+
+    const icon = document.createElement("span");
+    icon.className = "text-lg";
+    icon.textContent = t.done ? "✅" : "⬜";
+
+    const label = document.createElement("span");
+    label.textContent = t.task;
+
+    item.append(icon,label);
+    list.appendChild(item);
+  });
+
+  // LEVEL HIGHLIGHT
+  [1,2,3].forEach(level => {
+    const el = document.getElementById("level"+level);
+    const active = Math.ceil((currentMission+1)/4) === level;
+
+    el.className = active
+      ? "rounded-lg p-3 text-center bg-teal-500/20 border border-teal-500"
+      : "rounded-lg p-3 text-center bg-slate-800 border border-slate-700";
+  });
+
+  document.getElementById("missionCount").textContent =
+    `${completedMissions.size}/${missions.length}`;
+
+  nextMissionBtn.classList.toggle(
+    "hidden",
+    !completedMissions.has(currentMission)
+  );
+}
+
+// ========================================
+// UPDATE STATS
+// ========================================
+
+function updateStats() {
+  document.getElementById("score").textContent = score;
+  document.getElementById("connectionCount").textContent = connections.length;
+  updateMission();
+}
+
+// ========================================
+// ADD DEVICE
+// ========================================
+
+function createDevice(type,x,y) {
+  if (!definitions[type]) return;
+
+  const id = nextId++;
+
+  const d = {id,type,x,y};
+  devices.push(d);
+
+  const el = document.createElement("div");
+
+  el.className =
+    `device bg-slate-800 border-2 ${definitions[type].color}
+    rounded-xl p-2 text-center shadow-lg`;
+
+  el.dataset.id = id;
+  el.style.left = x + "px";
+  el.style.top = y + "px";
+
+  const emoji = document.createElement("div");
+  emoji.className = "text-3xl";
+  emoji.textContent = definitions[type].emoji;
+
+  const name = document.createElement("div");
+  name.className = "font-bold text-sm mt-1";
+  name.textContent = definitions[type].name;
+
+  const number = document.createElement("div");
+  number.className = "text-[10px] text-slate-400";
+  number.textContent = "Device #" + id;
+
+  el.append(emoji,name,number);
+
+  workspace.appendChild(el);
+
+  el.addEventListener("pointerdown",startDeviceDrag);
+  el.addEventListener("click",() => selectForConnection(id));
+
+  emptyMessage.classList.add("hidden");
+
+  updateStats();
+  drawConnections();
+
+  return d;
+}
+
+// ========================================
+// DEVICE DRAGGING
+// ========================================
+
+function startDeviceDrag(e) {
+  if (e.button !== 0) return;
+
+  const el = e.currentTarget;
+  const id = Number(el.dataset.id);
+  const d = devices.find(item => item.id === id);
+
+  if (!d) return;
+
+  pointerDrag = {
+    id,
+    el,
+    startX:e.clientX,
+    startY:e.clientY,
+    oldX:d.x,
+    oldY:d.y,
+    moved:false
+  };
+
+  el.setPointerCapture(e.pointerId);
+}
+
+workspace.addEventListener("pointermove",e => {
+  if (!pointerDrag) return;
+
+  const dx = e.clientX - pointerDrag.startX;
+  const dy = e.clientY - pointerDrag.startY;
+
+  if (Math.abs(dx)+Math.abs(dy)>5) {
+    pointerDrag.moved = true;
+  }
+
+  if (!pointerDrag.moved) return;
+
+  const d = devices.find(item => item.id === pointerDrag.id);
+  if (!d) return;
+
+  const maxX = workspace.clientWidth-pointerDrag.el.offsetWidth;
+  const maxY = workspace.clientHeight-pointerDrag.el.offsetHeight;
+
+  d.x = Math.max(0,Math.min(maxX,pointerDrag.oldX+dx));
+  d.y = Math.max(0,Math.min(maxY,pointerDrag.oldY+dy));
+
+  pointerDrag.el.style.left = d.x+"px";
+  pointerDrag.el.style.top = d.y+"px";
+
+  drawConnections();
+});
+
+workspace.addEventListener("pointerup",() => {
+  if (pointerDrag && pointerDrag.moved) {
+    suppressDeviceClick = true;
+    setTimeout(() => suppressDeviceClick=false,150);
+  }
+  pointerDrag = null;
+});
+
+workspace.addEventListener("pointercancel",() => {
+  pointerDrag = null;
+});
+
+// ========================================
+// DEVICE SELECTION AND CONNECTION
+// ========================================
+
+function selectForConnection(id) {
+  if (suppressDeviceClick) return;
+
+  if (!connectionMode) {
+    notify("👆 Choose Connect Ethernet or Connect Wi-Fi first.");
+    return;
+  }
+
+  if (selectedDevice === null) {
+    selectedDevice = id;
+    highlightSelected();
+    notify("Now select the second device.");
+    return;
+  }
+
+  if (selectedDevice === id) {
+    notify("Choose a different device.");
+    return;
+  }
+
+  const first = devices.find(d => d.id === selectedDevice);
+  const second = devices.find(d => d.id === id);
+
+  if (!first || !second) return;
+
+  const exists = connections.some(c =>
+    (c.a === first.id && c.b === second.id) ||
+    (c.a === second.id && c.b === first.id)
+  );
+
+  if (exists) {
+    notify("⚠️ These devices are already connected!");
+    return;
+  }
+
+  if (!isValidConnection(first,second,connectionMode)) {
+    notify("❌ This connection type is not supported for these devices. Try another connection.");
+    selectedDevice = null;
+    highlightSelected();
+    return;
+  }
+
+  connections.push({
+    a:first.id,
+    b:second.id,
+    type:connectionMode
+  });
+
+  notify(connectionMode === "wifi"
+    ? "📶 Wi-Fi connection added successfully!"
+    : "🔌 Ethernet connection added successfully!");
+
+  selectedDevice = null;
+  connectionMode = null;
+  updateModeButtons();
+  highlightSelected();
+  drawConnections();
+  updateStats();
+
+  simulationDone = false;
+  result.classList.add("hidden");
+  nextMissionBtn.classList.add("hidden");
+}
+
+function isValidConnection(a,b,mode) {
+  if (mode === "wifi") {
+    return (
+      (a.type === "router" && b.type === "laptop") ||
+      (b.type === "router" && a.type === "laptop")
+    );
+  }
+
+  if (mode === "cable") {
+    return true;
+  }
+
+  return false;
+}
+
+function highlightSelected() {
+  document.querySelectorAll(".device").forEach(el => {
+    el.classList.toggle(
+      "selected",
+      Number(el.dataset.id) === selectedDevice
+    );
+  });
+}
+
+function updateModeButtons() {
+  document.getElementById("cableBtn").classList.toggle(
+    "ring-2",connectionMode==="cable"
+  );
+
+  document.getElementById("wifiBtn").classList.toggle(
+    "ring-2",connectionMode==="wifi"
+  );
+}
+
+document.getElementById("cableBtn").addEventListener("click",() => {
+  connectionMode = "cable";
+  selectedDevice = null;
+  highlightSelected();
+  updateModeButtons();
+  notify("🔌 Ethernet mode: select two devices to connect.");
+});
+
+document.getElementById("wifiBtn").addEventListener("click",() => {
+  connectionMode = "wifi";
+  selectedDevice = null;
+  highlightSelected();
+  updateModeButtons();
+  notify("📶 Wi-Fi mode: select a router and then a laptop.");
+});
+
+document.getElementById("cancelBtn").addEventListener("click",() => {
+  connectionMode = null;
+  selectedDevice = null;
+  highlightSelected();
+  updateModeButtons();
+  notify("Connection mode cancelled.");
+});
+
+// ========================================
+// DRAW CONNECTIONS
+// ========================================
+
+function drawConnections() {
+  wires.innerHTML = "";
+
+  connections.forEach(c => {
+    const a = devices.find(d => d.id === c.a);
+    const b = devices.find(d => d.id === c.b);
+
+    if (!a || !b) return;
+
+    const elA = workspace.querySelector(`[data-id="${a.id}"]`);
+    const elB = workspace.querySelector(`[data-id="${b.id}"]`);
+
+    if (!elA || !elB) return;
+
+    const x1 = a.x + elA.offsetWidth/2;
+    const y1 = a.y + elA.offsetHeight/2;
+    const x2 = b.x + elB.offsetWidth/2;
+    const y2 = b.y + elB.offsetHeight/2;
+
+    const line = document.createElementNS(
+      "http://www.w3.org/2000/svg","line"
+    );
+
+    line.setAttribute("x1",x1);
+    line.setAttribute("y1",y1);
+    line.setAttribute("x2",x2);
+    line.setAttribute("y2",y2);
+    line.setAttribute("class",
+      "wire "+(c.type==="wifi"?"wifi":"")
+    );
+
+    wires.appendChild(line);
+  });
+
+  wires.setAttribute(
+    "viewBox",
+    `0 0 ${workspace.clientWidth} ${workspace.clientHeight}`
+  );
+}
+
+// ========================================
+// TOOLBOX DRAG AND CLICK
+// ========================================
+
+document.querySelectorAll(".palette-item").forEach(item => {
+
+  item.addEventListener("dragstart",e => {
+    e.dataTransfer.setData("text/plain",item.dataset.type);
+  });
+
+  item.addEventListener("click",() => {
+    const type = item.dataset.type;
+
+    const x = 10 + Math.random() *
+      Math.max(10,workspace.clientWidth-120);
+
+    const y = 10 + Math.random() *
+      Math.max(10,workspace.clientHeight-120);
+
+    createDevice(type,x,y);
+
+    notify(`✅ ${definitions[type].name} added! Drag it to arrange your network.`);
+  });
+
+});
+
+workspace.addEventListener("dragover",e => e.preventDefault());
+
+workspace.addEventListener("drop",e => {
+  e.preventDefault();
+
+  const type = e.dataTransfer.getData("text/plain");
+  if (!definitions[type]) return;
+
+  const rect = workspace.getBoundingClientRect();
+
+  const x = Math.max(0,Math.min(
+    workspace.clientWidth-115,
+    e.clientX-rect.left-50
+  ));
+
+  const y = Math.max(0,Math.min(
+    workspace.clientHeight-110,
+    e.clientY-rect.top-45
+  ));
+
+  createDevice(type,x,y);
+  notify(`✅ ${definitions[type].name} added to your network!`);
+});
+
+// ========================================
+// SIMULATION
+// ========================================
+
+function simulate() {
+  const p = missionProgress();
+
+  result.classList.remove("hidden");
+
+  if (p.complete) {
+
+    if (!completedMissions.has(currentMission)) {
+      completedMissions.add(currentMission);
+      score += 100;
+    }
+
+    simulationDone = true;
+
+    result.className =
+      "mt-5 rounded-xl p-5 bg-green-950 border border-green-500";
+
+    result.innerHTML = `
+      <div class="text-5xl mb-3">🏆</div>
+      <h3 class="text-2xl font-bold text-green-300">
+        Mission Completed!
+      </h3>
+      <p class="text-green-100 mt-2">
+        Excellent work, Network Engineer!
+        You successfully completed
+        ${missions[currentMission].title}.
+      </p>
+      <p class="text-green-200 mt-3 font-bold">
+        ⭐ +100 Bonus Points!
+      </p>
+      <p class="text-sm text-green-100 mt-2">
+        All mission objectives have been achieved.
+        You are ready for the next challenge!
+      </p>
+    `;
+
+    if (currentMission === missions.length-1) {
+      result.innerHTML += `
+        <div class="mt-5 border-t border-purple-500/30 pt-4">
+          <div class="text-4xl mb-2">🎓</div>
+          <h3 class="text-xl font-bold text-purple-300">
+            Network Engineer Academy Completed!
+          </h3>
+          <p class="text-purple-100 text-sm mt-2">
+            Congratulations! You have completed all 12 missions.
+          </p>
+        </div>
+      `;
+    }
+
+    updateStats();
+
+    nextMissionBtn.classList.toggle(
+      "hidden",currentMission===missions.length-1
+    );
+
+  } else {
+
+    result.className =
+      "mt-5 rounded-xl p-5 bg-amber-950 border border-amber-500";
+
+    result.innerHTML = `
+      <div class="text-3xl mb-2">🔧</div>
+      <h3 class="text-xl font-bold text-amber-300">
+        Keep Building!
+      </h3>
+      <p class="text-amber-100 mt-2">
+        You completed ${p.count} out of ${p.total} objectives.
+        Check the unfinished tasks and try again!
+      </p>
+    `;
+
+    nextMissionBtn.classList.add("hidden");
+  }
+}
+
+document.getElementById("startBtn").addEventListener("click",simulate);
+
+// ========================================
+// NEXT MISSION
+// ========================================
+
+function nextMission() {
+  if (!completedMissions.has(currentMission)) return;
+
+  if (currentMission >= missions.length-1) return;
+
+  currentMission++;
+
+  resetWorkspaceOnly();
+
+  result.classList.add("hidden");
+  nextMissionBtn.classList.add("hidden");
+
+  updateStats();
+
+  notify("🎯 New mission unlocked! Read your objectives and start building.");
+
+  window.scrollTo({
+    top:document.getElementById("missionTitle").getBoundingClientRect().top+window.scrollY-100,
+    behavior:"smooth"
+  });
+}
+
+nextMissionBtn.addEventListener("click",nextMission);
+
+// ========================================
+// CLEAR CURRENT WORKSPACE
+// ========================================
+
+function resetWorkspaceOnly() {
+  devices = [];
+  connections = [];
+  selectedDevice = null;
+  connectionMode = null;
+  nextId = 1;
+  pointerDrag = null;
+  simulationDone = false;
+
+  document.querySelectorAll(".device").forEach(el => el.remove());
+
+  wires.innerHTML = "";
+  emptyMessage.classList.remove("hidden");
+
+  updateModeButtons();
+  updateStats();
+}
+
+function clearCurrentMission() {
+  if (!confirm("Clear all devices and connections in this mission?")) return;
+
+  if (completedMissions.has(currentMission)) {
+    completedMissions.delete(currentMission);
+    score = Math.max(0,score-100);
+  }
+
+  resetWorkspaceOnly();
+
+  result.classList.add("hidden");
+  nextMissionBtn.classList.add("hidden");
+
+  notify("🗑️ Workspace cleared. You can try this mission again!");
+}
+
+document.getElementById("clearBtn").addEventListener(
+  "click",clearCurrentMission
+);
+
+// ========================================
+// RESTART ENTIRE GAME
+// ========================================
+
+function restartGame() {
+  if (!confirm("Restart the entire game? Your mission progress and score will be reset.")) return;
+
+  devices = [];
+  connections = [];
+  currentMission = 0;
+  completedMissions.clear();
+  selectedDevice = null;
+  connectionMode = null;
+  nextId = 1;
+  score = 0;
+  simulationDone = false;
+  pointerDrag = null;
+
+  document.querySelectorAll(".device").forEach(el => el.remove());
+
+  wires.innerHTML = "";
+  emptyMessage.classList.remove("hidden");
+
+  result.classList.add("hidden");
+  nextMissionBtn.classList.add("hidden");
+
+  updateModeButtons();
+  updateStats();
+
+  notify("🌐 Welcome back! Start your first networking mission.");
+
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+
+document.getElementById("restartBtn").addEventListener(
+  "click",restartGame
+);
+
+// ========================================
+// RESIZE
+// ========================================
+
+window.addEventListener("resize",drawConnections);
+
+// ========================================
+// INITIALIZE
+// ========================================
+
+updateStats();
+</script>
+
+</body>
+</html>
