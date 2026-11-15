@@ -584,7 +584,422 @@ const missions = [
   {a:"switch",b:"printer",type:"cable",count:1,task:"Connect the printer to the switch."}
  ]
 }
+
+,
+  // ==========================================
+  // LEVEL 1: BEGINNER (MISSIONS 1–6)
+  // ==========================================
+  {
+    title: "My First Network",
+    description: "Build a simple network by connecting a modem, router and two computers.",
+    devices: [
+      { type: "modem", count: 1, task: "Add 1 modem" },
+      { type: "router", count: 1, task: "Add 1 router" },
+      { type: "desktop", count: 1, task: "Add 1 desktop" },
+      { type: "laptop", count: 1, task: "Add 1 laptop" }
+    ],
+    links: [
+      { a: "modem", b: "router", type: "ethernet", count: 1, task: "Connect modem to router using Ethernet" },
+      { a: "router", b: "desktop", type: "ethernet", count: 1, task: "Connect desktop to router using Ethernet" },
+      { a: "router", b: "laptop", type: "wifi", count: 1, task: "Connect laptop to router using Wi-Fi" }
+    ]
+  },
+  {
+    title: "The Wired Computer",
+    description: "Create a wired connection between a router and two desktop computers.",
+    devices: [
+      { type: "router", count: 1, task: "Add 1 router" },
+      { type: "desktop", count: 2, task: "Add 2 desktop computers" }
+    ],
+    links: [
+      { a: "router", b: "desktop", type: "ethernet", count: 2, task: "Connect both desktops to the router using Ethernet" }
+    ]
+  },
+  {
+    title: "Wireless Connection",
+    description: "Connect two laptops to a wireless router.",
+    devices: [
+      { type: "router", count: 1, task: "Add 1 router" },
+      { type: "laptop", count: 2, task: "Add 2 laptops" }
+    ],
+    links: [
+      { a: "router", b: "laptop", type: "wifi", count: 2, task: "Connect both laptops using Wi-Fi" }
+    ]
+  },
+  {
+    title: "Internet Access",
+    description: "Build a network that connects computers to the Internet through a modem and router.",
+    devices: [
+      { type: "modem", count: 1, task: "Add 1 modem" },
+      { type: "router", count: 1, task: "Add 1 router" },
+      { type: "desktop", count: 2, task: "Add 2 desktops" }
+    ],
+    links: [
+      { a: "modem", b: "router", type: "ethernet", count: 1, task: "Connect modem to router" },
+      { a: "router", b: "desktop", type: "ethernet", count: 2, task: "Connect both desktops to router" }
+    ]
+  },
+  {
+    title: "The Home Office",
+    description: "Create a home office with wired and wireless devices.",
+    devices: [
+      { type: "modem", count: 1, task: "Add 1 modem" },
+      { type: "router", count: 1, task: "Add 1 router" },
+      { type: "desktop", count: 1, task: "Add 1 desktop" },
+      { type: "laptop", count: 1, task: "Add 1 laptop" },
+      { type: "printer", count: 1, task: "Add 1 printer" }
+    ],
+    links: [
+      { a: "modem", b: "router", type: "ethernet", count: 1, task: "Connect modem to router" },
+      { a: "router", b: "desktop", type: "ethernet", count: 1, task: "Connect desktop using Ethernet" },
+      { a: "router", b: "laptop", type: "wifi", count: 1, task: "Connect laptop using Wi-Fi" },
+      { a: "router", b: "printer", type: "wifi", count: 1, task: "Connect printer using Wi-Fi" }
+    ]
+  },
+  {
+    title: "Beginner Network Test",
+    description: "Build a small network with both wired and wireless connections.",
+    devices: [
+      { type: "modem", count: 1, task: "Add 1 modem" },
+      { type: "router", count: 1, task: "Add 1 router" },
+      { type: "desktop", count: 2, task: "Add 2 desktops" },
+      { type: "laptop", count: 2, task: "Add 2 laptops" }
+    ],
+    links: [
+      { a: "modem", b: "router", type: "ethernet", count: 1, task: "Connect modem to router" },
+      { a: "router", b: "desktop", type: "ethernet", count: 2, task: "Connect both desktops using Ethernet" },
+      { a: "router", b: "laptop", type: "wifi", count: 2, task: "Connect both laptops using Wi-Fi" }
+    ]
+  },
+
+  // ==========================================
+  // LEVEL 2: EXPLORER (MISSIONS 7–12)
+  // ==========================================
+  {
+    title: "Meet the Network Switch",
+    description: "Use a switch to connect several desktop computers to the network.",
+    devices: [
+      { type: "router", count: 1, task: "Add 1 router" },
+      { type: "switch", count: 1, task: "Add 1 switch" },
+      { type: "desktop", count: 3, task: "Add 3 desktops" }
+    ],
+    links: [
+      { a: "router", b: "switch", type: "ethernet", count: 1, task: "Connect router to switch" },
+      { a: "switch", b: "desktop", type: "ethernet", count: 3, task: "Connect all desktops to switch" }
+    ]
+  },
+  {
+    title: "The School Computer Lab",
+    description: "Build a computer lab with five desktop computers and a network switch.",
+    devices: [
+      { type: "router", count: 1, task: "Add 1 router" },
+      { type: "switch", count: 1, task: "Add 1 switch" },
+      { type: "desktop", count: 5, task: "Add 5 desktops" }
+    ],
+    links: [
+      { a: "router", b: "switch", type: "ethernet", count: 1, task: "Connect router to switch" },
+      { a: "switch", b: "desktop", type: "ethernet", count: 5, task: "Connect all five desktops to switch" }
+    ]
+  },
+  {
+    title: "The Network Printer",
+    description: "Add a network printer so computers can use it.",
+    devices: [
+      { type: "router", count: 1, task: "Add 1 router" },
+      { type: "switch", count: 1, task: "Add 1 switch" },
+      { type: "desktop", count: 2, task: "Add 2 desktops" },
+      { type: "printer", count: 1, task: "Add 1 printer" }
+    ],
+    links: [
+      { a: "router", b: "switch", type: "ethernet", count: 1, task: "Connect router to switch" },
+      { a: "switch", b: "desktop", type: "ethernet", count: 2, task: "Connect both desktops to switch" },
+      { a: "router", b: "printer", type: "wifi", count: 1, task: "Connect printer to router using Wi-Fi" }
+    ]
+  },
+  {
+    title: "Meet the Server",
+    description: "Add a server to provide services to computers on the network.",
+    devices: [
+      { type: "router", count: 1, task: "Add 1 router" },
+      { type: "switch", count: 1, task: "Add 1 switch" },
+      { type: "server", count: 1, task: "Add 1 server" },
+      { type: "desktop", count: 3, task: "Add 3 desktops" }
+    ],
+    links: [
+      { a: "router", b: "switch", type: "ethernet", count: 1, task: "Connect router to switch" },
+      { a: "switch", b: "server", type: "ethernet", count: 1, task: "Connect server to switch" },
+      { a: "switch", b: "desktop", type: "ethernet", count: 3, task: "Connect all desktops to switch" }
+    ]
+  },
+  {
+    title: "The Wireless Office",
+    description: "Build an office network with wired computers and wireless laptops.",
+    devices: [
+      { type: "modem", count: 1, task: "Add 1 modem" },
+      { type: "router", count: 1, task: "Add 1 router" },
+      { type: "switch", count: 1, task: "Add 1 switch" },
+      { type: "desktop", count: 3, task: "Add 3 desktops" },
+      { type: "laptop", count: 2, task: "Add 2 laptops" }
+    ],
+    links: [
+      { a: "modem", b: "router", type: "ethernet", count: 1, task: "Connect modem to router" },
+      { a: "router", b: "switch", type: "ethernet", count: 1, task: "Connect router to switch" },
+      { a: "switch", b: "desktop", type: "ethernet", count: 3, task: "Connect all desktops to switch" },
+      { a: "router", b: "laptop", type: "wifi", count: 2, task: "Connect both laptops using Wi-Fi" }
+    ]
+  },
+  {
+    title: "Explorer Challenge",
+    description: "Build a network with a server, printer, desktops and wireless laptops.",
+    devices: [
+      { type: "modem", count: 1, task: "Add 1 modem" },
+      { type: "router", count: 1, task: "Add 1 router" },
+      { type: "switch", count: 1, task: "Add 1 switch" },
+      { type: "server", count: 1, task: "Add 1 server" },
+      { type: "desktop", count: 3, task: "Add 3 desktops" },
+      { type: "laptop", count: 2, task: "Add 2 laptops" },
+      { type: "printer", count: 1, task: "Add 1 printer" }
+    ],
+    links: [
+      { a: "modem", b: "router", type: "ethernet", count: 1, task: "Connect modem to router" },
+      { a: "router", b: "switch", type: "ethernet", count: 1, task: "Connect router to switch" },
+      { a: "switch", b: "server", type: "ethernet", count: 1, task: "Connect server to switch" },
+      { a: "switch", b: "desktop", type: "ethernet", count: 3, task: "Connect all desktops to switch" },
+      { a: "router", b: "laptop", type: "wifi", count: 2, task: "Connect both laptops using Wi-Fi" },
+      { a: "router", b: "printer", type: "wifi", count: 1, task: "Connect printer using Wi-Fi" }
+    ]
+  },
+
+  // ==========================================
+  // LEVEL 3: TECHNICIAN (MISSIONS 13–18)
+  // ==========================================
+  {
+    title: "Two-Switch Network",
+    description: "Expand the network by connecting two switches to a router.",
+    devices: [
+      { type: "router", count: 1, task: "Add 1 router" },
+      { type: "switch", count: 2, task: "Add 2 switches" },
+      { type: "desktop", count: 4, task: "Add 4 desktops" }
+    ],
+    links: [
+      { a: "router", b: "switch", type: "ethernet", count: 2, task: "Connect both switches to router" },
+      { a: "switch", b: "desktop", type: "ethernet", count: 4, task: "Connect all desktops to switches" }
+    ]
+  },
+  {
+    title: "A Growing Business",
+    description: "Create a business network with multiple computers and shared resources.",
+    devices: [
+      { type: "modem", count: 1, task: "Add 1 modem" },
+      { type: "router", count: 1, task: "Add 1 router" },
+      { type: "switch", count: 2, task: "Add 2 switches" },
+      { type: "server", count: 1, task: "Add 1 server" },
+      { type: "desktop", count: 6, task: "Add 6 desktops" },
+      { type: "printer", count: 1, task: "Add 1 printer" }
+    ],
+    links: [
+      { a: "modem", b: "router", type: "ethernet", count: 1, task: "Connect modem to router" },
+      { a: "router", b: "switch", type: "ethernet", count: 2, task: "Connect both switches to router" },
+      { a: "switch", b: "server", type: "ethernet", count: 1, task: "Connect server to a switch" },
+      { a: "switch", b: "desktop", type: "ethernet", count: 6, task: "Connect all six desktops to switches" },
+      { a: "router", b: "printer", type: "wifi", count: 1, task: "Connect printer using Wi-Fi" }
+    ]
+  },
+  {
+    title: "The School Network",
+    description: "Create a school network with two switches and four desktop computers.",
+    devices: [
+      { type: "router", count: 1, task: "Add 1 router" },
+      { type: "switch", count: 2, task: "Add 2 switches" },
+      { type: "desktop", count: 4, task: "Add 4 desktops" }
+    ],
+    links: [
+      { a: "router", b: "switch", type: "ethernet", count: 2, task: "Connect both switches to router" },
+      { a: "switch", b: "desktop", type: "ethernet", count: 4, task: "Connect all four desktops to switches" }
+    ]
+  },
+  {
+    title: "Server Room",
+    description: "Create a network with two servers and multiple client computers.",
+    devices: [
+      { type: "router", count: 1, task: "Add 1 router" },
+      { type: "switch", count: 1, task: "Add 1 switch" },
+      { type: "server", count: 2, task: "Add 2 servers" },
+      { type: "desktop", count: 4, task: "Add 4 desktops" }
+    ],
+    links: [
+      { a: "router", b: "switch", type: "ethernet", count: 1, task: "Connect router to switch" },
+      { a: "switch", b: "server", type: "ethernet", count: 2, task: "Connect both servers to switch" },
+      { a: "switch", b: "desktop", type: "ethernet", count: 4, task: "Connect all desktops to switch" }
+    ]
+  },
+  {
+    title: "Mixed Connection Challenge",
+    description: "Combine Ethernet and Wi-Fi connections in one network.",
+    devices: [
+      { type: "modem", count: 1, task: "Add 1 modem" },
+      { type: "router", count: 1, task: "Add 1 router" },
+      { type: "switch", count: 1, task: "Add 1 switch" },
+      { type: "server", count: 1, task: "Add 1 server" },
+      { type: "desktop", count: 4, task: "Add 4 desktops" },
+      { type: "laptop", count: 3, task: "Add 3 laptops" }
+    ],
+    links: [
+      { a: "modem", b: "router", type: "ethernet", count: 1, task: "Connect modem to router" },
+      { a: "router", b: "switch", type: "ethernet", count: 1, task: "Connect router to switch" },
+      { a: "switch", b: "server", type: "ethernet", count: 1, task: "Connect server to switch" },
+      { a: "switch", b: "desktop", type: "ethernet", count: 4, task: "Connect four desktops to switch" },
+      { a: "router", b: "laptop", type: "wifi", count: 3, task: "Connect three laptops using Wi-Fi" }
+    ]
+  },
+  {
+    title: "Technician Final Exam",
+    description: "Build a complete office network with Internet access, shared resources and wireless devices.",
+    devices: [
+      { type: "modem", count: 1, task: "Add 1 modem" },
+      { type: "router", count: 1, task: "Add 1 router" },
+      { type: "switch", count: 2, task: "Add 2 switches" },
+      { type: "server", count: 1, task: "Add 1 server" },
+      { type: "desktop", count: 5, task: "Add 5 desktops" },
+      { type: "laptop", count: 3, task: "Add 3 laptops" },
+      { type: "printer", count: 1, task: "Add 1 printer" }
+    ],
+    links: [
+      { a: "modem", b: "router", type: "ethernet", count: 1, task: "Connect modem to router" },
+      { a: "router", b: "switch", type: "ethernet", count: 2, task: "Connect both switches to router" },
+      { a: "switch", b: "server", type: "ethernet", count: 1, task: "Connect server to a switch" },
+      { a: "switch", b: "desktop", type: "ethernet", count: 5, task: "Connect all five desktops to switches" },
+      { a: "router", b: "laptop", type: "wifi", count: 3, task: "Connect all three laptops using Wi-Fi" },
+      { a: "router", b: "printer", type: "wifi", count: 1, task: "Connect printer using Wi-Fi" }
+    ]
+  },
+
+  // ==========================================
+  // LEVEL 4: NETWORK ENGINEER (MISSIONS 19–24)
+  // ==========================================
+  {
+    title: "Design a School Network",
+    description: "Design a network for a school computer lab with shared resources.",
+    devices: [
+      { type: "modem", count: 1, task: "Add 1 modem" },
+      { type: "router", count: 1, task: "Add 1 router" },
+      { type: "switch", count: 2, task: "Add 2 switches" },
+      { type: "server", count: 1, task: "Add 1 server" },
+      { type: "desktop", count: 8, task: "Add 8 desktops" },
+      { type: "printer", count: 1, task: "Add 1 printer" }
+    ],
+    links: [
+      { a: "modem", b: "router", type: "ethernet", count: 1, task: "Connect modem to router" },
+      { a: "router", b: "switch", type: "ethernet", count: 2, task: "Connect both switches to router" },
+      { a: "switch", b: "server", type: "ethernet", count: 1, task: "Connect server to a switch" },
+      { a: "switch", b: "desktop", type: "ethernet", count: 8, task: "Connect all eight desktops to switches" },
+      { a: "router", b: "printer", type: "wifi", count: 1, task: "Connect printer using Wi-Fi" }
+    ]
+  },
+  {
+    title: "The Internet Cafe",
+    description: "Build an Internet cafe with many computers and wireless access.",
+    devices: [
+      { type: "modem", count: 1, task: "Add 1 modem" },
+      { type: "router", count: 1, task: "Add 1 router" },
+      { type: "switch", count: 2, task: "Add 2 switches" },
+      { type: "desktop", count: 8, task: "Add 8 desktops" },
+      { type: "laptop", count: 2, task: "Add 2 laptops" },
+      { type: "printer", count: 1, task: "Add 1 printer" }
+    ],
+    links: [
+      { a: "modem", b: "router", type: "ethernet", count: 1, task: "Connect modem to router" },
+      { a: "router", b: "switch", type: "ethernet", count: 2, task: "Connect both switches to router" },
+      { a: "switch", b: "desktop", type: "ethernet", count: 8, task: "Connect all eight desktops to switches" },
+      { a: "router", b: "laptop", type: "wifi", count: 2, task: "Connect both laptops using Wi-Fi" },
+      { a: "router", b: "printer", type: "wifi", count: 1, task: "Connect printer using Wi-Fi" }
+    ]
+  },
+  {
+    title: "Build a Company Network",
+    description: "Connect different departments using switches, servers and wireless devices.",
+    devices: [
+      { type: "modem", count: 1, task: "Add 1 modem" },
+      { type: "router", count: 1, task: "Add 1 router" },
+      { type: "switch", count: 3, task: "Add 3 switches" },
+      { type: "server", count: 2, task: "Add 2 servers" },
+      { type: "desktop", count: 9, task: "Add 9 desktops" },
+      { type: "laptop", count: 3, task: "Add 3 laptops" },
+      { type: "printer", count: 2, task: "Add 2 printers" }
+    ],
+    links: [
+      { a: "modem", b: "router", type: "ethernet", count: 1, task: "Connect modem to router" },
+      { a: "router", b: "switch", type: "ethernet", count: 3, task: "Connect all three switches to router" },
+      { a: "switch", b: "server", type: "ethernet", count: 2, task: "Connect both servers to switches" },
+      { a: "switch", b: "desktop", type: "ethernet", count: 9, task: "Connect all nine desktops to switches" },
+      { a: "router", b: "laptop", type: "wifi", count: 3, task: "Connect three laptops using Wi-Fi" },
+      { a: "router", b: "printer", type: "wifi", count: 2, task: "Connect both printers using Wi-Fi" }
+    ]
+  },
+  {
+    title: "Network Troubleshooting",
+    description: "Build the required network and check that every device has the correct connection.",
+    devices: [
+      { type: "modem", count: 1, task: "Add 1 modem" },
+      { type: "router", count: 1, task: "Add 1 router" },
+      { type: "switch", count: 1, task: "Add 1 switch" },
+      { type: "server", count: 1, task: "Add 1 server" },
+      { type: "desktop", count: 3, task: "Add 3 desktops" },
+      { type: "laptop", count: 2, task: "Add 2 laptops" }
+    ],
+    links: [
+      { a: "modem", b: "router", type: "ethernet", count: 1, task: "Connect modem to router" },
+      { a: "router", b: "switch", type: "ethernet", count: 1, task: "Connect router to switch" },
+      { a: "switch", b: "server", type: "ethernet", count: 1, task: "Connect server to switch" },
+      { a: "switch", b: "desktop", type: "ethernet", count: 3, task: "Connect all desktops to switch" },
+      { a: "router", b: "laptop", type: "wifi", count: 2, task: "Connect both laptops using Wi-Fi" }
+    ]
+  },
+  {
+    title: "Secure Office Network",
+    description: "Create a complete office network with wired and wireless devices. Plan for secure connections.",
+    devices: [
+      { type: "modem", count: 1, task: "Add 1 modem" },
+      { type: "router", count: 1, task: "Add 1 router" },
+      { type: "switch", count: 2, task: "Add 2 switches" },
+      { type: "server", count: 2, task: "Add 2 servers" },
+      { type: "desktop", count: 6, task: "Add 6 desktops" },
+      { type: "laptop", count: 3, task: "Add 3 laptops" },
+      { type: "printer", count: 2, task: "Add 2 printers" }
+    ],
+    links: [
+      { a: "modem", b: "router", type: "ethernet", count: 1, task: "Connect modem to router" },
+      { a: "router", b: "switch", type: "ethernet", count: 2, task: "Connect both switches to router" },
+      { a: "switch", b: "server", type: "ethernet", count: 2, task: "Connect both servers to switches" },
+      { a: "switch", b: "desktop", type: "ethernet", count: 6, task: "Connect all desktops to switches" },
+      { a: "router", b: "laptop", type: "wifi", count: 3, task: "Connect all laptops using Wi-Fi" },
+      { a: "router", b: "printer", type: "wifi", count: 2, task: "Connect both printers using Wi-Fi" }
+    ]
+  },
+  {
+    title: "Ultimate Network Engineer",
+    description: "Complete your final challenge by building a large network with Internet access, servers, switches, computers, laptops and printers.",
+    devices: [
+      { type: "modem", count: 1, task: "Add 1 modem" },
+      { type: "router", count: 1, task: "Add 1 router" },
+      { type: "switch", count: 3, task: "Add 3 switches" },
+      { type: "server", count: 2, task: "Add 2 servers" },
+      { type: "desktop", count: 10, task: "Add 10 desktops" },
+      { type: "laptop", count: 5, task: "Add 5 laptops" },
+      { type: "printer", count: 2, task: "Add 2 printers" }
+    ],
+    links: [
+      { a: "modem", b: "router", type: "ethernet", count: 1, task: "Connect modem to router" },
+      { a: "router", b: "switch", type: "ethernet", count: 3, task: "Connect all three switches to router" },
+      { a: "switch", b: "server", type: "ethernet", count: 2, task: "Connect both servers to switches" },
+      { a: "switch", b: "desktop", type: "ethernet", count: 10, task: "Connect all ten desktops to switches" },
+      { a: "router", b: "laptop", type: "wifi", count: 5, task: "Connect all five laptops using Wi-Fi" },
+      { a: "router", b: "printer", type: "wifi", count: 2, task: "Connect both printers using Wi-Fi" }
+    ]
+  }
 ];
+
+
 
 // ========================================
 // GAME STATE
@@ -1132,7 +1547,7 @@ function simulate() {
             Network Engineer Academy Completed!
           </h3>
           <p class="text-purple-100 text-sm mt-2">
-            Congratulations! You have completed all 12 missions.
+            Congratulations! You have completed all 36 missions.
           </p>
         </div>
       `;
