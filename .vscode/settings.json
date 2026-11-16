@@ -6,5 +6,6 @@
     "**/.git/**",
     "**/images/**",
     "**/assets/**"
-  ]
+  ],
+  "liveServer.settings.port": 5501
 }
