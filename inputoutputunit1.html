@@ -1,0 +1,970 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hsu Academic Boost</title>
+<script src="https://cdn.tailwindcss.com"></script>
+   <link rel="icon" type="image/png" href="LogoHAB-removebg-preview.png">
+<style>
+    
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap');
+
+:root {
+    --bg: #080a0f;
+    --card: #111827;
+    --text: #ffffff;
+    --muted: #9ca3af;
+    --blue: #087df0;
+    --cyan: #08b8bd;
+    --orange: #ff9900;
+    --green: #16c784;
+    --red: #ef4444;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Nunito', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    padding: 18px;
+}
+
+/* MAIN CONTAINER */
+
+.quiz-container {
+    width: 100%;
+    max-width: 1250px;
+    margin: auto;
+}
+
+/* HEADER */
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+}
+
+.logo {
+    font-size: 20px;
+    font-weight: 900;
+    color: #38bdf8;
+    letter-spacing: 1px;
+}
+
+.logo span {
+    color: white;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.score-box,
+.question-box {
+    background: #151b28;
+    border: 1px solid #293449;
+    padding: 9px 17px;
+    border-radius: 10px;
+    font-weight: 800;
+    font-size: 14px;
+}
+
+.score-box span {
+    color: #fbbf24;
+}
+
+.sound-btn {
+    background: #151b28;
+    border: 1px solid #293449;
+    color: white;
+    padding: 9px 13px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 17px;
+}
+
+/* PROGRESS BAR */
+
+.progress-container {
+    width: 100%;
+    height: 7px;
+    background: #202938;
+    border-radius: 20px;
+    overflow: hidden;
+    margin-bottom: 18px;
+}
+
+.progress-bar {
+    width: 0%;
+    height: 100%;
+    background: linear-gradient(90deg, #087df0, #08c6c1);
+    transition: width 0.4s ease;
+}
+
+/* QUESTION AREA */
+
+.question-area {
+    min-height: 220px;
+    background: #080a0f;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 45px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.picture {
+    width: 220px;
+    height: 170px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 115px;
+    background: radial-gradient(circle, #202938 0%, transparent 70%);
+    border-radius: 20px;
+    animation: appear 0.4s ease;
+}
+
+.question-text {
+    font-size: clamp(24px, 4vw, 38px);
+    font-weight: 800;
+    text-align: center;
+    text-transform: lowercase;
+    animation: appear 0.4s ease;
+}
+
+.instruction {
+    text-align: center;
+    color: var(--muted);
+    font-size: 14px;
+    margin-bottom: 18px;
+}
+
+/* ANSWER CARDS */
+
+.answers {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+}
+
+.answer-card {
+    min-height: 255px;
+    border: 3px solid transparent;
+    border-radius: 12px;
+    cursor: pointer;
+    color: white;
+    font-family: inherit;
+    font-size: clamp(19px, 2.5vw, 25px);
+    font-weight: 900;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+    transition: transform 0.2s, filter 0.2s, border 0.2s;
+    box-shadow: 0 7px 0 rgba(0,0,0,0.35);
+}
+
+.answer-card:hover:not(:disabled) {
+    transform: translateY(-5px);
+    filter: brightness(1.12);
+}
+
+.answer-card:active:not(:disabled) {
+    transform: scale(0.98);
+}
+
+.answer-card:disabled {
+    cursor: default;
+}
+
+.answer-card:nth-child(1) {
+    background: linear-gradient(160deg, #087df0, #105087);
+}
+
+.answer-card:nth-child(2) {
+    background: linear-gradient(160deg, #08b8bd, #007477);
+}
+
+.answer-card:nth-child(3) {
+    background: linear-gradient(160deg, #ffa500, #e46a00);
+}
+
+.answer-number {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 26px;
+    height: 26px;
+    border: 1px solid rgba(255,255,255,0.25);
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.answer-card.correct {
+    border-color: #4ade80;
+    background: linear-gradient(160deg, #16c784, #087a50);
+}
+
+.answer-card.wrong {
+    border-color: #ff6464;
+    background: linear-gradient(160deg, #ef4444, #991b1b);
+}
+
+.answer-card.dimmed {
+    filter: brightness(0.5);
+}
+
+/* FEEDBACK */
+
+.feedback {
+    min-height: 58px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 17px;
+    font-weight: 800;
+    margin-top: 20px;
+    padding: 10px;
+}
+
+.feedback.correct-text {
+    color: #4ade80;
+}
+
+.feedback.wrong-text {
+    color: #ff7373;
+}
+
+/* FOOTER */
+
+.footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: 10px;
+    flex-wrap: wrap;
+}
+
+.footer-note {
+    color: #6b7280;
+    font-size: 12px;
+}
+
+.next-btn,
+.replay-btn {
+    background: #087df0;
+    color: white;
+    border: none;
+    border-radius: 9px;
+    padding: 12px 25px;
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 900;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.next-btn:hover,
+.replay-btn:hover {
+    background: #2695ff;
+    transform: translateY(-2px);
+}
+
+.next-btn:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* RESULT SCREEN */
+
+.result-screen {
+    display: none;
+    text-align: center;
+    padding: 60px 20px;
+    background: #111827;
+    border: 1px solid #293449;
+    border-radius: 18px;
+    margin-top: 25px;
+}
+
+.result-icon {
+    font-size: 75px;
+    margin-bottom: 15px;
+}
+
+.result-screen h2 {
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+.final-score {
+    font-size: 48px;
+    font-weight: 900;
+    color: #fbbf24;
+    margin: 15px 0;
+}
+
+.result-message {
+    color: #cbd5e1;
+    margin-bottom: 25px;
+}
+
+/* ANIMATION */
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* MOBILE RESPONSIVE */
+
+@media (max-width: 650px) {
+
+    body {
+        padding: 12px;
+    }
+
+    .header {
+        justify-content: center;
+    }
+
+    .header-right {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .question-area {
+        flex-direction: column;
+        gap: 5px;
+        min-height: 210px;
+    }
+
+    .picture {
+        width: 150px;
+        height: 120px;
+        font-size: 85px;
+    }
+
+    .question-text {
+        font-size: 25px;
+    }
+
+    .answers {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .answer-card {
+        min-height: 110px;
+        font-size: 21px;
+    }
+
+    .footer {
+        justify-content: center;
+    }
+
+    .footer-note {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="quiz-container">
+
+    <!-- HEADER -->
+    <header class="header">
+
+      <button
+            onclick="history.back()"
+            class="bg-teal-500 hover:bg-teal-600 text-white px-5 py-2 rounded-lg transition">
+            Back Home
+        </button>
+    <div class="logo">
+            Hsu Academic Boost <span>| Input / Output QUIZ</span>
+        </div>
+        <div class="header-right">
+
+            <div class="question-box">
+                QUESTION <span id="questionNumber">1</span>/<span id="totalQuestions">12</span>
+            </div>
+
+            <div class="score-box">
+                ⭐ SCORE: <span id="score">0</span>
+            </div>
+
+            <button class="sound-btn" id="soundButton" onclick="toggleSound()" title="Toggle sound">
+                🔊
+            </button>
+
+        </div>
+
+    </header>
+
+
+    <!-- PROGRESS BAR -->
+    <div class="progress-container">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+
+    <!-- QUIZ CONTENT -->
+    <main id="quizContent">
+
+        <section class="question-area">
+
+            <div class="picture" id="questionPicture">
+                🖱️
+            </div>
+
+            <div class="question-text" id="questionText">
+                mouse
+            </div>
+
+        </section>
+
+        <p class="instruction">
+            Choose the correct answer!
+        </p>
+
+
+        <!-- ANSWER OPTIONS -->
+        <section class="answers" id="answerContainer">
+
+            <button class="answer-card" onclick="checkAnswer(0)">
+                <span class="answer-number">1</span>
+                input device
+            </button>
+
+            <button class="answer-card" onclick="checkAnswer(1)">
+                <span class="answer-number">2</span>
+                output device
+            </button>
+
+            <button class="answer-card" onclick="checkAnswer(2)">
+                <span class="answer-number">3</span>
+                both
+            </button>
+
+        </section>
+
+
+        <!-- FEEDBACK -->
+        <div class="feedback" id="feedback">
+        </div>
+
+
+        <!-- FOOTER -->
+        <footer class="footer">
+
+            <div class="footer-note">
+                Hsu Academic Boost · Learn Smart. Build Strong Future.
+            </div>
+
+            <button class="next-btn" id="nextButton" onclick="nextQuestion()" disabled>
+                Next Question →
+            </button>
+
+        </footer>
+
+    </main>
+
+
+    <!-- RESULT SCREEN -->
+    <section class="result-screen" id="resultScreen">
+
+        <div class="result-icon" id="resultIcon">🏆</div>
+
+        <h2>Quiz Completed!</h2>
+
+        <p class="result-message" id="resultMessage">
+            Great job!
+        </p>
+
+        <div class="final-score">
+            <span id="finalScore">0</span>/<span id="finalTotal">12</span>
+        </div>
+
+        <p id="percentage"></p>
+
+        <br>
+
+        <button class="replay-btn" onclick="restartQuiz()">
+            🔄 Play Again
+        </button>
+
+    </section>
+
+</div>
+
+
+<script>
+
+// =====================================
+// 1. QUIZ QUESTIONS
+// =====================================
+
+const questions = [
+
+    {
+        picture: "🖱️",
+        name: "mouse",
+        answer: 0,
+        explanation: "A mouse is an input device because it sends instructions to the computer."
+    },
+
+    {
+        picture: "⌨️",
+        name: "keyboard",
+        answer: 0,
+        explanation: "A keyboard is an input device because we use it to enter text and numbers."
+    },
+
+    {
+        picture: "🖥️",
+        name: "monitor",
+        answer: 1,
+        explanation: "A monitor is an output device because it displays information from the computer."
+    },
+
+    {
+        picture: "🔊",
+        name: "speaker",
+        answer: 1,
+        explanation: "A speaker is an output device because it produces sound from the computer."
+    },
+
+    {
+        picture: "🎤",
+        name: "microphone",
+        answer: 0,
+        explanation: "A microphone is an input device because it sends sound into the computer."
+    },
+
+    {
+        picture: "🖨️",
+        name: "printer",
+        answer: 1,
+        explanation: "A printer is an output device because it produces printed information."
+    },
+     {
+        picture: "💻",
+        name: "touchpad",
+        answer: 0,
+        explanation: "A touchpad is an input device because it sends instructions to the computer like mouse."
+    },
+
+    {
+        picture: "📱",
+        name: "touchscreen",
+        answer: 2,
+        explanation: "A touchscreen is both input and output: it displays information and detects touch."
+    },
+
+    {
+        picture: "📷",
+        name: "webcam",
+        answer: 0,
+        explanation: "A webcam is an input device because it captures images and video for the computer."
+    },
+
+    {
+        picture: "🎧🎙️",
+        name: "headset",
+        answer: 2,
+        explanation: "A headset with a microphone provides output through its speakers and input through its microphone."
+    },
+
+    {
+        picture: "📀",
+        name: "external storage drive",
+        answer: 2,
+        explanation: "An external storage drive supports both input and output because data can be read from and written to it."
+    },
+
+    {
+        picture: "📽️",
+        name: "projector",
+        answer: 1,
+        explanation: "A projector is an output device because it displays the computer's images on a larger surface."
+    },
+
+    {
+        picture: "🕹️",
+        name: "game controller",
+        answer: 0,
+        explanation: "A game controller is an input device because it sends the player's commands to the computer."
+    }
+
+];
+
+
+// =====================================
+// 2. QUIZ SETTINGS
+// =====================================
+
+const answerOptions = [
+    "input device",
+    "output device",
+    "both"
+];
+
+let currentQuestion = 0;
+let score = 0;
+let answered = false;
+let soundEnabled = true;
+let quizQuestions = [];
+
+
+// =====================================
+// 3. SOUND EFFECTS
+// =====================================
+
+function playSound(type) {
+
+    if (!soundEnabled) return;
+
+    try {
+
+        const audioContext = new (
+            window.AudioContext || window.webkitAudioContext
+        )();
+
+        const oscillator = audioContext.createOscillator();
+        const gain = audioContext.createGain();
+
+        oscillator.connect(gain);
+        gain.connect(audioContext.destination);
+
+        if (type === "correct") {
+            oscillator.frequency.value = 750;
+            oscillator.type = "sine";
+        } else {
+            oscillator.frequency.value = 180;
+            oscillator.type = "triangle";
+        }
+
+        gain.gain.setValueAtTime(0.15, audioContext.currentTime);
+
+        gain.gain.exponentialRampToValueAtTime(
+            0.001,
+            audioContext.currentTime + 0.25
+        );
+
+        oscillator.start();
+        oscillator.stop(audioContext.currentTime + 0.25);
+
+    } catch (error) {
+        console.log("Audio is not supported.");
+    }
+
+}
+
+
+function toggleSound() {
+
+    soundEnabled = !soundEnabled;
+
+    document.getElementById("soundButton").textContent =
+        soundEnabled ? "🔊" : "🔇";
+
+}
+
+
+// =====================================
+// 4. SHUFFLE QUESTIONS
+// =====================================
+
+function shuffleQuestions(array) {
+
+    const shuffled = [...array];
+
+    for (let i = shuffled.length - 1; i > 0; i--) {
+
+        const j = Math.floor(Math.random() * (i + 1));
+
+        [shuffled[i], shuffled[j]] =
+        [shuffled[j], shuffled[i]];
+
+    }
+
+    return shuffled;
+
+}
+
+
+// =====================================
+// 5. DISPLAY QUESTION
+// =====================================
+
+function showQuestion() {
+
+    answered = false;
+
+    const question = quizQuestions[currentQuestion];
+
+    document.getElementById("questionPicture").textContent =
+        question.picture;
+
+    document.getElementById("questionText").textContent =
+        question.name;
+
+    document.getElementById("questionNumber").textContent =
+        currentQuestion + 1;
+
+    document.getElementById("totalQuestions").textContent =
+        quizQuestions.length;
+
+    document.getElementById("score").textContent = score;
+
+    document.getElementById("feedback").textContent = "";
+
+    document.getElementById("feedback").className = "feedback";
+
+    document.getElementById("nextButton").disabled = true;
+
+    document.getElementById("nextButton").textContent =
+        currentQuestion === quizQuestions.length - 1
+        ? "See Results →"
+        : "Next Question →";
+
+    // Update progress
+    const progress =
+        (currentQuestion / quizQuestions.length) * 100;
+
+    document.getElementById("progressBar").style.width =
+        progress + "%";
+
+    // Reset answer cards
+    const cards = document.querySelectorAll(".answer-card");
+
+    cards.forEach((card, index) => {
+
+        card.disabled = false;
+
+        card.className = "answer-card";
+
+        card.innerHTML = `
+            <span class="answer-number">${index + 1}</span>
+            ${answerOptions[index]}
+        `;
+
+    });
+
+}
+
+
+// =====================================
+// 6. CHECK ANSWER
+// =====================================
+
+function checkAnswer(selectedAnswer) {
+
+    if (answered) return;
+
+    answered = true;
+
+    const question = quizQuestions[currentQuestion];
+
+    const cards = document.querySelectorAll(".answer-card");
+
+    const feedback = document.getElementById("feedback");
+
+    const isCorrect = selectedAnswer === question.answer;
+
+    if (isCorrect) {
+
+        score++;
+
+        playSound("correct");
+
+        feedback.textContent =
+            "✓ Correct! " + question.explanation;
+
+        feedback.classList.add("correct-text");
+
+    } else {
+
+        playSound("wrong");
+
+        feedback.textContent =
+            "✗ Not quite! " + question.explanation;
+
+        feedback.classList.add("wrong-text");
+
+    }
+
+    // Highlight correct and selected answers
+    cards.forEach((card, index) => {
+
+        card.disabled = true;
+
+        if (index === question.answer) {
+
+            card.classList.add("correct");
+
+        } else if (index === selectedAnswer) {
+
+            card.classList.add("wrong");
+
+        } else {
+
+            card.classList.add("dimmed");
+
+        }
+
+    });
+
+    document.getElementById("score").textContent = score;
+
+    document.getElementById("nextButton").disabled = false;
+
+}
+
+
+// =====================================
+// 7. NEXT QUESTION
+// =====================================
+
+function nextQuestion() {
+
+    if (!answered) return;
+
+    currentQuestion++;
+
+    if (currentQuestion < quizQuestions.length) {
+
+        showQuestion();
+
+    } else {
+
+        showResults();
+
+    }
+
+}
+
+
+// =====================================
+// 8. SHOW RESULTS
+// =====================================
+
+function showResults() {
+
+    document.getElementById("quizContent").style.display = "none";
+
+    document.getElementById("resultScreen").style.display = "block";
+
+    document.getElementById("progressBar").style.width = "100%";
+
+    const total = quizQuestions.length;
+
+    const percentage = Math.round((score / total) * 100);
+
+    document.getElementById("finalScore").textContent = score;
+
+    document.getElementById("finalTotal").textContent = total;
+
+    document.getElementById("percentage").textContent =
+        "Your result: " + percentage + "%";
+
+    let message = "";
+    let icon = "";
+
+    if (percentage === 100) {
+
+        message = "Excellent! You got every question correct! 🌟";
+        icon = "🏆";
+
+    } else if (percentage >= 80) {
+
+        message = "Amazing work! You are a technology star!";
+        icon = "🥇";
+
+    } else if (percentage >= 50) {
+
+        message = "Good effort! Keep practising and learning!";
+        icon = "👏";
+
+    } else {
+
+        message = "Keep learning! Try again and improve your score!";
+        icon = "💪";
+
+    }
+
+    document.getElementById("resultMessage").textContent = message;
+
+    document.getElementById("resultIcon").textContent = icon;
+
+}
+
+
+// =====================================
+// 9. RESTART QUIZ
+// =====================================
+
+function restartQuiz() {
+
+    currentQuestion = 0;
+
+    score = 0;
+
+    answered = false;
+
+    quizQuestions = shuffleQuestions(questions);
+
+    document.getElementById("quizContent").style.display = "block";
+
+    document.getElementById("resultScreen").style.display = "none";
+
+    showQuestion();
+
+}
+
+
+// =====================================
+// 10. START QUIZ
+// =====================================
+
+restartQuiz();
+
+</script>
+
+</body>
+</html>
