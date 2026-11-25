@@ -479,29 +479,44 @@ Method = ⚙️ Action</div>
   content: `
     <h2>🔴 Python Classes & Objects</h2>
 
-    <h3>📐 What is a Class?</h3>
+   <h3>📐 What is a Class?</h3>
 
-    <p>
-      A <strong>class</strong> is a blueprint or template for creating objects.
-      It defines what data an object can have and what actions it can perform.
-    </p>
+<p>
+  A <strong>class</strong> is a blueprint or template for creating objects.
+  It defines what data an object can have and what actions it can perform.
+</p>
 
-    <p>
-      Think about a <strong>student ID card design</strong> 🎓.
-      The design tells us that every student card should have a name, age,
-      and student ID. The actual cards are the objects.
-    </p>
+<p>
+  Think about a <strong>student ID card design</strong> 🎓.
+  The design tells us that every student card should have a name, age,
+  and student ID. The actual cards created from that design are the objects.
+</p>
 
-    <div class="code-block">class Student:
-    pass</div>
+<div style="text-align: center; margin: 20px 0;">
+  <img 
+    src="assests/MIT/IDStudentexamplecla.png"
+    alt="Class and Object illustration"
+    style="width: 100%; max-width: 500px; border-radius: 12px;"
+  > <p style="font-size: 13px; color: #888;">A class is a blueprint, and objects are created from that blueprint. </p>
+</div>
 
-    <p>
-      Here, <code>Student</code> is a class.
-      The <code>pass</code> keyword means we are not adding anything to the
-      class yet.
-    </p>
+<p>
+  Just like a card design can be used to create many student ID cards,
+  one class can be used to create many objects.
+</p>
 
-    <hr>
+<div class="code-block">
+class Student:
+    pass
+</div>
+
+<p>
+  Here, <code>Student</code> is a class.
+  The <code>pass</code> keyword means we are not adding anything
+  to the class yet.
+</p>
+
+<hr>
 
     <h3>👤 What is an Object?</h3>
 
@@ -2784,7 +2799,375 @@ def method_name(cls):
     </p>
   `
 }
+,
+{
+  title: "🔴 Static Methods",
+  content: `
+    <h2>Static Methods (@staticmethod)</h2>
 
+    <p>
+      In Python Object-Oriented Programming (OOP), a
+      <strong>static method</strong> is a method that belongs to a class
+      but does not depend on a particular object or the class itself.
+    </p>
+
+    <p>
+      We use the <strong>@staticmethod</strong> decorator to define
+      a static method.
+    </p>
+
+    <h3>1. What Is a Static Method?</h3>
+
+    <p>
+      A static method is a function defined inside a class.
+      Unlike instance methods and class methods, it does not automatically
+      receive <strong>self</strong> or <strong>cls</strong> as its first parameter.
+    </p>
+
+    <p>Let's understand the three types of methods:</p>
+
+    <ul>
+      <li><strong>Instance Method:</strong> Works with object data using self.</li>
+      <li><strong>Class Method:</strong> Works with class data using cls.</li>
+      <li><strong>Static Method:</strong> Performs an operation without automatically accessing object or class data.</li>
+    </ul>
+
+    <h3>2. Why Do We Need Static Methods?</h3>
+
+    <p>
+      Imagine we are creating a Calculator class. We want to perform
+      addition, subtraction, multiplication, and division.
+    </p>
+
+    <p>
+      These calculations do not need information about a particular
+      calculator object. Therefore, we can use static methods.
+    </p>
+
+    <p>Static methods are useful when:</p>
+
+    <ul>
+      <li>We want to organize related functions inside a class.</li>
+      <li>A method does not need instance attributes.</li>
+      <li>A method does not need class attributes.</li>
+      <li>We want to call a utility function without creating an object.</li>
+    </ul>
+
+    <h3>3. Static Method Syntax</h3>
+
+    <p>We use the <strong>@staticmethod</strong> decorator above the method.</p>
+
+    <div class="code-block">class ClassName:
+
+    @staticmethod
+    def method_name(parameters):
+        # Code here
+        pass</div>
+
+    <p><strong>Remember:</strong></p>
+
+    <ul>
+      <li><code>@staticmethod</code> defines a static method.</li>
+      <li>It does not automatically receive self.</li>
+      <li>It does not automatically receive cls.</li>
+      <li>It can accept normal parameters.</li>
+    </ul>
+
+    <h3>4. Example 1: Calculator Class</h3>
+
+    <p>Let's create a Calculator class with two static methods.</p>
+
+    <div class="code-block">class Calculator:
+
+    @staticmethod
+    def add(a, b):
+        return a + b
+
+    @staticmethod
+    def multiply(a, b):
+        return a * b
+
+print(Calculator.add(10, 5))
+print(Calculator.multiply(10, 5))</div>
+
+    <strong>Output:</strong>
+
+    <div class="code-block">15
+50</div>
+
+    <p><strong>Explanation:</strong></p>
+
+    <ol>
+      <li>We create a class named Calculator.</li>
+      <li>We use @staticmethod to define add() and multiply().</li>
+      <li>Both methods accept two parameters.</li>
+      <li>We call the methods directly using the class name.</li>
+      <li>We do not need to create a Calculator object.</li>
+    </ol>
+
+    <p>
+      Notice that we call <code>Calculator.add(10, 5)</code>
+      instead of creating an object first.
+    </p>
+
+    <h3>5. Example 2: Calling a Static Method Using an Object</h3>
+
+    <p>
+      We can also call a static method using an object.
+      Both approaches work.
+    </p>
+
+    <div class="code-block">class Calculator:
+
+    @staticmethod
+    def subtract(a, b):
+        return a - b
+
+# Calling using the class
+print(Calculator.subtract(20, 5))
+
+# Creating an object
+calc = Calculator()
+
+# Calling using the object
+print(calc.subtract(20, 5))</div>
+
+    <strong>Output:</strong>
+
+    <div class="code-block">15
+15</div>
+
+    <p>
+      Both calls produce the same result. However, using the class name
+      is generally clearer when calling a static method.
+    </p>
+
+    <h3>6. Example 3: Student Class</h3>
+
+    <p>
+      Let's create a Student class that contains an instance method,
+      a class method, and a static method.
+    </p>
+
+    <div class="code-block">class Student:
+
+    school = "HAB Academy"
+
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+    # Instance Method
+    def show_info(self):
+        print("Name:", self.name)
+        print("Age:", self.age)
+
+    # Class Method
+    @classmethod
+    def show_school(cls):
+        print("School:", cls.school)
+
+    # Static Method
+    @staticmethod
+    def is_adult(age):
+        return age >= 18
+
+student1 = Student("Alex", 20)
+
+student1.show_info()
+
+Student.show_school()
+
+print(Student.is_adult(20))</div>
+
+    <strong>Output:</strong>
+
+    <div class="code-block">Name: Alex
+Age: 20
+School: HAB Academy
+True</div>
+
+    <p><strong>Explanation:</strong></p>
+
+    <ul>
+      <li><code>show_info()</code> uses self to access the student's name and age.</li>
+      <li><code>show_school()</code> uses cls to access the school class attribute.</li>
+      <li><code>is_adult()</code> receives age as a normal parameter and checks whether it is at least 18.</li>
+    </ul>
+
+    <p>
+      The static method does not need to know which student object is being
+      used. It only needs the age provided as an argument.
+    </p>
+
+    <h3>7. Example 4: Number Checker</h3>
+
+    <p>
+      We can also use static methods to check whether a number is even
+      or odd.
+    </p>
+
+    <div class="code-block">class NumberTools:
+
+    @staticmethod
+    def is_even(number):
+        return number % 2 == 0
+
+    @staticmethod
+    def is_odd(number):
+        return number % 2 != 0
+
+print(NumberTools.is_even(10))
+print(NumberTools.is_odd(7))</div>
+
+    <strong>Output:</strong>
+
+    <div class="code-block">True
+True</div>
+
+    <p><strong>Explanation:</strong></p>
+
+    <ul>
+      <li><code>%</code> is the modulus operator. It gives the remainder after division.</li>
+      <li>An even number has a remainder of 0 when divided by 2.</li>
+      <li>An odd number has a remainder of 1 when divided by 2.</li>
+      <li>Both methods return True or False.</li>
+    </ul>
+
+    <h3>8. Static Method vs Class Method vs Instance Method</h3>
+
+    <p>
+      Python provides three commonly used types of methods.
+      Let's compare them.
+    </p>
+
+    <div class="table-responsive">
+      <table>
+        <thead>
+          <tr>
+            <th>Feature</th>
+            <th>Instance Method</th>
+            <th>Class Method</th>
+            <th>Static Method</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Decorator</td>
+            <td>None</td>
+            <td>@classmethod</td>
+            <td>@staticmethod</td>
+          </tr>
+          <tr>
+            <td>First parameter</td>
+            <td>self</td>
+            <td>cls</td>
+            <td>None automatically</td>
+          </tr>
+          <tr>
+            <td>Access object data</td>
+            <td>Yes</td>
+            <td>Not automatically</td>
+            <td>Not automatically</td>
+          </tr>
+          <tr>
+            <td>Access class data</td>
+            <td>Yes</td>
+            <td>Yes</td>
+            <td>Not automatically</td>
+          </tr>
+          <tr>
+            <td>Main purpose</td>
+            <td>Work with object data</td>
+            <td>Work with class data</td>
+            <td>Utility operations</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>9. Important Things to Remember</h3>
+
+    <ul>
+      <li>Use <code>@staticmethod</code> to define a static method.</li>
+      <li>A static method does not automatically receive self or cls.</li>
+      <li>It can accept normal parameters.</li>
+      <li>It can be called using the class name or an object.</li>
+      <li>It does not automatically access instance or class attributes.</li>
+      <li>Use it for utility functions related to a class.</li>
+    </ul>
+
+    <h3>10. Try It Yourself!</h3>
+
+    <p><strong>Activity 1: Temperature Converter</strong></p>
+
+    <p>Create a class named Temperature.</p>
+
+    <strong>Requirements:</strong>
+
+    <ul>
+      <li>Create a static method named celsius_to_fahrenheit().</li>
+      <li>Accept a Celsius temperature as a parameter.</li>
+      <li>Convert Celsius to Fahrenheit using the formula:</li>
+    </ul>
+
+    <div class="code-block">Fahrenheit = (Celsius * 9/5) + 32</div>
+
+    <ul>
+      <li>Return the converted temperature.</li>
+      <li>Call the method using the class name.</li>
+    </ul>
+
+    <strong>Expected Output:</strong>
+
+    <div class="code-block">25°C = 77.0°F</div>
+
+    <p><strong>Activity 2: Number Checker</strong></p>
+
+    <p>Create a class named NumberTools.</p>
+
+    <strong>Requirements:</strong>
+
+    <ul>
+      <li>Create a static method named is_even().</li>
+      <li>Accept one number as a parameter.</li>
+      <li>Return True if the number is even.</li>
+      <li>Otherwise, return False.</li>
+    </ul>
+
+    <strong>Expected Output:</strong>
+
+    <div class="code-block">True
+False</div>
+
+    <h3>11. Quick Knowledge Check</h3>
+
+    <ol>
+      <li>What decorator is used to create a static method?</li>
+      <li>Does a static method automatically receive self?</li>
+      <li>Does a static method automatically receive cls?</li>
+      <li>Can we call a static method using a class name?</li>
+      <li>Can a static method accept normal parameters?</li>
+      <li>What is one common use of a static method?</li>
+    </ol>
+
+    <h3>📌 Final Summary</h3>
+
+    <p>
+      A <strong>static method</strong> is a method defined inside a class
+      that does not automatically depend on instance or class data.
+      We use the <code>@staticmethod</code> decorator to define it.
+    </p>
+
+    <p>Remember the three method types:</p>
+
+    <ul>
+      <li><strong>Instance Method:</strong> Uses self.</li>
+      <li><strong>Class Method:</strong> Uses cls.</li>
+      <li><strong>Static Method:</strong> Does not automatically use either.</li>
+    </ul>
+  `
+},
 
 
    
